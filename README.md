@@ -1,1 +1,0 @@
-Online shop for rent

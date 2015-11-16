@@ -1,0 +1,173 @@
+nav{ 
+  border-radius: 3%;
+  height: 5em;
+}
+
+.medium {
+  height: 45em;
+  width: 100%;
+  background: url("http://i.imgur.com/CShEgXJ.jpg") no-repeat;
+  background-size: cover;
+  display: block;
+  //outline: 2px solid #000;
+  //margin-top: 9em;
+}
+.row-break {
+  height: 4em;
+  width: 100%;
+}
+
+h5.cat-heading::before, h5.cat-heading::after {
+  position: absolute;
+  top: 50%;
+  width: 40%;
+  content: " ";
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  border-bottom: 1px solid #b2beb5;
+  display: block;
+  height: 0
+}
+
+.card-desc > span {
+  font-size: 0.9em;
+  color: #000;
+}
+
+.card-desc > span.price{
+    color: #338574 !important
+}
+
+.card, nav {
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+}
+.card-image > img {
+  height: 25em;
+}
+
+h5.cat-heading:after {
+   right: 0;  
+   left: auto; 
+}
+h5.cat-heading:before {
+   right: auto;  
+   left: 0; 
+}
+h5.cat-heading {
+  position: relative;
+  text-align: center;
+  font-size: 1.4em;
+  margin: 2em auto;
+}
+
+.card-center {
+  // margin-left: 8em;
+  width: 20%;
+  margin: auto;
+  border: 2px solid #000;
+}
+
+.card-desc {
+  width: 160%;
+}
+
+.border-bottom {
+  border-bottom: 1px solid #E0E0E0;
+  text-align: center;
+}
+.width-max {
+  max-width: 100%;
+}
+
+.top-bar {
+  height: 2.5em;
+  width: 100%;
+  background: #338574;
+}
+
+.top-contain {
+  height: 7.5em;
+}
+
+#top-fixed {
+  position: fixed;
+  display: block;
+  width: 100%;
+  z-index: 1;
+}
+
+.shadow-active {
+  -webkit-box-shadow: 0em 0.1em 0.6em #626262 !important;
+  -moz-box-shadow:    0em 0.1em 0.6em #626262 !important;
+  box-shadow:         0em 0.1em 0.6em #626262 !important;
+}
+.container-trim {
+  width: 80%;
+  margin: auto
+}
+
+.container-trim-wide {
+  width: 88%;
+  margin: auto
+}
+
+
+.container-large {
+  width: 90%;
+  margin: auto
+}
+
+.mid-align {
+  position: relative;
+  top: -30%;
+  transform: translateY(-50%);
+}
+.small-text{
+  font-size: 0.8em;
+}
+
+.space_out {
+  margin: 0px 20px
+}
+
+.container{
+  width: 100%;
+}
+
+.other_nav{
+  float: right
+}
+
+.card {
+  width: 20em
+}
+
+ul{
+  position: absolute;
+  right: 0;
+}
+
+#cat_dropdown {
+  margin: 5px
+}
+.main-container{
+  height: 80em;
+}
+
+.pre-footer {
+  height: 32em;
+  background: #fff4e1;
+  margin-top: 6em;
+}
+.footer{
+  height: 13em;
+  background: #000;
+}
+
+.footer-container{
+  width: 60%;
+  margin: auto;
+}

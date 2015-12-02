@@ -1,0 +1,124 @@
+<%= render partial: 'header' %>
+<div class= "row-break"></div>
+<div class="row container-trim">
+  <div class="col s12 m12 l8 test-this">
+    <div>
+    	<div class="">
+    	  <div class="row">
+		    <div class="col l6">
+	        <label class="bold black-text">Name: </label>
+	        <input type="text"/>
+	      </div>
+	      <div class="col l6">
+	        <label class="bold black-text">Email: </label>
+	        <input type="email" />
+	      </div>
+    	  </div>
+    	  <div class="row">
+		    <div class="col l6">
+		    <label class="bold black-text">Address: </label>
+	        <input type="text"/>
+	      </div>
+	      <div class="col l6">
+	        <label class="bold black-text">Nearby Landmark: </label>
+	        <input type="text" />
+	      </div>
+	   </div>
+	   <div class="row">
+	      <div class="col l6">
+	        <label class="bold black-text">Gender: </label>
+	        <select class="browser-default">
+	          <option value="male">Male</option>
+	          <option value="female">Female</option>
+	        </select>
+	      </div>
+	      <div class="col l6">
+	        <label class="bold black-text">Phone Number: </label>
+	        <input type="text"/>
+	      </div>
+      </div>
+      <div class="row">
+	      <div class="col l4">
+	        <label class="bold black-text">State: </label>
+	        <input type="text"/>
+	      </div>
+	      <div class="col l4">
+	        <label class="bold black-text">City/Local Govt: </label>
+	        <input type="text"/>
+	      </div>
+	      <div class="col l4">
+	        <label class="bold black-text">Country: </label>
+	        <input type="text"/>
+	      </div>
+	  </div>
+   	</div>
+	    
+    <div class="check-products-list">
+  	  <%= render partial: "cartproduct", collection: @cartproducts%>
+  	  
+  	  <div class="row">
+  	  	<a href="#" class="main-button right">EMPTY CART</a>
+  	  </div>
+    </div>
+  </div>
+  </div>
+
+  <div class="col s12 m12 l4 test-this">
+    <div class="border-wrap">
+      <div class ="section-title"> 
+        CHOOSE PAYMENT METHOD
+      </div>
+      <div class="row part-one">
+        <div class="col l4">
+          <a href="#">
+            <div class = "section-image center">
+              <div ><img src="http://i.imgur.com/LYZPJLL.png?1"></div>
+              <div class="section-text black-text"> 
+                Pay on delivery
+                <input name="group1" type="radio" value="group1" />
+                <label for="test1" ></label>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="col l4">
+          <a href="#">
+            <div class = "section-image center">
+              <div ><img src="http://i.imgur.com/3M0DG78.png"></div>
+              <div class="section-text black-text">
+                Online Payment
+                <input name="group1" type="radio" value="group1" />
+                <label for="test1" ></label>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="col l4">
+          <a href="#">
+            <div class = "section-image center">
+              <div><img src="http://i.imgur.com/bwcO7oJ.png?1"></div>
+              <div class="section-text black-text">
+              Bank transfer
+                <input name="group1" type="radio" value="group1" />
+                <label for="test1" ></label>
+              </div>
+            </div>
+          </a>
+        </div>    
+      </div>
+      <div>
+        <div class="row sub-sections"> <span class="left">sub total </span><span class="right">₦20,000.00</span></div>
+        <div class="row sub-sections"> <span class="left">discount </span><span class="right">₦0.00</span></div>
+        <div class="row sub-sections"> <span class="left">shipping cost </span><span class="right">₦100.00</span></div>
+        <div class="row sub-sections"> <span class="left">total amount </span><span class="right">₦21,100.00</span></div>
+        <div class="row  section-button center">
+          <div><button type="submit" class="main-button"> Complete order</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class= "row-break"></div>
+<%= render partial: 'footer' %>

@@ -1,0 +1,17 @@
+<div class="border-wrap product-box">
+	<div class="row">
+		<%= image_tag cartproduct[:image], class: 'col l2'%>
+		<div class="col l3">
+			<span><%= cartproduct[:text] %></span>
+			<span><%= cartproduct[:category] %></span>
+		</div>
+		<span class="col l2"><%= cartproduct[:price] %></span>
+		<div class="col l2 center">
+			<span>Quantity: </span>
+			<input type="number" class="center" value="1"/>
+			<a href="#">UPDATE</span></a>
+		</div>
+		<span class="col l2"><%= cartproduct[:price] %></span>
+		<a href="#" class="grey-text"><i class="small material-icons col l1">delete</i></a>
+	</div>
+</div><br />

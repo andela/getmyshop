@@ -38,8 +38,6 @@ nav {
 }
 
 .card-desc {
-  width: 160%;
-
   > span {
     color: $black;
     font-size: 0.9em;
@@ -57,16 +55,18 @@ nav {
   box-shadow: none !important;
 }
 
-.home-card .card-image > img {
+.home-card,
+.card-image > img {
   height: 25em;
+  width: 20em;
 }
 
-.cat-heading:after {
+.cat-heading::after {
   left: auto;
-  right: 0;  
+  right: 0;
 }
 
-.cat-heading:before {
+.cat-heading::before {
   left: 0;
   right: auto;
 }
@@ -105,11 +105,11 @@ nav {
 }
 
 #top-fixed {
+  border-bottom: 1px solid $my-grey;
   display: block;
   position: fixed;
   width: 100%;
   z-index: 1;
-  border-bottom: 1px solid $my-grey;
 }
 
 .shadow-active {
@@ -147,18 +147,19 @@ nav {
   width: 100%;
 }
 
-.home-card {
-  width: 20em;
-}
-
 #cat-dropdown {
+  margin: 5px;
   position: absolute;
   right: 0;
-  margin: 5px;
 }
 
 .main-container {
   height: 80em;
+}
+
+.length-long {
+  border: 1px solid $my-black;
+  height: 38em;
 }
 
 .pre-footer {
@@ -175,4 +176,8 @@ nav {
 .footer-container {
   margin: auto;
   width: 60%;
+}
+
+a:hover {
+  text-decoration: none;
 }

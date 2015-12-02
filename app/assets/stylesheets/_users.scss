@@ -1,0 +1,120 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$l-grey: #b2beb5;
+$default-blue: #338574;
+$facebook-blue: #3b5998;
+$twitter-blue: #4099ff;
+$google-red: #d34836;
+
+form {
+  border-right: 2px solid $l-grey;
+}
+
+.row.container {
+  bottom: 0;
+  box-shadow: none;
+  left: 0;
+  margin: auto;
+  right: 0;
+  top: 0;
+  width: 60%;
+}
+
+h2 {
+  font-size: 35px;
+  text-align: center;
+}
+
+.row.entry {
+  height: 35px;
+  width: 450px;
+}
+
+.row.submit {
+  position: relative;
+  right: 48.1955px;
+  top: 20px;
+}
+
+.container.col.l4 {
+  text-align: right;
+}
+
+.container.col.l8 {
+  padding: 0;
+  text-align: center;
+
+  p {
+    margin-top: 40px;
+    position: relative;
+    right: 48.1955px;
+  }
+}
+
+.row.signup {
+  text-align: right;
+
+  p {
+    font-size: 1.2em;
+    margin-top: 10px;
+    padding-right: 34px;
+    text-align: right;
+  }
+}
+
+.btn.waves-effect.waves-light {
+  height: 40px;
+  vertical-align: center;
+  width: 150px;
+
+  &.blue {
+    background-color: $default-blue !important;
+    text-align: center;
+    width: 200px;
+  }
+
+  &.facebook.blue {
+    background-color: $facebook-blue !important;
+    width: 150px !important;
+  }
+
+  &.twitter.blue {
+    background-color: $twitter-blue !important;
+    width: 150px !important;
+  }
+
+  &.oauth.red {
+    background-color: $google-red !important;
+  }
+}
+
+.fa.fa-google-plus,
+.fa.fa-facebook,
+.fa.fa-twitter {
+  height: 30px;
+  left: 10px;
+  padding-right: 5px;
+  position: absolute;
+}
+
+.fa-word {
+  margin-left: 10px;
+}
+
+.row.oauth {
+  padding-right: 22.5px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.bar {
+  font-size: 20px;
+  font-weight: 100;
+  left: 35px;
+  position: absolute;
+  top: 0;
+}

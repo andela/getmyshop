@@ -22,13 +22,6 @@
 		
 			</div>
 		</div>
-		<ul class="dropdown-content" id="cat-dropdown">
-			<li>Fashion</li>
-			<li>Electronics</li>
-			<li>Home and Kitchen</li>
-			<li>Baby, Kids and Toys</li>
-		</ul>
-
 		<nav class="white valign-wrapper">
 			<div class="container-trim">
 				<div class="left">
@@ -40,9 +33,20 @@
 				</div>
 				<div class="right">
 					<div class="hide-on-med-and-down">
-						<a href="#" class="black-text dropdown-button" data-activates="cat-dropdown">CATEGORIES</a>
+						<span class="category-span">
+							<a href="#" class="black-text category-link">CATEGORIES</a>
+							<ul id="category-dropdown" class="nav-link-items">
+								<li><a href="#" class="black-text">Fashion</a></li>
+								<li><a href="#" class="black-text">Electronics</a></li>
+								<li><a href="#" class="black-text">Home and Kitchen</a></li>
+								<li><a href="#" class="black-text">Baby, Kids and Toys</a></li>
+							</ul>
+						</span>
 						<span class="white-text small-text">&nbsp;|&nbsp;</span>
-						<a href="#" class="black-text">CART</a>
+						<span class="cart-span">
+							<a href="#" class="black-text cart-link">CART</a>
+							<%= render "cart_dropdown" %>
+						</span>						
 						<span class="white-text small-text">&nbsp;|&nbsp;</span>
 						<a href="#" class="black-text">SIGN IN</a>
 					</div>

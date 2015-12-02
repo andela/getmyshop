@@ -147,12 +147,6 @@ nav {
   width: 100%;
 }
 
-#cat-dropdown {
-  margin: 5px;
-  position: absolute;
-  right: 0;
-}
-
 .main-container {
   height: 80em;
 }
@@ -180,4 +174,26 @@ nav {
 
 a:hover {
   text-decoration: none;
+}
+
+.category-span {
+  display: inline-block;
+  position: relative;
+}
+
+.category-span:hover {
+  #category-dropdown {
+    display: block;
+  }
+}
+
+#category-dropdown {
+  line-height: 3em;
+  padding: 1em;
+  width: 20em;
+
+  li {
+    display: block;
+    width: 100%;
+  }
 }

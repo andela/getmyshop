@@ -1,3 +1,12 @@
 @import "materialize";
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
-@import "landing"
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+$my-grey: #b2beb5;
+$my-green: #338574;
+$my-white: #ffffff;
+$my-black: #000;
+
+@import "landing";
+@import "products";

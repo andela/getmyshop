@@ -1,0 +1,132 @@
+<%= render "header" %>
+<div class="container-large product-description-body">
+  <div class="row">
+    <div class="col m6 product-view-image">
+      <div class="row">
+        <div class="col s2">
+          <!-- <div>
+            <%= image_tag "shirt2-small.jpg" %>
+          </div>
+          <div>
+            <%= image_tag "shirt2-back-small.jpg" %>
+          </div>
+          -->
+        </div>
+         
+        <div class="col s10">
+          <div class="slider">
+            <ul class="slides">
+              <li>
+                <%= image_tag "watch1.jpg" %>
+              </li>
+              <li>
+                <%= image_tag "shirt2.jpg" %>
+              </li>
+              <li>
+                <%= image_tag "shirt2-back.jpg" %>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="shares">
+        <div class="row">
+          <div class="col s4">Share</div>
+          <div class="col s2">
+            
+            <a href="#" title="Facebook"><i class="fa fa-facebook my-icons"></i></a>
+          </div>
+          <div class="col s2">
+            <a href="#" title="Twitter"><i class="fa fa-twitter my-icons"></i></a>
+          </div>
+          <div class="col s2">
+            <a href="#" title="Instagram"><i class="fa fa-instagram my-icons"></i></a>
+          </div>
+          <div class="col s2">
+            <a href="#" title="Pinterest"><i class="fa fa-pinterest-p my-icons"></i></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col m6">
+      <h5 class="product-name">Firetrap - Men's Plain Short Sleeve Poplin Shirt</h5>
+      <div class="price">
+          NGN 7,400.00
+      </div>
+
+      <div class="rating-counts">
+        <div class="rating left">
+          <span>&#9734;</span>
+          <span>&#9734;</span>
+          <span>&#9734;</span>
+          <span>&#9734;</span>
+          <span>&#9734;</span>
+        </div>
+        <div class="counts left">
+          <span>4 reviews</span>
+          <!-- | <span>23 likes</span> -->
+        </div>
+      </div>
+      <div class="buy-now">
+        <div class="row">
+          <form method="get">
+            <div class="col s1 bold">Qty: </div>
+            <div class="col s2"><input type="number" value="1" class=""></div>
+            <div class="col s4"><input type="submit" class="waves-effect btn" value="BUY NOW" /></div>
+            <div class="col s5">
+              <a href="#" title="" class="wish-list-link">
+                <i class="fa fa-heart-o wishlist-icon"></i> Add to Wish List
+              </a>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <%= render "product_features" %>
+      
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col m6 s12">
+      <div class="row">
+        <%= render "related_products" %>
+      </div>
+    </div>
+    <div class="col m6 s12">
+      <div class="row" id="description-tabs">
+        <div class="col s12">
+          <ul class="tabs">
+            <li class="tab"><a href="#description-tab" class="active">Description</a></li>
+            <li class="tab"><a href="#specification-tab" class="active">Specifications</a></li>
+            <li class="tab"><a href="#review-tab">Reviews</a></li>
+          </ul>
+        </div>
+        <div id="description-tab" class="col s12">
+          
+          <%= render "description_tab_contents" %>
+
+        </div>
+        <div id="specification-tab" class="col s12">
+          
+          <%= render "product_features" %>
+
+        </div>
+        <div id="review-tab" class="col s12">
+
+          <%= render "reviews_tab_contents" %>
+        
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+</div>
+
+<%= render "footer" %>

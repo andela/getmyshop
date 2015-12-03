@@ -1,9 +1,11 @@
-<div class= "col s12 m6 l2">
-	<a href="#">
-		<div class="card">
+<div class= "col s12 m6 l3">
+	<a href="<%= product_path(1) %>">
+		<div class="card home-card">
 			<div class="card-image"><%= image_tag product[:image] %></div>
-	    </div>
-	   <div class="card-desc center"><span><%= product[:text] %></span><br /><span class="price"><%= product[:price] %></span></div>
+	  </div>
+	  <div class="card-desc center">
+      <span><%= product[:text] %></span><br /><span class="price"><%= product[:price] %></span>
+    </div>
 	</a>
 </div>
-<div class= "col s12 m1 l0.1">&nbsp;</div>
+<!-- <div class= "col s12 m1 l0.1">&nbsp;</div> -->

@@ -18,4 +18,6 @@
 
 #ignore project file and readme
 /.project
+# Ignore the RubyMine IDE settings folder '.idea'
+/.idea
 /.README.rdoc

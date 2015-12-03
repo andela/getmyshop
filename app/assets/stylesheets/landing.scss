@@ -39,14 +39,14 @@ nav {
   color: #338574 !important;
 }
 
-.card,
+.home-card,
 nav {
   -moz-box-shadow: none !important;
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
 }
 
-.card-image > img {
+.home-card .card-image > img {
   height: 25em;
 }
 
@@ -94,6 +94,7 @@ nav {
 
 .top-contain {
   height: 7.5em;
+  z-index: 10;
 }
 
 #top-fixed {
@@ -101,6 +102,7 @@ nav {
   position: fixed;
   width: 100%;
   z-index: 1;
+  border-bottom: 1px solid $my-grey;
 }
 
 .shadow-active {
@@ -138,16 +140,13 @@ nav {
   width: 100%;
 }
 
-.card {
+.home-card {
   width: 20em;
 }
 
-ul {
+#cat-dropdown {
   position: absolute;
   right: 0;
-}
-
-#cat-dropdown {
   margin: 5px;
 }
 

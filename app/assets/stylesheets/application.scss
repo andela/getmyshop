@@ -2,12 +2,17 @@
 @import "materialize";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-@import "landing";
-@import "users";
+
 $my-grey: #b2beb5;
 $my-green: #338574;
 $my-white: #ffffff;
 $my-black: #000;
 
+$facebook-blue: #3b5998;
+$twitter-blue: #4099ff;
+$instagram-red: #3f729b;
+$pinterest-red: #c92228;
+
 @import "landing";
+@import "users";
 @import "products";

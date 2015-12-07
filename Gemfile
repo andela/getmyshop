@@ -46,10 +46,6 @@ group :development, :test do
 end
 
 group :development do
-  gem "guard"
-  gem "guard-livereload", "~> 2.4", require: false
-  gem "guard-rspec", require: false
-  gem "wdm", ">= 0.1.0" if Gem.win_platform?
 end
 
 group :development do

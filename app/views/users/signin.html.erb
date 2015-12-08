@@ -1,22 +1,8 @@
 <%= render "header" %>
-<div class="row container">
-<h2>Create Account</h2>
-  <div class = "container col l8 signup">
-    <form >
-      <div class="row entry">
-        <div class="input-field">
-          <!-- <i class="material-icons prefix">account_circle</i> -->
-          <input id="first_icon" type="text" class="validate">
-          <label for="first_icon">Firstname</label>
-        </div>
-      </div>
-      <div class="row entry">
-        <div class="input-field">
-          <!-- <i class="material-icons prefix">account_circle</i> -->
-          <input id="lastname_icon" type="text" class="validate">
-          <label for="lastname_icon">Lastname</label>
-        </div>
-      </div>
+<div class="signin row container">
+  <div class="describe"><h2>Sign In</h2></div>
+  <div class = "container col l8 signin">
+    <form class="signin">
       <div class="row entry">
         <div class="input-field">
           <!-- <i class="material-icons prefix">email</i> -->
@@ -31,17 +17,17 @@
           <label for="icon_lock">Password</label>
         </div>
       </div>
-      <div class="row submit">
-      <button class="btn waves-effect waves-light blue signup" type="submit" name="action">Create Account
+      <div class="row submit signin">
+      <button class="btn waves-effect waves-light blue" type="submit" name="action">Sign In
       <!--  <i class="material-icons">send</i> -->
       </button>
       </div>
     </form>
-    <p class="comments">Got an account? <a href="#">Sign In</a></p>
+    <p class="comments">If you do not have an account, please? <a href="#">Sign Up</a></p>
   </div>
   <div class="container col l4">
-    <div class="row signup">
-      <p>Sign Up Using</p>
+    <div class="row signin">
+      <p>Sign In Using</p>
      <div class="row oauth">
       <div class="alter-height">
         <button class="btn waves-effect waves-light oauth red" type="submit" name="action"><i class="fa fa-google-plus"></i><span class='bar'>|</span><span class='fa-word'>Google</span>

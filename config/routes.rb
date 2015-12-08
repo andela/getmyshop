@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   # root 'welcome#index'
   root to: "landing#index"
   get "/checkout", to: "checkout#index"
+  get "/cart", to: "cart#index"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

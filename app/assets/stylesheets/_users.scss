@@ -12,6 +12,7 @@ form {
   &.signin {
     padding-top: 40px;
   }
+
   &.pipe {
     border-right: 2px solid $l-grey;
   }
@@ -123,9 +124,6 @@ h2 {
   padding-right: 22.5px;
 }
 
-a:hover {
-  text-decoration: underline;
-}
 
 .bar {
   font-size: 20px;

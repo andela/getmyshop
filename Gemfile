@@ -49,7 +49,8 @@ group :development, :test do
   gem "scss_lint", require: false
 end
 
-group :development do
+group :production do
+  gem "pg"
 end
 
 group :development do

@@ -10,6 +10,10 @@ $google-red: #d34836;
 
 form {
   border-right: 2px solid $l-grey;
+
+  .signin {
+    padding-top: 40px;
+  }
 }
 
 .row.container {
@@ -17,6 +21,7 @@ form {
   box-shadow: none;
   left: 0;
   margin: auto;
+  padding-top: 20px;
   right: 0;
   top: 0;
   width: 60%;
@@ -32,12 +37,6 @@ h2 {
   width: 450px;
 }
 
-.row.submit {
-  position: relative;
-  right: 48.1955px;
-  top: 20px;
-}
-
 .container.col.l4 {
   text-align: right;
 }
@@ -51,6 +50,10 @@ h2 {
     position: relative;
     right: 48.1955px;
   }
+
+  .signin {
+    padding-top: 20px;
+  }
 }
 
 .row.signup {
@@ -61,6 +64,18 @@ h2 {
     margin-top: 10px;
     padding-right: 34px;
     text-align: right;
+  }
+}
+
+.row.submit {
+  position: relative;
+  right: 48.1955px;
+  top: 20px;
+
+  .signin {
+    margin-left: 120px;
+    position: initial;
+    text-align: left;
   }
 }
 
@@ -117,4 +132,29 @@ a:hover {
   left: 35px;
   position: absolute;
   top: 0;
+}
+
+.signin.row.container {
+  bottom: 0;
+  box-shadow: none;
+  height: 450px;
+  left: 0;
+  margin: auto;
+  right: 0;
+  top: 0;
+  width: 60%;
+}
+
+.comments {
+  margin-top: 40px;
+  position: relative;
+  right: 48.1955px;
+}
+
+.describe {
+  margin-bottom: 70px;
+}
+
+.row.signin p {
+  margin-right: 40px;
 }

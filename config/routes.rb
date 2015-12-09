@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   root to: "landing#index"
   get "/checkout", to: "checkout#index"
   get "/cart", to: "cart#index"
-
+  get "/contact", to: "landing#contact"
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

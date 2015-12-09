@@ -47,6 +47,7 @@ group :development, :test do
   gem "byebug"
   gem "rubocop", require: false
   gem "scss_lint", require: false
+  gem "sqlite3"
 end
 
 group :production do

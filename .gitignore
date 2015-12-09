@@ -21,3 +21,4 @@
 # Ignore the RubyMine IDE settings folder '.idea'
 /.idea
 /.README.rdoc
+/Gemfile.lock

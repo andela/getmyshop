@@ -1,0 +1,41 @@
+<%= render partial: 'header' %>
+<div class="container contact-div">
+	<%= form_tag do %>
+		<div class="row">
+			<h4 class="center">Send Us A Message</h4>
+		</div>
+		<div class="row">
+			<div class="container">
+			<div class="col l5">
+			    <label class="bold black-text">NAME: </label>
+			    <input type="text"/>
+			</div>
+			<div class="col l1">&nbsp;</div>
+			<div class="col l5">
+		        <label class="bold black-text">EMAIL: </label>
+		        <input type="email" class="browser-default"/>
+	      	</div>
+	      	</div>
+	    </div>
+	    <div class="row">
+	    	<div class="container">
+	    		<div class="col l11">
+			    	<label class="bold black-text">SUBJECT: </label>
+	    			<input type="text" />
+				</div>
+	    	</div>
+	    </div>
+	    <div class="row">
+	    	<div class="container">
+	    		<div class="col l11">
+			    	<label class="bold black-text">BODY: </label>
+	    			<textarea name="contact-body" class="contact-text" rows=50></textarea>
+				</div>
+	    	</div>
+	    </div>
+	    <div class="row container pad-bottom">
+	    	<button class="btn waves-effect right gen-green-background">SEND</button>
+	    </div>
+	<% end %>
+</div>
+<%= render partial: 'footer' %>

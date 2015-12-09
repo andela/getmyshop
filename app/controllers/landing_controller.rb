@@ -64,4 +64,10 @@ class LandingController < ApplicationController
       ]
     ]
   end
+
+  def contact
+  end
+
+  def create_ticket
+  end
 end

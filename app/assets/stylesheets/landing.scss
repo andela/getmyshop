@@ -189,11 +189,34 @@ a:hover {
 
 #category-dropdown {
   line-height: 3em;
-  padding: 1em;
   width: 20em;
 
   li {
     display: block;
     width: 100%;
+  }
+
+  .contact-div {
+    height: 35em;
+  }
+}
+
+.contact-text {
+  height: 10em;
+}
+
+.pad-top {
+  padding-top: 2em;
+}
+
+.pad-bottom {
+  padding-bottom: 2em;
+}
+
+.gen-green-background {
+  background: $my-green;
+
+  &:hover {
+    background: lighten($my-green, 3);
   }
 }

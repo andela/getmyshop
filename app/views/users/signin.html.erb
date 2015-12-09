@@ -2,7 +2,7 @@
 <div class="signin row container">
   <div class="describe"><h2>Sign In</h2></div>
   <div class = "container col l8 signin">
-    <form class="signin">
+    <form class="signin pipe">
       <div class="row entry">
         <div class="input-field">
           <!-- <i class="material-icons prefix">email</i> -->
@@ -23,7 +23,9 @@
       </button>
       </div>
     </form>
-    <p class="comments">If you do not have an account, please? <a href="#">Sign Up</a></p>
+    <p class="comments">If you do not have an account, please
+    <%= link_to "Sign Up", user_new_path %>
+    </p>
   </div>
   <div class="container col l4">
     <div class="row signin">

@@ -10,11 +10,15 @@ $google-red: #d34836;
 
 form {
   &.signin {
-    padding-top: 40px;
+    padding-top: 2.5em;
   }
 
   &.pipe {
     border-right: 2px solid $l-grey;
+  }
+
+  &.forgot {
+    border-right: none;
   }
 }
 
@@ -23,20 +27,27 @@ form {
   box-shadow: none;
   left: 0;
   margin: auto;
-  padding-top: 20px;
+  padding-top: 1.2em;
   right: 0;
   top: 0;
   width: 60%;
+
+  &.forgot {
+    margin-bottom: 50px;
+    margin-top: 50px;
+    width: 40%;
+  }
 }
 
 h2 {
-  font-size: 35px;
+  font-size: 30px;
+  font-weight: lighter;
   text-align: center;
 }
 
 .row.entry {
-  height: 35px;
-  width: 450px;
+  height: 2.2em;
+  width: 28.2em;
 }
 
 .container.col.l4 {
@@ -54,8 +65,14 @@ h2 {
   }
 
   .signin {
-    padding-top: 20px;
+    padding-top: 10px;
   }
+}
+
+.signin-box,
+.signup-box,
+.forgot-box {
+  height: 35em;
 }
 
 .row.signup {
@@ -85,6 +102,10 @@ h2 {
   height: 40px;
   vertical-align: center;
   width: 150px;
+
+  &.blue-forgot {
+    background-color: $default-blue !important;
+  }
 
   &.blue {
     background-color: $default-blue !important;
@@ -136,7 +157,7 @@ h2 {
 .signin.row.container {
   bottom: 0;
   box-shadow: none;
-  height: 450px;
+  height: 28.5em;
   left: 0;
   margin: auto;
   right: 0;
@@ -145,7 +166,6 @@ h2 {
 }
 
 .comments {
-  margin-top: 40px;
   position: relative;
   right: 48.1955px;
 }
@@ -156,4 +176,39 @@ h2 {
 
 .row.signin p {
   margin-right: 40px;
+}
+
+.row.submit-forgot,
+.signin-para,
+.comments.signup {
+  text-align: center;
+
+  a:link {
+    color: $default-blue;
+  }
+
+  a:visited {
+    color: $default-blue;
+  }
+
+  a:hover {
+    color: $default-blue;
+  }
+
+  a:active {
+    color: $facebook-blue;
+  }
+}
+
+.col.l12.forgot {
+  margin-top: 35px;
+}
+
+.msg-forgot {
+  text-align: center;
+}
+
+.signin-para p {
+  margin: 0 !important;
+  padding-top: 10px !important;
 }

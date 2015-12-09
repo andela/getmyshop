@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # Example resource route
   # (maps HTTP verbs to controller actions automatically):
-  resources :users
+  # resources :users
 
   resources :products
 
@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   get "/checkout", to: "checkout#index"
   get "/cart", to: "cart#index"
   get "/contact", to: "landing#contact"
+  get "/users/new", to: "users#new", as: "user_new"
+  get "/users/signin", to: "users#signin", as: "user_signin"
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

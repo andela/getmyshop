@@ -2,7 +2,7 @@
 <div class="row container">
 <h2>Create Account</h2>
   <div class = "container col l8 signup">
-    <form >
+    <form class="pipe">
       <div class="row entry">
         <div class="input-field">
           <!-- <i class="material-icons prefix">account_circle</i> -->
@@ -37,7 +37,9 @@
       </button>
       </div>
     </form>
-    <p class="comments">Got an account? <a href="#">Sign In</a></p>
+    <p class="comments">Got an account? 
+      <%= link_to "Sign In", user_signin_path %>
+    </p>
   </div>
   <div class="container col l4">
     <div class="row signup">

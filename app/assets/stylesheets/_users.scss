@@ -9,10 +9,11 @@ $twitter-blue: #4099ff;
 $google-red: #d34836;
 
 form {
-  border-right: 2px solid $l-grey;
-
-  .signin {
+  &.signin {
     padding-top: 40px;
+  }
+  &.pipe {
+    border-right: 2px solid $l-grey;
   }
 }
 

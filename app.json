@@ -1,0 +1,11 @@
+{
+  "name": "getmyshop",
+  "scripts": {
+    "postdeploy": "bundle exec rake db:migrate"
+  },
+  "env": {
+  },
+  "addons": [
+    "heroku-postgresql"
+  ]
+}

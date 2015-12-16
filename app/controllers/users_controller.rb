@@ -3,6 +3,5 @@ class UsersController < ApplicationController
   end
 
   def show
-    render :signin
   end
 end

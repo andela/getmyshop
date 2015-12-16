@@ -1,31 +1,32 @@
 <%= render "header" %>
+<div class="signin-box">
 <div class="signin row container">
   <div class="describe"><h2>Sign In</h2></div>
   <div class = "container col l8 signin">
     <form class="signin pipe">
       <div class="row entry">
         <div class="input-field">
-          <!-- <i class="material-icons prefix">email</i> -->
           <input id="icon_email" type="email" class="validate">
           <label for="icon_email">Email</label>
         </div>
       </div>
       <div class="row entry">
         <div class="input-field">
-          <!-- <i class="material-icons prefix">lock</i> -->
           <input id="icon_lock" type="password" class="validate">
           <label for="icon_lock">Password</label>
         </div>
       </div>
       <div class="row submit signin">
       <button class="btn waves-effect waves-light blue" type="submit" name="action">Sign In
-      <!--  <i class="material-icons">send</i> -->
       </button>
       </div>
     </form>
-    <p class="comments">If you do not have an account, please
-    <%= link_to "Sign Up", user_new_path %>
-    </p>
+    <div class="signin-para">
+      <p class="forgot"><%= link_to "Forgot your password?", forgot_path %></p>
+      <p class="comments">If you do not have an account, please
+      <%= link_to "Sign Up", user_new_path %>
+      </p>
+    </div>
   </div>
   <div class="container col l4">
     <div class="row signin">
@@ -46,5 +47,6 @@
       </div>
     </div>
   </div>
+</div>
 </div>
 <%= render "footer" %>

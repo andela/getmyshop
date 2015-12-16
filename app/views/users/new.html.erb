@@ -1,47 +1,43 @@
 <%= render "header" %>
+<div class="signup-box">
 <div class="row container">
 <h2>Create Account</h2>
-  <div class = "container col l8 signup">
+  <div class = "container col l8 m12 s12 signup">
     <form class="pipe">
       <div class="row entry">
         <div class="input-field">
-          <!-- <i class="material-icons prefix">account_circle</i> -->
           <input id="first_icon" type="text" class="validate">
           <label for="first_icon">Firstname</label>
         </div>
       </div>
       <div class="row entry">
         <div class="input-field">
-          <!-- <i class="material-icons prefix">account_circle</i> -->
           <input id="lastname_icon" type="text" class="validate">
           <label for="lastname_icon">Lastname</label>
         </div>
       </div>
       <div class="row entry">
         <div class="input-field">
-          <!-- <i class="material-icons prefix">email</i> -->
           <input id="icon_email" type="email" class="validate">
           <label for="icon_email">Email</label>
         </div>
       </div>
       <div class="row entry">
         <div class="input-field">
-          <!-- <i class="material-icons prefix">lock</i> -->
           <input id="icon_lock" type="password" class="validate">
           <label for="icon_lock">Password</label>
         </div>
       </div>
       <div class="row submit">
       <button class="btn waves-effect waves-light blue signup" type="submit" name="action">Create Account
-      <!--  <i class="material-icons">send</i> -->
       </button>
       </div>
     </form>
-    <p class="comments">Got an account? 
+    <p class="comments signup">Got an account? 
       <%= link_to "Sign In", user_signin_path %>
     </p>
   </div>
-  <div class="container col l4">
+  <div class="container col l4 m12 s12">
     <div class="row signup">
       <p>Sign Up Using</p>
      <div class="row oauth">
@@ -60,5 +56,6 @@
       </div>
     </div>
   </div>
+</div>
 </div>
 <%= render "footer" %>

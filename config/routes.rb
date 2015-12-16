@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   # Example resource route
   # (maps HTTP verbs to controller actions automatically):
-  # resources :users
 
   resources :products
 
@@ -17,6 +16,8 @@ Rails.application.routes.draw do
   get "/contact", to: "landing#contact"
   get "/users/new", to: "users#new", as: "user_new"
   get "/users/signin", to: "users#signin", as: "user_signin"
+  get "users/forgot-password", to: "users#forgot_password", as: "forgot"
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

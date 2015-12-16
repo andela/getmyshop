@@ -13,8 +13,13 @@ form {
     padding-top: 2.5em;
   }
 
-  &.pipe {
+  &.pipe-signup {
     border-right: 2px solid $l-grey;
+  }
+
+  &.pipe-signin {
+    border-right: 2px solid $l-grey;
+    height: 15em;
   }
 
   &.forgot {
@@ -46,7 +51,7 @@ h2 {
 }
 
 .row.entry {
-  height: 2.2em;
+  height: 2.8em;
   width: 28.2em;
 }
 
@@ -171,7 +176,7 @@ h2 {
 }
 
 .describe {
-  margin-bottom: 70px;
+  margin-bottom: 50px;
 }
 
 .row.signin p {

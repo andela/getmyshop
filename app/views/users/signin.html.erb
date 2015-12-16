@@ -1,52 +1,71 @@
 <%= render "header" %>
 <div class="signin-box">
-<div class="signin row container">
-  <div class="describe"><h2>Sign In</h2></div>
-  <div class = "container col l8 signin">
-    <form class="pipe-signin">
-      <div class="row entry">
-        <div class="input-field">
-          <input id="icon_email" type="email" class="validate">
-          <label for="icon_email">Email</label>
+  <div class="container">
+    <div class="center">
+      <h5>Sign In</h5>
+    </div>
+    <div class="row">
+      <div class="col m8 s12">
+        <div class="signin-user-form">
+          <%= form_tag %>
+            <% unless flash['errors'].blank? %>
+              <div class="error-messages">
+                <ul>
+                  <% flash['errors'].each do |error| %>
+                    <li><%= error %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+
+            <div class="">
+              <%= label_tag :email, "Email" %>
+              <span class="field-error" id="email-error"></span>
+              <%= email_field_tag :email, "", required: "required", minlength: 5 %>
+            </div>
+
+            <div class="">
+              <%= label_tag :password, "Password" %>
+              <span class="field-error" id="password-error"></span>
+              <%= password_field_tag :password, "", required: "required", class: "pword" %>
+            </div>
+
+            <div class="submit-div center">
+              <%= submit_tag "Sign In", class: "btn waves-effect waves-light blue signin" %>
+            </div>
+
         </div>
-      </div>
-      <div class="row entry">
-        <div class="input-field">
-          <input id="icon_lock" type="password" class="validate">
-          <label for="icon_lock">Password</label>
+
+        <div class="signin-para">
+          <p class="forgot"><%= link_to "Forgot your password?", forgot_users_path %></p>
+          <p class="comments">If you do not have an account, please
+        <%= link_to "Sign Up", new_user_path %>
+          </p>
         </div>
+
       </div>
-      <div class="row submit signin">
-      <button class="btn waves-effect waves-light blue" type="submit" name="action">Sign In
-      </button>
+      <div class="col m4 s12">
+        <div class="signin-oauth-group">
+          <h6>Or sign in with</h6>
+         <div class="row oauth">
+          <div class="alter-height">
+            <button class="btn waves-effect waves-light oauth red" type="submit" name="action"><i class="fa fa-google-plus"></i><span class='bar'>|</span><span class='fa-word'>Google</span>
+
+            </button>
+          </div>
+        </div>
+        <div class="row oauth">
+          <button class="btn waves-effect waves-light facebook blue" type="submit" name="action"><i class="fa fa-facebook"></i><span class='bar'>|</span><span class='fa-word'>Facebook</span>
+          </button>
+        </div>
+          <div class="row oauth">
+            <button class="btn waves-effect waves-light twitter blue" type="submit" name="action"><i class="fa fa-twitter"></i><span class='bar'>|</span><span class='fa-word'>Twitter</span>
+            </button>
+          </div>
+        </div>
+
       </div>
-    </form>
-    <div class="signin-para">
-      <p class="forgot"><%= link_to "Forgot your password?", forgot_path %></p>
-      <p class="comments">If you do not have an account, please
-      <%= link_to "Sign Up", user_new_path %>
-      </p>
     </div>
   </div>
-  <div class="container col l4">
-    <div class="row signin">
-      <p>Sign In Using</p>
-     <div class="row oauth">
-      <div class="alter-height">
-        <button class="btn waves-effect waves-light oauth red" type="submit" name="action"><i class="fa fa-google-plus"></i><span class='bar'>|</span><span class='fa-word'>Google</span>
-        </button>
-      </div>
-    </div>
-    <div class="row oauth">
-      <button class="btn waves-effect waves-light facebook blue" type="submit" name="action"><i class="fa fa-facebook"></i><span class='bar'>|</span><span class='fa-word'>Facebook</span>
-      </button>
-    </div>
-      <div class="row oauth">
-        <button class="btn waves-effect waves-light twitter blue" type="submit" name="action"><i class="fa fa-twitter"></i><span class='bar'>|</span><span class='fa-word'>Twitter</span>
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
 </div>
 <%= render "footer" %>

@@ -44,51 +44,17 @@ form {
   }
 }
 
-h2 {
-  font-size: 30px;
-  font-weight: lighter;
-  text-align: center;
-}
-
-.row.entry {
-  height: 2.8em;
-  width: 28.2em;
-}
-
-.container.col.l4 {
-  text-align: right;
-}
-
-.container.col.l8 {
-  padding: 0;
-  text-align: center;
-
-  p {
-    margin-top: 40px;
-    position: relative;
-    right: 48.1955px;
-  }
-
-  .signin {
-    padding-top: 10px;
-  }
-}
-
 .signin-box,
 .signup-box,
 .forgot-box {
-  height: 35em;
+  margin-top: 2em;
+  min-height: 35em;
 }
 
-.row.signup {
-  text-align: right;
+.signup-oauth-group {
+  // @extend .pull-right;
 
-  p {
-    font-size: 1.2em;
-    margin-top: 10px;
-    padding-right: 34px;
-    text-align: right;
-  }
+  margin: 2em 3em;
 }
 
 .row.submit {
@@ -171,8 +137,8 @@ h2 {
 }
 
 .comments {
-  position: relative;
-  right: 48.1955px;
+  // position: relative;
+  // right: 48.1955px;
 }
 
 .describe {
@@ -186,6 +152,7 @@ h2 {
 .row.submit-forgot,
 .signin-para,
 .comments.signup {
+  margin-top: 2em;
   text-align: center;
 
   a:link {
@@ -206,14 +173,34 @@ h2 {
 }
 
 .col.l12.forgot {
-  margin-top: 35px;
+  // margin-top: 35px;
 }
 
 .msg-forgot {
-  text-align: center;
+  // text-align: center;
 }
 
 .signin-para p {
-  margin: 0 !important;
-  padding-top: 10px !important;
+  // margin: 0 !important;
+  // padding-top: 10px !important;
+}
+
+.error-messages {
+  color: $google-red;
+}
+
+.field-error {
+  @extend .pull-right;
+
+  color: $google-red;
+  font-size: 0.8em;
+}
+
+.new-user-form,
+.signin-user-form {
+  margin: 2em 6em;
+}
+
+.submit-div {
+  margin-top: 3em;
 }

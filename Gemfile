@@ -1,4 +1,5 @@
 source "https://rubygems.org"
+
 ruby "2.1.6"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails"
 gem "rails", "4.2.4"
@@ -31,7 +32,7 @@ gem "rspec-rails"
 gem "faker"
 
 # Use ActiveModel has_secure_password
-# gem "bcrypt", "~> 3.1.7"
+gem "bcrypt", "~> 3.1.7"
 
 # Use Unicorn as the app server
 # gem "unicorn"
@@ -48,6 +49,9 @@ group :development, :test do
   gem "scss_lint", require: false
   gem "sqlite3"
   gem "factory_girl_rails"
+  gem "letter_opener"
+  gem "shoulda-matchers", "~> 3.0"
+  gem "figaro"
 end
 
 group :production do

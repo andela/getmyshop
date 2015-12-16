@@ -1,8 +1,13 @@
 <%= render partial: 'header' %>
+<% if flash['toast-message'] %>
+	<script type="text/javascript">
+		Materialize.toast('Registration was successful! Login to your mail to verify your email.', 4000)
+	</script>
+<% end %>
 <div class="shift-down">
 	<div class="row medium"></div>
 	<div class= "row-break"></div>
-	
+
 	<% @products.each_with_index do |products, index| %>
 	<div class= "row container-trim-wide"><h5 class="cat-heading"><%= @categories[index].upcase %></h5></div>
 	<div class="container-large">
@@ -11,7 +16,7 @@
 		</div>
 	</div>
 	<% end %>
-	
+
 </div>
 <div class= "pre-footer valign-wrapper">
 	<div class="container-full">

@@ -149,3 +149,7 @@ hr {
   border: 1px solid $my-grey;
   box-shadow: none !important;
 }
+
+.bordered tr:last-of-type {
+  border-bottom: none;
+}

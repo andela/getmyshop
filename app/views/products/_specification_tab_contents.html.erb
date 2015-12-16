@@ -1,0 +1,16 @@
+<table class="bordered">
+  <thead>
+    <tr>
+      <th>Features</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @product.specifications.each do |spec| %>
+    <tr>
+      <td><%= spec.key.capitalize %></td>
+      <td><%= spec.value %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

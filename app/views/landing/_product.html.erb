@@ -1,5 +1,5 @@
 <div class= "col s12 m6 l3">
-	<a href="<%= product_path(1) %>">
+	<a href="<%= product_path(Product.order("RANDOM()").first) %>">
 		<div class="card home-card">
 			<div class="card-image"><%= image_tag product[:image] %></div>
 	  </div>

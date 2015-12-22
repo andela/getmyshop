@@ -46,6 +46,8 @@ group :development, :test do
   gem "rubocop", require: false
   gem "scss_lint", require: false
   gem "sqlite3"
+  gem "factory_girl_rails"
+  gem "faker"
 end
 
 group :production do

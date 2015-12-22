@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
   root to: "landing#index"
-  get "/checkout", to: "checkout#index"
   get "/cart", to: "cart#index"
   get "/contact", to: "landing#contact"
   get "/users/new", to: "users#new", as: "user_new"

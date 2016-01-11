@@ -8,36 +8,27 @@
   <tbody>
     <tr>
       <td>Category</td>
-      <td>Men's Shirts</td>
+      <td><%= @product.category.name %></td>
+    </tr>
+    <tr>
+      <td>Subcategory</td>
+      <td><%= @product.subcategory.name %></td>
     </tr>
     <tr>
       <td>Brand</td>
-      <td>Firetrap</td>
+      <td><%= @product.brand %></td>
     </tr>
     <tr>
-    <tr>
-      <td>Material</td>
-      <td>Denim</td>
-    </tr>
-    <tr>
-      <td>Colour</td>
-      <td>
-        <select name="colour">
-          <option>Dark Blue</option>
-        </select>
-      </td>
-    </tr>
-    <tr>
+    <% if @product.size %>
       <td>Size</td>
       <td>
         <select name="size">
-          <option>Small</option>
-          <option>Medium</option>
-          <option>Large</option>
-          <option>X-Large</option>
-          <option>XX-Large</option>
+        <% @product.size_values.each do |value| %>
+          <option><%= value %></option>
+        <% end %>
         </select>
       </td>
+    <% end %>
     </tr>
   </tbody>
 </table>

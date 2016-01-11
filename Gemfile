@@ -1,5 +1,5 @@
 source "https://rubygems.org"
-
+ruby "2.1.6"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails"
 gem "rails", "4.2.4"
 # Use SCSS for stylesheets
@@ -28,6 +28,7 @@ gem "jbuilder", "~> 2.0"
 gem "sdoc", "~> 0.4.0", group: :doc
 
 gem "rspec-rails"
+gem "faker"
 
 # Use ActiveModel has_secure_password
 # gem "bcrypt", "~> 3.1.7"
@@ -46,6 +47,7 @@ group :development, :test do
   gem "rubocop", require: false
   gem "scss_lint", require: false
   gem "sqlite3"
+  gem "factory_girl_rails"
 end
 
 group :production do

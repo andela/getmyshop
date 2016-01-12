@@ -11,12 +11,20 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
   root to: "landing#index"
+
+  get "/checkout", to: "checkout#index"
   get "/cart", to: "cart#index"
   get "/contact", to: "landing#contact"
-  get "/users/new", to: "users#new", as: "user_new"
-  get "/users/signin", to: "users#signin", as: "user_signin"
-  get "users/forgot-password", to: "users#forgot_password", as: "forgot"
-
+  resources :users, only: [:new, :create] do
+    collection do
+      get "signin"
+      get "forgot-password", as: :forgot
+      get "activate/:email/:code", to: "users#activate", as: "activate"
+    end
+    get "users/forgot-password", to: "users#forgot_password", as: "forgot"
+  end
+  # get "/users/new", to: "users#new", as: "user_new"
+  # get "/users/signin", to: "users#signin", as: "user_signin"
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

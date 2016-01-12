@@ -1,8 +1,3 @@
-$(document).ready(function(){
-   // Activate the side menu 
-   $(".button-collapse").sideNav();    
-});
-
 $(window).scroll(function(){
 	var scroll = $(window).scrollTop();
     if (scroll > 0) {

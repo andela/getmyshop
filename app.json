@@ -6,6 +6,7 @@
   "env": {
   },
   "addons": [
-    "heroku-postgresql"
+    "heroku-postgresql",
+    "sendgrid"
   ]
 }

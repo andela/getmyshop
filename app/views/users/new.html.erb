@@ -1,61 +1,83 @@
 <%= render "header" %>
 <div class="signup-box">
-<div class="row container">
-<h2>Create Account</h2>
-  <div class = "container col l8 m12 s12 signup">
-    <form class="pipe-signup">
-      <div class="row entry">
-        <div class="input-field">
-          <input id="first_icon" type="text" class="validate">
-          <label for="first_icon">Firstname</label>
+  <div class="container">
+    <div class="center">
+      <h5>Create Account</h5>
+    </div>
+    <div class="row">
+      <div class="col m8 s12">
+        <div class="new-user-form">
+          <%= form_for @user do |f| %>
+            <% unless flash['errors'].blank? %>
+              <div class="error-messages">
+                <ul>
+                  <% flash['errors'].each do |error| %>
+                    <li><%= error %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+
+            <div class="">
+              <%= f.label :first_name, "First Name" %>
+              <span class="field-error" id="first-name-error"></span>
+              <%= f.text_field :first_name, required: "requried", minlenght: 2, class: "" %>
+            </div>
+
+            <div class="">
+              <%= f.label :first_name, "Last Name" %>
+              <span class="field-error" id="last-name-error"></span>
+              <%= f.text_field :last_name, required: "requried", minlenght: 2, class: "" %>
+            </div>
+
+            <div class="">
+              <%= f.label :email, "Email" %>
+              <span class="field-error" id="email-error"></span>
+              <%= f.email_field :email, required: "required", minlenght: 5 %>
+            </div>
+
+            <div class="">
+              <%= f.label :password, "Password" %>
+              <span class="field-error" id="password-error"></span>
+              <%= f.password_field :password, required: "required", class: "pword" %>
+            </div>
+
+            <div class="">
+              <input type="checkbox" id="show_password" />
+              <label for="show_password" title="show password">show password</label>
+            </div>
+
+            <div class="submit-div center">
+              <%= f.submit "Create Account", class: "btn signup", id: "submit-signup", disabled: "disabled"%>
+            </div>
+          <% end %>
+          <p class="comments  center">Got an account? Please
+        <%= link_to "Sign In", signin_users_path %>.
+          </p>
         </div>
       </div>
-      <div class="row entry">
-        <div class="input-field">
-          <input id="lastname_icon" type="text" class="validate">
-          <label for="lastname_icon">Lastname</label>
+
+      <div class="container col l4 m12 s12">
+        <div class="row signup">
+          <p>Sign Up Using</p>
+         <div class="row oauth">
+          <div class="alter-height">
+            <button class="btn waves-effect waves-light oauth red" type="submit" name="action"><i class="fa fa-google-plus"></i><span class='bar'>|</span><span class='fa-word'>Google</span>
+
+            </button>
+          </div>
+        </div>
+        <div class="row oauth">
+          <button class="btn waves-effect waves-light facebook blue" type="submit" name="action"><i class="fa fa-facebook"></i><span class='bar'>|</span><span class='fa-word'>Facebook</span>
+          </button>
+        </div>
+          <div class="row oauth">
+            <button class="btn waves-effect waves-light twitter blue" type="submit" name="action"><i class="fa fa-twitter"></i><span class='bar'>|</span><span class='fa-word'>Twitter</span>
+            </button>
+          </div>
         </div>
       </div>
-      <div class="row entry">
-        <div class="input-field">
-          <input id="icon_email" type="email" class="validate">
-          <label for="icon_email">Email</label>
-        </div>
-      </div>
-      <div class="row entry">
-        <div class="input-field">
-          <input id="icon_lock" type="password" class="validate">
-          <label for="icon_lock">Password</label>
-        </div>
-      </div>
-      <div class="row submit">
-      <button class="btn waves-effect waves-light blue signup" type="submit" name="action">Create Account
-      </button>
-      </div>
-    </form>
-    <p class="comments signup">Got an account? 
-      <%= link_to "Sign In", user_signin_path %>
-    </p>
+    </div>
   </div>
-  <div class="container col l4 m12 s12">
-    <div class="row signup">
-      <p>Sign Up Using</p>
-     <div class="row oauth">
-      <div class="alter-height">
-        <button class="btn waves-effect waves-light oauth red" type="submit" name="action"><i class="fa fa-google-plus"></i><span class='bar'>|</span><span class='fa-word'>Google</span>
-        </button>
-      </div>
-    </div>
-    <div class="row oauth">
-      <button class="btn waves-effect waves-light facebook blue" type="submit" name="action"><i class="fa fa-facebook"></i><span class='bar'>|</span><span class='fa-word'>Facebook</span>
-      </button>
-    </div>
-      <div class="row oauth">
-        <button class="btn waves-effect waves-light twitter blue" type="submit" name="action"><i class="fa fa-twitter"></i><span class='bar'>|</span><span class='fa-word'>Twitter</span>
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
 </div>
 <%= render "footer" %>

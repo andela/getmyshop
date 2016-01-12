@@ -1,3 +1,4 @@
+Subcategory.destroy_all
 Category.destroy_all
 Product.destroy_all
 ProductImageLink.destroy_all

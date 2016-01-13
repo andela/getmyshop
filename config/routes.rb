@@ -21,7 +21,6 @@ Rails.application.routes.draw do
       get "forgot-password", as: :forgot
       get "activate/:email/:code", to: "users#activate", as: "activate"
     end
-    get "users/forgot-password", to: "users#forgot_password", as: "forgot"
   end
   # get "/users/new", to: "users#new", as: "user_new"
   # get "/users/signin", to: "users#signin", as: "user_signin"

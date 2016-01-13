@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(users_params)
+    @user = RegularUser.new(users_params)
 
     if @user.save
       UserMailer.welcome(@user.id, "Welcome To GetMyShop").deliver_now

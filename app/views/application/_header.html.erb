@@ -17,7 +17,10 @@
 					<%= link_to "My Wishlist", "#", class: 'white-text small-text' %>
 					<span class="white-text small-text">&nbsp;|&nbsp;</span>
 					<%= link_to "Currency - NGN", "#", class: 'white-text small-text' %>
-					
+					<% if logged_in %>
+					<span class="white-text small-text">&nbsp;|&nbsp;</span>
+					<span class="black-text small-text">Welcome, <%= current_user.first_name %></span>
+					<% end %>
 				</div>
 		
 			</div>
@@ -48,7 +51,7 @@
 							<%= render "cart_dropdown" %>
 						</span>						
 						<span class="white-text small-text">&nbsp;|&nbsp;</span>
-						<%= link_to "SIGN IN", signin_users_path, class: "black-text" %>
+						<%= link_to "SIGN IN", login_path, class: "black-text" %>
 					</div>
 				</div>
 		

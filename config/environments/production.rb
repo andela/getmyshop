@@ -83,4 +83,9 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.action_mailer.delivery_method = :smtp
+
 end
+
+# configure application default URL host
+Rails.application.routes.default_url_options[:host] =
+  "https://getmyshop-staging.herokuapp.com"

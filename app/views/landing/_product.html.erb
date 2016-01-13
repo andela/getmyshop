@@ -1,10 +1,10 @@
 <div class= "col s12 m6 l3">
-	<a href="<%= product_path(Product.order("RANDOM()").first) %>">
+	<%= link_to product_path(product) do %>
 		<div class="card home-card">
-			<div class="card-image"><%= image_tag product[:image] %></div>
+			<div class="card-image"><%= image_tag product.product_image_links.first.link_name %></div>
 	  </div>
 	  <div class="card-desc center">
-      <span><%= product[:text] %></span><br /><span class="price"><%= product[:price] %></span>
+      <span><%= product.name %></span><br /><span class="price">&#x20A6;<%= product.price %></span>
     </div>
-	</a>
+	<% end %>
 </div>

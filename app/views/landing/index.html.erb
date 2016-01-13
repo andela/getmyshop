@@ -8,10 +8,11 @@
 	<div class="row medium"></div>
 	<div class= "row-break"></div>
 
-	<% @products.each_with_index do |products, index| %>
-	<div class= "row container-trim-wide"><h5 class="cat-heading"><%= @categories[index].upcase %></h5></div>
+	<% @categories.each do |category| %>
+	<div class= "row container-trim-wide"><h5 class="cat-heading"><%= category.name.upcase %></h5></div>
 	<div class="container-large">
 		<div class= "row">
+			<% products = category.products.order("RANDOM()").limit(4) %>
 			<%= render partial: "product", collection: products %>
 		</div>
 	</div>

@@ -196,6 +196,13 @@ form {
   font-size: 0.8em;
 }
 
+.field-success {
+  @extend .pull-right;
+
+  color: $my-green;
+  font-size: 0.8em;
+}
+
 .new-user-form,
 .signin-user-form {
   margin: 2em 6em;
@@ -203,4 +210,9 @@ form {
 
 .submit-div {
   margin-top: 3em;
+}
+
+.pword-message {
+  color: $my-green;
+  font-size: 0.9em;
 }

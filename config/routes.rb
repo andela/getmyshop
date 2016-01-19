@@ -15,9 +15,10 @@ Rails.application.routes.draw do
   get "/checkout", to: "checkout#index"
   get "/cart", to: "cart#index"
   get "/contact", to: "landing#contact"
+  get "/login", to: "sessions#new", as: :login
+  match "auth/:provider/callback", to: "sessions#create", via: [:get, :post]
   resources :users, only: [:new, :create] do
     collection do
-      get "signin"
       get "forgot-password", as: :forgot
       get "activate/:email/:code", to: "users#activate", as: "activate"
     end

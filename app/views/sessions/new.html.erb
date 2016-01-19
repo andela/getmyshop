@@ -1,13 +1,13 @@
 <%= render "header" %>
-<div class="signup-box">
+<div class="signin-box">
   <div class="container">
     <div class="center">
-      <h5>Create Account</h5>
+      <h5>Sign In</h5>
     </div>
     <div class="row">
       <div class="col m8 s12">
-        <div class="new-user-form">
-          <%= form_for @user, url: users_path do |f| %>
+        <div class="signin-user-form">
+          <%= form_tag %>
             <% unless flash['errors'].blank? %>
               <div class="error-messages">
                 <ul>
@@ -19,47 +19,34 @@
             <% end %>
 
             <div class="">
-              <%= f.label :first_name, "First Name" %>
-              <span class="field-error" id="first-name-error"></span>
-              <%= f.text_field :first_name, required: "requried", minlenght: 2, class: "" %>
-            </div>
-
-            <div class="">
-              <%= f.label :first_name, "Last Name" %>
-              <span class="field-error" id="last-name-error"></span>
-              <%= f.text_field :last_name, required: "requried", minlenght: 2, class: "" %>
-            </div>
-
-            <div class="">
-              <%= f.label :email, "Email" %>
+              <%= label_tag :email, "Email" %>
               <span class="field-error" id="email-error"></span>
-              <%= f.email_field :email, required: "required", minlenght: 5 %>
+              <%= email_field_tag :email, "", required: "required", minlength: 5 %>
             </div>
 
             <div class="">
-              <%= f.label :password, "Password" %>
+              <%= label_tag :password, "Password" %>
               <span class="field-error" id="password-error"></span>
-              <%= f.password_field :password, required: "required", class: "pword" %>
-            </div>
-
-            <div class="">
-              <input type="checkbox" id="show_password" />
-              <label for="show_password" title="show password">show password</label>
+              <%= password_field_tag :password, "", required: "required", class: "pword" %>
             </div>
 
             <div class="submit-div center">
-              <%= f.submit "Create Account", class: "btn signup", id: "submit-signup", disabled: "disabled"%>
+              <%= submit_tag "Sign In", class: "btn waves-effect waves-light blue signin" %>
             </div>
-          <% end %>
-          <p class="comments  center">Got an account? Please
-        <%= link_to "Sign In", login_path %>.
+
+        </div>
+
+        <div class="signin-para">
+          <p class="forgot"><%= link_to "Forgot your password?", forgot_users_path %></p>
+          <p class="comments">If you do not have an account, please
+        <%= link_to "Sign Up", new_user_path %>
           </p>
         </div>
-      </div>
 
-      <div class="container col l4 m12 s12">
-        <div class="row signup">
-          <p>Sign Up Using</p>
+      </div>
+      <div class="col m4 s12">
+        <div class="signin-oauth-group">
+          <h6>Or sign in with</h6>
          <div class="row oauth">
           <div class="alter-height">
             <%= link_to "/auth/google" do %>
@@ -76,12 +63,13 @@
           <% end %>
         </div>
           <div class="row oauth">
-            <%= link_to "/auth/twitter" do %>
+          <%= link_to "/auth/twitter" do %>
             <button class="btn waves-effect waves-light twitter blue" type="submit" name="action"><i class="fa fa-twitter"></i><span class='bar'>|</span><span class='fa-word'>Twitter</span>
             </button>
           <% end %>
           </div>
         </div>
+
       </div>
     </div>
   </div>

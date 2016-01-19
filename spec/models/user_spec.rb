@@ -2,10 +2,10 @@ require "rails_helper"
 
 RSpec.describe User, type: :model do
   it "is a valid factory" do
-    expect(build(:user)).to be_valid
+    expect(build(:regular_user)).to be_valid
   end
 
-  let(:user) { build(:user) }
+  let(:user) { build(:regular_user) }
 
   describe "instance methods" do
     context "respond to instance method calls" do

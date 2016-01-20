@@ -59,23 +59,32 @@
 
         </div>
       </div>
-      <div class="buy-now">
-        <div class="row">
-          <form method="get">
+      <input  type=hidden>
+      <%= form_tag({ controller: "carts", action: "add_to" }, method: "post", id: "cart_form") do%>
+          <%= hidden_field_tag(:image, @product.product_image_links.first.link_name)  %>
+          <%= hidden_field_tag(:product_id, @product.id) %>
+          <%= hidden_field_tag(:price, @product.price) %>
+          <%= hidden_field_tag(:name, @product.name) %>
+          <%= hidden_field_tag(:brand, @product.brand) %>
+          <%= hidden_field_tag(:code, @product.code) %>
+        <div class="buy-now">
+          <div class="row">
             <div class="col s1 bold">Qty: </div>
-            <div class="col s2"><input type="number" value="1" min = 1 max=<%= @product.quantity %> class="products-input"></div>
-            <div class="col s4"><input type="submit" class="waves-effect btn products-input" value="BUY NOW" /></div>
+            <div class="col s2"><%= number_field_tag :quantity, 1, in: 1..@product.quantity, step: 1 %>
+            </div>
+            <div class="col s4"><%= submit_tag "ADD TO CART", class: "waves-effect btn products-input", id: "submit"%></div>
             <div class="col s5">
               <a href="#" title="" class="wish-list-link">
                 <i class="fa fa-heart-o wishlist-icon"></i> Add to Wish List
               </a>
             </div>
-          </form>
+          </div>
         </div>
-      </div>
 
-      <%= render "product_features" %>
+        <%= render "product_features" %>
 
+      <% end %>
+      
     </div>
 
   </div>

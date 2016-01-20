@@ -46,9 +46,10 @@
 							</ul>
 						</span>
 						<span class="white-text small-text">&nbsp;|&nbsp;</span>
-						<span class="cart-span">
-							<a href="#" class="black-text cart-link">CART</a>
+						<span class="cart-span" id="cart-span">
+							<a href="#" class="black-text cart-link">CART<span class="total-text"><span id="total_item" class="total-item"></span></span></a>
 							<%= render "cart_dropdown" %>
+							<%= render "no_cart_dropdown" %>
 						</span>						
 						<span class="white-text small-text">&nbsp;|&nbsp;</span>
 						<%= auth_link %>

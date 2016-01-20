@@ -72,3 +72,18 @@ a {
 .product-box {
   padding: 1.5em 0 0;
 }
+
+.total-item {
+  border-radius: 50%;
+  font-size: 12px;
+  height: 18px;
+  line-height: 18px;
+  position: absolute;
+  right: -16.5px;
+  top: -15px;
+  width: 18px;
+}
+
+.total-text {
+  color: $my-white;
+}

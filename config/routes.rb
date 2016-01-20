@@ -13,7 +13,8 @@ Rails.application.routes.draw do
   root to: "landing#index"
 
   get "/checkout", to: "checkout#index"
-  get "/cart", to: "cart#index"
+  get "/cart", to: "carts#index"
+  post "/cart", to: "carts#add_to"
   get "/contact", to: "landing#contact"
   get "/login", to: "sessions#new", as: :login
   post "/login", to: "sessions#create"

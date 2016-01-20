@@ -27,6 +27,11 @@
   width: 40em;
 }
 
+#no-cart-dropdown {
+  line-height: 1em;
+  width: 30em;
+}
+
 .bold {
   font-weight: bold;
 }
@@ -35,7 +40,8 @@
   position: relative;
 }
 
-.cart-dropdown-head {
+.cart-dropdown-head,
+.no-cart-dropdown-head {
   border-bottom: solid 1px $my-grey;
   font-size: +2;
   font-weight: bold;
@@ -50,7 +56,8 @@
   }
 }
 
-.cart-dropdown-body {
+.cart-dropdown-body,
+.no-cart-dropdown-body {
   max-height: 20em;
   overflow-y: scroll;
   padding-top: 0.5em;

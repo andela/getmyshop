@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   get "/cart", to: "cart#index"
   get "/contact", to: "landing#contact"
   get "/login", to: "sessions#new", as: :login
+  post "/login", to: "sessions#create"
+  get "/logout", to: "sessions#destroy", as: :logout
   match "auth/:provider/callback", to: "sessions#create", via: [:get, :post]
   resources :users, only: [:new, :create] do
     collection do

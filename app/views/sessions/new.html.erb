@@ -18,21 +18,23 @@
               </div>
             <% end %>
 
-            <div class="">
-              <%= label_tag :email, "Email" %>
-              <span class="field-error" id="email-error"></span>
-              <%= email_field_tag :email, "", required: "required", minlength: 5 %>
-            </div>
+            <%= form_for :session, url: login_path do |f| %>
+              <div class="">
+                <%= f.label :email, "Email" %>
+                <span class="field-error" id="email-error"></span>
+                <%= f.email_field :email, required: "required", minlength: 5 %>
+              </div>
 
-            <div class="">
-              <%= label_tag :password, "Password" %>
-              <span class="field-error" id="password-error"></span>
-              <%= password_field_tag :password, "", required: "required", class: "pword" %>
-            </div>
+              <div class="">
+                <%= f.label :password, "Password" %>
+                <span class="field-error" id="password-error"></span>
+                <%= f.password_field :password, required: "required", class: "pword" %>
+              </div>
 
-            <div class="submit-div center">
-              <%= submit_tag "Sign In", class: "btn waves-effect waves-light blue signin" %>
-            </div>
+              <div class="submit-div center">
+            <%= f.submit "Sign In", class: "btn signin", id: "submit-signin", disabled: "disabled"%> 
+              </div>
+            <% end %>
 
         </div>
 

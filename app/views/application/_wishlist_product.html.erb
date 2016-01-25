@@ -1,0 +1,14 @@
+<div class="border-wrap-grey-small product-box">
+	<div class="row wishproduct-box">
+    <% product = wishproduct.product %>
+    <%= link_to product_path(product) do %>
+		<%= image_tag product.product_image_links.first.link_name, class: 'col l2'%>
+		<div class="col l6">
+			<span class="bigger-font"><%= product.name %></span>
+		</div>
+    <% end %>
+    <span class="col l2"><%= wishproduct.created_at.strftime('%d/%m/%y') %></span>
+		<span class="col l1">&#8358;<%= product.price %></span>
+		<a href="#" data-wishlist-id='<%= wishproduct.id %>' title="Delete" class="row red-text col l1 delete-from-wishlist"><i class="small material-icons col l1">delete</i></a>
+	</div>
+</div>

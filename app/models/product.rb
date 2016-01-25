@@ -3,6 +3,8 @@ class Product < ActiveRecord::Base
   has_many :specifications
   belongs_to :subcategory
   has_one :category, through: :subcategory
+  has_and_belongs_to_many :wishlists
+
   before_create :generate_code
 
   validates :name, length: { maximum: 60 }, presence: true

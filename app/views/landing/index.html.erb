@@ -1,8 +1,8 @@
 <%= render partial: 'header' %>
-<% if flash['toast-message'] %>
-	<script type="text/javascript">
-		Materialize.toast('Registration was successful! Login to your mail to verify your email.', 4000)
-	</script>
+<% if flash['notice'] %>
+  <%= javascript_tag do %>
+      Materialize.toast("<%= flash['notice'] %>", 4000)
+  <% end %>
 <% end %>
 <div class="shift-down">
 	<div class="row medium"></div>

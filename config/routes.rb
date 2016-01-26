@@ -26,7 +26,11 @@ Rails.application.routes.draw do
           to: "users#reset_password", as: :passwordreset
       post "password-reset/:id/:reset_code", to: "users#reset"
       post "forgot-password", to: "users#process_email"
-      get "activate/:email/:code", to: "users#activate", as: "activate"
+      get(
+        "/activate/:user_id/:activation_token",
+        to: "users#activate",
+        as: "activate"
+      )
     end
   end
   # get "/users/new", to: "users#new", as: "user_new"

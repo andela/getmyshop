@@ -1,1 +1,4 @@
 Your account has been created. Click on the following link to activate your account.
+Click on the following link to activate your account
+<%= link_to activate_users_url(user_id: @user.id, activation_token: @user.activation_token), activate_users_url(user_id: @user.id, activation_token: @user.activation_token) %>
+

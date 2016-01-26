@@ -1,6 +1,5 @@
 <div>
-  <p>Your account has been created. Click on the following link to activate your account.</p>
+  <p>Your account has been created.</p>
   <p>Click on the following link to activate your account</p>
-  <p><%= link_to activate_users_url(email: @user.email, code: @user.activation_token), activate_users_url(email: @user.email, code: @user.activation_token) %></p>
-  <p>If you did not create this account, just click the below link to cancel the process.</p>
+  <p><%= link_to activate_users_url(user_id: @user.id, activation_token: @user.activation_token), activate_users_url(user_id: @user.id, activation_token: @user.activation_token) %></p>
 </div>

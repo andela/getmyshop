@@ -42,8 +42,8 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   # Use letter_opener mail delivery method
-  # config.action_mailer.delivery_method = :letter_opener
-  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.delivery_method = :letter_opener
+  # config.action_mailer.delivery_method = :smtp
 end
 # configure application default URL host
 Rails.application.routes.default_url_options[:host] = "localhost:3000"

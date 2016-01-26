@@ -69,9 +69,12 @@ $(document).ready(function() {
       $("#submit-signup").prop("disabled", false);
     } else if (passwordState && emailState) {
       $("#submit-signin").prop("disabled", false);
+    } else if (passwordState) {
+      $("#submit_reset").prop("disabled", false);
     } else {
       $("#submit-signin").attr("disabled","disabled");
       $("#submit-signup").attr("disabled","disabled");
+      $("#submit_reset").prop("disabled", true);
     }
   }
 
@@ -89,4 +92,6 @@ $(document).ready(function() {
       $(".pword").attr("type","password");
     }
   });
+
+  $("#reset_password").on("keyup keydown", passwordChecker);
 });

@@ -3,6 +3,9 @@
   <div class="container">
     <div class="center">
       <h5>Sign In</h5>
+      <% unless flash['notice'].blank?  %>
+        <div class= "pword-message">  <%= flash['notice'] %> </div>
+      <% end %>
     </div>
     <div class="row">
       <div class="col m8 s12">

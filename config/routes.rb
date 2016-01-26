@@ -21,7 +21,11 @@ Rails.application.routes.draw do
   match "auth/:provider/callback", to: "sessions#create", via: [:get, :post]
   resources :users, only: [:new, :create] do
     collection do
-      get "forgot-password", as: :forgot
+      get "forgot-password", to: "users#forgot", as: :forgot
+      get "password-reset/:id/:reset_code",
+          to: "users#reset_password", as: :passwordreset
+      post "password-reset/:id/:reset_code", to: "users#reset"
+      post "forgot-password", to: "users#process_email"
       get "activate/:email/:code", to: "users#activate", as: "activate"
     end
   end

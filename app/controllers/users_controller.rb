@@ -9,7 +9,7 @@ class UsersController < ApplicationController
       flash[:success] = "An Email has been sent with instructions to"\
       " change your password"
       reset_code = [*"0".."9", *"a".."z", *"A".."Z"].sample(50).join
-      RegularUser.update(user.id, reset_code: reset_code)
+      user.update_attributes reset_code: reset_code
       UserMailer.reset_password(user.id, "Reset Your Password").deliver_now
     else
       flash[:error] = "No user found with this email"

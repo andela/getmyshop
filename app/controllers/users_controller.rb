@@ -52,7 +52,6 @@ class UsersController < ApplicationController
 
     if @user.save
       UserMailer.welcome(@user.id, "Welcome To GetMyShop").deliver_now
-      flash["toast-message"] = true
       redirect_to root_path, notice: "Welcome, #{@user.first_name}"
     else
       flash["errors"] = @user.errors.full_messages
@@ -62,6 +61,15 @@ class UsersController < ApplicationController
   end
 
   def activate
+    user = User.token_match(params[:user_id], params[:activation_token]).first
+
+    if user && user.update(active_status: true)
+      session[:user_id] = user.id
+      redirect_to root_path, notice: "Account activated successfully."
+    else
+      redirect_to root_path, notice: "Unable to activate account. "\
+      "If you copied the link, make sure you copied it correctly."
+    end
   end
 
   def users_params

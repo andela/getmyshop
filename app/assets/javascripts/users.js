@@ -85,7 +85,7 @@ $(document).ready(function() {
   $("#user_email").on("focusout keyup change", emailChecker);
   $("#user_password").on("focusout keyup change", passwordChecker);
 
-  $("#show_password").change(function() {
+  $("#show-password").change(function() {
     if ($(this).is(":checked")) {
       $(".pword").attr("type","text");
     } else {

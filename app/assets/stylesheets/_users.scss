@@ -212,6 +212,15 @@ form {
   margin-top: 3em;
 }
 
+.forgot-password {
+  #show-password:checked + [for="show-password"]::before {
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+  }
+}
+
 .pword-message {
   color: $my-green;
   font-size: 0.9em;

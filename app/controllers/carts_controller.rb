@@ -1,4 +1,4 @@
-class CartController < ApplicationController
+class CartsController < ApplicationController
   def index
     @cartproducts = [
       { image: "http://i.imgur.com/QsgYAlQ.png",
@@ -16,5 +16,8 @@ class CartController < ApplicationController
         price: "N4600"
       }
     ]
+  end
+
+  def add_to
   end
 end

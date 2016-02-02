@@ -47,6 +47,7 @@ gem "bcrypt", "~> 3.1.7"
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   # Call "byebug" anywhere in the code to stop execution and get a debugger
+  gem "pry"
   # console
   gem "byebug"
   gem "rubocop", require: false

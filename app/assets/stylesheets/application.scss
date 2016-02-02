@@ -2,28 +2,7 @@
 @import "materialize";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-
-$my-grey: #b2beb5;
-$my-green: #338574;
-$my-white: #ffffff;
-$my-black: #000;
-$grey-border: #efefef;
-$bottom-border: #e8e8e8;
-$section-color: #333;
-$section-title-size: 600;
-$section-text-size: 400;
-$section-button-size: 500;
-$button-background: #338574;
-$button-border: #33842a;
-$button-color: #f3f3f3;
-$section-font: 'ProximaNova', sans-serif, Arial;
-$shadow-color: rgba(0, 0, 0, 0.75);
-
-$facebook-blue: #3b5998;
-$twitter-blue: #4099ff;
-$instagram-red: #3f729b;
-$pinterest-red: #c92228;
-
+@import "variables";
 @import "landing";
 @import "users";
 @import "products";

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "orders/create"
+
   # Example resource route
   # (maps HTTP verbs to controller actions automatically):
 
@@ -36,6 +38,18 @@ Rails.application.routes.draw do
         as: "activate"
       )
     end
+  end
+
+  resources :orders do
+    collection do
+      post "/address", to: "orders#address", as: :address
+      post "/summary", to: "orders#summary", as: :summary
+      post "/payment/", to: "orders#payment", as: :payment
+      post "/payment/:type", to: "orders#post_payment", as: :post_payment
+      get "/confirmation", to: "orders#confirmation", as: :confirmation
+    end
+    # get "/new", to: "orders#new"
+    # get "/payment", to: "orders#payment"
   end
   # get "/users/new", to: "users#new", as: "user_new"
   # get "/users/signin", to: "users#signin", as: "user_signin"

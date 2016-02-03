@@ -1,0 +1,83 @@
+<%= render partial: 'header' %>
+
+<div class="container">
+  <div class="order-forms-container">
+    <h5>Delivery Address:</h5>
+
+    <div class="row">
+      <div class="col l6">
+        <span class="bold">Name: </span> <%= @address.name %>
+      </div>
+      <div class="col l6">
+        <span class="bold">Email: </span> <%= @address.email %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col l6">
+        <span class="bold">Gender: </span> <%= @address.gender %>
+      </div>
+      <div class="col l6">
+        <span class="bold">Phone: </span> <%= @address.phone %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col l6">
+        <span class="bold">Address: </span> <%= @address.address %>
+      </div>
+      <div class="col l6">
+        <span class="bold">Landmark: </span> <%= @address.landmark %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col l6">
+        <span class="bold">City, State: </span> <%= (@address.city) +", "+ (@address.state) %>
+      </div>
+      <div class="col l6">
+        <span class="bold">Country: </span> <%= @address.country %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col l6">
+
+      </div>
+      <div class="col l6">
+
+      </div>
+    </div>
+
+    <div class="border-wrap product-box">
+      <table>
+        <thead>
+        <tr>
+          <th>Image</th>
+          <th>Product Name</th>
+          <th>Quantity</th>
+          <th>Unit Price</th>
+          <th>Sub Total</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <% @order.order_items.each do |order_item| %>
+          <tr>
+            <td><%= image_tag order_item.product.product_image_links.first.link_name, width: "50px" %></td>
+            <td><span class="col l2"><%= order_item.product.name %></span></td>
+            <td><span><%= order_item.quantity %></span></td>
+            <td>
+              <span class="col l2"><%= order_item.product.price.to_i %></span>
+            </td>
+            <td>
+              <span class="col l2"><%= order_item.product.price.to_i * order_item.quantity.to_i %></span>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+    <br/>
+    <%= button_to "Proceed to Payment", payment_orders_path, class: "btn" %>
+     
+  </div>
+
+</div>
+<%= render partial: 'footer' %>

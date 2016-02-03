@@ -11,7 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160125103301) do
+ActiveRecord::Schema.define(version: 20160201191406) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "email"
+    t.string   "address"
+    t.string   "landmark"
+    t.string   "gender"
+    t.string   "phone"
+    t.string   "state"
+    t.string   "city"
+    t.string   "country"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "addresses", ["user_id"], name: "index_addresses_on_user_id"
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -31,6 +48,32 @@ ActiveRecord::Schema.define(version: 20160125103301) do
   end
 
   add_index "oauth_accounts", ["user_id"], name: "index_oauth_accounts_on_user_id"
+
+  create_table "order_items", force: :cascade do |t|
+    t.integer  "order_id"
+    t.integer  "product_id"
+    t.integer  "quantity"
+    t.string   "size"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "order_items", ["order_id"], name: "index_order_items_on_order_id"
+  add_index "order_items", ["product_id"], name: "index_order_items_on_product_id"
+
+  create_table "orders", force: :cascade do |t|
+    t.string   "order_number"
+    t.string   "payment_method"
+    t.decimal  "total_amount"
+    t.integer  "user_id"
+    t.integer  "address_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "orders", ["address_id"], name: "index_orders_on_address_id"
+  add_index "orders", ["order_number"], name: "index_orders_on_order_number"
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id"
 
   create_table "product_image_links", force: :cascade do |t|
     t.string   "link_name"

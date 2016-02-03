@@ -1,5 +1,7 @@
 class CartsController < ApplicationController
   def index
+    @order = Order.new
+    2.times { @order.order_items.build }
     @cartproducts = [
       { image: "http://i.imgur.com/QsgYAlQ.png",
         text: "Sling-Back Stilletos",

@@ -8,8 +8,9 @@
 		<span class="col l2"><%= cartproduct[:price] %></span>
 		<div class="col l2 center">
 			<span>Quantity: </span>
-			<input type="number" class="center" value="1"/>
-			<a href="#">UPDATE</span></a>
+      <%= i.hidden_field :product_id, value: 1 %>
+			<%= i.text_field :quantity, class: "center", value: 1 %>
+			<a href="#">UPDATE</a>
 		</div>
 		<span class="col l2"><%= cartproduct[:price] %></span>
 		<a href="#" class="grey-text"><i class="small material-icons col l1">delete</i></a>

@@ -1,0 +1,60 @@
+.nav-like-height {
+  height: 5em;
+  margin-left: 0.8em;
+}
+
+.category-products {
+  min-height: 30em;
+}
+
+.digg-pagination {
+  background: $my-white;
+  cursor: default;
+  height: 1%;
+
+  .disabled {
+    border: 1px solid $disabled-shade;
+    color: $faint-grey;
+  }
+
+  .current {
+    background: $dark-cyan;
+    border: 1px solid $dark-cyan;
+    color: $my-white;
+    font-style: normal;
+    font-weight: bold;
+  }
+
+  a {
+    border: 1px solid $dark-cyan;
+    color: $my-black;
+    text-decoration: none;
+  }
+}
+
+.digg-pagination a,
+.digg-pagination span,
+.digg-pagination em {
+  display: block;
+  float: left;
+  margin-right: 1px;
+  padding: 0.2em 0.5em;
+}
+
+.digg-pagination a:hover,
+.digg-pagination a:focus {
+  border-color: $dark-blue;
+  color: $dark-blue;
+}
+
+.digg-pagination::after {
+  clear: both;
+  content: ".";
+  display: block;
+  height: 0;
+  visibility: hidden;
+}
+
+*:first-child + html .digg-pagination {
+  overflow: hidden;
+}

@@ -1,5 +1,6 @@
 Subcategory.destroy_all
 Category.destroy_all
+Wishlist.destroy_all
 Product.destroy_all
 ProductImageLink.destroy_all
 
@@ -22,7 +23,7 @@ image_links = %w(
 categories.each do |category|
   new_category = Category.create(name: category)
 
-  7.times do
+  70.times do
     new_product = Product.new
     new_product.name = Faker::Commerce.product_name
     new_product.price = Faker::Number.number(2 + rand(3))

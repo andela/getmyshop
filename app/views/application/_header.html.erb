@@ -39,10 +39,11 @@
 						<span class="category-span">
 							<a href="#" class="black-text category-link">CATEGORIES</a>
 							<ul id="category-dropdown" class="nav-link-items">
-								<li><a href="#" class="black-text">Fashion</a></li>
-								<li><a href="#" class="black-text">Electronics</a></li>
-								<li><a href="#" class="black-text">Home and Kitchen</a></li>
-								<li><a href="#" class="black-text">Baby, Kids and Toys</a></li>
+								<% @menu_categories.each do |category| %>
+									<li>
+										<%= link_to category.name, category_path(category), class: "black-text" %>
+									</li>
+								<% end %>
 							</ul>
 						</span>
 						<span class="white-text small-text">&nbsp;|&nbsp;</span>

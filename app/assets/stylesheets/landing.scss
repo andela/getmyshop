@@ -55,10 +55,6 @@ nav {
   box-shadow: none !important;
 }
 
-.home-card,
-.card-image > img {
-}
-
 .cat-heading::after {
   left: auto;
   right: 0;
@@ -89,6 +85,14 @@ nav {
 
 .width-max {
   max-width: 100%;
+}
+
+.dark-cyan {
+  background: $dark-cyan;
+}
+
+.dark-cyan-text {
+  color: $dark-cyan !important;
 }
 
 .top-bar {

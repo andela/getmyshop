@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160119105147) do
+ActiveRecord::Schema.define(version: 20160125103301) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -31,14 +31,6 @@ ActiveRecord::Schema.define(version: 20160119105147) do
   end
 
   add_index "oauth_accounts", ["user_id"], name: "index_oauth_accounts_on_user_id"
-
-  create_table "passwords", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "my_id"
-    t.string   "email"
-    t.string   "code"
-  end
 
   create_table "product_image_links", force: :cascade do |t|
     t.string   "link_name"
@@ -95,5 +87,15 @@ ActiveRecord::Schema.define(version: 20160119105147) do
     t.boolean  "active_status",    default: false
     t.string   "reset_code"
   end
+
+  create_table "wishlists", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "wishlists", ["product_id"], name: "index_wishlists_on_product_id"
+  add_index "wishlists", ["user_id"], name: "index_wishlists_on_user_id"
 
 end

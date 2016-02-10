@@ -1,3 +1,11 @@
+$ash-gray: #b2beb5;
+$dark-gray: #626262;
+$dark-cyan: #338574;
+$black: #000000;
+$light-gray: #e0e0e0;
+$pale-orange: #fff4e1;
+$search-box: #f5f5f5;
+
 nav {
   border-radius: 3%;
   height: 5em;
@@ -248,6 +256,7 @@ nav {
   .row {
     margin-bottom: 0;
     width: 100%;
+    line-height: 1em;
   }
 }
 
@@ -269,4 +278,47 @@ nav {
   &:hover {
     background: lighten($my-green, 3);
   }
+}
+
+.brand-logo {
+  position: relative !important;
+}
+
+.search-bar {
+  border-bottom: 2px solid $dark-cyan;
+  display: none;
+  height: 3em;
+  width: 100%;
+}
+
+#search-input {
+  width: 80%;
+}
+
+.my-input {
+  #my-input-field:focus {
+    border-bottom: 0 solid;
+    box-shadow: 0 0 0 0;
+  }
+}
+
+.search-i {
+  color: $black;
+  cursor: pointer;
+  font-size: 20px !important;
+  font-weight: normal !important;
+}
+
+.search-icon-span {
+  display: inline-block;
+  position: relative;
+}
+
+.search-container {
+  padding-right: 0 !important;
+}
+
+#my-input-field {
+  font-size: 1em !important;
+  padding-left: 0 !important;
 }

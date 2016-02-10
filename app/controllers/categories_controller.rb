@@ -9,6 +9,11 @@ class CategoriesController < ApplicationController
     return category_not_present unless category
     category_products = category.products
     paginate_products category_products
+    @products = category_products.paginate(
+      page: params[:page], per_page: DEFAULT_LIMIT)
+
+    @result_length = category_products.length
+    @subcategories = Subcategory.unique.by_category(category.id)
   end
 
   def category

@@ -1,0 +1,42 @@
+<div class="filter-div">
+  <div class="row">
+  <%= form_tag %>
+    <div class="col s1">
+    <span class="filter-header">FILTER BY</span>
+    </div>
+    <div class="col s3">
+    <label class="bold black-text">Price: </label>
+    <%= number_field_tag :low_price, "", class: "text-field", placeholder: "₦", id: "lv" %> -
+    <%= number_field_tag :high_price, "", class: "text-field", placeholder: "₦", id: "hv" %>
+    </div>
+    <div class="col s2">
+      <select class="browser-default">
+        <option value="" disabled selected>Category</option>
+         <% @subcategories.each do |subcategory| %>
+         <option value="<%= subcategory.id %>"> <%= subcategory.name %> </option>
+          <% end %>
+      </select>
+    </div>
+
+    <div class="col s2">
+      <select class="browser-default">
+        <option value="" disabled selected>Brand</option>
+         <% Category.all.each do |category| %>
+         <option value="<%= category.id %>"> <%= category.name %> </option>
+          <% end %>
+      </select>
+    </div>
+
+    <div class="col s2">
+      <select class="browser-default">
+        <option value="" disabled selected>Size</option>
+        <option value="medium">Medium</option>
+        <option value="large">Large</option>
+        <option value="small">Small</option>
+      </select>
+    </div>
+    <div class="col s2">
+          <%= submit_tag "Apply", class: "filter" %>
+    </div>
+  </div>
+</div>

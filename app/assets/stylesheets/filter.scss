@@ -1,0 +1,59 @@
+.filter-div {
+  border: 1px solid $light-gray;
+  font-family: $section-font;
+  height: 4em;
+  margin: 1em auto 2em;
+  padding: 1em 1em 0.1em 0.5em;
+  width: 98%;
+
+  select {
+    font-family: $section-font;
+    font-size: 0.875em;
+    height: 2em;
+  }
+
+}
+
+.filter-header {
+  font-family: $section-font;
+  font-size: 0.875em;
+  font-weight: bolder;
+}
+
+.filter {
+  background-color: $my-green;
+  font-family: $section-font;
+  font-size: 0.9em;
+  height: 1.875em !important;
+  line-height: 2em;
+  padding: 0 !important;
+  width: 5em !important;
+}
+
+.small-text-box {
+  width: 10%;
+}
+
+.text-field {
+  border: 1px solid $grey-border !important;
+  font-size: 0.8em !important;
+  height: 2em !important;
+  padding: 0 !important;
+  width: 6em !important;
+
+  &:focus {
+    border-left: 1px solid $my-green !important;
+    border-right: 1px solid $my-green !important;
+    border-top: 1px solid $my-green !important;
+  }
+}
+
+.bo {
+  border: 2px solid $my-green;
+  height: 10em;
+}
+
+.row-break-small {
+  height: 2em;
+  width: 100%;
+}

@@ -58,3 +58,12 @@
 *:first-child + html .digg-pagination {
   overflow: hidden;
 }
+
+.sort {
+  select {
+    font-family: $section-font;
+    font-size: 0.875em;
+    height: 2.4em;
+  }
+
+}

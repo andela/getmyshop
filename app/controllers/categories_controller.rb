@@ -3,12 +3,14 @@ class CategoriesController < ApplicationController
   def index
     all_products = Product.all
     paginate_products all_products
+    @subcategories = Subcategory.get_unique
   end
 
   def show
     return category_not_present unless category
     category_products = category.products
     paginate_products category_products
+    @subcategories = Subcategory.get_unique
   end
 
   def category

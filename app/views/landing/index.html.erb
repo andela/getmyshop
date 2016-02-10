@@ -1,4 +1,5 @@
 <%= render partial: 'header' %>
+
 <% if flash['notice'] %>
   <%= javascript_tag do %>
       Materialize.toast("<%= flash['notice'] %>", 4000)
@@ -7,7 +8,6 @@
 <div class="shift-down">
 	<div class="row medium"></div>
 	<div class= "row-break"></div>
-
 	<% @categories.each do |category| %>
 	<div class= "row container-trim-wide"><h5 class="cat-heading"><%= category.name.upcase %></h5></div>
 	<div class="container-large">

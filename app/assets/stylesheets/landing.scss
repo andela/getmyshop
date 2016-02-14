@@ -1,10 +1,3 @@
-$ash-gray: #b2beb5;
-$dark-gray: #626262;
-$dark-cyan: #338574;
-$black: #000000;
-$light-gray: #e0e0e0;
-$pale-orange: #fff4e1;
-
 nav {
   border-radius: 3%;
   height: 5em;
@@ -191,15 +184,70 @@ nav {
 
 #category-dropdown {
   line-height: 3em;
-  width: 20em;
+  margin-left: -50%;
+  max-height: 450px;
+  min-height: 30px;
+  overflow-y: auto;
+  padding: 0 80px;
+  padding-bottom: 1.4em;
+  position: fixed;
+  width: 100%;
+
+  a:hover {
+    background-color: $my-white;
+  }
 
   li {
     display: block;
-    width: 100%;
+    text-align: center;
   }
 
   .contact-div {
     height: 35em;
+  }
+}
+
+.cat.ul {
+  li {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  img {
+    display: block;
+    margin: 0 auto;
+    width: 200px;
+  }
+}
+
+.col.l3.cat {
+  display: block;
+  width: 25%;
+}
+
+.display-products {
+
+  width: 100%;
+
+  a {
+    color: $my-green;
+    display: block;
+    font-size: 12px;
+    line-height: 2.6em;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    text-align: left;
+    width: 100%;
+
+    &:hover {
+      background-color: $light-gray !important;
+    }
+  }
+
+  .row {
+    margin-bottom: 0;
+    width: 100%;
   }
 }
 

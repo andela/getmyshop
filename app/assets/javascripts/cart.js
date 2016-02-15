@@ -156,6 +156,7 @@ $(document).ready(function() {
             $("#total_price").html(cost);
             $("#total_item").html(items.length);
         }
+        shopping.items = items;
         localStorage.getmyshop_shoppping_cart_items = JSON.stringify(items);
     });
 

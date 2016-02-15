@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get "/wishlist", to: "wishlist#index", as: :wishlist_index
   post "/wishlist", to: "wishlist#update"
   match "auth/:provider/callback", to: "sessions#create", via: [:get, :post]
+  resources :categories, only: [:show]
   resources :users, only: [:new, :create] do
     collection do
       get "forgot-password", to: "users#forgot", as: :forgot

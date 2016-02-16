@@ -1,8 +1,8 @@
+Wishlist.destroy_all
+ProductImageLink.destroy_all
+Product.destroy_all
 Subcategory.destroy_all
 Category.destroy_all
-Wishlist.destroy_all
-Product.destroy_all
-ProductImageLink.destroy_all
 
 categories = %w(Fashion Electronics Home\ and\ Kitchen Baby,\ Kids\ and\ Toys)
 image_links = %w(

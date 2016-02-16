@@ -5,12 +5,12 @@
   <div class="container-large">
     <div class="row nav-like-height valign-wrapper">
       <span>&nbsp;&nbsp;</span>
-      <h5 class="left"><%= @category.name %></h5>
+      <h5 class="left">All Products</h5>
       <h5 class="col l3">&nbsp;</h5>
       <div class="right">
         <%= link_to "Home", root_path %>
         <span>&nbsp;»&nbsp;</span>
-        <%= link_to @category.name, category_path %>
+        <%= link_to "All", categories_path %>
         <span>&nbsp;&nbsp;</span>
         <span class="bold">(<%= @result_length %> results)</span>
         <span>&nbsp;&nbsp;</span>

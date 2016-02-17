@@ -1,4 +1,5 @@
 Wishlist.destroy_all
+Review.destroy_all
 ProductImageLink.destroy_all
 Product.destroy_all
 Subcategory.destroy_all
@@ -44,6 +45,21 @@ categories.each do |category|
     new_product_image_link.link_name = image_links[rand(image_links.length)]
     new_product_image_link.product_id = new_product.id
     new_product_image_link.save
+
+    2.times do
+      new_user = User.new
+      new_user.first_name = Faker::Name.first_name
+      new_user.last_name = Faker::Name.last_name
+      new_user.email = Faker::Internet.email
+      new_user.save
+
+      new_review = Review.new
+      new_review.product_id = new_product.id
+      new_review.user_id = new_user.id
+      new_review.rating = Faker::Number.between(1, 5)
+      new_review.comment = Faker::Hipster.paragraph(3)
+      new_review.save
+    end
 
     5.times do
       new_specification = Specification.new

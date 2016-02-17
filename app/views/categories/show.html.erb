@@ -1,6 +1,6 @@
 <%= render partial: 'header' %>
 <div class="shift-down">
-  <div class= "row-break"></div>
+
 
   <div class="container-large">
     <div class="row nav-like-height valign-wrapper">
@@ -16,7 +16,28 @@
         <span>&nbsp;&nbsp;</span>
       </div>
     </div>
-    <%= render partial: 'paginate_products' %>
+              <%= render partial: 'application/filter_widget' %>
+
+    <div class= "row-break"></div>
+    <div class="row sort">
+      <div class="col s2">
+        <select class="browser-default">
+         <option value="" disabled selected>Sort By</option>
+          <option value="hprice">Highest Price</option>
+          <option value="lprice">Lowest Price</option>
+          <option value="arrival">Arrival</option>
+          <option value="rating">Rating</option>
+        </select>
+      </div>
+
+      <div class="digg-pagination right"><%= will_paginate @products %></div>
+    </div>
+    <div class= "row category-products">
+      <%= render partial: "landing/product", collection: @products %>
+    </div>
+    <div class="row">
+      <div class="digg-pagination right"><%= will_paginate @products %></div>
+    </div>
   </div>
 </div>
 <%= render partial: 'prefooter' %>

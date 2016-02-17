@@ -52,7 +52,8 @@ class UsersController < ApplicationController
 
     if @user.save
       UserMailer.welcome(@user.id, "Welcome To GetMyShop").deliver_now
-      redirect_to root_path, notice: "Welcome, #{@user.first_name}"
+      session[:user_id] = @user.id
+      redirect_to root_path, notice: "Welcome, #{current_user.first_name}"
     else
       flash["errors"] = @user.errors.full_messages
       flash["user"] = @user

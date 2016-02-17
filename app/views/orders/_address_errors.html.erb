@@ -1,0 +1,7 @@
+<div class="error-messages">
+  <ul>
+    <% @address.errors.full_messages.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+</div>

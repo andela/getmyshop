@@ -1,6 +1,7 @@
 class Product < ActiveRecord::Base
   has_many :product_image_links
   has_many :specifications
+  has_many :order_items
   belongs_to :subcategory
   has_one :category, through: :subcategory
 

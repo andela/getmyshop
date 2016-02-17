@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   has_many :oauth_accounts
+  has_many :orders
+  has_many :addresses
 
   before_create :assign_token
 

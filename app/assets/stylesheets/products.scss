@@ -153,3 +153,8 @@ hr {
 .bordered tr:last-of-type {
   border-bottom: none;
 }
+
+.filled-in-star::before {
+  content: "\2605";
+  position: absolute;
+}

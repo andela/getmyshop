@@ -37,14 +37,11 @@
 				<div class="right">
 					<div class="hide-on-med-and-down">
 						<span class="category-span">
+						
 							<%= link_to "CATEGORIES", categories_path, class: "black-text category-link" %>
-							<ul id="category-dropdown" class="nav-link-items">
-								<% @menu_categories.each do |category| %>
-									<li>
-										<%= link_to category.name, category_path(category), class: "black-text" %>
-									</li>
-								<% end %>
-							</ul>
+
+							<%= render "category_dropdown" %>
+
 						</span>
 						<span class="white-text small-text">&nbsp;|&nbsp;</span>
 						<span class="cart-span" id="cart-span">

@@ -5,30 +5,45 @@
     <div class="row">
       <div class="col s12">
         <ul class="tabs product-features">
-          <li class="tab col s3"><a href="#pay-on-delivery" class="black-text active">Pay on Delivery</a></li>
-          <li class="tab col s3"><a href="#pay-with-paypal" class="black-text">Pay with Paypal</a></li>
-          <li class="tab col s3"><a href="#getmyshop-pay" class="black-text">GetMyShop Pay</a></li>
+          <li class="tab col s3">
+            <a href="#pay-on-delivery" class="black-text active">Pay on
+              Delivery</a></li>
+          <li class="tab col s3">
+            <a href="#pay-with-paypal" class="black-text">Pay with Paypal</a>
+          </li>
+          <li class="tab col s3">
+            <a href="#getmyshop-pay" class="black-text">GetMyShop Pay</a></li>
         </ul>
       </div>
       <div id="pay-on-delivery" class="col s12">
-        <p>Pay cash at your doorstep. You can also use your local Mastercard, VISA or Verve card to pay on our POS machine at delivery. We only accept Nigerian Naira. We do not accept International cards on POS machine at delivery.</p>
+        <p>Pay cash at your doorstep. You can also use your local Mastercard,
+          VISA or Verve card to pay on our POS machine at delivery. We only
+          accept Nigerian Naira. We do not accept International cards on POS
+          machine at delivery.</p>
 
-        <p>With Pay on Delivery, you are allowed to check your item before paying for it. If damaged, broken or doesn't fit, please feel free to return immediately</p>
+        <p>With Pay on Delivery, you are allowed to check your item before
+          paying for it. If damaged, broken or doesn't fit, please feel free to
+          return immediately</p>
 
         <h6>Important:</h6>
         <ul>
           <li>
-            - Be sure to have the exact amount for payment as our delivery men do not carry petty cash.
+            - Be sure to have the exact amount for payment as our delivery men
+            do not carry petty cash.
           </li>
           <li>
-            - We only accept Nigerian Naira and local credit cards including MasterCard, VISA and Verve.
+            - We only accept Nigerian Naira and local credit cards including
+            MasterCard, VISA and Verve.
           </li>
           <li>
             - Maximum amount allowed with Pay on Delivery is N200,000
           </li>
         </ul>
 
-        <%= button_to "Complete Order", post_payment_orders_path(type: "pay-on-delivery"), class: "btn" %>
+        <div>
+          <br>
+          <%= button_to "Complete Order", post_payment_orders_path(type: "pay-on-delivery"), class: "btn right" %>
+        </div>
       </div>
       <div id="pay-with-paypal" class="col s12">
         Not supported yet

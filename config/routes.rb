@@ -17,7 +17,10 @@ Rails.application.routes.draw do
   get "/checkout", to: "checkout#index"
   get "/search", to: "search#result"
   get "/cart", to: "carts#index"
-  post "/cart", to: "carts#add_to"
+  post "/cart", to: "carts#add_item"
+  get "/cart/delete-all", to: "carts#delete_all", as: :empty_cart
+  get "/cart/delete/:id", to: "carts#delete_item", as: :delete_order_item
+  post "/cart/update/:id", to: "carts#update_item", as: :update_order_item
   get "/contact", to: "landing#contact"
   get "/login", to: "sessions#new", as: :login
   post "/login", to: "sessions#create"

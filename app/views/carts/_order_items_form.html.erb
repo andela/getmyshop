@@ -1,0 +1,58 @@
+<%= form_for @order, url: address_orders_path do |f| %>
+  <div class="row grey pad-round">
+    <div class="col l6">
+      <span class="white-text">Product</span>
+    </div>
+    <div class="col l2">
+      <span class="white-text">Unit Price</span>
+    </div>
+    <div class="col l1">
+      <span class="white-text">Quantity</span>
+    </div>
+    <div class="col l2 center white-text">Sub total</div>
+    <div class="col center l1 white-text">Remove</div>
+  </div>
+
+  <% total_amount = 0 %>
+  <%= f.fields_for :order_items do |i| %>
+    <% product = get_product_details(i.object.product_id) %>
+    <% total_amount += product.price.to_i * i.object.quantity %>
+    <div id="" class="order_item_list_entry_<%= product.id %> border-wrap-grey-small product-box">
+      <div class="row wishproduct-box">
+        <%= link_to product_path(product) do %>
+          <%= image_tag product.product_image_links.first.link_name, class: 'col l2' %>
+          <div class="col l4">
+            <span class="bigger-font"><%= product.name %></span>
+            <span> - <%= product.category.name %></span>
+          </div>
+        <% end %>
+        <div class="col l2"><%= product.price %></div>
+        <div class="col l1 quantity-div">
+          <%= i.hidden_field :product_id, value: product.id %>
+          <%= i.number_field :quantity, in: 1..product.quantity, step: 1, class: "quantity-field" %>
+          <%= link_to "Update", "#", class: "update-quantity-link", "data-product-id" => product.id %>
+        </div>
+        <div class="col l2 center-align">&#8358;<%= product.price.to_i * i.object.quantity.to_i %></div>
+        <%= link_to delete_order_item_path(product.id), remote: true, title: "Delete", class: "row red-text col l1 delete-from-cart" do %>
+          <i class="small material-icons col l1">delete</i>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+  <div id="" class="border-wrap-grey-small product-box">
+    <div class="row wishproduct-box valign-wrapper">
+      <div class="col l9">&nbsp;</div>
+      <div class="col l2 center-align">
+        &#8358; <span id="total-price"><%= total_amount %></span>
+      </div>
+      <div class="col l1">
+      </div>
+    </div>
+  </div>
+  <div class="clearfix order-checkout-btn-div">
+    <%= link_to "EMPTY CART", empty_cart_path, class: "btn orange-text text-darken-4 empty-cart-btn left", remote: true %>
+    <%= f.submit "Checkout", class: "btn gen-green-background right" %>
+  </div>
+<% end %>
+̵

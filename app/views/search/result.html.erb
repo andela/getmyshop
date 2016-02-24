@@ -1,0 +1,37 @@
+<%= render partial: 'header' %>
+
+
+<div class="shift-down">
+  <div class= "row-break"></div>
+
+  <div class="container-large">
+    <div class="row nav-like-height valign-wrapper">
+      <span>&nbsp;&nbsp;</span>
+      <!-- Search result to be replaced with result category -->
+      <h5 class="left">Search Results</h5>
+      <h5 class="col l3">&nbsp;</h5>
+      <div class="right">
+        <%= link_to "Home", root_path %>
+        <span>&nbsp;»&nbsp;</span>
+        <!-- Search result to be replaced with result category -->
+        Search Result
+
+        <span>&nbsp;&nbsp;</span>
+        <span class="bold">(<%= @search_products.length %> results)</span>
+        <span>&nbsp;&nbsp;</span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="digg-pagination right"><%= will_paginate @search_products %></div>
+    </div>
+    <div class= "row category-products">
+      <%= render partial: "landing/product", collection: @search_products %>
+    </div>
+    <div class="row">
+      <div class="digg-pagination right"><%= will_paginate @search_products %></div>
+    </div>
+  </div>
+</div>
+<div class= "row-break"></div>
+<%= render partial: 'footer' %>

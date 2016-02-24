@@ -21,6 +21,7 @@ gem "font-awesome-sass"
 gem "jquery-rails"
 # Turbolinks makes following links in your web application faster.
 # Read more: https://github.com/rails/turbolinks
+gem "jquery-ui-rails"
 gem "turbolinks"
 gem "jquery-turbolinks"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

@@ -1,3 +1,45 @@
-// Place all the styles related to the Search controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.result-form {
+  border: 1px solid $my-grey !important;
+  height: 19em;
+  width: 50% !important;
+}
+
+.result-header {
+  background-color: $bg-grey;
+  height: 3em;
+  line-height: 3em;
+  margin: auto;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.result-notice {
+  color: $grey-notice;
+  font-family: $search-form-font;
+  font-size: 0.85em;
+  margin-bottom: 4em;
+  margin-top: 4em;
+  padding-left: 2em;
+}
+
+.search-input-form {
+  color: $grey-notice;
+  font-family: $search-form-font;
+  font-size: 0.875em;
+  padding-left: 2em;
+  width: 80% !important;
+}
+
+#search-input-field {
+  width: 100%;
+}
+
+.search-field {
+  padding-left: 2em;
+  padding-right: 2em;
+  width: 100%;
+}
+
+.small-label-search {
+  padding-left: 1.5em;
+}

@@ -1,6 +1,8 @@
 require "simplecov"
 SimpleCov.start
 require "factory_girl_rails"
+require "support/form_helpers"
+
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
@@ -11,4 +13,6 @@ RSpec.configure do |config|
   end
 
   config.include FactoryGirl::Syntax::Methods
+
+  config.include FormHelpers, type: :feature
 end

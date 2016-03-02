@@ -60,7 +60,7 @@ group :development, :test do
   gem "sqlite3"
   gem "factory_girl_rails"
   gem "letter_opener"
-  gem "shoulda-matchers", "~> 3.0"
+  gem "shoulda-matchers", "~> 3.1"
   gem "figaro"
 end
 

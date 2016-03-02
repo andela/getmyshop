@@ -1,5 +1,5 @@
 require "rails_helper"
-
+require "support/oauth_example"
 RSpec.describe SessionsController do
   it "renders the right view when user attempts to sign in" do
     get :new
@@ -38,5 +38,29 @@ RSpec.describe SessionsController do
       expect(response).to redirect_to root_path
       user.destroy
     end
+  end
+
+  context "while authenticating with Twitter Oauth" do
+    it_behaves_like "oauth example", :twitter, false
+  end
+
+  context "while authenticating with Facebook Oauth" do
+    it_behaves_like "oauth example", :facebook, false
+  end
+
+  context "while authenticating with Google Oauth" do
+    it_behaves_like "oauth example", :google, false
+  end
+
+  context "while loggging in an existing Google Oauth user" do
+    it_behaves_like "oauth example", :google, true
+  end
+
+  context "while loggging in an existing Twitter Oauth user" do
+    it_behaves_like "oauth example", :twitter, true
+  end
+
+  context "while loggging in an existing Facebook Oauth user" do
+    it_behaves_like "oauth example", :facebook, true
   end
 end

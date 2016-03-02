@@ -1,0 +1,23 @@
+if (<%= @total_items == 1 %>) {
+  location.reload();
+}
+
+var cartHtml = "";
+cartHtml += "<div class='order_item_list_entry_<%= @item["product_id"] %>'>";
+cartHtml += "<div class='col l2' id='cart-image'>";
+cartHtml += "<img src='<%= @item["image"] %>' height='42' width='42'></div>";
+cartHtml += "<div class='col l5' id='cart-name'><%= @item["name"] %></div>";
+cartHtml += "<div class='col l1' id='cart-qty'><%= @item["quantity"] %></div>";
+cartHtml += "<div class='col l3' id='cart-price'><%= @item["price"] %></div>";
+cartHtml += "<div class='col l1 del'>";
+cartHtml += "<a href='<%= delete_order_item_path(@item["product_id"].to_i) %>' data-remote='true'>";
+cartHtml += "<i class='fa fa-times red-text'></i>";
+cartHtml += "</a></div></div>";
+
+$("div#updated_product").find("div.order_item_list_entry_<%= @item["product_id"] %>").remove();
+$("div#updated_product").prepend(cartHtml);
+
+$("span#total-item").html("<%= @total_items %>");
+$("span#total-price").html("<%= @total_amount %>");
+
+Materialize.toast("Item added to cart", 1500);

@@ -6,11 +6,16 @@ class OrdersController < ApplicationController
     session[current_user.id] ||= {}
     session[current_user.id]["order"] = order_params
 
-    @address = Address.new
+    @address = current_user.addresses.first_or_initialize(
+      name: current_user.first_name + " " + current_user.last_name,
+      email: current_user.email,
+      phone: current_user.phone
+    )
   end
 
   def summary
-    @address = Address.new(address_params)
+    @address = current_user.addresses.first_or_initialize
+    @address.assign_attributes(address_params)
     if @address.valid?
       session[current_user.id]["address"] = @address
       @order = Order.new(session[current_user.id]["order"])
@@ -41,6 +46,7 @@ class OrdersController < ApplicationController
     if address && order
       session[current_user.id]["address"] = nil
       session[current_user.id]["order"] = nil
+      cookies.delete(:cart)
       redirect_to confirmation_orders_path
     else
       redirect_to :back, notice: "Could not create your order."
@@ -48,9 +54,9 @@ class OrdersController < ApplicationController
   end
 
   def store_order_information
-    address = current_user.addresses.create(
-      session[current_user.id]["address"]
-    )
+    address_params = session[current_user.id]["address"]
+    address = current_user.addresses.first_or_initialize
+    address.update_attributes(address_params)
     order = current_user.orders.create(
       session[current_user.id]["order"].merge(address_id: address.id)
     )
@@ -59,6 +65,7 @@ class OrdersController < ApplicationController
   end
 
   def confirmation
+    redirect_to root_path unless request.referer == payment_orders_url
   end
 
   def order_params
@@ -70,6 +77,7 @@ class OrdersController < ApplicationController
 
   def address_params
     params.require(:address).permit(
+      :id,
       :user_id,
       :name,
       :email,

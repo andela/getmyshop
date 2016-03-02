@@ -58,7 +58,9 @@
         </thead>
         <tbody>
 
+        <% total_amount = 0 %>
         <% @order.order_items.each do |order_item| %>
+          <%= total_amount += order_item.product.price.to_i * order_item.quantity.to_i %>
           <tr>
             <td><%= image_tag order_item.product.product_image_links.first.link_name, width: "50px" %></td>
             <td><span class="col l2"><%= order_item.product.name %></span></td>
@@ -74,9 +76,13 @@
         </tbody>
       </table>
     </div>
-    <br/>
-    <%= button_to "Proceed to Payment", payment_orders_path, class: "btn" %>
-     
+
+    <div class="clearfix valign-wrapper right">
+      Total <div class="total-amount-div bold">&#8358; <%= total_amount %></div>
+      <%= button_to "Proceed to Payment", payment_orders_path, class: "btn" %>
+    </div>
+    <div class="clearfix"></div>
+
   </div>
 
 </div>

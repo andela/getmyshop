@@ -1,80 +1,84 @@
 <div class="top-contain">
-	<div id="top-fixed">
-		<div class="top-bar valign-wrapper">
-			<div class="container-trim">
-				<div class="left">
-					<span class="white-text small-text">FAST &amp; FREE SHIPPING ON ALL ORDERS - CALL US : 08020000000</span>
-				</div>
-				<div class="right">
-					<%= link_to "About us", "#", class: 'white-text small-text' %>
-					<span class="white-text small-text">&nbsp;|&nbsp;</span>
-					<%= link_to "Blog", "#", class: 'white-text small-text' %>
-					<span class="white-text small-text">&nbsp;|&nbsp;</span>
-					<%= link_to "Contact Us", "/contact", class: 'white-text small-text' %>
-					<span class="white-text small-text">&nbsp;|&nbsp;</span>
-					<%= link_to "FAQ", "#", class: 'white-text small-text' %>
-					<span class="white-text small-text">&nbsp;|&nbsp;</span>
-					<%= link_to "My Wishlist", wishlist_index_path, class: 'white-text small-text' %>
-					<span class="white-text small-text">&nbsp;|&nbsp;</span>
-					<%= link_to "Currency - NGN", "#", class: 'white-text small-text' %>
-					<% if logged_in %>
-					<span class="white-text small-text">&nbsp;|&nbsp;</span>
-					<span class="black-text small-text">Welcome, <%= current_user.first_name %></span>
-					<% end %>
-				</div>
+  <div id="top-fixed">
+    <div class="top-bar valign-wrapper">
+      <div class="container-trim">
+        <div class="left">
+          <span class="white-text small-text">FAST &amp; FREE SHIPPING ON ALL ORDERS - CALL US : 08020000000</span>
+        </div>
+        <div class="right">
+          <%= link_to "About us", "#", class: 'white-text small-text' %>
+          <span class="white-text small-text">&nbsp;|&nbsp;</span>
+          <%= link_to "Blog", "#", class: 'white-text small-text' %>
+          <span class="white-text small-text">&nbsp;|&nbsp;</span>
+          <%= link_to "Contact Us", "/contact", class: 'white-text small-text' %>
+          <span class="white-text small-text">&nbsp;|&nbsp;</span>
+          <%= link_to "FAQ", "#", class: 'white-text small-text' %>
+          <span class="white-text small-text">&nbsp;|&nbsp;</span>
+          <%= link_to "My Wishlist", wishlist_index_path, class: 'white-text small-text' %>
+          <span class="white-text small-text">&nbsp;|&nbsp;</span>
+          <%= link_to "Currency - NGN", "#", class: 'white-text small-text' %>
+          <% if logged_in %>
+            <span class="white-text small-text">&nbsp;|&nbsp;</span>
+            <span class="black-text small-text">Welcome, <%= current_user.first_name %></span>
+          <% end %>
+        </div>
 
-			</div>
-		</div>
-		<nav class="white valign-wrapper">
-	       <div class="row container-trim">
-	           <div class="col s2">
-	             <div class="left">
-	             <a class="brand-logo black-text" href="<%= root_path %>">
-	               <div class="left">
-	                 <span>Shopify</span>
-	               </div>
-	             </a>
-	           </div>
-	           </div>
-						 <div class="col s1">&nbsp;</div>
-        	   <div class="col s5 search-container">
-							 <div class="search-bar">
-							 	<div class="input-field my-input" id="search-input">
-							 		<%= text_field_tag :term, "", required: "required", placeholder: "Search by product name or category", class: "black-text browser-default", id: "my-input-field" %>
-							 	</div>
-							 </div>
-							 <div class="">
-								&nbsp;
-							 </div>
-	           </div>
-	 ​
-	           <div class="col s4">
-	             <div class="hide-on-med-and-down valign-wrapper">
+      </div>
+    </div>
+    <nav class="white valign-wrapper">
+      <div class="row container-trim">
+        <div class="col s2">
+          <div class="left">
+            <a class="brand-logo black-text" href="<%= root_path %>">
+              <div class="left">
+                <span>Shopify</span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col s1">&nbsp;</div>
+        <div class="col s5 search-container">
+          <div class="search-bar">
+            <div class="input-field my-input" id="search-input">
+              <%= text_field_tag :term, "", required: "required", placeholder: "Search by product name or category", class: "black-text browser-default", id: "my-input-field" %>
+            </div>
+          </div>
+          <div class="">
+            &nbsp;
+          </div>
+        </div>
+        ​
+        <div class="col s4">
+          <div class="hide-on-med-and-down valign-wrapper">
 								<span class="search-icon-span left">
 									<i class="large material-icons search-i" id="search">search</i>
 								</span>
-								<div class="right">
-								<span class="white-text small-text">&nbsp;|&nbsp;</span>
+
+            <div class="right">
+              <span class="white-text small-text">&nbsp;|&nbsp;</span>
 								<span class="category-span">
 
 									<%= link_to "CATEGORIES", categories_path, class: "black-text category-link" %>
 
-									<%= render "category_dropdown" %>
+                  <%= render "category_dropdown" %>
 
 								</span>
-								 <span class="white-text small-text">&nbsp;|&nbsp;</span>
+              <span class="white-text small-text">&nbsp;|&nbsp;</span>
 			 						<span class="cart-span" id="cart-span">
-			 							<a href="#" class="black-text cart-link">CART<span class="total-text"><span id="total_item" class="total-item"></span></span></a>
-			 							<%= render "cart_dropdown" %>
-			 							<%= render "no_cart_dropdown" %>
+			 							<a href="#" class="black-text cart-link">CART<span class="total-text"><span id="total-item" class="total-item">
+                      <% if cookies[:cart] && JSON.parse(cookies[:cart]).size > 0 %>
+                        <%= JSON.parse(cookies[:cart]).size %>
+                      <% end %>
+                    </span></span></a>
+                    <%= render "cart_dropdown" %>
 			 						</span>
-			 						<span class="white-text small-text">&nbsp;|&nbsp;</span>
-			 						<%= auth_link %>
-	             </div>
-						 </div>
-	           </div>	 ​
-	         </div>
-	       </div>
-	     </nav>
-	</div>
+              <span class="white-text small-text">&nbsp;|&nbsp;</span>
+              <%= auth_link %>
+            </div>
+          </div>
+        </div>
+        ​
+      </div>
+    </nav>
+  </div>
 </div>

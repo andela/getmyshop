@@ -1,0 +1,10 @@
+$("div.order_item_list_entry_<%= @deleted_item["item_id"] %>").remove();
+
+$("span#total-item").html("<%= @total_items %>");
+$("span#total-price").html("<%= @total_amount %>");
+
+Materialize.toast("Item removed from cart", 1500);
+
+if(<%= @cart.size == 0 %>){
+  location.reload()
+}

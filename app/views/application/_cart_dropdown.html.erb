@@ -1,29 +1,58 @@
 <div id="cart-dropdown" class="nav-link-items">
-  <div class="cart-dropdown-head">
-    <div class="row">
-      <div class="col l7">Product</div>
-      <div class="col l1">Qty</div>
-      <div class="col l3">Price</div>
-      <div class="col l1">&#8358;</div>
-    </div>
-  </div>
-  <div class="cart-dropdown-body">
-    <div class="row bold">
-      <div class="row" id="updated_product">
-      
+  <%= form_tag do %>
+    <% if cookies[:cart] && JSON.parse(cookies[:cart]).size > 0 %>
+      <div class="cart-dropdown-head">
+        <div class="row">
+          <div class="col l7">Product</div>
+          <div class="col l1">Qty</div>
+          <div class="col l3">Price</div>
+          <div class="col l1">Remove</div>
+        </div>
       </div>
-    </div>
+      <div class="cart-dropdown-body">
+        <div class="row bold">
+          <div class="row" id="updated_product">
+            <% cart = JSON.parse(cookies[:cart]) %>
+            <% total_amount = 0 %>
+            <% cart.each do |item_id, item| %>
 
-    <div class="row bold">
-      <div class="col l8"><span class="right">Total</span></div>
-      <div class="col l4"><span class="right" id="total_price"></span></div>
-    </div>
-  </div>
-  <div class="cart-dropdown-footer">
-    <div class="row">
-      <div class="col l12">
-        <%= link_to "Proceed to Cart", "/cart", class: 'btn right gen-green-background' %>
+              <% product = get_product_details(item_id) %>
+              <% total_amount += product.price.to_i * item["quantity"].to_i %>
+              <div class="order_item_list_entry_<%= product.id %>">
+                <div class='col l2' id='cart-image'>
+                  <img src='<%= product.product_image_links.first.link_name %>' height='42' width='42'>
+                </div>
+                <div class='col l5' id='cart-name'><%= product.name %></div>
+                <div class='col l1' id='cart-qty'><%= item["quantity"] %></div>
+                <div class='col l3' id='cart-price'><%= product.price %></div>
+                <div class='col l1 del' id=<%= product.id %>>
+                  <%= link_to delete_order_item_path(product.id), remote: true do %>
+                    <i class='fa fa-times red-text'></i>
+                  <% end %></div>
+              </div>
+
+
+            <% end %>
+          </div>
+        </div>
+
+        <div class="row bold">
+          <div class="col l8"><span class="right">Total</span></div>
+          <div class="col l4">
+            <div class="right"> &#8358; <span id="total-price"><%= total_amount %></span></div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
+      <div class="cart-dropdown-footer">
+        <div class="row">
+          <div class="col l12">
+            <%= link_to "Proceed to Cart", "/cart", class: 'btn right gen-green-background' %>
+          </div>
+        </div>
+      </div>
+
+    <% else %>
+      <div class="center-align empty-cart-dropdown">No item in the cart</div>
+    <% end %>
+  <% end %>
 </div>

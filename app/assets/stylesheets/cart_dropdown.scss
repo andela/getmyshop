@@ -1,3 +1,18 @@
+#total-item {
+  background-color: $google-red;
+  border-radius: 50%;
+  font-size: 12px;
+  line-height: 18px;
+  padding: 0 5px;
+  position: absolute;
+  right: -16.5px;
+  top: -15px;
+}
+
+.total-text {
+  color: $my-white;
+}
+
 .cart-span {
   display: inline-block;
   position: relative;
@@ -28,8 +43,14 @@
 }
 
 #no-cart-dropdown {
+  height: 2em;
   line-height: 1em;
   width: 30em;
+}
+
+.empty-cart-dropdown {
+  line-height: 2em;
+  text-align: center;
 }
 
 .bold {

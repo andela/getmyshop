@@ -60,7 +60,7 @@
         </div>
       </div>
       <input  type=hidden>
-      <%= form_tag({ controller: "carts", action: "add_to" }, method: "post", id: "cart_form") do%>
+      <%= form_tag(cart_path, method: "post", id: "cart_form-", remote: true) do %>
           <%= hidden_field_tag(:image, @product.product_image_links.first.link_name)  %>
           <%= hidden_field_tag(:product_id, @product.id) %>
           <%= hidden_field_tag(:price, @product.price) %>

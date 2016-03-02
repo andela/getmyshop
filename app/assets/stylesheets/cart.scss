@@ -27,7 +27,7 @@ a {
 .section-text {
   font-size: 0.6em;
   font-weight: $section-text-size;
-  overflow: none;
+  overflow: unset;
   padding: 0.65em;
   text-align: center;
   text-transform: uppercase;
@@ -73,17 +73,6 @@ a {
   padding: 1.5em 0 0;
 }
 
-.total-item {
-  border-radius: 50%;
-  font-size: 12px;
-  height: 18px;
-  line-height: 18px;
-  position: absolute;
-  right: -16.5px;
-  top: -15px;
-  width: 18px;
-}
-
-.total-text {
-  color: $my-white;
+.no-order-item {
+  min-height: 15em;
 }

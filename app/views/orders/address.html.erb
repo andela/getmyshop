@@ -7,11 +7,12 @@
     </h4>
     <%= check_address_errors %>
 
-    <%= form_for @address, url: summary_orders_path do |f| %>
+    <%= form_for @address, url: summary_orders_path, :method => :post do |f| %>
+      <%= f.hidden_field :user_id %>
       <div class="row">
         <div class="col l6">
           <%= f.label :name, class: "bold black-text" %>
-          <%= f.text_field :name, class: "validate", required: :required,  pattern: ".{3,100}", title: "3 to 100 characters required"%>
+          <%= f.text_field :name, class: "validate", required: :required,  pattern: ".{3,100}", title: "3 to 100 characters required" %>
         </div>
         <div class="col l6">
           <%= f.label :email, class: "bold black-text" %>
@@ -31,7 +32,7 @@
       <div class="row">
         <div class="col l6">
           <%= f.label :gender, class: "bold black-text" %>
-          <%= f.select :gender, ["male", "female"] %>
+          <%= f.select :gender, ["", "male", "female"] %>
         </div>
         <div class="col l6">
           <%= f.label :phone, class: "bold black-text" %>
@@ -40,12 +41,12 @@
       </div>
       <div class="row">
         <div class="col l4">
-          <%= f.label :state, class: "bold black-text" %>
-          <%= f.text_field :state, class: "validate", required: :required,  pattern: ".{2,100}", title: "2 - 100 characters" %>
-        </div>
-        <div class="col l4">
           <%= f.label :city, class: "bold black-text" %>
           <%= f.text_field :city, class: "validate", required: :required,  pattern: ".{2,100}", title: "2 - 100 characters" %>
+        </div>
+        <div class="col l4">
+          <%= f.label :state, class: "bold black-text" %>
+          <%= f.text_field :state, class: "validate", required: :required,  pattern: ".{2,100}", title: "2 - 100 characters" %>
         </div>
         <div class="col l4">
           <%= f.label :country, class: "bold black-text" %>
@@ -53,8 +54,8 @@
         </div>
       </div>
       <div class="row">
-        <div class="col m4">
-          <%= f.submit "Save and Continue", class: "btn" %>
+        <div class="col m12">
+          <%= f.submit "Save and Continue", class: "btn right" %>
         </div>
       </div>
     <% end %>

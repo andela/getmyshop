@@ -1,98 +1,12 @@
 <%= render partial: 'header' %>
-<div class= "row-break"></div>
+<div class="row-break"></div>
 <div class="row container-trim">
-  <div class="col s12 m12 l8">
+  <div class="col s12 m12 l12">
+    <h5>CART</h5>
     <div class="check-products-list">
-      <%= form_for @order, url: address_orders_path do |f| %>
-        <%= f.fields_for :order_items do |i| %>
-          <div class="border-wrap product-box">
-            <div class="row">
-              <%= image_tag @cartproducts[1][:image], class: 'col l2'%>
-              <div class="col l3">
-                <span><%= @cartproducts[1][:text] %></span>
-                <span><%= @cartproducts[1][:category] %></span>
-              </div>
-              <span class="col l2"><%= @cartproducts[1][:price] %></span>
-              <div class="col l2 center">
-                <span>Quantity: </span>
-                <%= i.hidden_field :product_id, value: 17 %>
-                <%= i.text_field :quantity, class: "center", value: 2 %>
-                <a href="#">UPDATE</a>
-              </div>
-              <span class="col l2"><%= @cartproducts[1][:price] %></span>
-              <a href="#" class="grey-text"><i class="small material-icons col l1">delete</i></a>
-            </div>
-          </div><br />
-        <% end %>
-
-        <div class="">
-          <a href="#" class="btn grey left">EMPTY CART</a>
-          <%= f.submit "Proceed To Checkout", class: "btn gen-green-background right" %>
-          <div class="clearfix"></div>
-        </div>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="col s12 m12 l4">
-    <div class="border-wrap">
-      <div class ="section-title"> 
-        CHOOSE PAYMENT METHOD
-      </div>
-      <div class="row part-one">
-        <div class="col l4">
-          <a href="#">
-            <div class = "section-image center">
-              <div ><img src="http://i.imgur.com/LYZPJLL.png?1"></div>
-              <div class="section-text black-text"> 
-                Pay on delivery
-                <input name="pay" type="radio" value="cash" id ="cash" />
-                <label for="cash" ></label>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <div class="col l4">
-          <a href="#">
-            <div class = "section-image center">
-              <div ><img src="http://i.imgur.com/3M0DG78.png"></div>
-              <div class="section-text black-text">
-                Online Payment
-                <input name="pay" type="radio" value="card" id = "card" />
-                <label for="card" ></label>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <div class="col l4">
-          <a href="#">
-            <div class = "section-image center">
-              <div><img src="http://i.imgur.com/bwcO7oJ.png?1"></div>
-              <div class="section-text black-text">
-              Bank transfer
-                <input name="pay" type="radio" id= "transfer" value="transfer" />
-                <label for="transfer" ></label>
-              </div>
-            </div>
-          </a>
-        </div>    
-      </div>
-      <div>
-        <div class="row sub-sections"> <span class="left">sub total </span><span class="right">₦20,000.00</span></div>
-        <div class="row sub-sections"> <span class="left">discount </span><span class="right">₦0.00</span></div>
-        <div class="row sub-sections"> <span class="left">shipping cost </span><span class="right">₦100.00</span></div>
-        <div class="row sub-sections"> <span class="left">total amount </span><span class="right">₦21,100.00</span></div>
-        <div class="row  section-button center">
-          <%= link_to root_path do %>
-          <div><button type="submit" class="btn gen-green-background"> Complete order</button></div>
-            <% end %>
-
-        </div>
-      </div>
+      <%= order_items_form_if_exist %>
     </div>
   </div>
 </div>
-<div class= "row-break"></div>
+<div class="row-break"></div>
 <%= render partial: 'footer' %>

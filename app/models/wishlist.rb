@@ -1,5 +1,7 @@
 class Wishlist < ActiveRecord::Base
   belongs_to :product
+  belongs_to :user
+
   scope(
     :user_products,
     lambda do |user_id|

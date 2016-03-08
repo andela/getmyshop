@@ -1,0 +1,138 @@
+require "rails_helper"
+
+RSpec.describe "Product Show page", type: :feature do
+  context "when in the product show page" do
+    before(:each) do
+      2.times do
+        product = create(:product)
+        product2 = create(:product, subcategory: product.subcategory)
+        create(:product_image_link, product: product)
+        create(:product_image_link, product: product2)
+        2.times { create(:review, product: product) }
+      end
+    end
+
+    let(:product) { Product.last }
+
+    before(:each) do
+      visit product_path(product)
+    end
+
+    subject { page }
+
+    describe "product details" do
+      it { is_expected.to have_content product.name }
+      it { is_expected.to have_content product.brand }
+      it { is_expected.to have_content product.category.name }
+      it { is_expected.to have_content product.subcategory.name }
+
+      it { is_expected.to have_selector(:link_or_button, "ADD TO CART") }
+      it do
+        is_expected.to have_selector(
+          "img[src='#{product.product_image_links.first.link_name}']"
+        )
+      end
+    end
+
+    describe "display of related products in the '.related-products' div" do
+      let(:related_product) { product.category.products.first }
+
+      it do
+        within(:css, "div.related-products") do
+          is_expected.to have_content related_product.name
+        end
+      end
+      it do
+        within(:css, "div.related-products") do
+          is_expected.to have_content related_product.price
+        end
+      end
+      it do
+        within(:css, "div.related-products") do
+          is_expected.to have_selector("img")
+        end
+      end
+    end
+
+    describe "displays the reviews for the current product" do
+      let(:product_review) { product.reviews.first }
+      let(:reviewer) { product_review.user }
+
+      before(:each) do
+        click_link "Reviews"
+      end
+
+      it do
+        within(:css, "div#description-tabs") do
+          is_expected.to have_content product_review.comment
+        end
+      end
+
+      it do
+        within(:css, "div#description-tabs") do
+          is_expected.to have_content reviewer.first_name
+        end
+      end
+    end
+
+    describe "the 'add to wishlist link'" do
+      context "when user is not signed in" do
+        it do
+          within("div.buy-now") do
+            is_expected.to have_content "Add to Wishlist"
+          end
+        end
+
+        it do
+          within("div.buy-now") do
+            is_expected.to have_selector("a[href='#{wishlist_path}']")
+          end
+        end
+      end
+
+      context "when user is logged in" do
+        let(:user) { create(:regular_user) }
+
+        before(:each) do
+          allow_any_instance_of(ApplicationController).
+            to receive(:current_user) { user }
+
+          visit product_path(product)
+        end
+
+        context "when product is NOT in the current user's wishlist" do
+          it do
+            within("div.buy-now") do
+              is_expected.to have_content "Add to Wishlist"
+            end
+          end
+
+          it do
+            within("div.buy-now") do
+              is_expected.to have_selector("a[href='#']")
+            end
+          end
+        end
+
+        context "when product is in the current user's wishlist" do
+          before(:each) do
+            create(:wishlist, user: user, product: product)
+            visit product_path(product)
+          end
+
+          it do
+            within("div.buy-now") do
+              is_expected.to have_content "Browse Wishlist"
+            end
+          end
+
+          it do
+            within("div.buy-now") do
+              is_expected.to have_selector("a[href='#{wishlist_path}']")
+            end
+          end
+        end
+      end
+    end
+  end
+end

@@ -5,8 +5,8 @@ module WishlistHelpers
     end
 
     before(:each) do
-      signin_helper(@test_user.email, @test_user.password)
-      visit product_path(@test_product)
+      signin_helper(test_user.email, test_user.password)
+      visit product_path(test_product)
       click_link "Add to Wishlist"
     end
   end

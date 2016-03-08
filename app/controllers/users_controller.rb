@@ -40,11 +40,7 @@ class UsersController < ApplicationController
   end
 
   def new
-    if flash["user"].nil?
-      @user = User.new
-    else
-      @user = User.new(flash["user"])
-    end
+    @user = flash["user"] ? User.new(flash["user"]) : User.new
   end
 
   def create

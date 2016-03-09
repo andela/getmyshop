@@ -2,6 +2,7 @@ require "simplecov"
 SimpleCov.start
 require "factory_girl_rails"
 require "support/form_helpers"
+require "omniauth"
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
@@ -16,3 +17,4 @@ RSpec.configure do |config|
 
   config.include FormHelpers, type: :feature
 end
+OmniAuth.config.test_mode = true

@@ -58,7 +58,7 @@ $(document).ready(function(){
     var initialHtml = currentElement.html(),
         newHtml = initialHtml.replace("fa-heart-o", "fa-heart");
 
-    newHtml = newHtml.replace("Add to Wish List", "Browse Wishlist");
+    newHtml = newHtml.replace("Add to Wishlist", "Browse Wishlist");
     currentElement.html(newHtml);
     currentElement.addClass("dark-cyan-text");
     Materialize.toast(result, 3000);

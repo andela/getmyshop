@@ -8,7 +8,7 @@ class WishlistController < ApplicationController
     if logged_in
       treat_wishlist_request
     else
-      redirect_to login_path
+      direct_to_login_page
     end
   end
 

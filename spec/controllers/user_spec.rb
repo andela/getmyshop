@@ -1,6 +1,9 @@
 require "rails_helper"
 
 RSpec.describe UsersController do
+  before(:each) do
+    User.destroy_all
+  end
   it "renders the right view when user clicks on forgot_password" do
     get :forgot
     expect(response).to render_template "forgot_password"

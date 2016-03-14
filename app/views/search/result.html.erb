@@ -8,21 +8,20 @@
     <div class="row nav-like-height valign-wrapper">
       <span>&nbsp;&nbsp;</span>
       <!-- Search result to be replaced with result category -->
-      <h5 class="left">Search Results</h5>
+      <h5 class="left">Search results for: <%= @search_term  %></h5>
       <h5 class="col l3">&nbsp;</h5>
       <div class="right">
         <%= link_to "Home", root_path %>
         <span>&nbsp;»&nbsp;</span>
-        <!-- Search result to be replaced with result category -->
-        Search Result
-
+        <%= @search_term  %>
         <span>&nbsp;&nbsp;</span>
-        <span class="bold">(<%= @search_products.length %> results)</span>
+        <span class="bold">(<%= @products.length %> results)</span>
         <span>&nbsp;&nbsp;</span>
       </div>
     </div>
 
     <div class="row">
+      <%= show_no_result %>
       <div class="digg-pagination right"><%= will_paginate @search_products %></div>
     </div>
     <div class= "row category-products">

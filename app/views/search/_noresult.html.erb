@@ -1,0 +1,14 @@
+<div class="container result-form">
+  <div class="result-header">
+    No Result found
+  </div>
+  <div class="result-notice">
+    Your search "<%= @search_term %>" did not return any results
+  </div>
+  <div class="input-field search-field">
+  <%= form_tag({controller: "search", action: "result"}, method: "get") do %>
+      <%= text_field_tag :term, "", required: "required", id: "search-input-field" %>
+      <%= label_tag 'search-input-field', "Enter new search term", class: "small-label-search" %>
+  <% end %>
+  </div>
+</div>

@@ -16,6 +16,10 @@ class Product < ActiveRecord::Base
   validates :quantity, presence: true
   validates :brand, presence: true
 
+  def self.search(term)
+    where("lower(name) like ? or brand like ?", "%#{term}%", "%#{term}%")
+  end
+
   def generate_code
     generator = [*("A".."Z"), *("0".."9")].sample(8).join
     if Product.find_by_code(generator)

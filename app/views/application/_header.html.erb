@@ -22,34 +22,35 @@
             <span class="black-text small-text">Welcome, <%= current_user.first_name %></span>
           <% end %>
         </div>
-
-      </div>
-    </div>
-    <nav class="white valign-wrapper">
-      <div class="row container-trim">
-        <div class="col s2">
-          <div class="left">
-            <a class="brand-logo black-text" href="<%= root_path %>">
-              <div class="left">
-                <span>Shopify</span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col s1">&nbsp;</div>
-        <div class="col s5 search-container">
-          <div class="search-bar">
-            <div class="input-field my-input" id="search-input">
-              <%= text_field_tag :term, "", required: "required", placeholder: "Search by product name or category", class: "black-text browser-default", id: "my-input-field" %>
-            </div>
-          </div>
-          <div class="">
-            &nbsp;
-          </div>
-        </div>
-        ​
-        <div class="col s4">
-          <div class="hide-on-med-and-down valign-wrapper">
+			</div>
+		</div>
+		<nav class="white valign-wrapper">
+	       <div class="row container-trim">
+	           <div class="col s2">
+	             <div class="left">
+	             <a class="brand-logo black-text" href="<%= root_path %>">
+	               <div class="left">
+	                 <span>Shopify</span>
+	               </div>
+	             </a>
+	           </div>
+	           </div>
+						 <div class="col s1">&nbsp;</div>
+        	   <div class="col s5 search-container">
+							 <div class="search-bar">
+							 	<div class="input-field my-input" id="search-input">
+									<%= form_tag({controller: "search", action: "result"}, method: "get") do %>
+							 			<%= text_field_tag :term, "", required: "required", placeholder: "Search by product name or category", class: "black-text browser-default", id: "my-input-field" %>
+							 	<% end %>
+							</div>
+							 </div>
+							 <div class="">
+								&nbsp;
+							 </div>
+	           </div>
+	 ​
+	           <div class="col s4">
+	             <div class="hide-on-med-and-down valign-wrapper">
 								<span class="search-icon-span left">
 									<i class="large material-icons search-i" id="search">search</i>
 								</span>

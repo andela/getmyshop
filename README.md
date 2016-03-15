@@ -1,6 +1,7 @@
 #GetMyShop
 [![Circle CI](https://circleci.com/gh/andela/getmyshop.svg?style=svg)](https://circleci.com/gh/andela/getmyshop)
 [![Code Climate](https://codeclimate.com/github/andela/getmyshop/badges/gpa.svg)](https://codeclimate.com/github/andela/getmyshop)
+[![Coverage Status](https://coveralls.io/repos/github/andela/getmyshop/badge.svg?branch=master)](https://coveralls.io/github/andela/getmyshop?branch=master)
 
 GetMyShop is an awesome online shop rental app. It models a physical shopping complex where traders can rent a pre-designed shopping space and place their goods for sale. Users rent a space from our virtual shopping complex where their customers can shop from. Customers will also be able to invite their friends to shop together online. It saves users the stress and financial burden of having to hire a web developer to build an online store from scratch.
 

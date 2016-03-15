@@ -90,4 +90,8 @@ class OrdersController < ApplicationController
       :country
     )
   end
+
+  def past_orders
+    @past_orders = current_user.orders
+  end
 end

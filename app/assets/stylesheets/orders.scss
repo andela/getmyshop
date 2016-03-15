@@ -24,3 +24,77 @@
 .total-amount-div {
   margin: 3em;
 }
+
+.order-header,
+.order-body {
+  font-size: 1.05em;
+  line-height: 0.2em;
+  margin-bottom: 0.5em;
+  padding: 1em;
+}
+
+.order-body {
+  background-color: $light-gray;
+  font-size: 1.05em;
+  line-height: 0.2em;
+  margin-bottom: 0.5em;
+  padding: 1em;
+}
+
+.order-header {
+  background-color: $dark-gray;
+  color: $my-white;
+}
+
+.orders.present.center {
+  margin-top: 3em;
+}
+
+.expand-order {
+  font-weight: bold;
+}
+
+.order-details {
+  background-color: $very-pale-gray;
+  display: none;
+  font-size: 1.05em;
+  margin-bottom: -1em;
+  margin-top: -0.5em;
+  min-height: 18em;
+  padding: 0;
+}
+
+.expand-right {
+  margin-bottom: 0;
+  min-height: 18em;
+}
+
+.col.l3.key {
+  padding-left: 0;
+}
+
+.shipping-address {
+  display: block;
+}
+
+.row.order-image {
+  display: inline-table;
+  margin-top: 1em;
+}
+
+.orders.row {
+  margin-bottom: 0;
+}
+
+.full-order-page {
+  min-height: 30em;
+}
+
+.my-orders.col.l8 {
+  margin-bottom: 8px;
+}
+
+.col.l2.expand-order a {
+  color: $my-green;
+  font-weight: normal;
+}

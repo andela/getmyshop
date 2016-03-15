@@ -1,0 +1,30 @@
+<div class="row expanded-page">
+  <div class="col l4 expand-left">&nbsp;
+    <div class="row">
+      <div class="col l3 key">Billing Address</div>
+      <div class="col l9 value">
+        <span class="shipping-name">
+          <%= order.user.first_name %>
+          <%= order.user.last_name %>
+        </span>
+        <span class="shipping-address">
+          <%= order.address.address %>
+        </span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col l3 key">Shipping Address</div>
+      <div class="col l9 value">
+      <span class="shipping-name"><%= order.user.first_name %>
+      <%= order.user.last_name %></span>
+      <span class="shipping-address">
+      <%= order.address.address %> </div></span>
+    </div>
+  </div>
+
+  <div class="row col l8 expand-right">
+      <%= render partial: "item_display", locals: { order: order } %>
+  </div>
+
+</div>

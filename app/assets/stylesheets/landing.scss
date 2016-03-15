@@ -322,3 +322,15 @@ nav {
   font-size: 1em !important;
   padding-left: 0 !important;
 }
+
+.user-profile {
+  display: none;
+  position: absolute;
+  right: 5em;
+  top: 2.1em;
+  width: 10em;
+}
+
+.full-profile {
+  cursor: pointer;
+}

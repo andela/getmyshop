@@ -51,6 +51,7 @@ Rails.application.routes.draw do
       post "/payment/", to: "orders#payment", as: :payment
       post "/payment/:type", to: "orders#post_payment", as: :post_payment
       get "/confirmation", to: "orders#confirmation", as: :confirmation
+      get "/past_orders", to: "orders#past_orders", as: :past
     end
     # get "/new", to: "orders#new"
     # get "/payment", to: "orders#payment"

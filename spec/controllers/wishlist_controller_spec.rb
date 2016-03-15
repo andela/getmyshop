@@ -2,8 +2,8 @@ require "rails_helper"
 require "support/wishlist_helpers"
 require "support/product_helpers"
 
-include WishlistHelpers
 include ProductHelpers
+include WishlistHelpers
 
 RSpec.describe WishlistController do
   before(:all) do

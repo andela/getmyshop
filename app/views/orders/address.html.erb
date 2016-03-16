@@ -31,8 +31,12 @@
       </div>
       <div class="row">
         <div class="col l6">
-          <%= f.label :gender, class: "bold black-text" %>
-          <%= f.select :gender, ["", "male", "female"] %>
+          <%= f.label :gender, class: "bold black-text"%>
+          <%= f.select(:gender, class: "browser-default") do %>
+            <% ['male', 'female'].each do |c| -%>
+              <%= content_tag(:option, c, value: c) %>
+            <% end %>
+          <% end %>
         </div>
         <div class="col l6">
           <%= f.label :phone, class: "bold black-text" %>

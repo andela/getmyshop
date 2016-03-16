@@ -11,8 +11,6 @@ module ProductHelpers
   end
 
   def create_image_for_product(product)
-    create :product_image_link,
-           link_name: Faker::Placeholdit.image,
-           product: product
+    create :product_image_link, product: product
   end
 end

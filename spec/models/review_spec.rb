@@ -58,18 +58,4 @@ describe Review do
       it { expect(subject.product).to be_an_instance_of Product }
     end
   end
-
-  describe ".product_reviews" do
-    let(:product) { create(:product) }
-    before do
-      5.times { create(:review) }
-      4.times { create(:review, product: product) }
-    end
-
-    let(:product_reviews) { Review.product_reviews(product.id) }
-    it { expect(product_reviews).to be_an ActiveRecord::Relation }
-    it { expect(product_reviews.size).to eq 4 }
-    it { expect(product_reviews.first).to an_instance_of Review }
-    it { expect(product_reviews.first.product).to eq product }
-  end
 end

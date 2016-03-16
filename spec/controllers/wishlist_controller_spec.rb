@@ -1,12 +1,14 @@
 require "rails_helper"
 require "support/wishlist_helpers"
+require "support/product_helpers"
 
 include WishlistHelpers
+include ProductHelpers
 
 RSpec.describe WishlistController do
   before(:all) do
     @test_user = create(:regular_user)
-    @test_product = create(:product)
+    @test_product = assemble_product
   end
 
   describe "Visiting the Wishlist index page" do

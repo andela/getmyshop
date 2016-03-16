@@ -6,9 +6,12 @@ include ProductHelpers
 include WishlistHelpers
 
 RSpec.describe "Wishlist Feature", type: :feature do
-  before(:all) do
-    @test_product = assemble_product
-    @test_user = create(:regular_user)
+  let(:test_user) { create(:regular_user) }
+  let(:test_product) do
+    product = create(:product)
+    create(:product_image_link, product: product)
+
+    product
   end
 
   describe "Visiting the Wishlist index page" do
@@ -20,7 +23,7 @@ RSpec.describe "Wishlist Feature", type: :feature do
 
     context "when user is signed-in" do
       before(:each) do
-        signin_helper(@test_user.email, @test_user.password)
+        signin_helper(test_user.email, test_user.password)
         visit wishlist_index_path
       end
 
@@ -34,10 +37,11 @@ RSpec.describe "Wishlist Feature", type: :feature do
     end
   end
 
-  describe "Adding items to Wishlist", js: true do
+  describe "Adding items to Wishlist" do
     context "when a user is not signed in" do
       before(:each) do
-        visit product_path(@test_product)
+        product = test_product
+        visit product_path(product)
         click_link "Add to Wishlist"
       end
 
@@ -48,8 +52,8 @@ RSpec.describe "Wishlist Feature", type: :feature do
       include_context "Wishlist Operations for signed-in users"
 
       it "saves items to user's wishlist", js: true do
-        all_wishlists = Wishlist.user_products(@test_user.id)
-        expect(all_wishlists.first.product).to eql @test_product
+        all_wishlists = Wishlist.user_products(test_user.id)
+        expect(all_wishlists.first.product).to eql test_product
       end
 
       it "changes page text to Browse Wishlist", js: true do
@@ -59,8 +63,8 @@ RSpec.describe "Wishlist Feature", type: :feature do
       describe "lists product on user's wishlist page", js: true do
         include_context "Wishlist Index"
 
-        it { is_expected.to have_link @test_product.name }
-        it { is_expected.to have_content @test_product.price }
+        it { is_expected.to have_link test_product.name }
+        it { is_expected.to have_content test_product.price }
       end
     end
   end
@@ -76,11 +80,11 @@ RSpec.describe "Wishlist Feature", type: :feature do
       end
 
       it "removes product details from wishlist page" do
-        expect(page).not_to have_content @test_product.name
+        expect(page).not_to have_content test_product.name
       end
 
       it "removes product from user's wishlist" do
-        expect(Wishlist.user_products(@test_user.id)).to be_empty
+        expect(Wishlist.user_products(test_user.id)).to be_empty
       end
     end
   end

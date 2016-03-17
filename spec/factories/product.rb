@@ -4,9 +4,7 @@ FactoryGirl.define do
     price { Faker::Number.number(2 + rand(3)) }
     description { Faker::Hipster.paragraph(3, true) }
     quantity Faker::Number.number(2)
-    code "AXWMWEQZ"
     brand { Faker::Company.name }
-    size { Faker::StarWars.droid }
     subcategory factory: :subcategory
 
     transient do

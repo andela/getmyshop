@@ -7,8 +7,7 @@ include CheckoutHelpers
 
 RSpec.describe "Checkout Feature", type: :feature do
   before(:all) do
-    @products = []
-    5.times { @products << create(:product) }
+    create_list(:product, 5)
     @user = create(:regular_user)
   end
 

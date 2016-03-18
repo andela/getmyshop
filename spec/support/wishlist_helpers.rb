@@ -1,9 +1,5 @@
 module WishlistHelpers
   shared_context "Wishlist Operations for signed-in users" do
-    before(:all) do
-      # DatabaseCleaner.strategy = :truncation, { only: %w(wishlists) }
-    end
-
     before(:each) do
       allow_any_instance_of(ApplicationController).
         to receive(:current_user) { test_user }

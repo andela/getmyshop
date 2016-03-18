@@ -48,11 +48,12 @@ RSpec.describe WishlistController do
       end
 
       it "saves product to wishlist" do
-        post :update,
-              edit_action: "add",
-              user_id: @test_user.id,
-              product_id: @test_product.id
-
+        post(
+          :update,
+          edit_action: "add",
+          user_id: @test_user.id,
+          product_id: @test_product.id
+        )
         expect(response.body).to eql "Product added Successfully"
       end
 
@@ -72,10 +73,6 @@ RSpec.describe WishlistController do
     before(:each) do
       session[:user_id] = @test_user.id
       create(:wishlist, user: @test_user, product: @test_product)
-      # post :update,
-      #      edit_action: "add",
-      #      user_id: @test_user.id,
-      #      product_id: @test_product.id
     end
 
     let(:wishlist) { Wishlist.last }

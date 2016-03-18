@@ -49,22 +49,14 @@ RSpec.describe UsersController do
   describe "POST :reset" do
     context "When changing password" do
       before(:all) { RegularUser.first.update(reset_code: "thisisaresetcode") }
-      
+
       it "changes the user password if he has the right reset_code" do
-        post(
-          :reset,
-          id: user.id,
-          reset_code: user.reset_code,
-          password: "adebayo"
-        )
-        user.reload
+        post_to_reset_action
         expect(user.authenticate("adebayo")).to be_truthy
       end
 
       it "resets reset_code column to nil for user after changing password" do
-        post :reset, id: user.id, reset_code: user.reset_code,
-        password: "adebayo"
-        user.reload
+        post_to_reset_action
         expect(user.reset_code).to be nil
       end
       it "fails and displays error if resetcode is invalid" do
@@ -73,5 +65,10 @@ RSpec.describe UsersController do
         expect(response).to render_template "forgot_password"
       end
     end
+  end
+
+  def post_to_reset_action
+    post(:reset, id: user.id, reset_code: user.reset_code, password: "adebayo")
+    user.reload
   end
 end

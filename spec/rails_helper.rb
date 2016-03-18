@@ -10,7 +10,6 @@ require "capybara/rails"
 require "database_cleaner"
 require "transactional_capybara/rspec"
 
-
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
@@ -32,7 +31,7 @@ RSpec.configure do |config|
     end
   end
 
-  config.after(:each, :js => true) do
+  config.after(:each, js: true) do
     TransactionalCapybara::AjaxHelpers.wait_for_ajax(page)
   end
 

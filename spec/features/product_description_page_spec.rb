@@ -2,20 +2,13 @@ require "rails_helper"
 
 RSpec.describe "Product Show page", type: :feature do
   context "when in the product show page" do
-    before(:all) do
-      2.times do
-        product = create(:product)
-        product2 = create(:product, subcategory: product.subcategory)
-      end
-    end
+    before(:all) { create_list(:subcategory_with_products, 2) }
 
     after(:all) { DatabaseCleaner.clean_with(:truncation) }
 
     let(:product) { Product.first }
 
-    before(:each) do
-      visit product_path(product)
-    end
+    before(:each) { visit product_path(product) }
 
     subject { page }
 

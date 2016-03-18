@@ -1,11 +1,13 @@
 module WishlistHelpers
   shared_context "Wishlist Operations for signed-in users" do
     before(:all) do
-      DatabaseCleaner.strategy = :truncation, { only: %w(wishlists) }
+      # DatabaseCleaner.strategy = :truncation, { only: %w(wishlists) }
     end
 
     before(:each) do
-      signin_helper(test_user.email, test_user.password)
+      allow_any_instance_of(ApplicationController).
+        to receive(:current_user) { test_user }
+
       visit product_path(test_product)
       click_link "Add to Wishlist"
     end

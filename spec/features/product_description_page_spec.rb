@@ -2,17 +2,16 @@ require "rails_helper"
 
 RSpec.describe "Product Show page", type: :feature do
   context "when in the product show page" do
-    before(:each) do
+    before(:all) do
       2.times do
         product = create(:product)
         product2 = create(:product, subcategory: product.subcategory)
-        create(:product_image_link, product: product)
-        create(:product_image_link, product: product2)
-        2.times { create(:review, product: product) }
       end
     end
 
-    let(:product) { Product.last }
+    after(:all) { DatabaseCleaner.clean_with(:truncation) }
+
+    let(:product) { Product.first }
 
     before(:each) do
       visit product_path(product)
@@ -20,7 +19,7 @@ RSpec.describe "Product Show page", type: :feature do
 
     subject { page }
 
-    describe "product details" do
+    describe "product details section" do
       it { is_expected.to have_content product.name }
       it { is_expected.to have_content product.brand }
       it { is_expected.to have_content product.category.name }
@@ -34,8 +33,8 @@ RSpec.describe "Product Show page", type: :feature do
       end
     end
 
-    describe "display of related products in the '.related-products' div" do
-      let(:related_product) { product.category.products.first }
+    describe "related products in the '.related-products' div" do
+      let(:related_product) { product.category.products.last }
 
       it do
         within(:css, "div.related-products") do

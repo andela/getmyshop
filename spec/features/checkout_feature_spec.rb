@@ -8,10 +8,11 @@ include CheckoutHelpers
 RSpec.describe "Checkout Feature", type: :feature do
   before(:all) do
     @products = []
-    5.times { @products << assemble_product }
-
+    5.times { @products << create(:product) }
     @user = create(:regular_user)
   end
+
+  after(:all) { DatabaseCleaner.clean_with(:truncation) }
 
   before(:each) do
     allow_any_instance_of(ApplicationController).

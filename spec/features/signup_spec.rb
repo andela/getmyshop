@@ -1,9 +1,9 @@
 require "rails_helper"
 
 RSpec.describe "Signup process", type: :feature do
-  context "when done with correct inputs" do
-    let(:user) { build :regular_user }
+  let(:user) { build :regular_user }
 
+  context "when done with correct inputs" do
     it "should sign user up" do
       signup_helper(
         user.first_name,
@@ -17,8 +17,6 @@ RSpec.describe "Signup process", type: :feature do
   end
 
   context "when at least an input is wrong" do
-    let(:user) { build :regular_user }
-
     it "should sign user up" do
       signup_helper(
         user.first_name,

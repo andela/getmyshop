@@ -41,26 +41,14 @@ RSpec.describe SessionsController do
   end
 
   context "while authenticating with Twitter Oauth" do
-    it_behaves_like "oauth example", :twitter, false
+    it_behaves_like "oauth example", :twitter
   end
 
   context "while authenticating with Facebook Oauth" do
-    it_behaves_like "oauth example", :facebook, false
+    it_behaves_like "oauth example", :facebook
   end
 
   context "while authenticating with Google Oauth" do
-    it_behaves_like "oauth example", :google, false
-  end
-
-  context "while loggging in an existing Google Oauth user" do
-    it_behaves_like "oauth example", :google, true
-  end
-
-  context "while loggging in an existing Twitter Oauth user" do
-    it_behaves_like "oauth example", :twitter, true
-  end
-
-  context "while loggging in an existing Facebook Oauth user" do
-    it_behaves_like "oauth example", :facebook, true
+    it_behaves_like "oauth example", :google
   end
 end

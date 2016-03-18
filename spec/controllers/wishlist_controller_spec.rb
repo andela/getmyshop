@@ -8,8 +8,10 @@ include WishlistHelpers
 RSpec.describe WishlistController do
   before(:all) do
     @test_user = create(:regular_user)
-    @test_product = assemble_product
+    @test_product = create(:product)
   end
+
+  after(:all) { DatabaseCleaner.clean_with(:truncation) }
 
   describe "Visiting the Wishlist index page" do
     context "when user is not signed in" do
@@ -43,17 +45,19 @@ RSpec.describe WishlistController do
     context "when user is signed in" do
       before(:each) do
         session[:user_id] = @test_user.id
-        post :update,
-             edit_action: "add",
-             user_id: @test_user.id,
-             product_id: @test_product.id
       end
 
       it "saves product to wishlist" do
+        post :update,
+              edit_action: "add",
+              user_id: @test_user.id,
+              product_id: @test_product.id
+
         expect(response.body).to eql "Product added Successfully"
       end
 
       it "fails to save a product already added to wishlist" do
+        create(:wishlist, user: @test_user, product: @test_product)
         post :update,
              edit_action: "add",
              user_id: @test_user.id,
@@ -64,20 +68,20 @@ RSpec.describe WishlistController do
     end
   end
 
-  describe "Deleting items to Wishlist" do
+  describe "Deleting items from Wishlist" do
     before(:each) do
       session[:user_id] = @test_user.id
-      post :update,
-           edit_action: "add",
-           user_id: @test_user.id,
-           product_id: @test_product.id
+      create(:wishlist, user: @test_user, product: @test_product)
+      # post :update,
+      #      edit_action: "add",
+      #      user_id: @test_user.id,
+      #      product_id: @test_product.id
     end
 
+    let(:wishlist) { Wishlist.last }
+
     it "item is deleted Successfully" do
-      wishlist = Wishlist.user_products(@test_user.id).first
-      post :update,
-           edit_action: "delete",
-           wishlist_id: wishlist.id
+      post :update, edit_action: "delete", wishlist_id: wishlist.id
 
       expect(response.body).to eql "Product removed Successfully"
     end

@@ -5,6 +5,8 @@ RSpec.describe SearchController, type: :controller do
     create(:product, name: "testproduct2")
   end
 
+  after(:all) { DatabaseCleaner.clean_with(:truncation) }
+
   describe "#result" do
     context "when there are no results" do
       it "returns no results" do
@@ -27,6 +29,18 @@ RSpec.describe SearchController, type: :controller do
       it "returns one product" do
         post :result, term: "testproduct2"
         expect(assigns(:search_products).length).to be 1
+      end
+
+      context "when searching by product brand" do
+        let(:brand) { Product.first.brand }
+        before(:each) { post :result, term: brand }
+        subject { response }
+
+        it { expect(assigns(:search_products)).not_to be_nil }
+        it { expect(assigns(:search_products).count).to be >= 1 }
+
+        it { is_expected.to render_template(:result) }
+        it { is_expected.to have_http_status(200) }
       end
     end
   end

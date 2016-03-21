@@ -38,6 +38,7 @@ group :development, :test do
   gem "letter_opener"
   gem "shoulda-matchers", "~> 3.1"
   gem "figaro"
+  gem "transactional_capybara"
 end
 
 group :production do

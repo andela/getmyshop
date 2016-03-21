@@ -1,5 +1,5 @@
 require "support/oauth_spec_helper"
-RSpec.shared_examples "oauth example" do |provider, _new_user|
+RSpec.shared_examples "oauth example" do |provider|
   include OauthSpecHelper
 
   it "creates and logs in an Oauth user" do

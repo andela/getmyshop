@@ -9,6 +9,9 @@ RSpec.describe "Search Process", type: :feature do
       create(:product, name: "testproduct1")
       create(:product, name: "testproduct2")
     end
+
+    after(:all) { DatabaseCleaner.clean_with(:truncation) }
+
     it "displays matching products with full match term", js: true do
       fill_and_search(Product.last.name)
       expect(page).to have_content Product.last.name

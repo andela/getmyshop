@@ -3,11 +3,12 @@ require File.expand_path("../../config/environment", __FILE__)
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if
  Rails.env.production?
+require "spec_helper"
 require "rspec/rails"
 require "capybara/rspec"
 require "capybara/rails"
 require "database_cleaner"
-require "spec_helper"
+require "transactional_capybara/rspec"
 
 ActiveRecord::Migration.maintain_test_schema!
 
@@ -21,8 +22,17 @@ RSpec.configure do |config|
 
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
-
     DatabaseCleaner.strategy = :transaction
+    begin
+      FactoryGirl.lint
+      DatabaseCleaner.clean_with(:truncation)
+    rescue
+      DatabaseCleaner.clean_with(:truncation)
+    end
+  end
+
+  config.after(:each, js: true) do
+    TransactionalCapybara::AjaxHelpers.wait_for_ajax(page)
   end
 
   config.before(:each) do

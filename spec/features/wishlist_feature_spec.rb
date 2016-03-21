@@ -6,13 +6,15 @@ include ProductHelpers
 include WishlistHelpers
 
 RSpec.describe "Wishlist Feature", type: :feature do
-  let(:test_user) { create(:regular_user) }
-  let(:test_product) do
-    product = create(:product)
-    create(:product_image_link, product: product)
-
-    product
+  before(:all) do
+    create_list(:category_with_products, 2)
+    create(:regular_user)
   end
+
+  after(:all) { DatabaseCleaner.clean_with(:truncation) }
+
+  let(:test_user) { RegularUser.first }
+  let(:test_product) { Product.first }
 
   describe "Visiting the Wishlist index page" do
     context "when a user is not signed in" do
@@ -23,7 +25,9 @@ RSpec.describe "Wishlist Feature", type: :feature do
 
     context "when user is signed-in" do
       before(:each) do
-        signin_helper(test_user.email, test_user.password)
+        allow_any_instance_of(ApplicationController).
+          to receive(:current_user) { test_user }
+
         visit wishlist_index_path
       end
 
@@ -40,8 +44,7 @@ RSpec.describe "Wishlist Feature", type: :feature do
   describe "Adding items to Wishlist" do
     context "when a user is not signed in" do
       before(:each) do
-        product = test_product
-        visit product_path(product)
+        visit product_path(test_product)
         click_link "Add to Wishlist"
       end
 

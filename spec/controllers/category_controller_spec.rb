@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe CategoriesController, type: :controller do
-  let(:category) { create(:category) }
+  let(:category) { create(:category_with_products) }
   describe "GET index" do
     it "renders index template" do
       get :index

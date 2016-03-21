@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe CategoriesController, type: :controller do
-  let(:categories) { FactoryGirl.create(:category) }
+  let(:category) { create(:category) }
   describe "GET index" do
     it "renders index template" do
       get :index
@@ -11,14 +11,14 @@ RSpec.describe CategoriesController, type: :controller do
 
   describe "GET show" do
     it "renders show template" do
-      get :show, id: categories
+      get :show, id: category
       expect(response).to render_template(:show)
     end
   end
 
   describe "#category_not_present" do
     it "returns error message" do
-      get :show, id: categories.name # invalid category id
+      get :show, id: category.name # invalid category id
       expect(response).to redirect_to(root_path)
     end
   end

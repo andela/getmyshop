@@ -7,4 +7,8 @@ class ProductsController < ApplicationController
     category = @product.category
     @related_products = category.related_products(@product.id)
   end
+
+  def review
+    byebug
+  end
 end

@@ -98,3 +98,23 @@
   color: $my-green;
   font-weight: normal;
 }
+
+.review {
+  background-color: red;
+  position:absolute;
+  z-index:99;
+  display:none;
+  top:200px;
+  left:50%;
+  width:567px;
+  height:420px;
+  margin-left:-250px;
+}
+
+.close-review {
+  color: white;
+  font-size: 1em;
+  position:absolute;
+  top: 0%;
+  left: 97%;
+}

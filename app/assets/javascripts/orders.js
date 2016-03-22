@@ -7,7 +7,7 @@ $(document).ready(function(){
         if (nextOrder.css("display") == "none") {
             nextOrder.css("display", "block");
         } else if (nextOrder.css("display") == "block") {
-            nextOrder.css("display", "none"); 
+            nextOrder.css("display", "none");
         }
     });
 
@@ -19,4 +19,16 @@ $(document).ready(function(){
             $(".user-profile").css("display", "none");
         }
     );
+
+    $(".rateproduct").click(
+      function(){
+        $(".review").css("display", "block");
+      }
+    );
+    $(".close-review").click(
+      function(){
+        $(".review").css("display", "none");
+      }
+    );
 });
+

@@ -4,7 +4,35 @@
   <div class="row order-description"><%= item.product.name%></div>
   <div class="row order-description">
 
-  <%= link_to "rate product", review_path(item_id: item.id), { class: "rateproduct", remote: true} %>
+
+  <%= link_to "Review", review_path(item_id: item.product.id), { class: "btn modal-trigger", remote: true} %>
+
+  <div id="review" class="modal">
+    <div class="modal-content">
+      <h6>Write A Review</h6>
+      <a  class="close-review" href="#"><i class="fa fa-times"></i></a>
+    </div>
+    <div>
+    <div class="row">
+      <div class="col l6">
+        <div class="review-image-div">
+          <%= image_tag "", class: "image0", size: "140" %>
+        </div>
+      </div>
+      <div class="col l6">
+        <%= form_tag({controller: "product", action: "rate"}, method: "get") do %>
+          <%= text_field_tag :term, "", required: "required", placeholder: "Search by product name or category", class: "black-text browser-default", id: "my-input-field" %>
+        <% end %>
+      </div>
+    </div>
+
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Submit</a>
+    </div>
+  </div>
+
+
 
   </div>
 </div>

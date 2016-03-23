@@ -112,9 +112,27 @@
 }
 
 .close-review {
-  color: white;
+  color: $light-gray;
   font-size: 1em;
   position:absolute;
   top: 0%;
   left: 97%;
+}
+
+.item-pname {
+  background-color: white;
+  color: black;
+  height: 5em;
+  width: 6em;
+}
+
+.review-image {
+  height: 10em;
+  width: 10em;
+}
+
+.review-image-div {
+  padding-left: 2em;
+  height: 10em;
+  width: 10em;
 }

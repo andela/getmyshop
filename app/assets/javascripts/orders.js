@@ -20,15 +20,10 @@ $(document).ready(function(){
         }
     );
 
-    $(".rateproduct").click(
-      function(){
-        $(".review").css("display", "block");
-      }
-    );
     $(".close-review").click(
       function(){
         $(".review").css("display", "none");
+        $('#review').closeModal();
       }
     );
 });
-

@@ -9,6 +9,15 @@ class ProductsController < ApplicationController
   end
 
   def review
-    byebug
+    @product_to_rate = Product.find_by(id: params["item_id"])
+  end
+
+  def rate
+    product = Product.find_by(id: params["item_id"])
+    reviews = Review.new(rate_params)
+  end
+
+  def rate_params
+     params.permit(:title, :comment, :rating, :product_id)
   end
 end

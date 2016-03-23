@@ -1,0 +1,7 @@
+function displayReview() {
+  $('#review').openModal();
+  $(".image0").attr( "src" , "<%= image_path @product_to_rate.product_image_links.first.link_name, :id => 'image0' %>" );
+  $(".item-pname").text("<%= @product_to_rate.name %>");
+};
+
+displayReview();

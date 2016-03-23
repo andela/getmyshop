@@ -1,4 +1,14 @@
 class Product < ActiveRecord::Base
+  filterrific(
+    available_filters: [
+      :with_size,
+      :with_low_price,
+      :with_high_price,
+      :with_category,
+      :with_brand,
+    ]
+  )
+
   has_many :product_image_links
   has_many :specifications
   has_many :order_items
@@ -17,6 +27,29 @@ class Product < ActiveRecord::Base
   validates :quantity, presence: true
   validates :brand, presence: true
 
+  scope :with_low_price, lambda { |low_price|
+    where("price >= ?", low_price)
+  }
+  scope :with_high_price, lambda { |high_price|
+    where("price < ?", high_price)
+    # byebug
+  }
+  scope :with_size, lambda { |size|
+    where(size: [*size])
+  }
+  # With category is actually filtering by the product's subcategory
+  scope :with_category, lambda { |subcategory|
+    Product.includes(:subcategory).joins(:subcategory).where(
+      "subcategories.name  = ?", subcategory
+    )
+  }
+
+  # With brand is actually filtering by the product's category
+  scope :with_brand, lambda { |category|
+    Product.includes(:category).joins(:category).where(
+      "categories.name = ?", category
+    )
+  }
   def self.search(term)
     where("lower(name) like ? or brand like ?", "%#{term}%", "%#{term}%")
   end

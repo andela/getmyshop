@@ -1,42 +1,34 @@
 <div class="filter-div">
   <div class="row">
-  <%= form_tag %>
+  <%= form_for_filterrific @filterrific do |f| %>
     <div class="col s1">
     <span class="filter-header">FILTER BY</span>
     </div>
     <div class="col s3">
     <label class="bold black-text">Price: </label>
-    <%= number_field_tag :low_price, "", class: "text-field", placeholder: "₦", id: "lower-value", min: 0 %> -
-    <%= number_field_tag :high_price, "", class: "text-field", placeholder: "₦", id: "upper-value" %>
+    <%= f.number_field :with_low_price, class: "filterrific-periodically-observed text-field", placeholder: "₦", id: "lower-value", min: 0 %> -
+    <%= f.number_field :with_high_price, class: "filterrific-periodically-observed text-field", placeholder: "₦", id: "upper-value" %>
     </div>
     <div class="col s2">
-      <select class="browser-default">
-        <option value="" disabled selected>Category</option>
-         <% @subcategories.each do |subcategory| %>
-         <option value="<%= subcategory.name %>"> <%= subcategory.name %> </option>
-          <% end %>
-      </select>
+      <%= f.select(:with_category, options_for_select(filter_categories(@subcategories)), {include_blank: "Category"}, { :class => 'browser-default' } )%>
+    </div>
+
+    <div class="col s1">
+      <%= f.select(:with_brand, options_for_select(filter_brands), {include_blank: "Brand"}, { :class => 'browser-default' })%>
     </div>
 
     <div class="col s2">
-      <select class="browser-default">
-        <option value="" disabled selected>Brand</option>
-         <% Category.all.each do |category| %>
-         <option value="<%= category.id %>"> <%= category.name %> </option>
-          <% end %>
-      </select>
+      <%= f.select(:with_size, options_for_select(filter_sizes), {include_blank: "Size"}, { :class => 'browser-default' }) %>
     </div>
-
-    <div class="col s2">
-      <select class="browser-default">
-        <option value="" disabled selected>Size</option>
-        <option value="medium">Medium</option>
-        <option value="large">Large</option>
-        <option value="small">Small</option>
-      </select>
+    <div class="col s1">
+      <%= f.submit "Apply", class: "waves-effect waves-light btn filter" %>
     </div>
-    <div class="col s2">
-      <%= submit_tag "Apply", class: "waves-effect waves-light btn filter" %>
+    <div class="col s1">
+      <%= link_to "Reset Filters", reset_filterrific_url, class: "waves-effect waves-light btn filter" %>
     </div>
+    <div class="col s1">
+      <%= render_filterrific_spinner %>
+    </div>
+    <% end %>
   </div>
 </div>

@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   get "/checkout", to: "checkout#index"
   get "/search", to: "search#result"
+  get "/filter", to: "filter#index"
   get "/cart", to: "carts#index", as: :cart_index
   post "/cart", to: "carts#add_item"
   get "/cart/delete-all", to: "carts#delete_all", as: :empty_cart

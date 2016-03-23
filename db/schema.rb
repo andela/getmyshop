@@ -10,7 +10,7 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended that you check this file into your version control system.
-ActiveRecord::Schema.define(version: 20160330060957) do
+ActiveRecord::Schema.define(version: 20160325091256) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id"
@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(version: 20160330060957) do
 
   create_table "products", force: :cascade do |t|
     t.string   "name"
-    t.string   "price"
+    t.integer  "price"
     t.text     "description"
     t.integer  "quantity"
     t.string   "code"

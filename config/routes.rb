@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   root to: "landing#index"
 
   get "/review", to: "products#review"
+  post "/review", to: "products#rate"
 
   get "/checkout", to: "checkout#index"
   get "/search", to: "search#result"

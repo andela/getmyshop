@@ -20,20 +20,18 @@
         </div>
       </div>
       <div class="col l6">
-        <%= form_tag({controller: "product", action: "rate"}, method: "get") do %>
-          <%= text_field_tag :term, "", required: "required", placeholder: "Search by product name or category", class: "black-text browser-default", id: "my-input-field" %>
+        <%= form_tag({controller: "products", action: "rate"}, method: "post", remote: true) do %>
+          <%= text_field_tag :title, "", required: "required", placeholder: "Enter Review Title", class: "black-text browser-default", id: "my-input-field" %>
+          <%= hidden_field_tag :product_id, "", required: "required", class: "black-text browser-default product-id" %>
+          <%= text_area_tag :comment, "", required: "required", placeholder: "Enter Comment", class: "black-text browser-default", id: "my-input-field2" %>
+          <%= text_field_tag :rating, "", required: "required", class: "black-text browser-default", id: "my-rating" %>
+          <%= submit_tag "Submit", class: "btn waves-effect waves-green btn-flat" %>
         <% end %>
       </div>
     </div>
 
     </div>
-    <div class="modal-footer">
-      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Submit</a>
-    </div>
   </div>
-
-
-
   </div>
 </div>
 

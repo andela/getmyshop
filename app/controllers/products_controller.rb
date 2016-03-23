@@ -13,11 +13,12 @@ class ProductsController < ApplicationController
   end
 
   def rate
-    product = Product.find_by(id: params["item_id"])
     reviews = Review.new(rate_params)
+    reviews.user_id = current_user.id
+    reviews.save
   end
 
   def rate_params
-     params.permit(:title, :comment, :rating, :product_id)
+    params.permit(:title, :comment, :rating, :product_id)
   end
 end

@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   include CheckLoginConcern
   before_action :check_login
+  protect_from_forgery except: [:paypal_hook]
 
   def address
     session[current_user.id] ||= {}
@@ -33,7 +34,13 @@ class OrdersController < ApplicationController
     when "pay-on-delivery"
       finalize_order_and_redirect
     when "paypal"
-      # redirect to paypal for payment
+      address, order = store_order_information
+      if address && order
+        session[current_user.id]["address"] = nil
+        session[current_user.id]["order"] = nil
+        cookies.delete(:cart)
+        redirect_to confirmation_orders_path
+      end
     else
       # invalid payment method
       redirect_to :back
@@ -57,25 +64,12 @@ class OrdersController < ApplicationController
     address_params = session[current_user.id]["address"]
     address = current_user.addresses.first_or_initialize
     address.update_attributes(address_params)
-    case params[:type]
-    when "pay-on-delivery"
-      order = current_user.orders.create(
-        session[current_user.id]["order"].merge(
-          address_id: address.id,
-          payment_method: "Pay on Delivery"
-        )
+    order = current_user.orders.create(
+      session[current_user.id]["order"].merge(
+        address_id: address.id,
+        payment_method: params[:type]
       )
-    when "paypal"
-      order = current_user.orders.create(paypal_params)
-      if order.save
-        redirect_to order.paypal_url(confirmation_orders_path)
-      else
-        render :new
-      end
-    else
-      # invalid payment method
-      redirect_to :back
-    end
+    )
 
     [address, order]
   end
@@ -109,5 +103,14 @@ class OrdersController < ApplicationController
 
   def past_orders
     @past_orders = current_user.orders
+  end
+
+  def paypal_hook
+    params.permit!
+    status = params[:payment_status]
+    if status == "Completed"
+
+    end
+    render nothing: true
   end
 end

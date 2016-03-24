@@ -57,9 +57,25 @@ class OrdersController < ApplicationController
     address_params = session[current_user.id]["address"]
     address = current_user.addresses.first_or_initialize
     address.update_attributes(address_params)
-    order = current_user.orders.create(
-      session[current_user.id]["order"].merge(address_id: address.id)
-    )
+    case params[:type]
+    when "pay-on-delivery"
+      order = current_user.orders.create(
+        session[current_user.id]["order"].merge(
+          address_id: address.id,
+          payment_method: "Pay on Delivery"
+        )
+      )
+    when "paypal"
+      order = current_user.orders.create(paypal_params)
+      if order.save
+        redirect_to order.paypal_url(confirmation_orders_path)
+      else
+        render :new
+      end
+    else
+      # invalid payment method
+      redirect_to :back
+    end
 
     [address, order]
   end

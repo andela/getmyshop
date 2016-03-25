@@ -99,31 +99,12 @@
   font-weight: normal;
 }
 
-.review {
-  background-color: red;
-  position:absolute;
-  z-index:99;
-  display:none;
-  top:200px;
-  left:50%;
-  width:567px;
-  height:420px;
-  margin-left:-250px;
-}
-
 .close-review {
   color: $light-gray;
   font-size: 1em;
-  position:absolute;
-  top: 0%;
   left: 97%;
-}
-
-.item-pname {
-  background-color: white;
-  color: black;
-  height: 5em;
-  width: 6em;
+  position: absolute;
+  top: 0%;
 }
 
 .review-image {
@@ -131,8 +112,65 @@
   width: 10em;
 }
 
+.review-div {
+  height: 600em !important;
+}
+
 .review-image-div {
-  padding-left: 2em;
   height: 10em;
+  padding-left: 1em;
   width: 10em;
 }
+
+.product-to-rate {
+  font-size: 0.7em;
+  padding-left: 1em;
+}
+
+.rating {
+  direction: rtl;
+  text-align: center;
+  unicode-bidi: bidi-override;
+}
+.star {
+  display: inline-block;
+  font-size: 0.5em;
+  position: relative;
+  width: 0.7em;
+}
+
+.rating > span:hover,
+.rating > span:hover ~ span {
+  color: transparent;
+}
+
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+  color: $gold;
+  content: "\2605";
+  left: 0;
+  position: absolute;
+  width: 0.7em;
+}
+
+.rating-label {
+  color: $grey-label;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.7em;
+  padding-left: 2em;
+}
+
+.review-submit {
+  width: 100%;
+}
+
+.selected-star {
+  color: $gold;
+  content: "\2605";
+}
+
+.my-textarea {
+  padding: 0.8em 0 !important;
+}
+
+

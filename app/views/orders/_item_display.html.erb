@@ -5,35 +5,64 @@
   <div class="row order-description">
 
 
-  <%= link_to "Review", review_path(item_id: item.product.id), { class: "btn modal-trigger", remote: true} %>
+    <%= link_to "Review", review_path(item_id: item.product.id), { class: "btn modal-trigger", remote: true} %>
+    <div id="review" class="modal review-div">
+      <div class="modal-content">
+        <h6>Write A Review</h6>
+        <a  class="close-review" href="#"><i class="fa fa-times"></i></a>
+      </div>
+      <div>
+        <div class="row">
+          <div class="col l3">
+            <div class="row review-image-div">
+              <%= image_tag "", class: "image0", size: "140" %>
+            </div>
+              <ul>
+                <li id="product-name" class="product-to-rate"> </li>
+                <li id="product-subcategory" class="product-to-rate"> </li>
+              </ul>
+          </div>
+          <div class="col l9">
+            <%= form_tag({controller: "products", action: "rate"}, method: "post", remote: true) do %>
+            <div class="row">
+              <div class="input-field col s8">
+                <%= hidden_field_tag :product_id, "", class: "product-id" %>
+                <%= text_field_tag :title, "", required: "required", placeholder: "Give Your Review a Title", id: "title-field" %>
+                <%= label_tag "title-field", "Title" %>
+              </div>
+              <div class="col s4">
+                <span class="rating-label">Rating</span>
 
-  <div id="review" class="modal">
-    <div class="modal-content">
-      <h6>Write A Review</h6>
-      <a  class="close-review" href="#"><i class="fa fa-times"></i></a>
-    </div>
-    <div>
-    <div class="row">
-      <div class="col l6">
-        <div class="review-image-div">
-          <%= image_tag "", class: "image0", size: "140" %>
+                  <div class="rating">
+                    <span class="star" id="star5">☆</span>
+                    <span class="star" id="star4">☆</span>
+                    <span class="star" id="star3">☆</span>
+                    <span class="star" id="star2">☆</span>
+                    <span class="star" id="star1">☆</span>
+
+                </div>
+                <div class="row">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <%= text_area_tag :comment, "", required: "required", placeholder: "Enter Body of Review", class: "materialize-textarea my-textarea", id: "comment-field" %>
+                <%= label_tag "comment-field", "Comment" %>
+              </div>
+              <%= submit_tag "Submit", class: "btn btn-flat review-submit" %>
+            </div>
+            <%= hidden_field_tag :rating, "", required: "required", id: "my-rating" %>
+
+            <% end %>
+          </div>
         </div>
-      </div>
-      <div class="col l6">
-        <%= form_tag({controller: "products", action: "rate"}, method: "post", remote: true) do %>
-          <%= text_field_tag :title, "", required: "required", placeholder: "Enter Review Title", class: "black-text browser-default", id: "my-input-field" %>
-          <%= hidden_field_tag :product_id, "", required: "required", class: "black-text browser-default product-id" %>
-          <%= text_area_tag :comment, "", required: "required", placeholder: "Enter Comment", class: "black-text browser-default", id: "my-input-field2" %>
-          <%= text_field_tag :rating, "", required: "required", class: "black-text browser-default", id: "my-rating" %>
-          <%= submit_tag "Submit", class: "btn waves-effect waves-green btn-flat" %>
-        <% end %>
-      </div>
-    </div>
 
+      </div>
     </div>
-  </div>
   </div>
 </div>
 
 
 <% end %>
+

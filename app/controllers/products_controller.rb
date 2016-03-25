@@ -13,9 +13,9 @@ class ProductsController < ApplicationController
   end
 
   def rate
-    reviews = Review.new(rate_params)
-    reviews.user_id = current_user.id
-    reviews.save
+    product_review = Review.new(rate_params)
+    product_review.user_id = current_user.id
+    product_review.save
   end
 
   def rate_params

@@ -56,5 +56,4 @@ Rails.application.routes.draw do
     end
   end
   post "/paypal_hook", to: "orders#paypal_hook", as: :hook
-  post "/paypal_dummy", to: "orders#paypal_dummy", as: :paypal_dummy
 end

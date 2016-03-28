@@ -11,9 +11,9 @@ class Order < ActiveRecord::Base
       business: ENV["PAYPAL_BUSINESS"],
       cmd: "_xclick",
       return: "#{ENV['app_host']}#{return_path}",
-      invoice: uniq_id,
-      amount: order.total_amount,
-      item_name: "Receipt for #{order.order_number}",
+      invoice: order_number,
+      amount: total_amount,
+      item_name: "Receipt for #{order_number}",
       item_number: id,
       notify_url: "#{ENV['paypal_notify_url']}/paypal_hook"
     }

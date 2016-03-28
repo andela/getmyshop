@@ -39,7 +39,7 @@ class OrdersController < ApplicationController
         session[current_user.id]["address"] = nil
         session[current_user.id]["order"] = nil
         cookies.delete(:cart)
-        redirect_to confirmation_orders_path
+        redirect_to order.paypal_url(confirmation_orders_path)
       end
     else
       # invalid payment method

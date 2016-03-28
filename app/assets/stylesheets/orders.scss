@@ -112,10 +112,6 @@
   width: 10em;
 }
 
-.review-div {
-  height: 600em !important;
-}
-
 .review-image-div {
   height: 10em;
   padding-left: 1em;
@@ -123,7 +119,7 @@
 }
 
 .product-to-rate {
-  font-size: 0.7em;
+  font-size: 1em;
   padding-left: 1em;
 }
 
@@ -132,6 +128,7 @@
   text-align: center;
   unicode-bidi: bidi-override;
 }
+
 .star {
   display: inline-block;
   font-size: 0.5em;
@@ -144,8 +141,8 @@
   color: transparent;
 }
 
-.rating > span:hover:before,
-.rating > span:hover ~ span:before {
+.rating > span:hover::before,
+.rating > span:hover ~ span::before {
   color: $gold;
   content: "\2605";
   left: 0;
@@ -155,7 +152,7 @@
 
 .rating-label {
   color: $grey-label;
-  font-family: "Roboto", sans-serif;
+  font-family: $rating-label;
   font-size: 0.7em;
   padding-left: 2em;
 }
@@ -173,4 +170,15 @@
   padding: 0.8em 0 !important;
 }
 
+.review-button {
+  font-size: 0.7em;
+  height: 3em;
+  line-height: 3.2em;
+  padding-left: 2.2em;
+  width: 8em;
+}
+
+.review-button:hover {
+  color: $my-white;
+}
 

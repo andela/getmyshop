@@ -24,7 +24,7 @@ $(document).ready(function(){
     $(".close-review").click(
       function(){
         $(".review").css("display", "none");
-        $('#review').closeModal();
+        $("#review").closeModal();
       }
     );
 
@@ -35,7 +35,7 @@ $(document).ready(function(){
       $("#star4").removeClass("selected-star");
       $("#star5").removeClass("selected-star");
       $("#my-rating").val(1);
-    };
+    }
 
     function setTwoStar() {
       $("#star1").addClass("selected-star");
@@ -44,7 +44,7 @@ $(document).ready(function(){
       $("#star4").removeClass("selected-star");
       $("#star5").removeClass("selected-star");
       $("#my-rating").val(2);
-    };
+    }
 
     function setThreeStar() {
       $("#star1").addClass("selected-star");
@@ -53,7 +53,7 @@ $(document).ready(function(){
       $("#star4").removeClass("selected-star");
       $("#star5").removeClass("selected-star");
       $("#my-rating").val(3);
-    };
+    }
 
     function setFourStar() {
       $("#star1").addClass("selected-star");
@@ -62,7 +62,7 @@ $(document).ready(function(){
       $("#star4").addClass("selected-star");
       $("#star5").removeClass("selected-star");
       $("#my-rating").val(4);
-    };
+    }
 
     function setFiveStar() {
       $("#star1").addClass("selected-star");
@@ -71,7 +71,7 @@ $(document).ready(function(){
       $("#star4").addClass("selected-star");
       $("#star5").addClass("selected-star");
       $("#my-rating").val(5);
-    };
+    }
 
 
 

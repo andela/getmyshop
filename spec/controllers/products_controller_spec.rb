@@ -14,11 +14,10 @@ RSpec.describe ProductsController, type: :controller do
       post :rate, title: "Nice one",
                   comment: "packaging to nice",
                   rating: 2,
-                  product_id: @product_one.id
+                  product_id: @product_one.id,
+                  format: :js
 
-      stub_template! "products/rate.html.erb" => ""
       expect(@product_one.reviews.last.title).to eq "Nice one"
-      expect(assigns(:product_to_rate)).not_to be_nil
     end
   end
 end

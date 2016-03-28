@@ -49,8 +49,8 @@ class CartsController < ApplicationController
       price = Product.find(item[:item_id]).price.to_i
       amount + (price * item[:quantity])
     end
+    cookies[:total_amount] = @total_amount.to_f
     cookies[:cart] = JSON.generate(cart)
-
     render_js_response
   end
 

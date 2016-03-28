@@ -67,7 +67,8 @@ class OrdersController < ApplicationController
     order = current_user.orders.create(
       session[current_user.id]["order"].merge(
         address_id: address.id,
-        payment_method: params[:type]
+        payment_method: params[:type],
+        total_amount: cookies[:total_amount]
       )
     )
 

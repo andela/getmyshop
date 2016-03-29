@@ -30,34 +30,32 @@ class OrdersController < ApplicationController
   end
 
   def post_payment
-    case params[:type]
-    when "pay-on-delivery"
-      finalize_order_and_redirect
-    when "paypal"
-      address, order = store_order_information
-      if address && order
-        session[current_user.id]["address"] = nil
-        session[current_user.id]["order"] = nil
-        cookies.delete(:cart)
-        redirect_to order.paypal_url(confirmation_orders_path)
-      end
-    else
-      # invalid payment method
-      redirect_to :back
-    end
+    finalize_order_and_redirect
   end
 
   def finalize_order_and_redirect
     address, order = store_order_information
 
     if address && order
-      session[current_user.id]["address"] = nil
-      session[current_user.id]["order"] = nil
-      cookies.delete(:cart)
-      redirect_to confirmation_orders_path
+      clear_cart
+      case params[:type]
+      when "pay-on-delivery"
+        redirect_to confirmation_orders_path
+      when "paypal"
+        redirect_to order.paypal_url(confirmation_orders_path)
+      else
+        # put 3rd option here
+        redirect_to :back
+      end
     else
       redirect_to :back, notice: "Could not create your order."
     end
+  end
+
+  def clear_cart
+    session[current_user.id]["address"] = nil
+    session[current_user.id]["order"] = nil
+    cookies.delete(:cart)
   end
 
   def store_order_information

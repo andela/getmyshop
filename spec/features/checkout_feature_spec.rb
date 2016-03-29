@@ -26,4 +26,15 @@ RSpec.describe "Checkout Feature", type: :feature do
     click_button "Complete Order"
     expect(page).to have_content("Thank you!")
   end
+
+  it "checks out with paypal successfully", js: true do
+    page.driver.browser.manage.window.resize_to(1280, 600)
+    add_products_and_checkout
+    fill_in_address
+    click_button "Save and Continue"
+    click_button "Proceed to Payment"
+    click_on "Pay with Paypal"
+    click_button "Proceed to Paypal"
+    expect(current_url).to have_content("paypal")
+  end
 end

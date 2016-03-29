@@ -13,8 +13,8 @@ class Order < ActiveRecord::Base
       return: "#{ENV['app_host']}#{return_path}",
       invoice: order_number,
       amount: total_amount,
-      item_name: "Receipt for #{order_number}",
-      item_number: id,
+      item_name: "Receipt for Order #{order_number}",
+      item_number: order_number,
       notify_url: "#{ENV['paypal_notify_url']}/paypal_hook"
     }
     "#{ENV['paypal_host']}/cgi-bin/webscr?" + values.to_query

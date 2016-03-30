@@ -45,8 +45,8 @@ RSpec.describe Order, type: :model do
         "&business=notify%40email.com&cmd=_xclick&invoice="\
         "#{subject.order_number}&item_name=Receipt+for+Order+"\
         "#{subject.order_number}&item_number=#{subject.order_number}"\
-        "&notify_url=http%3A%2F%2Fsample.com%2Fnotify%2Fpaypal_hook&"\
-        "return=http%3A%2F%2Fsample.com%2Fgetmyshop"
+        "&notify_url=http%3A%2F%2Fsample.com%2Fpaypal_hook&"\
+        "return=http%3A%2F%2Fsample.com%2Fgetmyshop&upload=1"
       )
     end
   end

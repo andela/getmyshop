@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   include CheckLoginConcern
-  before_action :check_login
+  before_action :check_login, except: [:paypal_hook]
   protect_from_forgery except: [:paypal_hook]
 
   def address
@@ -74,7 +74,6 @@ class OrdersController < ApplicationController
   end
 
   def confirmation
-    redirect_to root_path unless request.referer == payment_orders_url
   end
 
   def order_params
@@ -108,7 +107,13 @@ class OrdersController < ApplicationController
     params.permit!
     status = params[:payment_status]
     if status == "Completed"
-
+      order = Order.find params[:invoice]
+      order.update_attributes(
+        notification_params: params,
+        status: status,
+        transaction_id: params[:txn_id],
+        purchased_at: Time.now
+      )
     end
     render nothing: true
   end

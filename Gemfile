@@ -23,7 +23,6 @@ gem "omniauth-google-oauth2"
 gem "will_paginate"
 gem "bcrypt", "~> 3.1.7"
 gem "coveralls", require: false
-gem "paypal-sdk-rest"
 
 group :development, :test do
   gem "pry"

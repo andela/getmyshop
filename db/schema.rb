@@ -10,7 +10,7 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended that you check this file into your version control system.
-ActiveRecord::Schema.define(version: 20160217092519) do
+ActiveRecord::Schema.define(version: 20160330155111) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id"
@@ -97,7 +97,6 @@ ActiveRecord::Schema.define(version: 20160217092519) do
 
   create_table "products", force: :cascade do |t|
     t.string   "name"
-    t.string   "price"
     t.text     "description"
     t.integer  "quantity"
     t.string   "code"
@@ -106,6 +105,7 @@ ActiveRecord::Schema.define(version: 20160217092519) do
     t.string   "brand"
     t.string   "size"
     t.integer  "subcategory_id"
+    t.integer  "price"
   end
 
   add_index "products", ["subcategory_id"], name: "index_products_on_subcategory_id"

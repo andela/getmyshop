@@ -10,20 +10,17 @@
     <%= f.number_field :with_high_price, class: "filterrific-periodically-observed text-field", placeholder: "₦", id: "upper-value" %>
     </div>
     <div class="col s2">
-      <%= f.select(:with_category, options_for_select(filter_categories(@subcategories)), {include_blank: "Category"}, { :class => 'browser-default' } )%>
+      <%= f.select(:with_subcategory, options_for_select(filter_categories(@subcategories)), {include_blank: "Subcatgeory"}, { :class => 'browser-default' } )%>
     </div>
 
     <div class="col s1">
-      <%= f.select(:with_brand, options_for_select(filter_brands), {include_blank: "Brand"}, { :class => 'browser-default' })%>
+      <%= f.select(:with_category, options_for_select(filter_brands), {include_blank: "Category"}, { :class => 'browser-default' })%>
     </div>
 
     <div class="col s2">
       <%= f.select(:with_size, options_for_select(filter_sizes), {include_blank: "Size"}, { :class => 'browser-default' }) %>
     </div>
-    <div class="col s1">
-      <%= f.submit "Apply", class: "waves-effect waves-light btn filter" %>
-    </div>
-    <div class="col s1">
+    <div class="col s2">
       <%= link_to "Reset Filters", reset_filterrific_url, class: "waves-effect waves-light btn filter" %>
     </div>
     <div class="col s1">

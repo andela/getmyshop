@@ -1,10 +1,20 @@
 class SearchController < ApplicationController
   def result
-    @products = Product.search(params[:term])
-    @search_term = params[:term]
-    @search_products = @products.paginate(
-      page: params[:page],
-      per_page: 8
-    )
+    @search_term = params[:term] || get_term
+    @subcategories = Subcategory.get_unique
+    (@filterrific = initialize_filterrific(
+      Product,
+      params[:filterrific]
+    )) || return
+    @products = Product.filterrific_find(@filterrific).
+                page(params[:page]).with_search(@search_term)
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
+  def get_term
+    request.referer.split("=").last.tr("+", " ").strip
   end
 end

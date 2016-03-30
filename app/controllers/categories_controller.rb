@@ -2,24 +2,10 @@ class CategoriesController < ApplicationController
   include FilterrificInitializeConcern
 
   DEFAULT_LIMIT = 16
-  # def index
-  #   all_products = Product.all
-  #   paginate_products all_products
-  #   @subcategories = Subcategory.get_unique
-  # end
 
   def index
     @subcategories = Subcategory.get_unique
     filterrific_initialize
-    # @filterrific = initialize_filterrific(
-    #   Product,
-    #   params[:filterrific]
-    # ) or return
-    # @products = @filterrific.find.page(params[:page])
-    # respond_to do |format|
-    #   format.html
-    #   format.js
-    # end
   end
 
   def show

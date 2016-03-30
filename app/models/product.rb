@@ -4,8 +4,8 @@ class Product < ActiveRecord::Base
       :with_size,
       :with_low_price,
       :with_high_price,
+      :with_subcategory,
       :with_category,
-      :with_brand,
     ]
   )
 
@@ -32,24 +32,27 @@ class Product < ActiveRecord::Base
   }
   scope :with_high_price, lambda { |high_price|
     where("price < ?", high_price)
-    # byebug
   }
   scope :with_size, lambda { |size|
     where(size: [*size])
   }
-  # With category is actually filtering by the product's subcategory
-  scope :with_category, lambda { |subcategory|
+  scope :with_subcategory, lambda { |subcategory|
     Product.includes(:subcategory).joins(:subcategory).where(
       "subcategories.name  = ?", subcategory
     )
   }
 
-  # With brand is actually filtering by the product's category
-  scope :with_brand, lambda { |category|
+  scope :with_category, lambda { |category|
     Product.includes(:category).joins(:category).where(
       "categories.name = ?", category
     )
   }
+
+  scope :with_search, lambda { |term|
+    where("lower(name) like ? or brand like ?",
+          "%#{term.strip}%", "%#{term.strip}%")
+  }
+
   def self.search(term)
     where("lower(name) like ? or brand like ?", "%#{term}%", "%#{term}%")
   end

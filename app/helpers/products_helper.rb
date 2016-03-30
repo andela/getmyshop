@@ -12,4 +12,9 @@ module ProductsHelper
   def wishlist_present
     Wishlist.exists?(product_id: @product.id, user_id: current_user.id)
   end
+
+  def get_rating(product)
+    total = product.reviews.inject(0) { |sum, review| sum + review.rating }
+    total / product.reviews.count
+  end
 end

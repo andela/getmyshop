@@ -4,7 +4,7 @@ $(document).ready(function(){
 
     $(".expand-order").click(function(){
         var nextOrder = $(this).parents("div.order-group").
-          find("div.order-details");
+        find("div.order-details");
         if (nextOrder.css("display") == "none") {
             nextOrder.css("display", "block");
         } else if (nextOrder.css("display") == "block") {
@@ -19,68 +19,37 @@ $(document).ready(function(){
         function(){
             $(".user-profile").css("display", "none");
         }
-    );
+        );
 
     $(".close-review").click(
       function(){
         $(".review").css("display", "none");
         $("#review").closeModal();
-      }
+    }
     );
 
-    function setOneStar() {
-      $("#star1").addClass("selected-star");
-      $("#star2,#star3,#star4,#star5").removeClass("selected-star");
-      $("#my-rating").val(1);
+    function setStar(id) {
+        var rating = id.slice(-1);
+        var classToAdd = getStarSelectors(rating);
+
+        clearStars();
+        $(classToAdd).addClass("selected-star");
+        $("#my-rating").val(rating);
+  }
+
+  function getStarSelectors(rating) {
+        var stars = ["#star1","#star2","#star3","#star4","#star5"];
+        return stars.slice(0, rating).join(",");
+  }
+
+    function clearStars() {
+        var starSelectors = "#star1, #star2, #star3, #star4, #star5";
+        $(starSelectors).removeClass("selected-star");
     }
 
-    function setTwoStar() {
-      $("#star1,#star2").addClass("selected-star");
-      $("#star3,#star4,#star5").removeClass("selected-star");
-      $("#my-rating").val(2);
+    $(".star").click(function(){
+        var id = $(this).attr("id");
+        setStar(id);
     }
-
-    function setThreeStar() {
-      $("#star1,#star2,#star3").addClass("selected-star");
-      $("#star4,#star5").removeClass("selected-star");
-      $("#my-rating").val(3);
-    }
-
-    function setFourStar() {
-      $("#star1,#star2,#star3,#star4").addClass("selected-star");
-      $("#star5").removeClass("selected-star");
-      $("#my-rating").val(4);
-    }
-
-    function setFiveStar() {
-      $("#star1,#star2,#star3,#star4,#star5").addClass("selected-star");
-      $("#my-rating").val(5);
-    }
-
-
-
-    $("#star1").click(function(){
-         setOneStar();
-      }
-    );
-
-    $("#star2").click(function(){
-         setTwoStar();
-      }
-    );
-
-    $("#star3").click(function(){
-         setThreeStar();
-      }
-    );
-
-    $("#star4").click(function(){
-         setFourStar();
-      }
-    );
-
-    $("#star5").click(function(){
-         setFiveStar();
-      }
-    );
+);
 });

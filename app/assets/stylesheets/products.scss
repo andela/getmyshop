@@ -45,7 +45,6 @@
 }
 
 .counts {
-  color: $my-black;
   font-size: 1em;
   margin: 1.1em 0 0 1em;
 }
@@ -157,4 +156,8 @@ hr {
 .filled-in-star::before {
   content: "\2605";
   position: absolute;
+}
+
+.star-size {
+  font-size: 2em;
 }

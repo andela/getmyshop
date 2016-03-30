@@ -162,6 +162,10 @@
 }
 
 .selected-star {
+  color: transparent;
+}
+
+.selected-star::before {
   color: $gold;
   content: "\2605";
 }

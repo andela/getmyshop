@@ -30,46 +30,30 @@ $(document).ready(function(){
 
     function setOneStar() {
       $("#star1").addClass("selected-star");
-      $("#star2").removeClass("selected-star");
-      $("#star3").removeClass("selected-star");
-      $("#star4").removeClass("selected-star");
-      $("#star5").removeClass("selected-star");
+      $("#star2,#star3,#star4,#star5").removeClass("selected-star");
       $("#my-rating").val(1);
     }
 
     function setTwoStar() {
-      $("#star1").addClass("selected-star");
-      $("#star2").addClass("selected-star");
-      $("#star3").removeClass("selected-star");
-      $("#star4").removeClass("selected-star");
-      $("#star5").removeClass("selected-star");
+      $("#star1,#star2").addClass("selected-star");
+      $("#star3,#star4,#star5").removeClass("selected-star");
       $("#my-rating").val(2);
     }
 
     function setThreeStar() {
-      $("#star1").addClass("selected-star");
-      $("#star2").addClass("selected-star");
-      $("#star3").addClass("selected-star");
-      $("#star4").removeClass("selected-star");
-      $("#star5").removeClass("selected-star");
+      $("#star1,#star2,#star3").addClass("selected-star");
+      $("#star4,#star5").removeClass("selected-star");
       $("#my-rating").val(3);
     }
 
     function setFourStar() {
-      $("#star1").addClass("selected-star");
-      $("#star2").addClass("selected-star");
-      $("#star3").addClass("selected-star");
-      $("#star4").addClass("selected-star");
+      $("#star1,#star2,#star3,#star4").addClass("selected-star");
       $("#star5").removeClass("selected-star");
       $("#my-rating").val(4);
     }
 
     function setFiveStar() {
-      $("#star1").addClass("selected-star");
-      $("#star2").addClass("selected-star");
-      $("#star3").addClass("selected-star");
-      $("#star4").addClass("selected-star");
-      $("#star5").addClass("selected-star");
+      $("#star1,#star2,#star3,#star4,#star5").addClass("selected-star");
       $("#my-rating").val(5);
     }
 

@@ -28,10 +28,10 @@ class Product < ActiveRecord::Base
   validates :brand, presence: true
 
   scope :with_low_price, lambda { |low_price|
-    where("price >= ?", low_price)
+    where("price >= ?", low_price.to_i)
   }
   scope :with_high_price, lambda { |high_price|
-    where("price < ?", high_price)
+    where("price < ?", high_price.to_i)
   }
   scope :with_size, lambda { |size|
     where(size: [*size])

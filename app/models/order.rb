@@ -12,7 +12,7 @@ class Order < ActiveRecord::Base
       cmd: "_xclick",
       upload: 1,
       return: "#{ENV['app_host']}#{return_path}",
-      invoice: order_number,
+      invoice: id,
       amount: total_amount,
       item_name: "Receipt for Order #{order_number}",
       item_number: order_number,

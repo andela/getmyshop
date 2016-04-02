@@ -43,7 +43,7 @@ RSpec.describe Order, type: :model do
       expect(subject.paypal_url("/getmyshop")).to eql(
         "#{ENV['paypal_host']}/cgi-bin/webscr?amount=#{subject.total_amount}"\
         "&business=notify%40email.com&cmd=_xclick&invoice="\
-        "#{subject.order_number}&item_name=Receipt+for+Order+"\
+        "#{subject.id}&item_name=Receipt+for+Order+"\
         "#{subject.order_number}&item_number=#{subject.order_number}"\
         "&notify_url=http%3A%2F%2Fsample.com%2Fpaypal_hook&"\
         "return=http%3A%2F%2Fsample.com%2Fgetmyshop&upload=1"

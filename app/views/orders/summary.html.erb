@@ -6,34 +6,34 @@
 
     <div class="row">
       <div class="col l6">
-        <span class="bold">Name: </span> <%= @address.name %>
+        <span class="bold">Name: </span> <%= @user_address.name %>
       </div>
       <div class="col l6">
-        <span class="bold">Email: </span> <%= @address.email %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col l6">
-        <span class="bold">Gender: </span> <%= @address.gender %>
-      </div>
-      <div class="col l6">
-        <span class="bold">Phone: </span> <%= @address.phone %>
+        <span class="bold">Email: </span> <%= @user_address.email %>
       </div>
     </div>
     <div class="row">
       <div class="col l6">
-        <span class="bold">Address: </span> <%= @address.address %>
+        <span class="bold">Gender: </span> <%= @user_address.gender %>
       </div>
       <div class="col l6">
-        <span class="bold">Landmark: </span> <%= @address.landmark %>
+        <span class="bold">Phone: </span> <%= @user_address.phone %>
       </div>
     </div>
     <div class="row">
       <div class="col l6">
-        <span class="bold">City, State: </span> <%= (@address.city) +", "+ (@address.state) %>
+        <span class="bold">Address: </span> <%= @user_address.address %>
       </div>
       <div class="col l6">
-        <span class="bold">Country: </span> <%= @address.country %>
+        <span class="bold">Landmark: </span> <%= @user_address.landmark %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col l6">
+        <span class="bold">City, State: </span> <%= (@user_address.city) +", "+ (@user_address.state) %>
+      </div>
+      <div class="col l6">
+        <span class="bold">Country: </span> <%= @user_address.country %>
       </div>
     </div>
     <div class="row">

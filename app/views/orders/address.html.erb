@@ -1,6 +1,15 @@
 <%= render partial: 'header' %>
 
 <div class="container row">
+  <div class="col l4">
+      <div class="all-addresses">
+        <% @user_addresses.each do |address| %>
+        <div class="user-address row">
+         <span><%= address.state %></span>
+       </div>
+       <% end %>
+     </div>
+   </div>
   <div class="col l8">
     <div class="order-forms-container">
       <h4>
@@ -19,6 +28,7 @@
           <%= email_field_tag :email, current_user.email, class: "validate", required: :required,  pattern: ".{5,150}", title: "Valid email, 5 - 150 characters" %>
         </div>
       </div>
+
       <div class="row">
         <div class="col l6">
           <%= label_tag :address, "Address", class: "bold black-text" %>
@@ -29,6 +39,7 @@
           <%= text_field_tag :landmark %>
         </div>
       </div>
+
       <div class="row">
         <div class="col l6">
           <%= label_tag :gender, "Gender", class: "bold black-text"%>
@@ -43,6 +54,7 @@
           <%= text_field_tag :phone, "", class: "validate", required: :required, pattern: ".{3,15}", title: "3 - 15 characters" %>
         </div>
       </div>
+
       <div class="row">
         <div class="col l4">
           <%= label_tag :city, "City", class: "bold black-text" %>
@@ -57,6 +69,7 @@
           <%= text_field_tag :country, "", class: "validate", required: :required,  pattern: ".{2,100}", title: "2 - 100 characters" %>
         </div>
       </div>
+
       <div class="row">
         <div class="col m12">
           <%= submit_tag "Save and Continue", class: "btn right" %>
@@ -65,14 +78,5 @@
       <% end %>
     </div>
   </div>
-  <div class="col l4">
-    <div>
-      <% @user_addresses.each do |address| %>
-      <div>
-       <span><%= address.state %></span>
-     </div>
-     <% end %>
-   </div>
- </div>
 </div>
 <%= render partial: 'footer' %>

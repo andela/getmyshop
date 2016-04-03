@@ -50,6 +50,11 @@ $(document).ready(function(){
     $(".star").click(function(){
         var id = $(this).attr("id");
         setStar(id);
-    }
-);
+    });
+
+    $("#opener").click(
+        function(){
+            $("#new-address").openModal();
+        }
+    );
 });

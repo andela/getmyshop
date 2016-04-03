@@ -4,15 +4,19 @@
   </h5>
 
   <%= form_tag({controller: "orders", action: "summary"}, method: "post") do %>
-  <%= text_field_tag :user_id, current_user.id %>
+  <%= hidden_field_tag :user_id, current_user.id %>
   <div class="row">
-    <div class="col l6">
+    <div class="col l4">
       <%= label_tag :name, "name", class: "bold black-text" %>
       <%= text_field_tag :name, "", class: "validate", required: :required,  pattern: ".{3,100}", title: "3 to 100 characters required" %>
     </div>
-    <div class="col l6">
+    <div class="col l4">
       <%= label_tag :email, "Email", class: "bold black-text" %>
       <%= email_field_tag :email, current_user.email, class: "validate", required: :required,  pattern: ".{5,150}", title: "Valid email, 5 - 150 characters" %>
+    </div>
+    <div class="col l4">
+      <%= label_tag :phone, "Phone", class: "bold black-text" %>
+      <%= text_field_tag :phone, "", class: "validate", required: :required, pattern: ".{3,15}", title: "3 - 15 characters" %>
     </div>
   </div>
 
@@ -24,21 +28,6 @@
     <div class="col l6">
       <%= label_tag :landmark, "Landmark", class: "bold black-text" %>
       <%= text_field_tag :landmark %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col l6">
-      <%= label_tag :gender, "Gender", class: "bold black-text"%>
-      <%= select_tag(:gender, class: "browser-default") do %>
-      <% ['male', 'female'].each do |c| -%>
-      <%= content_tag(:option, c, value: c) %>
-      <% end %>
-      <% end %>
-    </div>
-    <div class="col l6">
-      <%= label_tag :phone, "Phone", class: "bold black-text" %>
-      <%= text_field_tag :phone, "", class: "validate", required: :required, pattern: ".{3,15}", title: "3 - 15 characters" %>
     </div>
   </div>
 

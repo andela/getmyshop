@@ -188,13 +188,32 @@
 }
 
 .user-address {
-  border: 1px solid black;
+  border: 3px solid #efefef;
+  height: auto;
+  margin-top: 5em;
 }
 
 .all-addresses {
-  border: 3px solid #efefef;
+  border: 1px solid black;
+  width: 80% !important;
 }
 
 .full-submit {
   width: 100%;
+}
+
+.address-name {
+  border-bottom: 1px solid #e8e8e8;
+  font-style: 'ProximaNova',sans-serif,Arial !important;
+  font-weight: bold;
+  padding: 0.8em;
+  text-transform: uppercase;
+}
+
+.address-display {
+    border-bottom: 1px dotted #e8e8e8;
+    font-size: 1em;
+    font-style: 'ProximaNova',sans-serif,Arial !important;
+    padding: 0.8em;
+
 }

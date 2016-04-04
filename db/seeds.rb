@@ -1,3 +1,4 @@
+Order.destroy_all
 Wishlist.destroy_all
 Review.destroy_all
 ProductImageLink.destroy_all

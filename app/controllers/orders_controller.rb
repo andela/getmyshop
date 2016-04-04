@@ -6,14 +6,6 @@ class OrdersController < ApplicationController
   def address
     session[current_user.id] ||= {}
     session[current_user.id]["order"] = order_params
-
-
-    # @address = current_user.addresses.first_or_initialize(
-    #   name: current_user.first_name + " " + current_user.last_name,
-    #   email: current_user.email,
-    #   phone: current_user.phone
-    # )
-
     @user_addresses = current_user.addresses
   end
 
@@ -30,16 +22,6 @@ class OrdersController < ApplicationController
     @user_address = new_address_or_old(params[:address_id])
     session[current_user.id]["address"] = @user_address
     @order = Order.new(session[current_user.id]["order"])
-
-    # @address = current_user.addresses.first_or_initialize
-    # @address.assign_attributes(address_params)
-    # if @address.valid?
-    #   session[current_user.id]["address"] = @address
-    #   @order = Order.new(session[current_user.id]["order"])
-    #   render :summary
-    # else
-    #   render :address
-    # end
   end
 
   def payment
@@ -79,7 +61,7 @@ class OrdersController < ApplicationController
 
     order = current_user.orders.create(
       session[current_user.id]["order"].merge(
-        address_id: my_address.id,
+        address_id: my_address["id"],
         payment_method: params[:type],
         total_amount: cookies[:total_amount]
       )

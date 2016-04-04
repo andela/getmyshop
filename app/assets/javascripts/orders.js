@@ -25,6 +25,7 @@ $(document).ready(function(){
       function(){
         $(".review").css("display", "none");
         $("#review").closeModal();
+        $("#new-address").closeModal();
     }
     );
 

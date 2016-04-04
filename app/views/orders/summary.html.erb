@@ -14,26 +14,18 @@
     </div>
     <div class="row">
       <div class="col l6">
-        <span class="bold">Gender: </span> <%= @user_address.gender %>
+        <span class="bold">Phone: </span> <%= @user_address.phone %>
       </div>
       <div class="col l6">
-        <span class="bold">Phone: </span> <%= @user_address.phone %>
+        <span class="bold">Address: </span> <%= @user_address.address + ", " + @user_address.city %>
       </div>
     </div>
     <div class="row">
-      <div class="col l6">
-        <span class="bold">Address: </span> <%= @user_address.address %>
-      </div>
       <div class="col l6">
         <span class="bold">Landmark: </span> <%= @user_address.landmark %>
       </div>
-    </div>
-    <div class="row">
       <div class="col l6">
-        <span class="bold">City, State: </span> <%= (@user_address.city) +", "+ (@user_address.state) %>
-      </div>
-      <div class="col l6">
-        <span class="bold">Country: </span> <%= @user_address.country %>
+        <span class="bold">State: </span> <%= @user_address.state + ", " + @user_address.country %>
       </div>
     </div>
     <div class="row">

@@ -79,6 +79,14 @@ ActiveRecord::Schema.define(version: 20160330155111) do
   add_index "orders", ["order_number"], name: "index_orders_on_order_number"
   add_index "orders", ["user_id"], name: "index_orders_on_user_id"
 
+  create_table "passwords", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "my_id"
+    t.string   "email"
+    t.string   "code"
+  end
+
   create_table "product_image_links", force: :cascade do |t|
     t.string   "link_name"
     t.integer  "product_id"

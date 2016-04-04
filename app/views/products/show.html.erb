@@ -10,9 +10,9 @@
           <div class="slider">
             <ul class="slides">
               <% @product.product_image_links.each do |link| %>
-                <li class="slide-item">
-                  <%= image_tag link.link_name %>
-                </li>
+              <li class="slide-item">
+                <%= image_tag link.link_name %>
+              </li>
               <% end %>
             </ul>
           </div>
@@ -47,41 +47,41 @@
       </div>
 
       <div class="rating-counts">
-        <div class="rating left">
-          <span class="star-character">&#9734;</span>
-          <span class="star-character">&#9734;</span>
-          <span class="star-character">&#9734;</span>
-          <span class="star-character">&#9734;</span>
-          <span class="star-character">&#9734;</span>
+        <div class="left">
+          <a href="#!" class="secondary-content">
+            <% get_rating(@product).times  do %>
+            <span class="filled-in-star star-size">&#9734;</span>
+            <% end %>
+            <% (5 - get_rating(@product)).times do %>
+            <span class="star-size">&#9734;</span>
+            <% end %>
+          </a>
         </div>
-        <div class="counts left">
-          <span>4 reviews</span>
-
-        </div>
+      <div class="counts left"><%= @product.reviews.count %> reviews</div>
       </div>
       <input  type=hidden>
       <%= form_tag(cart_path, method: "post", id: "cart_form-", remote: true) do %>
-          <%= hidden_field_tag(:image, @product.product_image_links.first.link_name)  %>
-          <%= hidden_field_tag(:product_id, @product.id) %>
-          <%= hidden_field_tag(:price, @product.price) %>
-          <%= hidden_field_tag(:name, @product.name) %>
-          <%= hidden_field_tag(:brand, @product.brand) %>
-          <%= hidden_field_tag(:code, @product.code) %>
-        <div class="buy-now">
-          <div class="row">
-            <div class="col s1 bold">Qty: </div>
-            <div class="col s2">
-              <%= number_field_tag :quantity, 1, in: 1..@product.quantity, step: 1 %>
-            </div>
-            <div class="col s4"><%= submit_tag "ADD TO CART", class: "waves-effect btn products-input", id: "submit"%></div>
-            <%= wishlist_add_link %>
-            </div>
+      <%= hidden_field_tag(:image, @product.product_image_links.first.link_name)  %>
+      <%= hidden_field_tag(:product_id, @product.id) %>
+      <%= hidden_field_tag(:price, @product.price) %>
+      <%= hidden_field_tag(:name, @product.name) %>
+      <%= hidden_field_tag(:brand, @product.brand) %>
+      <%= hidden_field_tag(:code, @product.code) %>
+      <div class="buy-now">
+        <div class="row">
+          <div class="col s1 bold">Qty: </div>
+          <div class="col s2">
+            <%= number_field_tag :quantity, 1, in: 1..@product.quantity, step: 1 %>
+          </div>
+          <div class="col s4"><%= submit_tag "ADD TO CART", class: "waves-effect btn products-input", id: "submit"%></div>
+          <%= wishlist_add_link %>
         </div>
+      </div>
 
-        <%= render "product_features" %>
+      <%= render "product_features" %>
 
       <% end %>
-      
+
     </div>
 
   </div>

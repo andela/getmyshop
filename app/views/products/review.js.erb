@@ -1,0 +1,28 @@
+function displayReview() {
+  $('#review').openModal();
+  clearReviewFields();
+  restoreStars();
+  $(".image0").attr( "src" , "<%= image_path @product_to_rate.product_image_links.first.link_name, :id => 'image0' %>" );
+  $("#product-name").text("<%= @product_to_rate.name %>");
+  $(".product-id").val("<%= @product_to_rate.id %>");
+
+};
+
+function clearReviewFields() {
+  $("#product-name").text("");
+  $(".product-id").val("");
+  $("#title-field").val("");
+  $("#comment-field").val("");
+  $("#my-rating").val("");
+};
+
+function restoreStars() {
+  $("#star1").removeClass("selected-star");
+  $("#star2").removeClass("selected-star");
+  $("#star3").removeClass("selected-star");
+  $("#star4").removeClass("selected-star");
+  $("#star5").removeClass("selected-star");
+};
+displayReview();
+
+

@@ -98,3 +98,91 @@
   color: $my-green;
   font-weight: normal;
 }
+
+.close-review {
+  color: $my-black;
+  font-size: 1em;
+  left: 97%;
+  position: absolute;
+  top: 0%;
+}
+
+.review-image {
+  height: 10em;
+  width: 10em;
+}
+
+.review-image-div {
+  height: 10em;
+  padding-left: 1em;
+  width: 10em;
+}
+
+.product-to-rate {
+  font-size: 1em;
+  padding-left: 1em;
+}
+
+.rating {
+  direction: rtl;
+  text-align: center;
+  unicode-bidi: bidi-override;
+}
+
+.star {
+  display: inline-block;
+  font-size: 0.5em;
+  position: relative;
+  width: 0.7em;
+}
+
+.rating > span:hover,
+.rating > span:hover ~ span {
+  color: transparent;
+}
+
+.rating > span:hover::before,
+.rating > span:hover ~ span::before {
+  color: $gold;
+  content: "\2605";
+  left: 0;
+  position: absolute;
+  width: 0.7em;
+}
+
+.rating-label {
+  color: $grey-label;
+  font-family: $rating-label;
+  font-size: 0.7em;
+  padding-left: 2em;
+}
+
+.review-submit {
+  width: 100%;
+}
+
+.selected-star {
+  color: transparent;
+}
+
+.selected-star::before {
+  color: $gold;
+  content: "\2605";
+}
+
+.my-textarea {
+  padding: 0.8em 0 !important;
+}
+
+.review-button {
+  font-size: 0.7em;
+  height: 3em;
+  line-height: 3.2em;
+  padding-left: 2.2em;
+  width: 8em;
+}
+
+.review-button:hover {
+  color: $my-white;
+}
+

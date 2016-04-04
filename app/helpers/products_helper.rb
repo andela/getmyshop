@@ -18,7 +18,7 @@ module ProductsHelper
     total / product.reviews.count
   end
 
-  def filter_brands
+  def filter_categories
     brands = []
     Category.all.each_with_index do |brand, index|
       brands[index] = []
@@ -27,7 +27,7 @@ module ProductsHelper
     brands
   end
 
-  def filter_categories(subcategories)
+  def filter_subcategories(subcategories)
     categories = []
     subcategories.each_with_index do |subcategory, index|
       categories[index] = []

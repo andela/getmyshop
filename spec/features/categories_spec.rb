@@ -18,33 +18,41 @@ RSpec.describe "Category Page Test", type: :feature do
     end
   end
 
-  context "Filtering Widget" do
-    it "can filter by price" do
-      visit "categories"
-      fill_in("lower-value", with: 900)
-      expect(page).to have_content(product.name)
+  describe "Filtering Widget" do
+    context "filtering by low price" do
+      it "can filter by price" do
+        visit "categories"
+        fill_in("lower-value", with: 900)
+        expect(page).to have_content(product.name)
+      end
     end
 
-    it "can filter by high price" do
-      product_two = Product.last
-      visit "categories"
-      fill_in("lower-value", with: 1000)
-      fill_in("upper-value", with: 5000)
-      expect(page).to have_content(product_two.name)
+    context "filtering by high price" do
+      it "can filter by high price" do
+        product_two = Product.last
+        visit "categories"
+        fill_in("lower-value", with: 1000)
+        fill_in("upper-value", with: 5000)
+        expect(page).to have_content(product_two.name)
+      end
     end
 
-    it "can filter by Subcatgeory" do
-      visit "categories"
-      select product.subcategory.name, from: "filterrific_with_subcategory"
-      expect(page).to have_css("#filterrific_results", visible: true)
-      expect(page).to have_content(product.name)
+    context "filtering by subcategories" do
+      it "can filter by Subcategory" do
+        visit "categories"
+        select product.subcategory.name, from: "filterrific_with_subcategory"
+        expect(page).to have_css("#filterrific_results", visible: true)
+        expect(page).to have_content(product.name)
+      end
     end
 
-    it "can filter by category" do
-      visit "categories"
-      select product.category.name, from: "filterrific_with_category"
-      expect(page).to have_css("#filterrific_results", visible: true)
-      expect(page).to have_content(product.name)
+    context "filtering by categories" do
+      it "can filter by category" do
+        visit "categories"
+        select product.category.name, from: "filterrific_with_category"
+        expect(page).to have_css("#filterrific_results", visible: true)
+        expect(page).to have_content(product.name)
+      end
     end
   end
 end

@@ -42,17 +42,18 @@ describe Product, type: :model do
   describe "scopes used by filterrific" do
     before(:all) do
       create(:product, price: 1000)
-      create(:product, price: 5000)
+      create(:product, price: 4000)
+      create(:product, price: 6000)
     end
 
     let(:last_product) { Product.last }
 
-    it "has different filters" do
-      expect(Product.with_low_price(1000).count).to eql(2)
+    it "can filter by high price" do
+      expect(Product.with_low_price(2000).count).to eql(2)
     end
 
-    it "respnds to high price" do
-      expect(Product.with_high_price(5000).count).to eql(1)
+    it "can filter by low price" do
+      expect(Product.with_high_price(5000).count).to eql(2)
     end
 
     it "filters by subcategory" do

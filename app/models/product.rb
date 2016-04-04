@@ -31,7 +31,7 @@ class Product < ActiveRecord::Base
     where("price >= ?", low_price)
   }
   scope :with_high_price, lambda { |high_price|
-    where("price < ?", high_price)
+    where("price <= ?", high_price)
   }
   scope :with_size, lambda { |size|
     where(size: [*size])

@@ -26,11 +26,11 @@ gem "coveralls", require: false
 
 group :development, :test do
   gem "pry"
+  gem "byebug"
   gem "capybara"
   gem "simplecov"
   gem "database_cleaner"
   gem "selenium-webdriver"
-  gem "byebug"
   gem "rubocop", require: false
   gem "scss_lint", require: false
   gem "sqlite3"

@@ -5,7 +5,7 @@ module FilterrificInitializeConcern
     (@filterrific = initialize_filterrific(
       Product,
       params[:filterrific],
-      :persistence_id => false
+      persistence_id: false
     )) || return
     @products = @filterrific.find.page(params[:page])
     respond_to do |format|

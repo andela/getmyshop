@@ -1,7 +1,6 @@
 require "rails_helper"
 
 describe Product, type: :model do
-
   before(:all) { DatabaseCleaner.clean_with(:truncation) }
   after(:all) { DatabaseCleaner.clean_with(:truncation) }
 

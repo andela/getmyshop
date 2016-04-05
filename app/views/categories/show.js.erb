@@ -1,0 +1,4 @@
+<% js = escape_javascript(
+  render(partial: 'categories/paginate_products' )
+) %>
+$("#filterrific_results").html("<%= js %>");

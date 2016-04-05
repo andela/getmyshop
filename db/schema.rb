@@ -10,7 +10,8 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended that you check this file into your version control system.
-ActiveRecord::Schema.define(version: 20160330060957) do
+
+ActiveRecord::Schema.define(version: 20160330155111) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id"
@@ -78,14 +79,6 @@ ActiveRecord::Schema.define(version: 20160330060957) do
   add_index "orders", ["order_number"], name: "index_orders_on_order_number"
   add_index "orders", ["user_id"], name: "index_orders_on_user_id"
 
-  create_table "passwords", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "my_id"
-    t.string   "email"
-    t.string   "code"
-  end
-
   create_table "product_image_links", force: :cascade do |t|
     t.string   "link_name"
     t.integer  "product_id"
@@ -97,7 +90,6 @@ ActiveRecord::Schema.define(version: 20160330060957) do
 
   create_table "products", force: :cascade do |t|
     t.string   "name"
-    t.string   "price"
     t.text     "description"
     t.integer  "quantity"
     t.string   "code"
@@ -106,6 +98,7 @@ ActiveRecord::Schema.define(version: 20160330060957) do
     t.string   "brand"
     t.string   "size"
     t.integer  "subcategory_id"
+    t.integer  "price"
   end
 
   add_index "products", ["subcategory_id"], name: "index_products_on_subcategory_id"

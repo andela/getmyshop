@@ -20,16 +20,14 @@
       </div>
     </div>
 
+    <%= render partial: 'application/filter_widget' %>
     <div class="row">
       <%= show_no_result %>
-      <div class="digg-pagination right"><%= will_paginate @search_products %></div>
     </div>
-    <div class= "row category-products">
-      <%= render partial: "landing/product", collection: @search_products %>
+    <div class= "row category-products" id="filterrific_results">
+      <%= render partial: "landing/product", collection: @products %>
     </div>
-    <div class="row">
-      <div class="digg-pagination right"><%= will_paginate @search_products %></div>
-    </div>
+
   </div>
 </div>
 <div class= "row-break"></div>

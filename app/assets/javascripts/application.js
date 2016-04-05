@@ -18,3 +18,4 @@
 //= require materialize
 //= require_tree .
 //= require materialize-sprockets
+//= require filterrific/filterrific-jquery

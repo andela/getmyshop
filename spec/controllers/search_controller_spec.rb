@@ -11,24 +11,24 @@ RSpec.describe SearchController, type: :controller do
     context "when there are no results" do
       it "returns no results" do
         post :result, term: "sname"
-        expect(assigns(:search_products).length).to be 0
+        expect(assigns(:products).length).to be 0
       end
     end
 
     context "when there are results" do
       it "returns 2 products" do
         post :result, term: "test"
-        expect(assigns(:search_products).length).to be 2
+        expect(assigns(:products).length).to be 2
       end
 
       it "returns one product" do
         post :result, term: "testproduct1"
-        expect(assigns(:search_products).length).to be 1
+        expect(assigns(:products).length).to be 1
       end
 
       it "returns one product" do
         post :result, term: "testproduct2"
-        expect(assigns(:search_products).length).to be 1
+        expect(assigns(:products).length).to be 1
       end
 
       context "when searching by product brand" do
@@ -36,8 +36,8 @@ RSpec.describe SearchController, type: :controller do
         before(:each) { post :result, term: brand }
         subject { response }
 
-        it { expect(assigns(:search_products)).not_to be_nil }
-        it { expect(assigns(:search_products).count).to be >= 1 }
+        it { expect(assigns(:products)).not_to be_nil }
+        it { expect(assigns(:products).count).to be >= 1 }
 
         it { is_expected.to render_template(:result) }
         it { is_expected.to have_http_status(200) }

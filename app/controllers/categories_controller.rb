@@ -1,9 +1,11 @@
 class CategoriesController < ApplicationController
+  include FilterrificInitializeConcern
+
   DEFAULT_LIMIT = 16
+
   def index
-    all_products = Product.all
-    paginate_products all_products
     @subcategories = Subcategory.get_unique
+    filterrific_initialize
   end
 
   def show
@@ -11,6 +13,7 @@ class CategoriesController < ApplicationController
     category_products = category.products
     paginate_products category_products
     @subcategories = Subcategory.get_unique
+    filterrific_initialize
   end
 
   def category

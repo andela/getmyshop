@@ -16,7 +16,6 @@ RSpec.describe "Checkout Feature", type: :feature do
   before(:each) do
     allow_any_instance_of(ApplicationController).
       to receive(:current_user).and_return(@user)
-    page.driver.browser.manage.window.resize_to(1280, 600)
   end
 
   context "using an old address" do

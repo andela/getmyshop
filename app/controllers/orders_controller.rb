@@ -70,7 +70,7 @@ class OrdersController < ApplicationController
   end
 
   def confirmation
-    order = Order.last
+    order = current_user.orders.last
     OrderMailer.confirmation_email(
       order,
       "Your new Order #{order.order_number}"

@@ -7,6 +7,7 @@ require "support/form_helpers"
 require "support/login_helper"
 
 require "omniauth"
+require "webmock/rspec"
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|

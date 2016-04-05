@@ -1,8 +1,12 @@
 require "rails_helper"
 
 describe Product, type: :model do
+
+  before(:all) { DatabaseCleaner.clean_with(:truncation) }
+  after(:all) { DatabaseCleaner.clean_with(:truncation) }
+
   context "when product is initialized" do
-    let(:product) { build(:product) }
+    let(:product) { build(:product, price: 1000) }
 
     it "is valid when name is lesser than 60 characters" do
       expect(product).to be_valid
@@ -53,15 +57,15 @@ describe Product, type: :model do
     end
 
     it "can filter by low price" do
-      expect(Product.with_high_price(5000).count).to eql(2)
+      expect(Product.with_high_price(4000).count).to eql(2)
     end
 
-    it "filters by subcategory" do
+    it "can filter by subcategory" do
       expect(Product.with_subcategory(last_product.subcategory.name).first
             ).to eq(last_product)
     end
 
-    it "filters by category" do
+    it "can filter by category" do
       expect(Product.with_category(last_product.category.name
                                   ).first).to eq(last_product)
     end

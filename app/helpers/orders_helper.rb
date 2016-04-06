@@ -18,6 +18,21 @@ module OrdersHelper
       render partial: "old_addresses"
     else
       render partial: "no_address"
+  end
+end
+
+  def tracking(t)
+    time = Time.now.to_i
+    if time.between?(t.to_i, (t + 4.hour).to_i)
+      "Order Created"
+    elsif time.between?((t + 4.hour).to_i, (t + 8.hour).to_i)
+        "Pending"
+    elsif time.between?((t + 8.hour).to_i, (t + 12.hour).to_i)
+      "Processing"
+    elsif time.between?((t + 12.hour).to_i, (t + 16.hour).to_i)
+      "Completed"
+    else
+      "Delivered"
     end
   end
 end

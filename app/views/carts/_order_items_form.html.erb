@@ -33,8 +33,8 @@
           <%= link_to "Update", "#", class: "update-quantity-link", "data-product-id" => product.id %>
         </div>
         <div class="col l2 center-align">&#8358;<%= product.price.to_i * i.object.quantity.to_i %></div>
-        <%= link_to delete_order_item_path(product.id), remote: true, title: "Delete", class: "row red-text col l1 delete-from-cart" do %>
-          <i class="small material-icons col l1">delete</i>
+        <%= link_to delete_order_item_path(product.id), remote: true, title: "Delete", class: "row red-color-text col l1 delete-from-cart" do %>
+          <i class="small material-icons col l1 ">delete</i>
         <% end %>
       </div>
     </div>
@@ -51,8 +51,7 @@
     </div>
   </div>
   <div class="clearfix order-checkout-btn-div">
-    <%= link_to "EMPTY CART", empty_cart_path, class: "btn orange-text text-darken-4 empty-cart-btn left", remote: true %>
+    <%= link_to "EMPTY CART", empty_cart_path, class: "btn text-darken-4 empty-cart-btn left", remote: true %>
     <%= f.submit "Checkout", class: "btn gen-green-background right" %>
   </div>
 <% end %>
-̵

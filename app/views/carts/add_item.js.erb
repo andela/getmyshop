@@ -11,7 +11,7 @@ cartHtml += "<div class='col l1' id='cart-qty'><%= @item["quantity"] %></div>";
 cartHtml += "<div class='col l3' id='cart-price'><%= @item["price"] %></div>";
 cartHtml += "<div class='col l1 del'>";
 cartHtml += "<a href='<%= delete_order_item_path(@item["product_id"].to_i) %>' data-remote='true'>";
-cartHtml += "<i class='fa fa-times red-text'></i>";
+cartHtml += "<i class='fa fa-times red-color-text'></i>";
 cartHtml += "</a></div></div>";
 
 $("div#updated_product").find("div.order_item_list_entry_<%= @item["product_id"] %>").remove();

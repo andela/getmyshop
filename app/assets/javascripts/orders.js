@@ -25,6 +25,7 @@ $(document).ready(function(){
       function(){
         $(".review").css("display", "none");
         $("#review").closeModal();
+        $("#new-address").closeModal();
     }
     );
 
@@ -50,6 +51,11 @@ $(document).ready(function(){
     $(".star").click(function(){
         var id = $(this).attr("id");
         setStar(id);
-    }
-);
+    });
+
+    $("#opener").click(
+        function(){
+            $("#new-address").openModal();
+        }
+    );
 });

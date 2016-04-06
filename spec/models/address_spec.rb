@@ -15,14 +15,7 @@ RSpec.describe Address, type: :model do
 
   it { should validate_presence_of :state }
 
-  it { should validate_presence_of :email }
-
   it { should have_many(:orders) }
 
   it { should belong_to(:user) }
-
-  it "invalid if email format is wrong" do
-    subject.email = "email.email.com"
-    expect(subject).to be_invalid
-  end
 end

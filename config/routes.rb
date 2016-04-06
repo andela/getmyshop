@@ -48,7 +48,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :orders do
+  resources :orders, only: [] do
     collection do
       post "/address", to: "orders#address", as: :address
       post "/summary", to: "orders#summary", as: :summary

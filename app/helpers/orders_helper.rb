@@ -12,4 +12,12 @@ module OrdersHelper
       render partial: "no_orders_display"
     end
   end
+
+  def check_address_exist
+    if @user_addresses.any?
+      render partial: "old_addresses"
+    else
+      render partial: "no_address"
+    end
+  end
 end

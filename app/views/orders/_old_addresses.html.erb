@@ -1,0 +1,38 @@
+<div align="center">
+  <h5> Select an existing delivery address </h5>
+</div>
+<div class="container row all-addresses">
+  <% @user_addresses.each do |address| %>
+  <%= form_tag({controller: "orders", action: "summary"}, method: "post") do %>
+  <div class="col l4">
+    <div class="user-address">
+
+      <div class="address-name">
+        <%= address.name %>
+      </div>
+
+      <div class="address-display">
+        <%= address.address %>, <%= address.city %><br> near <%= address.landmark %>
+      </div>
+
+      <div class="address-display">
+          <%= address.phone %>
+      </div>
+
+      <div class="address-display">
+        <%= address.state %>, <%= address.country %>
+      </div>
+      <div class="address-display">
+        <%= hidden_field_tag :address_id, address.id %>
+        <%= submit_tag "Use this address", class: "btn btn-flat full-submit" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+<div class="container">
+ <div align="center">
+  <h5> OR </h5>
+ </div>

@@ -6,24 +6,22 @@ class OrdersController < ApplicationController
   def address
     session[current_user.id] ||= {}
     session[current_user.id]["order"] = order_params
+    @user_addresses = current_user.addresses
+  end
 
-    @address = current_user.addresses.first_or_initialize(
-      name: current_user.first_name + " " + current_user.last_name,
-      email: current_user.email,
-      phone: current_user.phone
-    )
+  def get_or_create_address(address_id)
+    if address_id
+      Address.find_by(id: address_id)
+    else
+      address = Address.create(address_params)
+      address
+    end
   end
 
   def summary
-    @address = current_user.addresses.first_or_initialize
-    @address.assign_attributes(address_params)
-    if @address.valid?
-      session[current_user.id]["address"] = @address
-      @order = Order.new(session[current_user.id]["order"])
-      render :summary
-    else
-      render :address
-    end
+    @user_address = get_or_create_address(params[:address_id])
+    session[current_user.id]["address"] = @user_address
+    @order = Order.new(session[current_user.id]["order"])
   end
 
   def payment
@@ -59,18 +57,16 @@ class OrdersController < ApplicationController
   end
 
   def store_order_information
-    address_params = session[current_user.id]["address"]
-    address = current_user.addresses.first_or_initialize
-    address.update_attributes(address_params)
+    my_address = session[current_user.id]["address"]
+
     order = current_user.orders.create(
       session[current_user.id]["order"].merge(
-        address_id: address.id,
+        address_id: my_address["id"],
         payment_method: params[:type],
         total_amount: cookies[:total_amount]
       )
     )
-
-    [address, order]
+    [my_address, order]
   end
 
   def confirmation
@@ -84,7 +80,7 @@ class OrdersController < ApplicationController
   end
 
   def address_params
-    params.require(:address).permit(
+    params.permit(
       :id,
       :user_id,
       :name,

@@ -1,22 +1,10 @@
 require "rails_helper"
 
 RSpec.describe "Ordering page", type: :feature do
-  context "when order is made" do
-    let(:user) { create :regular_user }
-    let(:order) { create :order }
-    let(:address) { build :address }
-
-    it "should sign user in" do
-      signin_helper(user.email, user.password)
-      order.update_attributes(user: user, address: address)
-      click_link "Past Orders"
-      expect(page). to have_content "Details"
-    end
-  end
+  after(:all) { DatabaseCleaner.clean_with(:truncation) }
 
   context "when no order is made" do
     let(:user) { create :regular_user }
-
     it "should sign user in" do
       signin_helper(user.email, user.password)
 

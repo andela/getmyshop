@@ -18,23 +18,33 @@ RSpec.describe "Checkout Feature", type: :feature do
       to receive(:current_user).and_return(@user)
   end
 
-  it "adds products successfully", js: true do
-    add_products_and_checkout
-    fill_in_address
-    click_button "Save and Continue"
-    click_button "Proceed to Payment"
-    click_button "Complete Order"
-    expect(page).to have_content("Thank you!")
+  context "using an old address" do
+    before(:all) do
+      create(:address, user: @user)
+    end
+
+    it "checks out with paypal successfully", js: true do
+      page.driver.browser.manage.window.resize_to(1280, 600)
+      add_products_and_checkout
+
+      click_button "Use this address"
+      click_button "Proceed to Payment"
+      click_on "Pay with Paypal"
+      click_button "Proceed to Paypal"
+      expect(current_url).to have_content("paypal")
+    end
   end
 
-  it "checks out with paypal successfully", js: true do
-    page.driver.browser.manage.window.resize_to(1280, 600)
-    add_products_and_checkout
-    fill_in_address
-    click_button "Save and Continue"
-    click_button "Proceed to Payment"
-    click_on "Pay with Paypal"
-    click_button "Proceed to Paypal"
-    expect(current_url).to have_content("paypal")
+  context "using a new address" do
+    it "adds products successfully", js: true do
+      add_products_and_checkout
+      click_button "Create a New Address"
+      expect(page).to have_content "Fill in the delivery information"
+      fill_in_address
+      click_button "Save and Continue"
+      click_button "Proceed to Payment"
+      click_button "Complete Order"
+      expect(page).to have_content("Thank you!")
+    end
   end
 end

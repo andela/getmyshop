@@ -13,15 +13,9 @@ module AddressHelpers
   end
 
   def fill_in_personal_info(address)
-    fill_in "Name", with: address.name
-    fill_in "Email", with: address.email
+    fill_in "name", with: address.name
+    fill_in "email", with: address.email
     fill_in "Address", with: address.address
     fill_in "Phone", with: address.phone
-    expose_and_click_gender
-  end
-
-  def expose_and_click_gender
-    page.find("div.select-wrapper input").click
-    page.find("div.select-wrapper ul li span", text: "female").click
   end
 end

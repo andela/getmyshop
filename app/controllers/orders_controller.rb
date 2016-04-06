@@ -9,7 +9,7 @@ class OrdersController < ApplicationController
     @user_addresses = current_user.addresses
   end
 
-  def new_address_or_old(address_id)
+  def get_or_create_address(address_id)
     if address_id
       Address.find_by(id: address_id)
     else
@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
   end
 
   def summary
-    @user_address = new_address_or_old(params[:address_id])
+    @user_address = get_or_create_address(params[:address_id])
     session[current_user.id]["address"] = @user_address
     @order = Order.new(session[current_user.id]["order"])
   end

@@ -20,7 +20,7 @@ RSpec.describe "Checkout Feature", type: :feature do
 
   context "using an old address" do
     before(:all) do
-      @address = create(:address, user: @user)
+      create(:address, user: @user)
     end
 
     it "checks out with paypal successfully", js: true do

@@ -6,7 +6,9 @@ RSpec.describe OrderMailer, type: :mailer do
            user: create(:regular_user),
            address: create(:address)
   end
+
   let(:mail) { OrderMailer.confirmation_email(order, "Play") }
+
   context "#confirmation_email" do
     it "renders the subject" do
       expect(mail.subject).to eq "Play"

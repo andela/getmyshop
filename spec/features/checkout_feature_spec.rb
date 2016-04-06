@@ -16,6 +16,7 @@ RSpec.describe "Checkout Feature", type: :feature do
   before(:each) do
     allow_any_instance_of(ApplicationController).
       to receive(:current_user).and_return(@user)
+    page.driver.browser.manage.window.resize_to(1280, 600)
   end
 
   context "using an old address" do
@@ -24,7 +25,6 @@ RSpec.describe "Checkout Feature", type: :feature do
     end
 
     it "checks out with paypal successfully", js: true do
-      page.driver.browser.manage.window.resize_to(1280, 600)
       add_products_and_checkout
 
       click_button "Use this address"
@@ -45,6 +45,16 @@ RSpec.describe "Checkout Feature", type: :feature do
       click_button "Proceed to Payment"
       click_button "Complete Order"
       expect(page).to have_content("Thank you!")
+    end
+
+    it "checks out with paypal successfully", js: true do
+      add_products_and_checkout
+      fill_in_address
+      click_button "Save and Continue"
+      click_button "Proceed to Payment"
+      click_on "Pay with Paypal"
+      click_button "Proceed to Paypal"
+      expect(current_url).to have_content("paypal")
     end
   end
 end

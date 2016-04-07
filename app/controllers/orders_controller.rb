@@ -115,6 +115,8 @@ class OrdersController < ApplicationController
         transaction_id: params[:txn_id],
         purchased_at: Time.now
       )
+    else
+      raise "Your paypal payment wasn't successful"
     end
     render nothing: true
   end

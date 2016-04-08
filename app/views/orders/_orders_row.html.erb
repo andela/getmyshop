@@ -10,7 +10,7 @@
             <%= Date.strptime((order.created_at).to_s) %>
           </div>
           <div class="col l2"><%= order.total_amount %> &nbsp;</div>
-          <div class="col l2"><%= tracking(order.created_at) %></div>
+          <div class="col l2"><%= order.status %></div>
           <div class="col l2">&nbsp;</div>
           <div id="expand-order" class="col l2 expand-order">
             <%= link_to "details", "#" %>&nbsp;&nbsp;&nbsp;<span class"plus-minus"></span>

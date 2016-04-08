@@ -187,6 +187,18 @@
   color: $my-white;
 }
 
+.cancel-button {
+  font-size: 0.7em;
+  height: 3em;
+  line-height: 3.2em;
+  padding-left: 2.2em;
+}
+
+.review-button:hover {
+  color: $my-white;
+}
+
+
 .user-address {
   border: 3px solid $grey-border;
   height: auto;

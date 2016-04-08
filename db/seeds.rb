@@ -34,7 +34,7 @@ image_links = %w(
 categories.each do |category|
   new_category = Category.create(name: category)
 
-  70.times do
+  20.times do
     new_product = Product.new
     new_product.name = Faker::Commerce.product_name
     new_product.price = Faker::Number.number(2 + rand(3))

@@ -101,6 +101,7 @@ class OrdersController < ApplicationController
   end
 
   def past_orders
+    OrderStatus.new(current_user).save
     @past_orders = current_user.orders
   end
 

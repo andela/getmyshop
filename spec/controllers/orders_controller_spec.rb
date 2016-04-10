@@ -10,21 +10,35 @@ RSpec.describe OrdersController, type: :controller do
     let(:order) do
       create :order,
              user: create(:regular_user),
-             address: create(:address)
+             address: create(:address),
+             payment_method: "paypal"
     end
 
-    before do
-      allow_any_instance_of(Order).to receive(:paypal_url).and_return(
-        status: 200,
-        body: "VERIFIED",
-        headers: {}
-      )
+    context "unsuccessful payment" do
+      it "raises error if payment was not successful" do
+        expect { post :paypal_hook }.to raise_error do |error|
+          expect(error).to be_a RuntimeError
+        end
+      end
     end
 
-    it "raises error if payment was not successful" do
-      expect { post :paypal_hook }.to raise_error { |error|
-        expect(error).to be_a(RuntimeError)
-      }
+    context "successful payment" do
+      it "updates the order status to `Completed`" do
+        post :paypal_hook, "mc_gross" => order.total_amount / 100,
+                           "invoice" => order.id,
+                           "address_status" => "confirmed",
+                           "address_street" => order.address,
+                           "payment_status" => "Completed",
+                           "type" => "Completed",
+                           "address_name" => "address name",
+                           "verify_sign" => "AXRgIKi50FXdGRGh8D815JH-"\
+                           "YEftIeF9KOlO6Gi33F4OFxtUxjfFhG58",
+                           "payer_email" => order.user.email,
+                           "txn_id" => "83E55482L7753931W",
+                           "receiver_email" => order.user.email
+        order.reload
+        expect(order.status).to eq "Completed"
+      end
     end
   end
 end

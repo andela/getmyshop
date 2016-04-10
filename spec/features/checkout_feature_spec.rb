@@ -48,7 +48,7 @@ RSpec.describe "Checkout Feature", type: :feature do
         click_button "Proceed to Payment"
         click_on "Pay with Paypal"
         click_button "Proceed to Paypal"
-        expect(current_url).to have_content("paypal")
+        expect(current_url).to have_content "paypal"
       end
     end
 
@@ -61,7 +61,7 @@ RSpec.describe "Checkout Feature", type: :feature do
         click_button "Save and Continue"
         click_button "Proceed to Payment"
         click_button "Complete Order"
-        expect(page).to have_content("Thank you!")
+        expect(page).to have_content "Thank you!"
       end
     end
   end

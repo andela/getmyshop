@@ -15,10 +15,9 @@ class OrdersController
     protected
 
     def get_status(t)
-      time = Time.now.to_i
-      if time.between?((t + 4.hour).to_i, (t + 12.hour).to_i)
+      if Time.now.to_i.between?((t + 4.hour).to_i, (t + 12.hour).to_i)
         "Shipped"
-      elsif time > (t + 12.hour).to_i
+      elsif Time.now.to_i > (t + 12.hour).to_i
         "Delivered"
       end
     end

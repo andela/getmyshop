@@ -65,7 +65,7 @@ RSpec.describe "Ordering page", type: :feature, js: true do
         visit past_orders_path
         click_link("details")
         click_link("Cancel Order")
-        expect(page).to have_content("Order deleted successfully")
+        expect(page).to have_content("Order cancelled")
       end
     end
   end

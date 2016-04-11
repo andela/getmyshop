@@ -18,7 +18,7 @@ class OrdersController
       time = Time.now.to_i
       if time.between?((t + 4.hour).to_i, (t + 12.hour).to_i)
         "Shipped"
-      elsif time.between?((t + 12.hour).to_i, (t + 16.hour).to_i)
+      elsif time > (t + 12.hour).to_i
         "Delivered"
       end
     end

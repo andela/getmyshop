@@ -126,7 +126,7 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     unless @order.status == "Delivered"
       @order.destroy
-      flash[:error] = "Order deleted successfully"
+      flash[:error] = "Order cancelled"
       redirect_to "/orders/past_orders"
     end
   end

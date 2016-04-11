@@ -11,8 +11,8 @@ RSpec.describe "Ordering page", type: :feature, js: true do
     it "shows order details" do
       signin_helper(user.email, user.password)
       order.update_attributes(user: user, address: address)
-      click_link "Past Orders"
-      expect(page). to have_content "Details"
+      visit past_orders_path
+      expect(page).to have_content "Details"
     end
   end
 
@@ -22,7 +22,7 @@ RSpec.describe "Ordering page", type: :feature, js: true do
       signin_helper(user.email, user.password)
 
       visit past_orders_path
-      expect(page). to have_content "You currently have no Orders"
+      expect(page).to have_content "You currently have no Orders"
     end
   end
 

@@ -121,4 +121,13 @@ class OrdersController < ApplicationController
     end
     render nothing: true
   end
+
+  def destroy
+    @order = Order.find(params[:id])
+    unless @order.status == "Delivered"
+      @order.destroy
+      flash[:error] = "Order deleted successfully"
+      redirect_to "/orders/past_orders"
+    end
+  end
 end

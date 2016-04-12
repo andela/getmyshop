@@ -2,6 +2,7 @@ $(document).ready(function(){
   $(".slider").slider({full_width: false});
   $("select").material_select();
 
+  setTweet(document, 'script', 'twitter-wjs');
   var currentElement = null,
       wishlist_url = location.origin + "/wishlist";
 
@@ -65,5 +66,26 @@ $(document).ready(function(){
     currentElement.fadeIn("slow");
     currentElement.attr("href", wishlist_url);
   }
+
+
+  function setTweet(d,s,id){
+    var message = "Checkout this awesome, lovely product " + $(".product-name").text();
+    var url = window.location.href;
+    $(".twitter-share-button").attr("data-text", message);
+    $(".twitter-share-button").attr("data-url", url);
+    var js,
+        fjs=d.getElementsByTagName(s)[0],
+        p=/^http:/.test(d.location)?'http':'https';
+
+    if(!d.getElementById(id)){
+      js=d.createElement(s);
+      js.id=id;
+      js.src=p+'://platform.twitter.com/widgets.js';
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }
+
+
+
 
 });

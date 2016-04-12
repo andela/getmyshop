@@ -234,3 +234,18 @@
   padding: 1em 0 2em;
   text-align: center;
 }
+
+.out-of-stock {
+  color: $google-red;
+  font-size: 1.2em;
+}
+
+.stock-count {
+  color: $my-green;
+  font-size: 1.2em;
+}
+
+.stock {
+  margin-left: 1em;
+  margin-top: 12px;
+}

@@ -50,7 +50,7 @@
           </a>
         </div>
       <div class="counts left"><%= @product.reviews.count %> reviews</div>
-      <div class="counts left"><%= @product.stock %></div>
+      <div class="left stock"><%= @product.stock %></div>
 
       </div>
       <input  type=hidden>
@@ -67,8 +67,8 @@
           <div class="col s2">
             <%= number_field_tag :quantity, 1, in: 1..@product.quantity, step: 1 %>
           </div>
-          <div class="col s4"><%= @product.add_to_cart %></div>
-          <%= wishlist_add_link %>
+          <div class="col s4"><%= submit_tag "ADD TO CART", class: "waves-effect btn products-input", id: "submit"%></div>
+         <%= wishlist_add_link %>
         </div>
       </div>
 

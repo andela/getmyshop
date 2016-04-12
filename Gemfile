@@ -24,6 +24,7 @@ gem "will_paginate"
 gem "bcrypt", "~> 3.1.7"
 gem "coveralls", require: false
 gem "filterrific"
+gem "draper"
 
 group :development, :test do
   gem "pry"

@@ -1,4 +1,5 @@
 <%= render "header" %>
+<div id="fb-root"></div>
 <div class="container-large product-description-body">
   <div class="row">
     <div class="col m6 product-view-image">
@@ -19,28 +20,22 @@
         </div>
       </div>
         <div class="row">
-          <a class="twitter-share-button"
-            href="https://twitter.com/share"
-            data-size="large"
-            data-related="twitterapi,twitter"
-            data-hashtags="GetMyShop"
-          >
-          Share
-          </a>
-
-
-
-          <div class="col s1">
-            <a href="#" title="Facebook"><i class="fa fa-facebook-square"></i></a>
+          <div class="col s2">
+            <div class="tweet">
+              <a class="twitter-share-button"
+                href="https://twitter.com/share"
+                data-size="large"
+                data-related="twitterapi,twitter"
+                data-hashtags="GetMyShop">
+              </a>
+            </div>
           </div>
-          <div class="col s1">
-            <a href="#" title="Twitter"><i class="fa fa-twitter-square"></i></a>
-          </div>
-          <div class="col s1">
-            <a href="#" title="Google"><i class="fa fa-google-plus-square"></i></a>
+          <div class="col s3">
+            <div>
+              <a href="#"  id="facebook-share" class="btn facebook-button" target="blank"><span class="facebook-f">&nbsp;f&nbsp;</span> <span class="facebook-share">Share</span></a>
+            </div>
           </div>
         </div>
-
     </div>
 
     <div class="col m6">

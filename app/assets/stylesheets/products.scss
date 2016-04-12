@@ -161,3 +161,31 @@ hr {
 .star-size {
   font-size: 2em;
 }
+
+.facebook-button {
+  background-color: $facebook-deep-blue;
+  border-radius: 0.2em;
+  height: 1.9em;
+  line-height: 1.9em;
+  padding-left: 0.4em;
+  padding-right: 0.1em;
+  text-align: left;
+  text-transform: none;
+  width: 5.14em;
+}
+
+.facebook-button:hover {
+  background-color: $deep-blue;
+}
+
+.facebook-f {
+  background-color: $my-white;
+  color: $facebook-deep-blue;
+  font-weight: bold;
+}
+
+.facebook-share {
+  font-size: 0.9em;
+  font-weight: normal;
+}
+

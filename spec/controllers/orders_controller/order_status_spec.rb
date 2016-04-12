@@ -25,9 +25,25 @@ RSpec.describe OrdersController::OrderStatus do
       expect(result[0].status).to eql("Shipped")
     end
 
+    it "should have shipped status after 9 hours" do
+      new_order = create(:order)
+      new_order.created_at = Time.now - 9.hour
+      new_order.save
+      result = OrdersController::OrderStatus.new(new_order.user).save
+      expect(result[0].status).to eql("Shipped")
+    end
+
     it "should have delivered status after 12 hours" do
       new_order = create(:order)
       new_order.created_at = Time.now - 13.hour
+      new_order.save
+      result = OrdersController::OrderStatus.new(new_order.user).save
+      expect(result[0].status).to eql("Delivered")
+    end
+
+    it "should have delivered status after 24 hours" do
+      new_order = create(:order)
+      new_order.created_at = Time.now - 24.hour
       new_order.save
       result = OrdersController::OrderStatus.new(new_order.user).save
       expect(result[0].status).to eql("Delivered")

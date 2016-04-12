@@ -7,6 +7,12 @@ RSpec.describe Order, type: :model do
     it { is_expected.to be_valid }
   end
 
+  describe "default order status" do
+    it "should a default status fo pending" do
+      expect(subject.status).to eq "Pending"
+    end
+  end
+
   describe "instance methods" do
     context "respond to instance method calls" do
       it { is_expected.to respond_to(:order_number) }

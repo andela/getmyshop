@@ -35,7 +35,6 @@ class OrdersController < ApplicationController
     address, order = store_order_information
 
     if address && order
-      clear_cart
       case params[:type]
       when "pay-on-delivery"
         redirect_to confirmation_orders_path
@@ -70,6 +69,7 @@ class OrdersController < ApplicationController
   end
 
   def confirmation
+    clear_cart
     order = current_user.orders.last
     OrderMailer.confirmation_email(
       order,

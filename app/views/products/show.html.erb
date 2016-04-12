@@ -50,6 +50,8 @@
           </a>
         </div>
       <div class="counts left"><%= @product.reviews.count %> reviews</div>
+      <div class="counts left"><%= @product.quantity %> left in stock</div>
+
       </div>
       <input  type=hidden>
       <%= form_tag(cart_path, method: "post", id: "cart_form-", remote: true) do %>

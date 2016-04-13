@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <% if @product %>
+    <% if current_page?(:controller => "products", :action => "show", :id => @product.id) %>
+      <meta property="og:image" content=<%= @product.product_image_links.first.link_name %> />
+      <meta property="og:description" content=<%= @product.description %> />
+    <% end %>
+  <% end %>
   <title>Getmyshop</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 <body>
 

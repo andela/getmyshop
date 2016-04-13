@@ -44,8 +44,8 @@ RSpec.describe OrdersController::OrderStatus do
       end
     end
 
-    context "when the hour range from 12 hours upwards" do
-      it "sets the order status to shipped" do
+    context "when the hour range is from 12 upwards" do
+      it "sets the order status to delivered" do
         new_order = create(:order)
         time = (12...24).to_a.sample
         new_order.created_at = Time.now - time.hour

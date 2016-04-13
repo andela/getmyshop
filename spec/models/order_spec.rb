@@ -8,7 +8,7 @@ RSpec.describe Order, type: :model do
   end
 
   describe "default order status" do
-    it "should a default status fo pending" do
+    it "should a default status of pending" do
       expect(subject.status).to eq "Pending"
     end
   end

@@ -59,26 +59,6 @@ RSpec.describe "Ordering page", type: :feature, js: true do
       end
     end
 
-    context "five hours after order is made" do
-      it "should have an order status of shiped" do
-        order.created_at = Time.now - 5.hour
-        order.save
-        signin_helper(order.user.email, order.user.password)
-        visit past_orders_path
-        expect(page).to have_content("Shipped")
-      end
-    end
-
-    context "14 hours after order is made" do
-      it "should have an order status of pending" do
-        order.created_at = Time.now - 13.hour
-        order.save
-        signin_helper(order.user.email, order.user.password)
-        visit past_orders_path
-        expect(page).to have_content("Delivered")
-      end
-    end
-
     context "user can cancel order if status not delivered" do
       it "user can cancel order" do
         signin_helper(order.user.email, order.user.password)

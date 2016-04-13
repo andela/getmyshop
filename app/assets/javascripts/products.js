@@ -2,8 +2,7 @@ $(document).ready(function(){
   $(".slider").slider({full_width: false});
   $("select").material_select();
 
-  setTweet(document, "script", "twitter-wjs");
-  setFacebook();
+  setSocialUrls();
   var currentElement = null,
       wishlist_url = location.origin + "/wishlist";
 
@@ -68,29 +67,17 @@ $(document).ready(function(){
     currentElement.attr("href", wishlist_url);
   }
 
-
-  function setTweet(d,s,id){
-    var message = "Checkout this awesome " + $(".product-name").text();
+  function setSocialUrls() {
     var url = window.location.href;
-    $(".twitter-share-button").attr("data-text", message);
-    $(".twitter-share-button").attr("data-url", url);
-    var js,
-        fjs=d.getElementsByTagName(s)[0],
-        p=/^http:/.test(d.location)?"http":"https";
-
-    if(!d.getElementById(id)){
-      js=d.createElement(s);
-      js.id=id;
-      js.src=p+"://platform.twitter.com/widgets.js";
-      fjs.parentNode.insertBefore(js,fjs);
-    }
+    var facebookurl = "https://www.facebook.com/sharer/sharer.php?u=" + url;
+    var prefix =  "https://twitter.com/intent/tweet?text=Checkout this awesome ";
+    var suffix = "&amp;url="+url+"&amp;hashtags=GetMyShop";
+    var twitterUrl = prefix + $(".product-name").text() + suffix;
+    var googleUrl = "https://plus.google.com/share?url=" + url;
+    $("#facebook-share").attr("href", facebookurl);
+    $("#twitter-share").attr("href", twitterUrl);
+    $("#google-share").attr("href", googleUrl);
   }
 
-  function setFacebook() {
-    var url = window.location.href;
-    var mainurl = "https://www.facebook.com/sharer/sharer.php?u=" + url;
-    $("#facebook-share").attr("href", mainurl);
-
-  }
 
 });

@@ -43,5 +43,16 @@ RSpec.describe OrdersController::OrderStatus do
         expect(result[0].status).to eql("Shipped")
       end
     end
+
+    context "when the hour range from 12 hours upwards" do
+      it "sets the order status to shipped" do
+        new_order = create(:order)
+        time = (12...24).to_a.sample
+        new_order.created_at = Time.now - time.hour
+        new_order.save
+        result = OrdersController::OrderStatus.new(new_order.user).save
+        expect(result[0].status).to eql("Delivered")
+      end
+    end
   end
 end

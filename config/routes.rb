@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   resources :categories, only: [:show, :index]
   resources :users, only: [:new, :create] do
     collection do
+      get "account", to: "users#account"
       get "forgot-password", to: "users#forgot", as: :forgot
       get "password-reset/:id/:reset_code",
           to: "users#reset_password", as: :passwordreset

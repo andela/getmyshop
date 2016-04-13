@@ -225,3 +225,28 @@ form {
   color: $my-green;
   font-size: 0.9em;
 }
+
+.account-sidebar {
+  border-left: 2px solid $bg-grey;
+  height: auto;
+}
+
+.sidebar-items {
+  color: $ash-gray;
+  font-size: 1em;
+  padding: 1em;
+  padding-left: 2em;
+}
+
+.sidebar-items:hover {
+  background-color: $light-grey;
+  color: $my-green;
+  border-right: 4px solid $my-green;
+}
+
+.active-sidebar {
+  background-color: $light-grey;
+  color: $facebook-blue;
+  border-right: 4px solid $my-green;
+}
+

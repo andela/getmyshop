@@ -78,6 +78,7 @@ $(document).ready(function() {
     }
   }
 
+
   $("#session_email").on("focusout keyup change", emailChecker);
   $("#session_password").on("focusout keyup change", passwordChecker);
   $("#user_first_name").on("focusout keyup change", nameChecker);

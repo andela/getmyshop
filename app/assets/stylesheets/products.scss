@@ -161,3 +161,69 @@ hr {
 .star-size {
   font-size: 2em;
 }
+
+.social-button {
+  height: 2em;
+  line-height: 2em;
+}
+
+.facebook-button {
+  background-color: $facebook-deep-blue;
+  border-radius: 0.2em;
+  padding-left: 0.4em;
+  padding-right: 0.1em;
+  text-align: left;
+  text-transform: none;
+  width: 5.14em;
+}
+
+.facebook-button:hover {
+  background-color: $deep-blue;
+}
+
+.facebook-f {
+  background-color: $my-white;
+  color: $facebook-deep-blue;
+  font-weight: bold;
+}
+
+.facebook-share {
+  font-size: 0.9em;
+  font-weight: normal;
+}
+
+.twitter-button {
+  background-color: $twitter-blue;
+  border-radius: 0.2em;
+  font-size: 0.9em;
+  padding-left: 2.3em !important;
+  padding-right: 3.4em !important;
+  text-decoration: none;
+  text-transform: none;
+  width: 5.14em;
+}
+
+.google-button {
+  background-color: $my-white;
+  color: $my-black;
+  font-size: 0.7em;
+  height: 2.7em;
+  padding-left: 3.3em !important;
+  padding-right: 3.4em !important;
+  text-decoration: none;
+  text-transform: none;
+  width: 5.14em;
+}
+
+.twitter-button:hover {
+  background-color: $deep-twitter-blue;
+}
+
+.google-button:hover {
+  background-color: $my-white;
+}
+
+.google-logo {
+  color: $google-red;
+  font-size: 1.4em !important;
+}

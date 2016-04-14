@@ -1,5 +1,5 @@
 class OrdersController
-  class StockCounter
+  class Stock
     def initialize(order)
       @order = order
     end

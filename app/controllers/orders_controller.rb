@@ -71,7 +71,7 @@ class OrdersController < ApplicationController
   def confirmation
     clear_cart
     order = current_user.orders.last
-    StockCounter.new(order).update
+    Stock.new(order).update
     OrderMailer.confirmation_email(
       order,
       "Your new Order #{order.order_number}"

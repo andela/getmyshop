@@ -37,6 +37,7 @@
       <div class="price">
         &#x20A6;<%= @product.price %>
       </div>
+      <div class="stock"><%= @product.stock %></div>
 
       <div class="rating-counts">
         <div class="left">
@@ -50,7 +51,6 @@
           </a>
         </div>
       <div class="counts left"><%= @product.reviews.count %> reviews</div>
-      <div class="left stock"><%= @product.stock %></div>
 
       </div>
       <input  type=hidden>

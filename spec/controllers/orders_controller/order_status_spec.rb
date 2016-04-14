@@ -17,22 +17,6 @@ RSpec.describe OrdersController::OrderStatus do
       expect(@order.status).to eq("Pending")
     end
 
-    it "should have shipped status after 4 hours" do
-      new_order = create(:order)
-      new_order.created_at = Time.now - 5.hour
-      new_order.save
-      result = OrdersController::OrderStatus.new(new_order.user).save
-      expect(result[0].status).to eql("Shipped")
-    end
-
-    it "should have delivered status after 12 hours" do
-      new_order = create(:order)
-      new_order.created_at = Time.now - 13.hour
-      new_order.save
-      result = OrdersController::OrderStatus.new(new_order.user).save
-      expect(result[0].status).to eql("Delivered")
-    end
-
     context "when the hour range is between 4 and 12" do
       it "sets the order status to shipped" do
         new_order = create(:order)

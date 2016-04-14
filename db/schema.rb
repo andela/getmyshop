@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160330155111) do
+ActiveRecord::Schema.define(version: 20160406171655) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id"
@@ -67,12 +67,12 @@ ActiveRecord::Schema.define(version: 20160330155111) do
     t.decimal  "total_amount"
     t.integer  "user_id"
     t.integer  "address_id"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
     t.text     "notification_params"
-    t.string   "status"
     t.string   "transaction_id"
     t.datetime "purchased_at"
+    t.string   "status",              default: "Pending"
   end
 
   add_index "orders", ["address_id"], name: "index_orders_on_address_id"

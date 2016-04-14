@@ -101,6 +101,7 @@ class OrdersController < ApplicationController
   end
 
   def past_orders
+    OrderStatus.new(current_user).save
     @past_orders = current_user.orders
   end
 
@@ -119,5 +120,14 @@ class OrdersController < ApplicationController
       raise "Your paypal payment wasn't successful"
     end
     render nothing: true
+  end
+
+  def destroy
+    @order = Order.find(params[:id])
+    unless @order.status == "Delivered"
+      @order.destroy
+      flash[:error] = "Order cancelled"
+      redirect_to "/orders/past_orders"
+    end
   end
 end

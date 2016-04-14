@@ -57,6 +57,7 @@ Rails.application.routes.draw do
       get "/confirmation", to: "orders#confirmation", as: :confirmation
       get "/past_orders", to: "orders#past_orders", as: :past
       post "/:id", to: "orders#show"
+      delete "/:id", to: "orders#destroy", as: :order_cancel
     end
   end
   post "/paypal_hook", to: "orders#paypal_hook", as: :hook

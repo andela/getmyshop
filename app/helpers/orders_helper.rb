@@ -20,4 +20,9 @@ module OrdersHelper
       render partial: "no_address"
     end
   end
+
+  def cancel_order(order)
+    render "orders/cancel_order_button", order: order unless
+    order.status == "Delivered"
+  end
 end

@@ -70,7 +70,17 @@ class UsersController < ApplicationController
   end
 
   def account
+  end
 
+  def update_address
+  end
+
+  def edit
+  end
+
+  def update
+    current_user.update(users_params)
+    redirect_to account_users_path notice: "Account Updated Successfully"
   end
 
   def users_params

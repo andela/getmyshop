@@ -244,9 +244,18 @@ form {
   border-right: 4px solid $my-green;
 }
 
-.active-sidebar {
-  background-color: $light-grey;
-  color: $facebook-blue;
-  border-right: 4px solid $my-green;
+.profile {
+  border: 1px solid $my-grey;
+  height: auto;
+  width: 100%;
 }
 
+.profile-fields {
+  color: $grey-notice;
+  font-family: $search-form-font;
+  font-size: 1em;
+  margin-bottom: 4em;
+  margin-top: 4em;
+  padding-left: 2em;
+  padding-right: 2em;
+}

@@ -37,35 +37,33 @@
       </div>
        <div class= "col s9">
         <div class="profile">
+
           <div class="result-header">
-            MY PROFILE
+            EDIT PROFILE
           </div>
-          <div class="profile-fields">
-            <div class="row">
-              <div class="col s2">
-                First Name
+
+          <%= form_for current_user do |f| %>
+            <div class="profile-fields">
+              <div class="row">
+                <div class="col s6">
+                  <%= f.label :first_name, "First Name" %>
+                   <%= f.text_field :first_name, required: "required", minlenght: 2, class: "" %>
+                </div>
+                <div class="col s6">
+                  <%= f.label :last_name, "Last Name" %>
+                   <%= f.text_field :last_name, required: "required", minlenght: 2, class: "" %>
+                </div>
               </div>
-              <div class="col s4">
-                <%= current_user.first_name %>
+
+              <div class="row">
+                <div class="col s6">
+                 <%= f.label :email, "Email" %>
+                  <%= f.text_field :email, required: "required", minlenght: 2, class: "" %>
+                </div>
               </div>
+               <%= f.submit "Update", class: "btn btn-flat" %>
             </div>
-            <div class="row">
-              <div class="col s2">
-                Last Name
-              </div>
-              <div class="col s4">
-                <%= current_user.last_name %>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col s2">
-                Email
-              </div>
-              <div class="col s4">
-                <%= current_user.email %>
-              </div>
-            </div>
-          </div>
+          <% end %>
         </div>
       </div>
     </div>

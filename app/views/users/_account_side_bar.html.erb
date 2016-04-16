@@ -1,0 +1,31 @@
+<div class="account-sidebar">
+  <%= link_to account_users_path do %>
+    <div class="sidebar-items">
+      <i class="fa fa-user" aria-hidden="true"></i><span>&nbsp;&nbsp;My Profile</span>
+    </div>
+   <% end %>
+
+  <%= link_to addresses_users_path(current_user) do %>
+    <div class="sidebar-items">
+      <i class="fa fa-envelope" aria-hidden="true"></i><span>&nbsp;&nbsp;Manage Address</span>
+    </div>
+  <% end %>
+
+  <%= link_to past_orders_path do %>
+    <div class="sidebar-items">
+      <i class="fa fa-list" aria-hidden="true"></i><span>&nbsp;&nbsp;Past Orders</span>
+    </div>
+  <% end %>
+
+  <%= link_to wishlist_index_path do %>
+    <div class="sidebar-items">
+      <i class="fa fa-heart" aria-hidden="true"></i><span>&nbsp;&nbsp;My Wishlist</span>
+    </div>
+  <% end %>
+
+  <%= link_to user_path(current_user), method: :delete do %>
+    <div class="sidebar-items">
+      <i class="fa fa-trash" aria-hidden="true"></i><span>&nbsp;&nbsp;Delete Account</span>
+    </div>
+  <% end %>
+</div>

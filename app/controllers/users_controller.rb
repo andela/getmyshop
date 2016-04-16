@@ -14,6 +14,7 @@ class UsersController < ApplicationController
     else
       flash[:error] = "No user found with this email"
     end
+
     redirect_to forgot_users_path
   end
 
@@ -22,6 +23,7 @@ class UsersController < ApplicationController
 
   def reset
     user = RegularUser.find(params[:id])
+
     if user.reset_code == params[:reset_code]
       user.update_attributes password: params[:password], reset_code: nil
       flash[:notice] = "Password Successfully Changed."\
@@ -72,15 +74,26 @@ class UsersController < ApplicationController
   def account
   end
 
-  def update_address
+  def edit
   end
 
-  def edit
+  def addresses
+    @user_addresses = current_user.addresses
   end
 
   def update
     current_user.update(users_params)
-    redirect_to account_users_path notice: "Account Updated Successfully"
+    redirect_to account_users_path
+  end
+
+  def destroy
+    current_user.destroy
+    logout
+  end
+
+  def logout
+    session.delete :user_id
+    redirect_to root_path, notice: "Account Deactivated"
   end
 
   def users_params

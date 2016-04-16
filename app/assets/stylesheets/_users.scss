@@ -240,8 +240,8 @@ form {
 
 .sidebar-items:hover {
   background-color: $light-grey;
-  color: $my-green;
   border-right: 4px solid $my-green;
+  color: $my-green;
 }
 
 .profile {
@@ -254,8 +254,36 @@ form {
   color: $grey-notice;
   font-family: $search-form-font;
   font-size: 1em;
+  height: auto;
   margin-bottom: 4em;
   margin-top: 4em;
   padding-left: 2em;
   padding-right: 2em;
+}
+
+.address-display-account {
+  border-bottom: 1px dotted $bottom-border;
+  font-size: 1em;
+  font-style: $section-font !important;
+  height: 4em;
+  padding: 0.8em;
+}
+
+.my-icon {
+  font-size: 1.2em;
+  padding-right: 0.5em;
+
+}
+
+.edit-icon {
+  color: $my-black;
+}
+
+.delete-icon {
+  color: $google-red;
+}
+
+.add-address {
+  padding-bottom: 1em;
+  padding-left: 2em;
 }

@@ -3,37 +3,7 @@
   <div class="container">
     <div class="row">
       <div class= "col s3">
-        <div class="account-sidebar">
-          <a href="#">
-            <div class="sidebar-items">
-              <i class="fa fa-user" aria-hidden="true"></i><span>&nbsp;&nbsp;My Profile</span>
-            </div>
-          </a>
-
-          <a href="#">
-            <div class="sidebar-items">
-              <i class="fa fa-envelope" aria-hidden="true"></i><span>&nbsp;&nbsp;Manage Address</span>
-            </div>
-          </a>
-
-          <%= link_to past_orders_path do %>
-            <div class="sidebar-items">
-              <i class="fa fa-list" aria-hidden="true"></i><span>&nbsp;&nbsp;Past Orders</span>
-            </div>
-          <% end %>
-
-          <%= link_to wishlist_index_path do %>
-            <div class="sidebar-items">
-              <i class="fa fa-heart" aria-hidden="true"></i><span>&nbsp;&nbsp;My Wishlist</span>
-            </div>
-          <% end %>
-
-          <a href="#">
-            <div class="sidebar-items">
-              <i class="fa fa-trash" aria-hidden="true"></i><span>&nbsp;&nbsp;Delete Account</span>
-            </div>
-          </a>
-        </div>
+          <%= render "account_side_bar" %>
       </div>
        <div class= "col s9">
         <div class="profile">
@@ -65,6 +35,12 @@
                 <%= current_user.email %>
               </div>
             </div>
+            <div class="row">
+              <div class="col s4">
+              <%= link_to edit_user_path(current_user) do %>   <i class="fa fa-pencil-square-o edit-icon my-icon" aria-hidden="true"></i> <% end %>
+              <%= link_to user_path(current_user),  data: { confirm: 'Are you sure you want to delete your account?' },  method: :delete do %> <i class="fa fa-trash delete-icon my-icon" aria-hidden="true"></i> <% end %>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -72,4 +48,3 @@
   </div>
 </div>
 <%= render "footer" %>
-<%= link_to "Past Orders", past_orders_path %>

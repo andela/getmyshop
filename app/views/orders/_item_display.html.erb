@@ -2,7 +2,7 @@
 <div class="col l4">
   <div class="row order-image"><%= image_tag item.product.product_image_links.first.link_name, size: "140" %></div>
   <div class="row order-description"><%= item.product.name%></div>
-  <div class="row order-description">
+  <div class="row">
 
 
     <%= link_to "Review", review_path(item_id: item.product.id), { class: "btn review-button modal-trigger btn-flat", remote: true} %>

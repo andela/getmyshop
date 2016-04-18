@@ -1,7 +1,10 @@
-<span class="user-profile">
-  <ul>
-    <li><%= link_to "My Account", "#" %></li>
-    <li><%= link_to "Past Orders", past_orders_path %></li>
-    <li><%= link_to "Add more", "#" %></li>
-  </ul>
+<span class='dropdown-button white-text' href='#' data-hover="true" data-activates='dropdown1'>
+  Welcome, <%= current_user.first_name %>
 </span>
+<ul id='dropdown1' class='dropdown-content dropdown-ul'>
+  <li><%= link_to "My Account", account_users_path, class: "dropdown-list"%></li>
+  <li><%= link_to "Past Orders", past_orders_path, class: "dropdown-list" %></li>
+  <li><%= link_to "My Wishlist",  wishlist_index_path, class: "dropdown-list" %></li>
+  <li class="divider"></li>
+  <li><%= link_to "Logout", logout_path, class: "dropdown-list" %></li>
+</ul>

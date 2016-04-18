@@ -14,14 +14,12 @@
           <span class="white-text small-text">&nbsp;|&nbsp;</span>
           <%= link_to "FAQ", "#", class: 'white-text small-text' %>
           <span class="white-text small-text">&nbsp;|&nbsp;</span>
-          <%= link_to "My Wishlist", wishlist_index_path, class: 'white-text small-text' %>
-          <span class="white-text small-text">&nbsp;|&nbsp;</span>
-          <%= link_to "Currency - NGN", "#", class: 'white-text small-text' %>
+          <span  class="white-text small-text">Currency - NGN</span>
           <% if logged_in %>
             <span class="white-text small-text">&nbsp;|&nbsp;</span>
             <span class="black-text small-text">
-              <span class="full-profile">Welcome, <%= current_user.first_name %>
-              <%= render "user_profile" %></span>
+
+              <%= render "user_profile" %>
             </span>
           <% end %>
         </div>

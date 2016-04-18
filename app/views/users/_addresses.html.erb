@@ -1,0 +1,22 @@
+<% @user_addresses.each do |address| %>
+  <div class="col l4">
+    <div class="user-address">
+
+      <div class="address-name">
+        <%= address.name %>
+      </div>
+
+      <div class="address-display-account">
+        <%= address.address %>, <%= address.city %>
+      </div>
+
+      <div class="address-display-account">
+          <%= address.phone %>
+      </div>
+
+      <div class="address-display-account">
+        <%= address.state %>, <%= address.country %>
+      </div>
+    </div>
+  </div>
+<% end %>

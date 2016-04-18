@@ -83,7 +83,7 @@ class UsersController < ApplicationController
 
   def update
     current_user.update(users_params)
-    redirect_to account_users_path
+    redirect_to account_users_path, notice: "Account Updated"
   end
 
   def destroy

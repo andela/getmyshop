@@ -165,6 +165,7 @@ form {
 
   a:hover {
     color: $default-blue;
+    text-decoration: none;
   }
 
   a:active {
@@ -286,4 +287,34 @@ form {
 .add-address {
   padding-bottom: 1em;
   padding-left: 2em;
+}
+
+.account-container {
+  width: 77% !important;
+}
+
+.wishlist-fields {
+  color: $grey-notice;
+  font-family: $search-form-font;
+  font-size: 1em;
+  height: auto;
+  margin-bottom: 4em;
+  margin-top: 1em;
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
+.dropdown-ul {
+  width: 15em !important;
+}
+
+.dropdown-list {
+  color: $my-black !important;
+  font-size: 1.1em !important;
+  width: 28em !important;
+}
+
+.dropdown-list a::hover {
+  text-decoration: none;
+
 }

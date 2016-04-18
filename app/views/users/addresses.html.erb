@@ -1,11 +1,6 @@
 <%= render "header" %>
-<% if flash['notice'] %>
-  <%= javascript_tag do %>
-      Materialize.toast("<%= flash['notice'] %>", 4000)
-  <% end %>
-<% end %>
 <div class="signin-box">
-  <div class="container">
+  <div class="container account-container">
     <div class="row">
       <div class= "col s3">
         <%= render "account_side_bar" %>
@@ -18,38 +13,8 @@
             Manage Address
           </div>
           <div class="row profile-fields">
-
-
-            <% @user_addresses.each do |address| %>
-              <div class="col l4">
-                <div class="user-address">
-
-                  <div class="address-name">
-                    <%= address.name %>
-                  </div>
-
-                  <div class="address-display-account">
-                    <%= address.address %>, <%= address.city %>
-                  </div>
-
-                  <div class="address-display-account">
-                      <%= address.phone %>
-                  </div>
-
-                  <div class="address-display-account">
-                    <%= address.state %>, <%= address.country %>
-                  </div>
-                  <div class="address-display">
-                    <%= link_to edit_address_path(address) do %> <i class="fa fa-pencil-square-o edit-icon my-icon" aria-hidden="true"></i><% end %>
-                    <%= link_to address_path(address),  data: { confirm: 'Are you sure you want to delete this address?' }, method: :delete do %> <i class="fa fa-trash delete-icon my-icon" aria-hidden="true"></i> <% end %>
-                  </div>
-                </div>
-              </div>
-            <% end %>
+          <%= display_addresses %>
           </div>
-           <div class="add-address">
-             <%= link_to "Add Address", new_address_path, class: "btn btn-flat" %>
-            </div>
         </div>
       </div>
     </div>

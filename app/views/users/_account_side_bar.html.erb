@@ -23,7 +23,7 @@
     </div>
   <% end %>
 
-  <%= link_to user_path(current_user), method: :delete do %>
+   <%= link_to user_path(current_user), data: { confirm: 'Are you sure you want to delete your account?' },  method: :delete do %>
     <div class="sidebar-items">
       <i class="fa fa-trash" aria-hidden="true"></i><span>&nbsp;&nbsp;Delete Account</span>
     </div>

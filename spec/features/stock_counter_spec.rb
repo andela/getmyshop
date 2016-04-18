@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "StockCounter", type: :feature, js: true do
+RSpec.describe "Stock", type: :feature, js: true do
   context "when product is in stock" do
     it "should display the quantity of product(s) left" do
       order = create(:order_with_items)
@@ -10,7 +10,7 @@ RSpec.describe "StockCounter", type: :feature, js: true do
     end
   end
 
-  context "product out of stock" do
+  context "when product is out of stock" do
     it "should dislay 'Out of Stock' if product is out of stock" do
       product = create(:product, quantity: 0)
       new_order = create(:order)

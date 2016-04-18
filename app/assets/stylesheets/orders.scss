@@ -221,6 +221,14 @@
   font-weight: bold;
   padding: 0.8em;
   text-transform: uppercase;
+  position: relative;
+}
+
+.manage-address {
+  position: absolute;
+  top: 10px;
+  right: 2px;
+  cursor: pointer;
 }
 
 .address-display {

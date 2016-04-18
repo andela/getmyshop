@@ -1,8 +1,11 @@
 require "rails_helper"
+require "support/social_share_example"
 
 RSpec.describe "Product Show page", type: :feature do
   context "when in the product show page" do
-    before(:all) { create_list(:subcategory_with_products, 2) }
+    before(:all) do
+      create_list(:subcategory_with_products, 2)
+    end
 
     after(:all) { DatabaseCleaner.clean_with(:truncation) }
 
@@ -64,6 +67,20 @@ RSpec.describe "Product Show page", type: :feature do
         within(:css, "div#description-tabs") do
           is_expected.to have_content reviewer.first_name
         end
+      end
+    end
+
+    describe "shares a product on social media" do
+      context "twitter" do
+        it_behaves_like "social share example", "twitter"
+      end
+
+      context "facebook" do
+        it_behaves_like "social share example", "facebook"
+      end
+
+      context "google plus" do
+        it_behaves_like "social share example", "google"
       end
     end
 

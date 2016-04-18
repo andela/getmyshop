@@ -4,7 +4,7 @@ $(document).ready(function(){
 
   $(".slider").slider({full_width: false});
   $("select").material_select();
-  
+
   setSocialUrls();
   var currentElement = null,
       wishlist_url = location.origin + "/wishlist";

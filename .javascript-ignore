@@ -1,1 +1,2 @@
 vendor/*
+app/assets/javascripts/jquery.elevatezoom.min.js

@@ -86,4 +86,9 @@ $(document).ready(function(){
     $("#twitter-share").attr("href", twitterUrl);
     $("#google-share").attr("href", googleUrl);
   }
+
+  $("#productImage").elevateZoom({
+    cursor: "crosshair",
+    zoomType: "inner"
+  });
 });

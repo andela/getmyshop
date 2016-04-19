@@ -14,7 +14,7 @@
             <ul class="slides">
               <% @product.product_image_links.each do |link| %>
               <li class="slide-item">
-                <%= image_tag link.link_name, class: "wm-zoom-default-img", data: { hight_src: link.link_name } %>
+                <%= image_tag link.link_name, id: "productImage", data: {zoom_image: link.link_name}%>
               </li>
               <% end %>
             </ul>

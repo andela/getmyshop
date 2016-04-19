@@ -17,33 +17,47 @@
           </div>
           <div class="profile-fields">
             <div class="row">
-              <div class="col s2">
-                First Name
+              <div class="col s6">
+                <div class="row">
+                  <div class="col s4">
+                    <span class="account-label">First Name</span>
+                  </div>
+                  <div class="col s8">
+                    <%= current_user.first_name %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col s4">
+                   <span class="account-label"> Last Name</span>
+                  </div>
+                  <div class="col s8">
+                    <%= current_user.last_name %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col s4">
+                    <span class="account-label">Email </span>
+                  </div>
+                  <div class="col s8">
+                    <%= current_user.email %>
+                  </div>
+                </div>
+                <div class="row">
+                </div>
+                <div class="row">
+                </div>
+                <div class="row">
+                </div>
+                <div class="row">
+                  <div class="col s12">
+                    <%= link_to edit_user_path(current_user) do %>
+                    <button class="btn waves-effect b-width"><i class="fa fa-pencil-square-o my-icon"></i><span class="b-text">Edit</span></button> 
+                    <% end %>
+                  </div>
+                </div>
               </div>
-              <div class="col s4">
-                <%= current_user.first_name %>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col s2">
-                Last Name
-              </div>
-              <div class="col s4">
-                <%= current_user.last_name %>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col s2">
-                Email
-              </div>
-              <div class="col s4">
-                <%= current_user.email %>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col s4">
-              <%= link_to edit_user_path(current_user) do %>   <i class="fa fa-pencil-square-o edit-icon my-icon" aria-hidden="true"></i> <% end %>
-              <%= link_to user_path(current_user),  data: { confirm: 'Are you sure you want to delete your account?' },  method: :delete do %> <i class="fa fa-trash delete-icon my-icon" aria-hidden="true"></i> <% end %>
+              <div class="col s6">
+                <%= default_address %>
               </div>
             </div>
           </div>

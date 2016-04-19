@@ -8,11 +8,11 @@ module UsersHelper
   end
 
   def default_address
-    if current_user.addresses
+    if current_user.addresses.empty?
+      render partial: "noaddress"
+    else
       @address = current_user.addresses.last
       render partial: "address"
-    else
-      render partial: "noaddress"
     end
   end
 end

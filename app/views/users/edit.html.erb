@@ -12,7 +12,7 @@
             EDIT PROFILE
           </div>
 
-          <%= form_for current_user do |f| %>
+          <%= form_for @user do |f| %>
             <div class="profile-fields">
               <div class="row">
                 <div class="col s6">
@@ -40,4 +40,3 @@
   </div>
 </div>
 <%= render "footer" %>
-<%= link_to "Past Orders", past_orders_path %>

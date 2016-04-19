@@ -245,6 +245,15 @@ form {
   color: $my-green;
 }
 
+.sidebar-items-active {
+  background-color: $light-grey;
+  border-right: 4px solid $my-green;
+  color: $my-green;
+  font-size: 1em;
+  padding: 1em;
+  padding-left: 2em;
+}
+
 .profile {
   border: 1px solid $my-grey;
   height: auto;
@@ -271,13 +280,16 @@ form {
 }
 
 .my-icon {
-  font-size: 1.2em;
-  padding-right: 0.5em;
-
+  font-size: 1.1em !important;
 }
 
-.edit-icon {
-  color: $my-black;
+.b-width {
+  width: 8em;
+}
+
+.b-text {
+  font-size: 1em;
+  padding-left: 0.6em;
 }
 
 .delete-icon {
@@ -314,7 +326,28 @@ form {
   width: 28em !important;
 }
 
-.dropdown-list a::hover {
-  text-decoration: none;
+.default-adress {
+  color: $my-green;
+  font-size: 1em;
+  font-weight: lighter;
+  text-transform: none !important;
+}
 
+.account-label {
+  color: $grey-label;
+  font-family: $search-form-font;
+  font-size: 0.85em;
+}
+
+.delete-user-bar {
+  color: $light-red;
+  font-size: 1em;
+  padding: 1em;
+  padding-left: 2em;
+}
+
+.delete-user-bar:hover {
+  background-color: $light-grey;
+  border-right: 4px solid $google-red;
+  color: $google-red;
 }

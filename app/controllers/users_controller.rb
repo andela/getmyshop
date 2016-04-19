@@ -75,6 +75,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find_by(id: params[:id])
   end
 
   def addresses
@@ -82,7 +83,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    current_user.update(users_params)
+    user = User.find_by(id: params[:id])
+    user.update(users_params)
     redirect_to account_users_path, notice: "Account Updated"
   end
 

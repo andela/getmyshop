@@ -67,6 +67,41 @@ RSpec.describe UsersController do
     end
   end
 
+  describe "#addresses" do
+    before(:each) do
+      session[:user_id] = user.id
+    end
+
+    context "when user has no addresses" do
+      it "returns an empty list" do
+        get :addresses, id: user.id
+        expect(assigns(:user_addresses).length).to be 0
+      end
+    end
+
+    context "when user has an address" do
+      it "returns an empty list" do
+        address = create(:address, user: user)
+        get :addresses, id: user.id
+        expect(assigns(:user_addresses).first.name).to eq address.name
+        Address.destroy_all
+      end
+    end
+  end
+
+  describe "#update" do
+    it "updates user email" do
+      email = Faker::Internet.email
+      post :update, id: user.id, user: { email: email }
+      expect(User.last.email).to eq email
+    end
+    it "updates user first name" do
+      name = Faker::Internet.name
+      post :update, id: user.id, user: { first_name: name }
+      expect(User.last.first_name).to eq name
+    end
+  end
+
   def post_to_reset_action
     post(:reset, id: user.id, reset_code: user.reset_code, password: "adebayo")
     user.reload

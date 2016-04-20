@@ -25,6 +25,7 @@ gem "bcrypt", "~> 3.1.7"
 gem "coveralls", require: false
 gem "filterrific"
 gem "draper"
+gem "metamagic"
 
 group :development, :test do
   gem "pry"

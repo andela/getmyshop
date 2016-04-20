@@ -1,7 +1,11 @@
 $(document).ready(function(){
+  var hashtag = "GetMyShop",
+      text = "Checkout this ";
+
   $(".slider").slider({full_width: false});
   $("select").material_select();
-
+  
+  setSocialUrls();
   var currentElement = null,
       wishlist_url = location.origin + "/wishlist";
 
@@ -66,4 +70,20 @@ $(document).ready(function(){
     currentElement.attr("href", wishlist_url);
   }
 
+  function setSocialUrls() {
+    var url = window.location.href,
+        facebookurl = "https://www.facebook.com/sharer/sharer.php?u=" + url,
+        prefix =  "https://twitter.com/intent/tweet?text=" + text,
+        suffix = "&amp;url="+url+"&amp;hashtags=" + hashtag,
+        twitterUrl = prefix + $(".product-name").text() + suffix,
+        googleUrl = "https://plus.google.com/share?url=" + url;
+
+    setAttribute(facebookurl, twitterUrl, googleUrl);
+  }
+
+  function setAttribute(facebookurl, twitterUrl, googleUrl) {
+    $("#facebook-share").attr("href", facebookurl);
+    $("#twitter-share").attr("href", twitterUrl);
+    $("#google-share").attr("href", googleUrl);
+  }
 });

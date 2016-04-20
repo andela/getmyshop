@@ -24,7 +24,7 @@ RSpec.describe OrdersController, type: :controller do
 
     context "successful payment" do
       it "updates the order status to `Completed`" do
-        post :paypal_hook, "mc_gross" => order.total_amount / 100,
+        post :paypal_hook, "mc_gross" => order.total_amount.to_i / 100,
                            "invoice" => order.id,
                            "address_status" => "confirmed",
                            "address_street" => order.address,

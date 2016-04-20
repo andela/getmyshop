@@ -161,3 +161,83 @@ hr {
 .star-size {
   font-size: 2em;
 }
+
+.social-button {
+  line-height: 2em;
+}
+
+.facebook-button:focus {
+  background-color: $facebook-deep-blue;
+}
+
+.facebook-button {
+  background-color: $facebook-deep-blue;
+  border-radius: 0.2em;
+  height: 1.9em;
+  padding-left: 0.4em;
+  padding-right: 0.1em;
+  text-align: left;
+  text-transform: none;
+  width: 5.14em;
+}
+
+.facebook-button:hover {
+  background-color: $deep-blue;
+}
+
+.facebook-f {
+  background-color: $my-white;
+  color: $facebook-deep-blue;
+  font-weight: bold;
+}
+
+.facebook-share {
+  font-size: 0.8em;
+  font-weight: normal;
+}
+
+.twitter-button {
+  background-color: $twitter-blue;
+  border-radius: 0.2em;
+  font-size: 0.8em;
+  height: 2.4em;
+  padding-left: 2.8em !important;
+  padding-right: 3.4em !important;
+  text-decoration: none;
+  text-transform: none;
+  width: 5em;
+}
+
+.twitter-button:focus {
+  background-color: $twitter-blue;
+  color: $my-white;
+}
+
+.google-button {
+  background-color: $google-red;
+  color: $my-white;
+  font-size: 0.7em;
+  height: 2.7em;
+  padding-left: 3.3em !important;
+  padding-right: 3.4em !important;
+  text-decoration: none;
+  text-transform: none;
+  width: 5.18em;
+}
+
+.google-button:focus {
+  background-color: $google-red;
+}
+
+.twitter-button:hover {
+  background-color: $deep-twitter-blue;
+}
+
+.google-button:hover {
+  background-color: $google-red;
+}
+
+.google-logo {
+  color: $my-white;
+  font-size: 1.4em !important;
+}

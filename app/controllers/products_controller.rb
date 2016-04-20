@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find_by_id(params[:id])
+    @product = Product.find_by(id: params[:id]).decorate
     category = @product.category
     @related_products = category.related_products(@product.id)
   end

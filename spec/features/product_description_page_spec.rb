@@ -29,14 +29,14 @@ RSpec.describe "Product Show page", type: :feature do
       end
 
       context "product still in stock" do
-        it { is_expected.to have_css(".p-input") }
+        it { is_expected.to have_css(".products-input") }
       end
 
       context "product out of stock" do
         it do
           out_of_stock_product = create(:product, quantity: 0)
           visit product_path(out_of_stock_product)
-          is_expected.to have_css(".my-disabled")
+          is_expected.to have_button("ADD TO CART", disabled: true)
         end
       end
     end

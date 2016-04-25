@@ -43,4 +43,12 @@ module ProductsHelper
       %w(Small small)
     ]
   end
+
+  def add_to_cart
+    if @product.quantity > 0
+      submit_tag "ADD TO CART", class: "waves-effect btn p-input"
+    else
+      submit_tag "ADD TO CART", class: "btn p-input my-disabled"
+    end
+  end
 end

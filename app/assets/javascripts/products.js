@@ -89,6 +89,7 @@ $(document).ready(function(){
 
   $("#productImage").elevateZoom({
     cursor: "crosshair",
-    zoomType: "inner"
+    zoomWindowHeight: 500,
+    zoomWindowWidth: 450
   });
 });

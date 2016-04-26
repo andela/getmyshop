@@ -1,9 +1,9 @@
 class AddressesController < ApplicationController
   def edit
     @address = Address.find(params[:id])
-    respond_to do |format|
-      format.js { render "address_form" }
-    end
+    # respond_to do |format|
+    #   format.js { render "edit_address_form" }
+    # end
   end
 
   def update

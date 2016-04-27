@@ -62,7 +62,7 @@
   margin-bottom: -1em;
   margin-top: -0.5em;
   min-height: 18em;
-  padding: 0;
+  padding-left: 2em;
 }
 
 .expand-right {
@@ -247,4 +247,14 @@
 
 .stock {
   margin-top: 12px;
+}
+
+.contain {
+  min-height: 33em;
+
+}
+
+.order-description {
+  height: 1.4em;
+  overflow: hidden;
 }

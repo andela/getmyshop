@@ -1,0 +1,47 @@
+<div class="account-sidebar">
+  <%= link_to account_users_path, id: "profile" do %>
+    <% if current_page?(account_users_path) %>
+      <div class="sidebar-items-active">
+    <% else %>
+      <div class="sidebar-items">
+    <% end %>
+      <i class="fa fa-user" aria-hidden="true"></i><span>&nbsp;&nbsp;My Profile</span>
+    </div>
+   <% end %>
+
+  <%= link_to addresses_users_path(current_user) , id: "manage-address" do %>
+    <% if current_page?(addresses_users_path(current_user)) %>
+        <div class="sidebar-items-active">
+      <% else %>
+        <div class="sidebar-items">
+    <% end %>
+      <i class="fa fa-envelope" aria-hidden="true"></i><span>&nbsp;&nbsp;Manage Address</span>
+    </div>
+  <% end %>
+
+  <%= link_to past_orders_path , class: "past-orders" do %>
+    <% if current_page?(past_orders_path) %>
+      <div class="sidebar-items-active">
+    <% else %>
+      <div class="sidebar-items">
+    <% end %>
+      <i class="fa fa-list" aria-hidden="true"></i><span>&nbsp;&nbsp;Past Orders</span>
+    </div>
+  <% end %>
+
+  <%= link_to wishlist_index_path, id: "wishlist" do %> 
+    <% if current_page?(wishlist_index_path) %>
+      <div class="sidebar-items-active">
+    <% else %>
+      <div class="sidebar-items">
+    <% end %>
+      <i class="fa fa-heart" aria-hidden="true"></i><span>&nbsp;&nbsp;My Wishlist</span>
+    </div>
+  <% end %>
+
+   <%= link_to user_path(current_user), data: { confirm: 'Are you sure you want to delete your account?' }, id: "delete", method: :delete do %>
+    <div class="delete-user-bar">
+      <i class="fa fa-trash" aria-hidden="true"></i><span>&nbsp;&nbsp;Delete Account</span>
+    </div>
+  <% end %>
+</div>

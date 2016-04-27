@@ -14,6 +14,7 @@ class UsersController < ApplicationController
     else
       flash[:error] = "No user found with this email"
     end
+
     redirect_to forgot_users_path
   end
 
@@ -22,6 +23,7 @@ class UsersController < ApplicationController
 
   def reset
     user = RegularUser.find(params[:id])
+
     if user.reset_code == params[:reset_code]
       user.update_attributes password: params[:password], reset_code: nil
       flash[:notice] = "Password Successfully Changed."\
@@ -67,6 +69,33 @@ class UsersController < ApplicationController
       redirect_to root_path, notice: "Unable to activate account. "\
       "If you copied the link, make sure you copied it correctly."
     end
+  end
+
+  def account
+  end
+
+  def edit
+    @user = User.find_by(id: params[:id])
+  end
+
+  def addresses
+    @user_addresses = current_user.addresses
+  end
+
+  def update
+    user = User.find_by(id: params[:id])
+    user.update(users_params)
+    redirect_to account_users_path, notice: "Account Updated"
+  end
+
+  def destroy
+    current_user.destroy
+    logout
+  end
+
+  def logout
+    session.delete :user_id
+    redirect_to root_path, notice: "Account Deactivated"
   end
 
   def users_params

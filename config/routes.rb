@@ -33,8 +33,11 @@ Rails.application.routes.draw do
   post "/wishlist", to: "wishlist#update"
   match "auth/:provider/callback", to: "sessions#create", via: [:get, :post]
   resources :categories, only: [:show, :index]
-  resources :users, only: [:new, :create] do
+  resources :addresses, except: [:show, :inde]
+  resources :users, except: [:show] do
     collection do
+      get "account", to: "users#account"
+      get ":id/addresses", to: "users#addresses", as: :addresses
       get "forgot-password", to: "users#forgot", as: :forgot
       get "password-reset/:id/:reset_code",
           to: "users#reset_password", as: :passwordreset

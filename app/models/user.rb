@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_many :oauth_accounts
   has_many :orders
-  has_many :addresses
+  has_many :addresses, dependent: :destroy
 
   before_create :assign_token
 

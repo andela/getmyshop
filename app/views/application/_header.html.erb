@@ -14,21 +14,17 @@
           <span class="white-text small-text">&nbsp;|&nbsp;</span>
           <%= link_to "FAQ", "#", class: 'white-text small-text' %>
           <span class="white-text small-text">&nbsp;|&nbsp;</span>
-          <%= link_to "My Wishlist", wishlist_index_path, class: 'white-text small-text' %>
-          <span class="white-text small-text">&nbsp;|&nbsp;</span>
-          <%= link_to "Currency - NGN", "#", class: 'white-text small-text' %>
-          <% if logged_in %>
+          <span  class="white-text small-text">Currency - NGN</span>
             <span class="white-text small-text">&nbsp;|&nbsp;</span>
-            <span class="black-text small-text">
-              <span class="full-profile">Welcome, <%= current_user.first_name %>
-              <%= render "user_profile" %></span>
+            <span class="small-text">
+
+              <%= auth_link %>
             </span>
-          <% end %>
         </div>
       </div>
     </div>
     <nav class="white valign-wrapper">
-      <div class="row container-trim">
+      <div class="row white-header">
         <div class="col s2">
           <div class="left">
             <a class="brand-logo black-text" href="<%= root_path %>">
@@ -53,7 +49,7 @@
         </div>
         ​
         <div class="col s4">
-          <div class="valign-wrapper">
+          <div>
             <span class="search-icon-span left">
              <i class="large material-icons search-i" id="search">search</i>
            </span>
@@ -77,8 +73,6 @@
             </a>
             <%= render "cart_dropdown" %>
           </span>
-          <span class="white-text small-text">&nbsp;|&nbsp;</span>
-          <%= auth_link %>
         </div>
       </nav>
     </div>

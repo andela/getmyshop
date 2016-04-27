@@ -1,7 +1,6 @@
 <% @past_orders.each do |order| %>
   <div class="orders row">
-    <div class="order-placeholders col l2"> &nbsp; </div>
-    <div class="row my-orders col l8">
+    <div class="row my-orders col l12">
 
       <div class="order-group">
         <div class="order-body">
@@ -11,7 +10,6 @@
           </div>
           <div class="col l2"><%= order.total_amount %> &nbsp;</div>
           <div class="col l2"><%= order.status %></div>
-          <div class="col l2">&nbsp;</div>
           <div id="expand-order" class="col l2 expand-order">
             <%= link_to "details", "#" %>&nbsp;&nbsp;&nbsp;<span class"plus-minus"></span>
           </div>
@@ -22,6 +20,6 @@
         </div>
       </div>
     </div>
-    <div class="order-placeholders col l2"> &nbsp; </div>
+
   </div>
 <% end %>

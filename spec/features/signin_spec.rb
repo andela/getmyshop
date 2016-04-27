@@ -9,7 +9,7 @@ RSpec.describe "Signin process", type: :feature do
     it "should sign user in" do
       signin_helper(user.email, "password")
 
-      expect(page).to have_content "SIGN OUT"
+      expect(page).to have_content "Welcome"
     end
   end
 

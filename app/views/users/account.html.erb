@@ -1,0 +1,69 @@
+<%= render "header" %>
+<% if flash['notice'] %>
+  <%= javascript_tag do %>
+      Materialize.toast("<%= flash['notice'] %>", 4000)
+  <% end %>
+<% end %>
+<div class="signin-box">
+  <div class="container account-container">
+    <div class="row">
+      <div class= "col s3">
+          <%= render "account_side_bar" %>
+      </div>
+       <div class= "col s9">
+        <div class="profile">
+          <div class="result-header">
+            MY PROFILE
+          </div>
+          <div class="profile-fields">
+            <div class="row">
+              <div class="col s6">
+                <div class="row">
+                  <div class="col s4">
+                    <span class="account-label">First Name</span>
+                  </div>
+                  <div class="col s8">
+                    <%= current_user.first_name %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col s4">
+                   <span class="account-label"> Last Name</span>
+                  </div>
+                  <div class="col s8">
+                    <%= current_user.last_name %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col s4">
+                    <span class="account-label">Email </span>
+                  </div>
+                  <div class="col s8">
+                    <%= current_user.email %>
+                  </div>
+                </div>
+                <div class="row">
+                </div>
+                <div class="row">
+                </div>
+                <div class="row">
+                </div>
+                <div class="row">
+                  <div class="col s12">
+                    <%= link_to edit_user_path(current_user) do %>
+                    <button class="btn waves-effect b-width"><i class="fa fa-pencil-square-o my-icon"></i><span class="b-text">Edit</span></button> 
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+              <div class="col s6">
+                <%= default_address %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render "footer" %>

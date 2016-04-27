@@ -10,7 +10,9 @@
       <div class="address-name">
         <%= address.name %>
         <div class="manage-address">
+          <%= link_to "/addresses/#{address.id}", method: :delete do %>
           <i class="material-icons">delete</i>
+          <% end %>
           <%= link_to "/addresses/#{address.id}/edit", remote: true do %>
           <i class="material-icons" id="updateAddress">mode_edit</i>
           <% end %>

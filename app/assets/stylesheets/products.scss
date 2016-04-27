@@ -137,6 +137,13 @@
   height: 2.3rem !important;
 }
 
+.my-disabled {
+  background: $disabled-grey;
+  box-shadow: none;
+  color: $disabled-text;
+  pointer-events: none;
+}
+
 hr {
   margin-bottom: 3em;
 }

@@ -12,15 +12,9 @@
         <div class="manage-address">
           <i class="material-icons">delete</i>
           <%= link_to "/addresses/#{address.id}/edit", remote: true do %>
-          <i class="material-icons" id="editAddresss">mode_edit</i>
+          <i class="material-icons" id="updateAddress">mode_edit</i>
           <% end %>
         </div>
-      </div>
-
-      <div id="update-address" class="modal">
-            <div class="modal-content">
-              <%= render partial: 'edit_address_form' %>
-            </div>
       </div>
 
       <div class="address-display">
@@ -42,6 +36,14 @@
     </div>
   </div>
   <% end %>
+</div>
+
+<div id="addressModal" class="modal">
+      <div class="modal-content">
+        <div id="addressForm">
+          <%# render partial: 'edit_address_form' %>
+        </div>
+      </div>
 </div>
 
 <div class="container">

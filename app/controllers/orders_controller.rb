@@ -19,7 +19,8 @@ class OrdersController < ApplicationController
   end
 
   def summary
-    @user_address = get_or_create_address(params[:address_id])
+    address_id = params[:address_id] || session[:address_id]
+    @user_address = get_or_create_address(address_id)
     session[current_user.id]["address"] = @user_address
     @order = Order.new(session[current_user.id]["order"])
   end

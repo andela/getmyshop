@@ -1,0 +1,56 @@
+<div class="order-forms-container">
+  <h5>
+    Fill in the delivery information
+  </h5>
+  <a  class="close-review" href="#"><i class="fa fa-times"></i></a>
+  <%= form_for address do |f| %>
+  <%= hidden_field_tag :user_id, current_user.id %>
+  <div class="row">
+    <div class="col l4">
+      <%= f.label :name, "name", class: "bold black-text" %>
+      <%= f.text_field :name, class: "validate", required: :required,  pattern: ".{3,100}", title: "3 to 100 characters required" %>
+    </div>
+    <div class="col l4">
+      <%= f.label :email, "Email", class: "bold black-text" %>
+      <%= f.email_field :email, class: "validate", required: :required,  pattern: ".{5,150}", title: "Valid email, 5 - 150 characters" %>
+    </div>
+    <div class="col l4">
+      <%= f.label :phone, "Phone", class: "bold black-text" %>
+      <%= f.text_field :phone, class: "validate", required: :required, pattern: ".{3,15}", title: "3 - 15 characters" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col l6">
+      <%= f.label :address, "Address", class: "bold black-text" %>
+      <%= f.text_field :address, class: "validate", required: :required,  pattern: ".{5,}", title: "5 characters required" %>
+    </div>
+    <div class="col l6">
+      <%= f.label :landmark, "Landmark", class: "bold black-text" %>
+      <%= f.text_field :landmark %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col l4">
+      <%= f.label :city, "City", class: "bold black-text" %>
+      <%= f.text_field :city, class: "validate", required: :required,  pattern: ".{2,100}", title: "2 - 100 characters" %>
+    </div>
+    <div class="col l4">
+      <%= f.label :state, "State", class: "bold black-text" %>
+      <%= f.text_field :state, class: "validate", required: :required,  pattern: ".{2,100}", title: "2 - 100 characters" %>
+    </div>
+    <div class="col l4">
+      <%= f.label :country, "Country", class: "bold black-text" %>
+      <%= f.text_field :country, class: "validate", required: :required,  pattern: ".{2,100}", title: "2 - 100 characters" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col m12">
+      <%= f.submit "Save and Continue", class: "btn btn-flat full-submit" %>
+    </div>
+  </div>
+  <% end %>
+</div>
+</div>

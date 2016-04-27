@@ -65,7 +65,7 @@ Rails.application.routes.draw do
     collection do
       post "/address", to: "orders#address", as: :address
       post "/summary", to: "orders#summary", as: :summary
-      get "/summary/:address_id", to: "orders#summary", as: :summary_address
+      get "/summary/:address_id", to: "orders#summary"
       post "/payment/", to: "orders#payment", as: :payment
       post "/payment/:type", to: "orders#post_payment", as: :post_payment
       get "/confirmation", to: "orders#confirmation", as: :confirmation

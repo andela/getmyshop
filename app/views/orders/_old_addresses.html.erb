@@ -10,10 +10,10 @@
       <div class="address-name">
         <%= address.name %>
         <div class="manage-address">
-          <%= link_to "/addresses/#{address.id}", method: :delete do %>
+          <%= link_to "/addresses/#{address.id}", method: :delete, class: "delete-address-icon", data: { confirm: "Are you sure?" } do %>
           <i class="material-icons">delete</i>
           <% end %>
-          <%= link_to "/addresses/#{address.id}/edit", remote: true do %>
+          <%= link_to "/addresses/#{address.id}/edit", remote: true, class: "edit-address-icon" do %>
           <i class="material-icons" id="updateAddress">mode_edit</i>
           <% end %>
         </div>
@@ -43,7 +43,6 @@
 <div id="addressModal" class="modal">
       <div class="modal-content">
         <div id="addressForm">
-          <%# render partial: 'edit_address_form' %>
         </div>
       </div>
 </div>

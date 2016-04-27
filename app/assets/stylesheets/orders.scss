@@ -259,10 +259,17 @@
 
 .contain {
   min-height: 33em;
-
 }
 
 .order-description {
   height: 1.4em;
   overflow: hidden;
+}
+
+.delete-address-icon {
+  color: $google-red;
+}
+
+.edit-address-icon {
+  color: inherit;
 }

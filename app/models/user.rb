@@ -18,6 +18,6 @@ class User < ActiveRecord::Base
   end
 
   def list_addresses
-    self.addresses.where(archived_at: nil)
+    addresses.where(archived_at: nil)
   end
 end

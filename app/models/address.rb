@@ -9,6 +9,6 @@ class Address < ActiveRecord::Base
 
   def archive
     self.archived_at = Time.now
-    self.save
+    save
   end
 end

@@ -7,8 +7,9 @@ RSpec.describe AddressesController, type: :request do
 
   describe "POST update" do
     before do
-      patch "/addresses/#{@address.id}", {
-        address: { name: "James Longo", address: "1 Aso Rock" }
+      patch "/addresses/#{@address.id}", address: {
+        name: "James Longo",
+        address: "1 Aso Rock"
       }
     end
 

@@ -9,7 +9,7 @@ class AddressesController < ApplicationController
   def update
     address = Address.find(params[:id])
     if address.update_attributes(address_params)
-    redirect_to "/orders/summary/#{address.id}"
+      redirect_to "/orders/summary/#{address.id}"
     end
   end
 

@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 require "support/checkout_helpers"
 require "support/address_helpers"
 
@@ -14,7 +14,7 @@ RSpec.feature "Addresses CRUD", type: :feature, js: true do
 
   before(:each) do
     allow_any_instance_of(ApplicationController).
-    to receive(:current_user).and_return(@user)
+      to receive(:current_user).and_return(@user)
   end
 
   describe "updating an address" do

@@ -4,7 +4,7 @@ $(document).ready(function(){
 
   $(".slider").slider({full_width: false});
   $("select").material_select();
-  
+
   setSocialUrls();
   var currentElement = null,
       wishlist_url = location.origin + "/wishlist";
@@ -86,4 +86,10 @@ $(document).ready(function(){
     $("#twitter-share").attr("href", twitterUrl);
     $("#google-share").attr("href", googleUrl);
   }
+
+  $("#productImage").elevateZoom({
+    cursor: "crosshair",
+    zoomWindowHeight: 500,
+    zoomWindowWidth: 450
+  });
 });

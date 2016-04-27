@@ -19,3 +19,4 @@
 //= require_tree .
 //= require materialize-sprockets
 //= require filterrific/filterrific-jquery
+//= require jquery.elevatezoom.min.js

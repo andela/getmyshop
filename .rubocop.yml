@@ -1,6 +1,7 @@
 AllCops:
   Exclude:
     - "vendor/**/*"
+    - "app/assets/javascripts/jquery.elevatezoom.min.js"
     - "db/schema.rb"
   UseCache: false
 Style/CollectionMethods:

@@ -76,5 +76,5 @@ Rails.application.routes.draw do
   end
   post "/paypal_hook", to: "orders#paypal_hook", as: :hook
 
-  resources :addresses
+  resources :addresses, only: [:edit, :update, :destroy]
 end

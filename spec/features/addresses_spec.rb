@@ -12,13 +12,12 @@ RSpec.feature "Addresses CRUD", type: :feature, js: true do
     @address = create(:address, user: @user)
   end
 
+  before(:each) do
+    allow_any_instance_of(ApplicationController).
+    to receive(:current_user).and_return(@user)
+  end
 
-    before(:each) do
-      allow_any_instance_of(ApplicationController).
-        to receive(:current_user).and_return(@user)
-    end
-
-  describe "valid update action" do
+  describe "updating an address" do
     it "should update and use address" do
       add_products_and_checkout
       find(".edit-address-icon").click
@@ -32,8 +31,8 @@ RSpec.feature "Addresses CRUD", type: :feature, js: true do
     end
   end
 
-  describe "deleting of address" do
-    it "should the address" do
+  describe "deleting an address" do
+    it "should archive the address" do
       add_products_and_checkout
       find(".delete-address-icon").click
       page.driver.browser.switch_to.alert.accept

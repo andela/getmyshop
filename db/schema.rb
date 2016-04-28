@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160406171655) do
+ActiveRecord::Schema.define(version: 20160427144943) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id"
@@ -154,6 +154,7 @@ ActiveRecord::Schema.define(version: 20160406171655) do
     t.string   "activation_token"
     t.boolean  "active_status",    default: false
     t.string   "reset_code"
+    t.boolean  "active",           default: true
   end
 
   create_table "wishlists", force: :cascade do |t|

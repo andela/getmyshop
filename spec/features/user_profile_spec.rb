@@ -71,6 +71,7 @@ RSpec.describe "User profile", type: :feature do
         page.driver.browser.switch_to.alert.accept
         expect(current_path).to eql root_path
         expect(page).to have_content "Account Deactivated"
+        expect(User.last.active).to be false
       end
     end
   end

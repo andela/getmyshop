@@ -26,7 +26,7 @@ class SessionsController < ApplicationController
   def process_form_login
     user = RegularUser.find_by_email(params[:session][:email])
     return if user_is_nil?(user)
-    if user.authenticate(params[:session][:password])
+    if user.authenticate(params[:session][:password]) && user.active
       login_successful user
     else
       password_invalid

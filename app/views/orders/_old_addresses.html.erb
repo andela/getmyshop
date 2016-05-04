@@ -9,10 +9,10 @@
       <div class="address-name">
         <%= address.name %>
         <div class="manage-address">
-          <%= link_to "/addresses/#{address.id}", method: :delete, class: "delete-address-icon", data: { confirm: "Are you sure?" } do %>
+          <%= link_to address_path(address.id), method: :delete, class: "delete-address-icon", data: { confirm: "Are you sure?" } do %>
           <i class="material-icons">delete</i>
           <% end %>
-          <%= link_to "/addresses/#{address.id}/edit", remote: true, class: "edit-address-icon" do %>
+          <%= link_to edit_address_path(address.id), remote: true, class: "edit-address-icon" do %>
           <i class="material-icons" id="updateAddress">mode_edit</i>
           <% end %>
         </div>

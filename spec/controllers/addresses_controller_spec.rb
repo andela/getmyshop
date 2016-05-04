@@ -6,17 +6,22 @@ RSpec.describe AddressesController, type: :request do
   end
 
   describe "POST update" do
-    before do
-      patch "/addresses/#{@address.id}", address: {
-        name: "James Longo",
-        address: "1 Aso Rock"
+    before(:all) do
+      @params = { address: {
+        name: Faker::Name.name,
+        address: Faker::Address.street_address
       }
+    }
+    end
+
+    before do
+      patch "/addresses/#{@address.id}", @params
     end
 
     it "should update the address" do
       @address.reload
-      expect(@address.name).to eq "James Longo"
-      expect(@address.address).to eq "1 Aso Rock"
+      expect(@address.name).to eq @params[:address][:name]
+      expect(@address.address).to eq @params[:address][:address]
     end
 
     it "should redirect user to cart summary page" do

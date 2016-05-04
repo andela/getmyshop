@@ -7,7 +7,7 @@
   <%= hidden_field_tag :user_id, current_user.id %>
   <div class="row">
     <div class="col l4">
-      <%= f.label :name, "name", class: "bold black-text" %>
+      <%= f.label :name, "Name", class: "bold black-text" %>
       <%= f.text_field :name, class: "validate", required: :required,  pattern: ".{3,100}", title: "3 to 100 characters required" %>
     </div>
     <div class="col l4">

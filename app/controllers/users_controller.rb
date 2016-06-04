@@ -89,7 +89,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    current_user.destroy
+    current_user.update(active: false)
     logout
   end
 

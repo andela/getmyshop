@@ -34,8 +34,7 @@
             </a>
           </div>
         </div>
-        <div class="col s1">&nbsp;</div>
-        <div class="col s5 search-container">
+        <div class="col s4 offset-s3 search-container">
           <div class="search-bar">
             <div class="input-field my-input" id="search-input">
              <%= form_tag({controller: "search", action: "result"}, method: "get") do %>
@@ -48,13 +47,12 @@
           </div>
         </div>
         ​
-        <div class="col s4">
-          <div>
+        <div class="col s3">
+          <div class="right">
             <span class="search-icon-span left">
-             <i class="large material-icons search-i" id="search">search</i>
-           </span>
+              <i class="large material-icons search-i" id="search">search</i>
+            </span>
 
-           <div class="right">
             <span class="white-text small-text">&nbsp;|&nbsp;</span>
             <span class="category-span">
 
@@ -69,10 +67,12 @@
                 <% if cookies[:cart] && JSON.parse(cookies[:cart]).size > 0 %>
                 <%= JSON.parse(cookies[:cart]).size %>
                 <% end %>
-              </span></span>
-            </a>
-            <%= render "cart_dropdown" %>
-          </span>
+                </span></span>
+              </a>
+              <%= render "cart_dropdown" %>
+            </span>
+          </div>
+          </div>
         </div>
       </nav>
     </div>

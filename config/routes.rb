@@ -26,6 +26,10 @@ Rails.application.routes.draw do
   get "/cart/delete/:id", to: "carts#delete_item", as: :delete_order_item
   post "/cart/update/:id", to: "carts#update_item", as: :update_order_item
   get "/contact", to: "landing#contact"
+  get "/about", to: "landing#about"
+  get "/blog", to: "landing#blog"
+  get "/blog/:id", to: "landing#single_blog"
+  get "/faq", to: "landing#frequently_asked_questions"
   get "/login", to: "sessions#new", as: :login
   post "/login", to: "sessions#create"
   get "/logout", to: "sessions#destroy", as: :logout

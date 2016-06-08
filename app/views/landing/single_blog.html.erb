@@ -1,0 +1,32 @@
+<%= render partial: 'header' %>
+<div class="container">
+	<div class="row">
+		<div class="parallax-container">
+			<div class="parallax">
+				<img src="<%= Faker::Avatar.image %>">
+			</div>
+		</div>
+		<div class="col s12 center-align">
+			<h2 class="blog-title"><%= Faker::Lorem.sentence(5, true) %></h2>
+			<p class="blog-meta">
+				<em><span>on <b><%= Faker::Date.backward(200) %></b></span></em>  |
+				<em><span>by <b><%= Faker::Name.name %></b></span></em>
+			</p>
+			<div class="divider"></div>
+		</div>
+		<div class="col s12">
+			<p class="blog-text">
+				<%= Faker::Lorem.paragraph(100) %>
+			</p>
+		</div>
+	</div>
+	<div class="divider"></div>
+	<br>
+	<div class="row">
+		<% if @id[0] > 0 %>
+			<a href="/blog/<%= @id[0] %>" class="btn left">Previous</a>
+		<% end %>
+		<a href="/blog/<%= @id[1] %>" class="btn right">Next</a>
+	</div>
+</div>
+<%= render partial: 'footer' %>

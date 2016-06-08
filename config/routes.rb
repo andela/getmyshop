@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   get "/contact", to: "landing#contact"
   get "/about", to: "landing#about"
   get "/blog", to: "landing#blog"
-  get "/blog/:id", to: "landing#single_blog"
+  get "/blog/:id", to: "landing#single_post"
   get "/faq", to: "landing#frequently_asked_questions"
   get "/login", to: "sessions#new", as: :login
   post "/login", to: "sessions#create"

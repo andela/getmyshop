@@ -16,8 +16,9 @@ class LandingController < ApplicationController
   def blog
   end
 
-  def single_blog
-    @id = [(params["id"].to_i - 1), (params["id"].to_i + 1)]
+  def single_post
+    next_id = params[:id] + 1
+    previous_id = params[:id] - 1
   end
 
   def frequently_asked_questions

@@ -23,10 +23,10 @@
 	<div class="divider"></div>
 	<br>
 	<div class="row">
-		<% if @id[0] > 0 %>
-			<a href="/blog/<%= @id[0] %>" class="btn left">Previous</a>
+		<% if previous_id > 0 %>
+			<a href="/blog/<%= previous_id %>" class="btn left">Previous</a>
 		<% end %>
-		<a href="/blog/<%= @id[1] %>" class="btn right">Next</a>
+		<a href="/blog/<%= next_id %>" class="btn right">Next</a>
 	</div>
 </div>
 <%= render partial: 'footer' %>

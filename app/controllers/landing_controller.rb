@@ -10,14 +10,14 @@ class LandingController < ApplicationController
   end
 
   def about
-  	@text = Faker::Lorem.paragraph(100)
+    @text = Faker::Lorem.paragraph(100)
   end
 
   def blog
   end
 
   def single_blog
-  	@id = [(params["id"].to_i - 1), (params["id"].to_i + 1)]
+    @id = [(params["id"].to_i - 1), (params["id"].to_i + 1)]
   end
 
   def frequently_asked_questions

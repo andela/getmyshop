@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   post "/wishlist", to: "wishlist#update"
   match "auth/:provider/callback", to: "sessions#create", via: [:get, :post]
   resources :categories, only: [:show, :index]
+  get "/categories/:id/subcategory/:subcat_id", to: "categories#show"
   resources :addresses, except: [:show, :inde]
   resources :users, except: [:show] do
     collection do

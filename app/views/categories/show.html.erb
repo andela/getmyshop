@@ -5,12 +5,21 @@
   <div class="container-large">
     <div class="row nav-like-height valign-wrapper">
       <span>&nbsp;&nbsp;</span>
-      <h5 class="left"><%= @category.name %></h5>
+      <h5 class="left">
+      <%= @category.name %>
+      <% if @subcategory %>
+          > <%= @subcategory.name %>
+      <% end %>
+      </h5>
       <h5 class="col l3">&nbsp;</h5>
       <div class="right">
         <%= link_to "Home", root_path %>
         <span>&nbsp;»&nbsp;</span>
         <%= link_to @category.name, category_path %>
+        <% if @subcategory %>
+            <span>&nbsp;»&nbsp;</span>
+            <%= link_to @subcategory.name, "/categories/#{@category.id}/subcategory/#{@subcategory.id}" %>
+        <% end %>
         <span>&nbsp;&nbsp;</span>
         <span class="bold">(<%= @result_length %> results)</span>
         <span>&nbsp;&nbsp;</span>
@@ -29,14 +38,13 @@
           <option value="rating">Rating</option>
         </select>
       </div>
-
-      <div class="digg-pagination right"><%= will_paginate @products %></div>
+      <div class="digg-pagination right"><%= will_paginate @product_list %></div>
     </div>
     <div class= "row category-products" id="filterrific_results">
-      <%= render partial: "landing/product", collection: @products %>
+      <%= render partial: "landing/product", collection: @product_list %>
     </div>
     <div class="row">
-      <div class="digg-pagination right"><%= will_paginate @products %></div>
+      <div class="digg-pagination right"><%= will_paginate @product_list %></div>
     </div>
   </div>
 </div>

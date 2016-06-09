@@ -1,5 +1,5 @@
 module DummyHelper
-  def sentence( word_count=4, suplemental=false )
+  def sentence(word_count = 4, suplemental = false)
     Faker::Lorem.sentence(word_count, suplemental)
   end
 

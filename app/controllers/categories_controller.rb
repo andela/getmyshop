@@ -49,8 +49,8 @@ class CategoriesController < ApplicationController
     end
   end
 
-  def report_error( message )
-    flash[:error] = message 
+  def report_error(message)
+    flash[:error] = message
     redirect_to root_path
   end
 

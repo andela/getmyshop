@@ -10,15 +10,16 @@ class LandingController < ApplicationController
   end
 
   def about
-    @text = Faker::Lorem.paragraph(100)
+    render locals: {text: Faker::Lorem.paragraph(100)}
   end
 
   def blog
   end
 
   def single_post
-    next_id = params[:id] + 1
-    previous_id = params[:id] - 1
+    render locals: {
+      post: params[:id].to_i
+    }
   end
 
   def frequently_asked_questions

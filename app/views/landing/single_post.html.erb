@@ -3,30 +3,28 @@
 	<div class="row">
 		<div class="parallax-container">
 			<div class="parallax">
-				<img src="<%= Faker::Avatar.image %>">
+				<img src="<%= image(nil, '500x500') %>">
 			</div>
 		</div>
 		<div class="col s12 center-align">
-			<h2 class="blog-title"><%= Faker::Lorem.sentence(5, true) %></h2>
+			<h2 class="blog-title"><%= sentence(5, true) %></h2>
 			<p class="blog-meta">
-				<em><span>on <b><%= Faker::Date.backward(200) %></b></span></em>  |
-				<em><span>by <b><%= Faker::Name.name %></b></span></em>
+				<em><span>on <b><%= date("backward", 200) %></b></span></em>  |
+				<em><span>by <b><%= name "fullname" %></b></span></em>
 			</p>
 			<div class="divider"></div>
 		</div>
 		<div class="col s12">
 			<p class="blog-text">
-				<%= Faker::Lorem.paragraph(100) %>
+				<%= paragraph(100) %>
 			</p>
 		</div>
 	</div>
 	<div class="divider"></div>
 	<br>
 	<div class="row">
-		<% if previous_id > 0 %>
-			<a href="/blog/<%= previous_id %>" class="btn left">Previous</a>
-		<% end %>
-		<a href="/blog/<%= next_id %>" class="btn right">Next</a>
+		<%= link_to_previous post %>
+		<%= link_to_next post %>
 	</div>
 </div>
 <%= render partial: 'footer' %>

@@ -16,8 +16,10 @@ class CategoriesController < ApplicationController
     filterrific_initialize
   end
 
+  private
+
   def get_products
-    if params[:subcat_id]
+    unless subcategory_id.nil?
       return report_error("Subcategory not present.") unless subcategory
       subcategory.products
     else
@@ -26,11 +28,27 @@ class CategoriesController < ApplicationController
   end
 
   def category
-    @category ||= Category.find_by_id(params[:id])
+    @category ||= Category.find_by_id(category_id)
   end
 
   def subcategory
-    @subcategory ||= Subcategory.find_by_id(params[:subcat_id])
+    @subcategory ||= Subcategory.find_by_id(subcategory_id)
+  end
+
+  def category_id
+    if params[:category_id].present?
+      params[:category_id]
+    else
+      params[:id]
+    end
+  end
+
+  def subcategory_id
+    if params[:category_id].present?
+      params[:id]
+    else
+      nil
+    end
   end
 
   def report_error(message)

@@ -1,37 +1,22 @@
 <%= render partial: 'header' %>
 <div class="shift-down">
-
-
   <div class="container-large">
     <div class="row nav-like-height valign-wrapper">
       <span>&nbsp;&nbsp;</span>
-      <h5 class="left">
-      <%= @category.name %>
-      <% if @subcategory %>
-          > <%= @subcategory.name %>
-      <% end %>
-      </h5>
+      <h5 class="left"><%= category_name %></h5>
       <h5 class="col l3">&nbsp;</h5>
       <div class="right">
-        <%= link_to "Home", root_path %>
-        <span>&nbsp;»&nbsp;</span>
-        <%= link_to @category.name, category_path %>
-        <% if @subcategory %>
-            <span>&nbsp;»&nbsp;</span>
-            <%= link_to @subcategory.name, "/categories/#{@category.id}/subcategory/#{@subcategory.id}" %>
-        <% end %>
-        <span>&nbsp;&nbsp;</span>
+        <%= category_breadcrumb %>
         <span class="bold">(<%= @result_length %> results)</span>
         <span>&nbsp;&nbsp;</span>
       </div>
     </div>
-      <%= render partial: 'application/filter_widget' %>
-
+    <%= render partial: 'application/filter_widget' %>
     <div class= "row-break-small"></div>
     <div class="row sort">
       <div class="col s2">
         <select class="browser-default">
-         <option value="" disabled selected>Sort By</option>
+          <option value="" disabled selected>Sort By</option>
           <option value="hprice">Highest Price</option>
           <option value="lprice">Lowest Price</option>
           <option value="arrival">Arrival</option>

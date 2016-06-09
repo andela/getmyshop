@@ -10,7 +10,7 @@ class LandingController < ApplicationController
   end
 
   def about
-    render locals: {text: Faker::Lorem.paragraph(100)}
+    render locals: { text: Faker::Lorem.paragraph(100) }
   end
 
   def blog

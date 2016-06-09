@@ -19,7 +19,7 @@ class CategoriesController < ApplicationController
   private
 
   def get_products
-    unless subcategory_id.nil?
+    if !subcategory_id.nil?
       return report_error("Subcategory not present.") unless subcategory
       subcategory.products
     else
@@ -46,12 +46,10 @@ class CategoriesController < ApplicationController
   def subcategory_id
     if params[:category_id].present?
       params[:id]
-    else
-      nil
     end
   end
 
-  def report_error(message)
+  def report_error( message )
     flash[:error] = message 
     redirect_to root_path
   end

@@ -1,0 +1,26 @@
+<% (1..6).each do |number| %>
+<div class="col l4 s12 m4">
+	<div class="card">
+		<div class="card-image waves-effect waves-block waves-light">
+			<img class="activator" src="<%= image(nil, '200x200') %>">
+		</div>
+		<div class="card-content">
+			<div class="card-title activator grey-text text-darken-4">
+				<div class="row">
+					<span class="truncate">
+						<%= words(3, true).capitalize %>
+					</span>
+				</div>
+			</div>
+			<p> <%= link_to_post number %> </p>
+		</div>
+		<div class="card-reveal">
+			<span class="card-title grey-text text-darken-4">
+				<i class="material-icons right">close</i>
+				<%= words(3, true).capitalize %>
+			</span>
+			<p><%= paragraph(8) %></p>
+		</div>
+	</div>
+</div>
+<% end %>

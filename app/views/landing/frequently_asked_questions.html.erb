@@ -1,9 +1,6 @@
 <%= render partial: 'header' %>
 <div class="container">
 	<h2>Frequently Asked Questions</h2>
-	<% (1..5).each do |number| %>
-		<h5><%= number %>. <%= Faker::Lorem.sentence %></h5>
-		<p><%= Faker::Lorem.sentence(50,true) %></p><br>
-	<% end %>
+	<%= render :partial => "faq" %>
 </div>
 <%= render partial: 'footer' %>

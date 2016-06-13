@@ -8,8 +8,8 @@ RSpec.describe "Category Page Test", type: :feature do
 
   let(:product) { Product.first }
   context "returns the Category selected", js: true do
-    it "returns the correct element" do
-      visit product_path(product)
+    it "returns the correct element", :correct_element do
+      visit root_path
       expect(page).to have_css(".category-span", visible: true)
       page.find(".category-span").hover
       expect(page).to have_css('#category-dropdown', visible: true)

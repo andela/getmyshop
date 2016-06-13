@@ -1,10 +1,10 @@
 <div class= "col s12 m6 l3">
 	<%= link_to product_path(product) do %>
-		<div class="card home-card">
-			<div class="card-image"><%= image_tag product.product_image_links.first.link_name %></div>
-	  </div>
-	  <div class="card-desc center">
-      <span><%= product.name %></span><br /><span class="price">&#x20A6;<%= product.price %></span>
-    </div>
+		<div class="row card home-card">
+		  <div class="card-image"><%= image_tag product.product_image_links.first.link_name %></div>
+		</div>
+		<div class="card-desc center">
+	      <span><%= product.name %></span><br /><span class="price">&#x20A6;<%= product.price %></span>
+	    </div>
 	<% end %>
 </div>

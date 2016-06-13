@@ -1,42 +1,35 @@
 <%= render partial: 'header' %>
 <div class="shift-down">
-
-
   <div class="container-large">
     <div class="row nav-like-height valign-wrapper">
       <span>&nbsp;&nbsp;</span>
-      <h5 class="left"><%= @category.name %></h5>
+      <h5 class="left"><%= category_name %></h5>
       <h5 class="col l3">&nbsp;</h5>
       <div class="right">
-        <%= link_to "Home", root_path %>
-        <span>&nbsp;»&nbsp;</span>
-        <%= link_to @category.name, category_path %>
-        <span>&nbsp;&nbsp;</span>
+        <%= category_breadcrumb %>
         <span class="bold">(<%= @result_length %> results)</span>
         <span>&nbsp;&nbsp;</span>
       </div>
     </div>
-      <%= render partial: 'application/filter_widget' %>
-
+    <%= render partial: 'application/filter_widget' %>
     <div class= "row-break-small"></div>
     <div class="row sort">
       <div class="col s2">
         <select class="browser-default">
-         <option value="" disabled selected>Sort By</option>
+          <option value="" disabled selected>Sort By</option>
           <option value="hprice">Highest Price</option>
           <option value="lprice">Lowest Price</option>
           <option value="arrival">Arrival</option>
           <option value="rating">Rating</option>
         </select>
       </div>
-
-      <div class="digg-pagination right"><%= will_paginate @products %></div>
+      <div class="digg-pagination right"><%= will_paginate @product_list %></div>
     </div>
     <div class= "row category-products" id="filterrific_results">
-      <%= render partial: "landing/product", collection: @products %>
+      <%= render partial: "landing/product", collection: @product_list %>
     </div>
     <div class="row">
-      <div class="digg-pagination right"><%= will_paginate @products %></div>
+      <div class="digg-pagination right"><%= will_paginate @product_list %></div>
     </div>
   </div>
 </div>

@@ -14,7 +14,7 @@
           <div class="row">
             <div class="col l1">&nbsp;</div>
               <li class="col l10">
-                <%= link_to subcategory.name, "/categories/#{category.id}/subcategory/#{subcategory.id}" %>
+                <%= link_to subcategory.name, subcategory_path( category.id, subcategory.id ) %>
               </li>
             <div class="col l1">&nbsp;</div>
           </div>

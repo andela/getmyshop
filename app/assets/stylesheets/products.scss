@@ -250,8 +250,9 @@ hr {
   font-size: 1.4em !important;
 }
 
-.card .card-image img {
-  display: inline-block;
+.card {
+  .card-image {
+    display: inline-block;
+  }
 }
-
 

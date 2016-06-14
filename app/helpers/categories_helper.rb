@@ -8,14 +8,10 @@ module CategoriesHelper
   end
 
   def category_breadcrumb
-    output = ""
-    output += link_to "Home", root_path
-    output += "<span>&nbsp;»&nbsp;</span>"
-    output += link_to @category.name, category_path(@category.id)
-    if @subcategory
-      output += "<span>&nbsp;»&nbsp;</span>"
-      output += @subcategory.name
-    end
+    output = "#{link_to "Home", root_path}<span>&nbsp;»&nbsp;</span>\
+    #{link_to @category.name, category_path(@category.id)}
+    "
+    output << "<span>&nbsp;»&nbsp;</span>#{@subcategory.name}" if @subcategory
     output.html_safe
   end
 end

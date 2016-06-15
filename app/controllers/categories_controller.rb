@@ -30,11 +30,11 @@ class CategoriesController < ApplicationController
   end
 
   def category
-    @category ||= Category.find_by({id: category_id})
+    @category ||= Category.find_by(id: category_id)
   end
 
   def subcategory
-    @subcategory ||= category.subcategories.find_by({id: subcategory_id})
+    @subcategory ||= category.subcategories.find_by(id: subcategory_id)
   end
 
   def category_id

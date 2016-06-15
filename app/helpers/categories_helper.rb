@@ -16,7 +16,7 @@ module CategoriesHelper
     unless flash.empty?
       output = "<div class='container'><div class='row'>\
                 <div class='col s12 l12 m12 red darken-2'>"
-      flash.each do |key, value|
+      flash.each do |_key, value|
         output << "<p class='center-align white-text'>#{value}</p>"
       end
       output << "</div></div></div>"

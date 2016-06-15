@@ -10,6 +10,8 @@ class AddressesController < ApplicationController
     address = Address.find(params[:id])
     if address.update_attributes(address_params)
       redirect_to address_summary_orders_path(address.id)
+    else
+      redirect_to edit_address_path params[:id]
     end
   end
 

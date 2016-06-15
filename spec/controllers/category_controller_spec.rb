@@ -19,7 +19,7 @@ RSpec.describe CategoriesController, type: :controller do
   describe "#category_not_present" do
     it "returns error message" do
       get :show, id: category.name # invalid category id
-      expect(response).to redirect_to(root_path)
+      expect(response).to redirect_to(categories_path)
     end
   end
 end

@@ -42,8 +42,7 @@ group :development, :test do
   gem "shoulda-matchers", "~> 3.1"
   gem "figaro"
   gem "transactional_capybara"
-  gem "faker"
-  gem 'chromedriver-helper'
+  gem "chromedriver-helper"
 end
 
 group :production do

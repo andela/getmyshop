@@ -7,13 +7,23 @@ RSpec.describe "Category Page Test", type: :feature do
   end
 
   let(:product) { Product.first }
-  context "returns the Category selected", js: true do
-    it "returns the correct element" do
-      visit product_path(product)
-      expect(page).to have_css(".category-span", visible: true)
+
+  feature "Category links", js: true do
+    scenario "navigates user to category page when clicked in the header" do
+      visit category_path(product)
       page.find(".category-span").hover
-      expect(page).to have_css('#category-dropdown', visible: true)
-      click_link(product.category.name)
+      within(".category-span") do
+        click_link(product.category.name)
+      end
+      expect(page).to have_content(product.name)
+    end
+
+    scenario "navigates user to category page when clicked in the footer" do
+      visit root_path
+      within("div.footer.valign-wrapper") do
+        click_link(product.category.name)
+      end
+
       expect(page).to have_content(product.name)
     end
   end

@@ -345,7 +345,7 @@ DEPENDENCIES
   will_paginate
 
 RUBY VERSION
-   ruby 2.1.6p336
+   ruby 2.3.0p0
 
 BUNDLED WITH
    1.12.5

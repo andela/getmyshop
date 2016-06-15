@@ -14,9 +14,8 @@ RSpec.describe "Checkout Feature", type: :feature do
   after(:all) { DatabaseCleaner.clean_with(:truncation) }
 
   context "when not logged in" do
-    it "redirects to login page if not logged in", js: true do
+    it "redirects to login page", js: true do
       add_products_and_checkout
-
       expect(current_url).to have_content "login"
     end
   end

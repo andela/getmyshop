@@ -20,7 +20,6 @@ RSpec.describe "Ordering page", type: :feature, js: true do
     let(:user) { create :regular_user }
     it "should sign user in" do
       signin_helper(user.email, user.password)
-
       visit past_orders_path
       expect(page).to have_content "You currently have no Orders"
     end

@@ -345,11 +345,7 @@ DEPENDENCIES
   will_paginate
 
 RUBY VERSION
-<<<<<<< 2aa74ddc7f4362e9d1e7505c25f3e634832bc2be
-   ruby 2.1.6p336
-=======
    ruby 2.3.0p0
->>>>>>> fix(test): Resolved test issues after merging
 
 BUNDLED WITH
    1.12.5

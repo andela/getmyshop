@@ -19,20 +19,22 @@ class CategoriesController < ApplicationController
   private
 
   def get_products
-    if !subcategory_id.nil?
-      return report_error("Subcategory not present.") unless subcategory
-      subcategory.products
-    else
+    if subcategory.nil?
+      if params[:category_id].present?
+        report_error("Subcategory not present.", false)
+      end
       category.products
+    else
+      subcategory.products
     end
   end
 
   def category
-    @category ||= Category.find_by_id(category_id)
+    @category ||= Category.find_by({id: category_id})
   end
 
   def subcategory
-    @subcategory ||= Subcategory.find_by_id(subcategory_id)
+    @subcategory ||= category.subcategories.find_by({id: subcategory_id})
   end
 
   def category_id
@@ -49,9 +51,9 @@ class CategoriesController < ApplicationController
     end
   end
 
-  def report_error(message)
-    flash[:error] = message
-    redirect_to root_path
+  def report_error(message, redirect = true)
+    flash.now[:error] = message
+    redirect_to categories_path if redirect
   end
 
   def paginate_products(product_collection)

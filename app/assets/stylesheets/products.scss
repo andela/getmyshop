@@ -249,3 +249,10 @@ hr {
   color: $my-white;
   font-size: 1.4em !important;
 }
+
+.card {
+  .card-image {
+    display: inline-block;
+  }
+}
+

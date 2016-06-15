@@ -1,19 +1,20 @@
 <div class="related-products">
   <h5>Related Products</h5>
   <div class="row">
-
     <% @related_products.each do  |related_product| %>
-    <div class= "col s6 m4 l4">
-      <%= link_to product_path(related_product) do %>
-        <div class="card card-no-shadow">
-          <div class="card-image"><%= image_tag related_product.product_image_links.first.link_name %></div>
-        </div>
-        <div class="card-desc">
-          <div><%= related_product.name %></div>
-          <div class="price left">&#x20A6;<%= related_product.price %></div>
-        </div>
-      <% end %>
-    </div>
+      <div class= "col s6 m4 l4">
+        <%= link_to product_path(related_product) do %>
+          <div class="card card-no-shadow">
+            <div class="card-image">
+              <span><%= image_tag related_product.product_image_links.first.link_name %></span>
+            </div>
+            <div class="card-content center">
+              <span><%= related_product.name %></span><br>
+              <span class="price">&#x20A6;<%= related_product.price %></span>
+            </div>
+          </div>
+        <% end %>
+      </div>
     <% end %>
   </div>
 </div>

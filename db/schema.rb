@@ -24,8 +24,9 @@ ActiveRecord::Schema.define(version: 20160427144943) do
     t.string   "state"
     t.string   "city"
     t.string   "country"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.datetime "archived_at"
   end
 
   add_index "addresses", ["user_id"], name: "index_addresses_on_user_id"
@@ -70,9 +71,9 @@ ActiveRecord::Schema.define(version: 20160427144943) do
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
     t.text     "notification_params"
-    t.string   "status",              default: "Pending"
     t.string   "transaction_id"
     t.datetime "purchased_at"
+    t.string   "status",              default: "Pending"
   end
 
   add_index "orders", ["address_id"], name: "index_orders_on_address_id"

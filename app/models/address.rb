@@ -6,4 +6,9 @@ class Address < ActiveRecord::Base
   validates :email, format: {
     with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/
   }
+
+  def archive
+    self.archived_at = Time.now
+    self.save
+  end
 end

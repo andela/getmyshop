@@ -43,7 +43,7 @@ Rails.application.routes.draw do
   resources :categories, only: [:show, :index]
   get "/categories/:category_id/subcategory/:id",
       to: "categories#show", as: :subcategory
-  resources :addresses, except: [:show, :inde]
+  resources :addresses, except: [:show, :index]
   resources :users, except: [:show] do
     collection do
       get "account", to: "users#account"
@@ -64,7 +64,8 @@ Rails.application.routes.draw do
   resources :orders, only: [] do
     collection do
       post "/address", to: "orders#address", as: :address
-      match "/summary", to: "orders#summary", as: :summary, via: [:post, :get]
+      post "/summary", to: "orders#summary", as: :summary
+      get "/summary/:address_id", to: "orders#summary", as: :summary_address
       post "/payment/", to: "orders#payment", as: :payment
       post "/payment/:type", to: "orders#post_payment", as: :post_payment
       get "/confirmation", to: "orders#confirmation", as: :confirmation

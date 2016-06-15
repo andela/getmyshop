@@ -6,7 +6,7 @@ class OrdersController < ApplicationController
   def address
     session[current_user.id] ||= {}
     session[current_user.id]["order"] = order_params
-    @user_addresses = current_user.addresses
+    @user_addresses = current_user.list_addresses
   end
 
   def get_or_create_address(address_id)
@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
   end
 
   def summary
-    address_id = params[:address_id] || session[:address_id]
+    address_id = params[:address_id]
     @user_address = get_or_create_address(address_id)
     session[current_user.id]["address"] = @user_address
     @order = Order.new(session[current_user.id]["order"])

@@ -16,4 +16,8 @@ class User < ActiveRecord::Base
     self.active_status = false
     self.activation_token = [*"0".."9", *"a".."z", *"A".."Z"].sample(50).join
   end
+
+  def list_addresses
+    self.addresses.where(archived_at: nil)
+  end
 end

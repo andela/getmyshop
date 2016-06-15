@@ -7,6 +7,7 @@ RSpec.describe "Category Page Test", type: :feature do
   end
 
   let(:product) { Product.first }
+<<<<<<< 175b69b29aa1c1ef1c29cc95c75418018a7f99f7
   context "returns the Category selected", js: true do
     it "returns the correct element", :correct_element do
       visit category_path(product)
@@ -14,6 +15,23 @@ RSpec.describe "Category Page Test", type: :feature do
       page.find(".category-span").hover
       expect(page).to have_css('#category-dropdown', visible: true)
       first(:link, product.category.name).click
+=======
+  context "returns the correct category", js: true do
+    it "when the category name is clicked on category dropdown" do
+      visit category_path(product)
+      page.find(".category-span").hover
+      within('.category-span') do
+        click_link(product.category.name)
+      end
+      expect(page).to have_content(product.name)
+    end
+
+    it "when category name is clicked on footer quicklinks" do
+      visit root_path
+      within('div.footer.valign-wrapper') do
+        click_link(product.category.name)
+      end
+>>>>>>> test(category_links): Add footer quicklinks test
       expect(page).to have_content(product.name)
     end
   end
@@ -55,4 +73,8 @@ RSpec.describe "Category Page Test", type: :feature do
       end
     end
   end
+<<<<<<< 175b69b29aa1c1ef1c29cc95c75418018a7f99f7
 end
+=======
+end
+>>>>>>> test(category_links): Add footer quicklinks test

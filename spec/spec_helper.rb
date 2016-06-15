@@ -5,6 +5,10 @@ Coveralls.wear!
 require "factory_girl_rails"
 require "support/form_helpers"
 require "support/login_helper"
+<<<<<<< 175b69b29aa1c1ef1c29cc95c75418018a7f99f7
+=======
+require 'capybara'
+>>>>>>> test(category_links): Add footer quicklinks test
 
 require "omniauth"
 
@@ -22,4 +26,11 @@ RSpec.configure do |config|
   config.include FormHelpers, type: :feature
   config.include LoginHelper, type: :controller
 end
+<<<<<<< 175b69b29aa1c1ef1c29cc95c75418018a7f99f7
+=======
+
+Capybara.register_driver :selenium do |app|
+  Capybara::Selenium::Driver.new(app, browser: :chrome)
+end
+>>>>>>> test(category_links): Add footer quicklinks test
 OmniAuth.config.test_mode = true

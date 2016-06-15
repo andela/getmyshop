@@ -8,8 +8,9 @@ RSpec.describe "Category Page Test", type: :feature do
 
   let(:product) { Product.first }
 
-  context "returns the correct category", js: true do
-    it "when the category name is clicked on category dropdown" do
+  feature "Category links", js: true do
+    scenario "navigates user to category page when clicked in the header" do
+
       visit category_path(product)
       page.find(".category-span").hover
       within(".category-span") do
@@ -18,7 +19,7 @@ RSpec.describe "Category Page Test", type: :feature do
       expect(page).to have_content(product.name)
     end
 
-    it "when category name is clicked on footer quicklinks" do
+    scenario "navigates user to category page when clicked in the footer" do
       visit root_path
       within("div.footer.valign-wrapper") do
         click_link(product.category.name)

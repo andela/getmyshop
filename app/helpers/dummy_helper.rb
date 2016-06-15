@@ -1,6 +1,12 @@
 module DummyHelper
+<<<<<<< 61775eb511173b07494338e5e43907c59f469b99
   def sentence(word_count = 4, suplemental = false)
     Faker::Lorem.sentence(word_count, suplemental)
+=======
+
+  def sentence(word_count=4,suplemental=false)
+    Faker::Lorem.sentence(word_count,suplemental)
+>>>>>>> chore: resolving conflict
   end
 
   def date(direction, days)

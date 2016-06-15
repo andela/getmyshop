@@ -5,19 +5,12 @@ Coveralls.wear!
 require "factory_girl_rails"
 require "support/form_helpers"
 require "support/login_helper"
-<<<<<<< 97a0c18648de6650c97fa4a1682d0072265b6388
-<<<<<<< 175b69b29aa1c1ef1c29cc95c75418018a7f99f7
-=======
-require 'capybara'
->>>>>>> test(category_links): Add footer quicklinks test
-=======
 
->>>>>>> fix(test): Resolve circle ci test issues
+require 'capybara'
 
 require "omniauth"
 
 RSpec.configure do |config|
-
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
@@ -27,20 +20,7 @@ RSpec.configure do |config|
   end
 
   config.include FactoryGirl::Syntax::Methods
-
   config.include FormHelpers, type: :feature
   config.include LoginHelper, type: :controller
-<<<<<<< 97a0c18648de6650c97fa4a1682d0072265b6388
-end
-<<<<<<< 175b69b29aa1c1ef1c29cc95c75418018a7f99f7
-=======
-=======
->>>>>>> fix(test): Resolve circle ci test issues
 
-end
-<<<<<<< 97a0c18648de6650c97fa4a1682d0072265b6388
->>>>>>> test(category_links): Add footer quicklinks test
-=======
-
->>>>>>> fix(test): Resolve circle ci test issues
 OmniAuth.config.test_mode = true

@@ -24,6 +24,7 @@ RSpec.describe "Making a review", type: :feature do
       fill_in("comment", with: "Love the sleek design")
       find("#star3").click
       click_button("Submit")
+      sleep 3
 
       expect(product.reviews.last.title).to eq "Nice product"
       expect(product.reviews.last.rating).to eq 3

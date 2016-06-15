@@ -65,4 +65,3 @@ RSpec.describe "Checkout Feature", type: :feature do
     end
   end
 end
-

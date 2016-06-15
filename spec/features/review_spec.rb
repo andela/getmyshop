@@ -13,11 +13,9 @@ RSpec.describe "Making a review", type: :feature do
     it "Adds review to a product if user has bought the product", js: true do
       order.update_attributes(user: user, address: address)
       order_item.update_attributes(order: order, product: product)
-
       signin_helper(user.email, user.password)
       visit past_orders_path
       expect(page).to have_content "Details"
-
       click_link "details"
       click_link("Review")
       fill_in("title", with: "Nice product")

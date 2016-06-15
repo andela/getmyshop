@@ -10,7 +10,6 @@ RSpec.describe "Category Page Test", type: :feature do
 
   feature "Category links", js: true do
     scenario "navigates user to category page when clicked in the header" do
-
       visit category_path(product)
       page.find(".category-span").hover
       within(".category-span") do
@@ -66,5 +65,4 @@ RSpec.describe "Category Page Test", type: :feature do
       end
     end
   end
-
 end

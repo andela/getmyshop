@@ -1,9 +1,9 @@
 <div class="row">
-  <div class="digg-pagination right"><%= will_paginate @products %></div>
+  <div class="digg-pagination right"><%= will_paginate @product_list %></div>
 </div>
 <div class= "row category-products">
-  <%= render partial: "landing/product", collection: @products %>
+  <%= render partial: "landing/product", collection: @product_list %>
 </div>
 <div class="row">
-  <div class="digg-pagination right"><%= will_paginate @products %></div>
+  <div class="digg-pagination right"><%= will_paginate @product_list %></div>
 </div>

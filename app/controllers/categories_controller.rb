@@ -4,6 +4,7 @@ class CategoriesController < ApplicationController
   DEFAULT_LIMIT = 16
 
   def index
+    paginate_products(Product.all)
     @subcategories = Subcategory.get_unique
     filterrific_initialize
   end

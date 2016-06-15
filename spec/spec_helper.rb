@@ -5,9 +5,7 @@ Coveralls.wear!
 require "factory_girl_rails"
 require "support/form_helpers"
 require "support/login_helper"
-
-require 'capybara'
-
+require "capybara"
 require "omniauth"
 
 RSpec.configure do |config|
@@ -22,5 +20,6 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   config.include FormHelpers, type: :feature
   config.include LoginHelper, type: :controller
+end
 
 OmniAuth.config.test_mode = true

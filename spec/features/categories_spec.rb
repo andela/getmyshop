@@ -66,12 +66,5 @@ RSpec.describe "Category Page Test", type: :feature do
       end
     end
   end
-<<<<<<< 97a0c18648de6650c97fa4a1682d0072265b6388
-<<<<<<< 175b69b29aa1c1ef1c29cc95c75418018a7f99f7
+
 end
-=======
-end
->>>>>>> test(category_links): Add footer quicklinks test
-=======
-end
->>>>>>> fix(test): Resolve circle ci test issues

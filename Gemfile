@@ -43,7 +43,7 @@ group :development, :test do
   gem "figaro"
   gem "transactional_capybara"
   gem "faker"
-  gem 'chromedriver-helper'
+  gem "chromedriver-helper"
 end
 
 group :production do

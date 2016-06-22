@@ -1,3 +1,14 @@
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <h4>Delete Account?</h4>
+    <p>Warning! Deleting account deactivates account, enabling it to be recovered within 7 days. After which it is permanently deleted</p>
+  </div>
+  <div class="modal-footer">
+    <%= link_to "Cancel", "#!", class: "modal-action modal-close waves-effect waves-green btn-flat" %>
+    <%= link_to "Ok, I understand", user_path(current_user), class: "modal-action modal-close waves-effect waves-green btn-flat", method: :delete  %>
+  </div>
+</div>
+
 <div class="account-sidebar">
   <%= link_to account_users_path, id: "profile" do %>
     <% if current_page?(account_users_path) %>
@@ -39,9 +50,10 @@
     </div>
   <% end %>
 
-   <%= link_to user_path(current_user), data: { confirm: 'Are you sure you want to delete your account?' }, id: "delete", method: :delete do %>
+  <%= link_to "#modal1", class: "modal-trigger" do %>
     <div class="delete-user-bar">
       <i class="fa fa-trash" aria-hidden="true"></i><span>&nbsp;&nbsp;Delete Account</span>
     </div>
   <% end %>
+
 </div>

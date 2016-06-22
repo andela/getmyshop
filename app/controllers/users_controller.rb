@@ -90,6 +90,7 @@ class UsersController < ApplicationController
 
   def destroy
     current_user.update(active: false)
+    UserMailer.delete_account(current_user.id, "GetMyShop Account Deactivated").deliver_now
     logout
   end
 

@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).on('ready page:load page:change', function() {
   var firstNameState = false,
       lastNameState = false,
       emailState = false,
@@ -70,13 +70,16 @@ $(document).ready(function() {
     } else if (passwordState && emailState) {
       $("#submit-signin").prop("disabled", false);
     } else if (passwordState) {
+      $("#submit-signup").prop("disabled", false);
       $("#submit_reset").prop("disabled", false);
     } else {
-      $("#submit-signin").attr("disabled","disabled");
-      $("#submit-signup").attr("disabled","disabled");
+      $("#submit-signin").attr("disabled", "disabled");
+      $("#submit-signup").attr("disabled", "disabled");
       $("#submit_reset").prop("disabled", true);
     }
   }
+
+
 
 
   $("#session_email").on("focusout keyup change", emailChecker);
@@ -95,4 +98,5 @@ $(document).ready(function() {
   });
 
   $("#reset_password").on("keyup keydown", passwordChecker);
+  $('.modal-trigger').leanModal();
 });

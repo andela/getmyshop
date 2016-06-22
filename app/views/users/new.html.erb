@@ -6,7 +6,7 @@
     </div>
     <div class="row">
       <div class="col m8 s12">
-        <div class="new-user-form">
+        <div class="new-user-form" >
           <%= form_for @user, url: users_path do |f| %>
             <% unless flash['errors'].blank? %>
               <div class="error-messages">
@@ -52,7 +52,7 @@
             </div>
           <% end %>
           <p class="comments  center">Got an account? Please
-        <%= link_to "Sign In", login_path %>.
+        <%= link_to "Sign In", login_path  %>.
           </p>
         </div>
       </div>

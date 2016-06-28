@@ -9,17 +9,15 @@ class AddressesController < ApplicationController
   def update
     address = Address.find(params[:id])
     if address.update_attributes(address_params)
-      redirect_to address_summary_orders_path(address.id)
-    else
-      redirect_to edit_address_path params[:id]
+      redirect_to addresses_users_path(address.user)
     end
   end
 
   def destroy
     address = Address.find(params[:id])
-    address.archive
+    address.delete
     flash[:success] = "Address deleted"
-    redirect_to cart_path
+    redirect_to addresses_users_path(address.user)
   end
 
   protected

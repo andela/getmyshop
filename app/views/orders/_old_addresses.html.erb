@@ -8,14 +8,6 @@
     <div class="user-address">
       <div class="address-name">
         <%= address.name %>
-        <div class="manage-address">
-          <%= link_to address_path(address.id), method: :delete, class: "delete-address-icon", data: { confirm: "Are you sure?" } do %>
-          <i class="material-icons">delete</i>
-          <% end %>
-          <%= link_to edit_address_path(address.id), remote: true, class: "edit-address-icon" do %>
-          <i class="material-icons" id="updateAddress">mode_edit</i>
-          <% end %>
-        </div>
       </div>
 
       <div class="address-display">
@@ -37,13 +29,6 @@
     </div>
   </div>
   <% end %>
-</div>
-
-<div id="addressModal" class="modal">
-      <div class="modal-content">
-        <div id="addressForm">
-        </div>
-      </div>
 </div>
 
 <div class="container">

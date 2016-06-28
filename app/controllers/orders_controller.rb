@@ -11,18 +11,20 @@ class OrdersController < ApplicationController
 
   def get_or_create_address(address_id)
     if address_id
-      Address.find_by(id: address_id)
+      @user_address = Address.find_by(id: address_id)
     else
-      address = Address.create(address_params)
-      address
+      @user_address = Address.create(address_params)
     end
   end
 
   def summary
     address_id = params[:address_id]
-    @user_address = get_or_create_address(address_id)
-    session[current_user.id]["address"] = @user_address
-    @order = Order.new(session[current_user.id]["order"])
+    if get_or_create_address(address_id)
+      session[current_user.id]["address"] = @user_address
+      @order = Order.new(session[current_user.id]["order"])
+    else
+      redirect_to cart_path
+    end
   end
 
   def payment

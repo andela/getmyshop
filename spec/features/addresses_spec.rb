@@ -19,21 +19,20 @@ RSpec.feature "Addresses CRUD", type: :feature, js: true do
 
   describe "updating an address" do
     it "should update and use address" do
-      add_products_and_checkout
+      visit addresses_users_path @user.id
       find(".edit-address-icon").click
       expect(page).to have_content "Fill in the delivery information"
       fill_in_address
       click_button "Save and Continue"
-      expect(page).to have_content("Delivery Address")
-      expect(page).to have_content(@address.name)
-      expect(page).to have_content(@address.address)
-      expect(page).to have_content(@address.email)
+      expect(current_url).to include(addresses_users_path @user.id)
+      expect(page.body.include? @address.name).to be_truthy
+      expect(page.body.include? @address.address).to be_truthy
     end
   end
 
   describe "deleting an address" do
     it "should archive the address" do
-      add_products_and_checkout
+      visit addresses_users_path @user.id
       find(".delete-address-icon").click
       page.driver.browser.switch_to.alert.accept
       expect(page).to have_content("Address deleted")

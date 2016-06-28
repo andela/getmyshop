@@ -1,4 +1,8 @@
+require_relative "../helpers/message_helper"
+
 class SessionsController < ApplicationController
+  include MessageHelper
+  
   def new
   end
 
@@ -6,15 +10,7 @@ class SessionsController < ApplicationController
   end
 
   def shop_login_create
-    user = RegularUser.find_by_email(params[:session][:email])
-    return if user_is_nil?(user)
-    if user.authenticate(params[:session][:password]) && user.active
-      login_successful user
-      redirect_to dashboard_path, notice: "Welcome back, #{current_user.first_name}"
-    else
-      password_invalid
-      redirect_to shop_login_path
-    end
+    login_user(dashboard_path, shop_login_path)
   end
 
   def create
@@ -24,7 +20,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
 
       return redirect_to_user_intended unless session[:user_intended].nil?
-      redirect_to root_path, notice: "Welcome back, #{current_user.first_name}"
+      redirect_to root_path, notice: welcome_user
     else
       process_form_login
     end
@@ -33,26 +29,30 @@ class SessionsController < ApplicationController
   def destroy
     @current_user = nil
     session.delete :user_id
-    redirect_to root_path, notice: "Logged out Successfully!"
+    redirect_to root_path, notice: logout
   end
 
   private 
 
   def process_form_login
-    user = RegularUser.find_by_email(params[:session][:email])
+    login_user(root_path, login_path)
+  end
+
+  def login_user(login_success_path, login_failure_path)
+    user = RegularUser.find_by email: params[:session][:email]
     return if user_is_nil?(user)
     if user.authenticate(params[:session][:password]) && user.active
       login_successful user
-      redirect_to root_path, notice: "Welcome back, #{current_user.first_name}"
+      redirect_to login_success_path, notice: welcome_user
     else
       password_invalid
-      redirect_to login_path
+      redirect_to login_failure_path
     end
   end
 
   def user_is_nil?(user)
     return if user
-    flash["errors"] = ["Email or Password not valid."]
+    flash["errors"] = [invalid_login]
     redirect_to login_path
 
     true
@@ -64,7 +64,7 @@ class SessionsController < ApplicationController
   end
 
   def password_invalid
-    flash["errors"] = ["Email or Password not valid."]
+    flash["errors"] = [invalid_login]
   end
 
   def redirect_to_user_intended

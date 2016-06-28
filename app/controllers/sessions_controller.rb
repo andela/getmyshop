@@ -2,6 +2,21 @@ class SessionsController < ApplicationController
   def new
   end
 
+  def shop_login
+  end
+
+  def shop_login_create
+    user = RegularUser.find_by_email(params[:session][:email])
+    return if user_is_nil?(user)
+    if user.authenticate(params[:session][:password]) && user.active
+      login_successful user
+      redirect_to dashboard_path, notice: "Welcome back, #{current_user.first_name}"
+    else
+      password_invalid
+      redirect_to shop_login_path
+    end
+  end
+
   def create
     if request.env["omniauth.auth"]
       oauth_user = OauthUser.new(request.env["omniauth.auth"])
@@ -21,15 +36,17 @@ class SessionsController < ApplicationController
     redirect_to root_path, notice: "Logged out Successfully!"
   end
 
-  private
+  private 
 
   def process_form_login
     user = RegularUser.find_by_email(params[:session][:email])
     return if user_is_nil?(user)
     if user.authenticate(params[:session][:password]) && user.active
       login_successful user
+      redirect_to root_path, notice: "Welcome back, #{current_user.first_name}"
     else
       password_invalid
+      redirect_to login_path
     end
   end
 
@@ -44,12 +61,10 @@ class SessionsController < ApplicationController
   def login_successful(user)
     session[:user_id] = user.id
     return redirect_to_user_intended unless session[:user_intended].nil?
-    redirect_to root_path, notice: "Welcome back, #{current_user.first_name}"
   end
 
   def password_invalid
     flash["errors"] = ["Email or Password not valid."]
-    redirect_to login_path
   end
 
   def redirect_to_user_intended

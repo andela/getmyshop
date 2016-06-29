@@ -1,5 +1,16 @@
+require_relative "../helpers/message_helper"
+
 class SessionsController < ApplicationController
+  include MessageHelper
+  
   def new
+  end
+
+  def shop_login
+  end
+
+  def shop_login_create
+    login_user(dashboard_path, shop_login_path, "ShopOwner")
   end
 
   def create
@@ -9,7 +20,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
 
       return redirect_to_user_intended unless session[:user_intended].nil?
-      redirect_to root_path, notice: "Welcome back, #{current_user.first_name}"
+      redirect_to root_path, notice: welcome_user
     else
       process_form_login
     end
@@ -18,25 +29,35 @@ class SessionsController < ApplicationController
   def destroy
     @current_user = nil
     session.delete :user_id
-    redirect_to root_path, notice: "Logged out Successfully!"
+    redirect_to root_path, notice: logout
   end
 
-  private
+  private 
 
   def process_form_login
-    user = RegularUser.find_by_email(params[:session][:email])
-    return if user_is_nil?(user)
+    login_user(root_path, login_path)
+  end
+
+  def login_user(login_success_path, login_failure_path, user_type=nil)
+    user = RegularUser.find_by email: params[:session][:email]
+    return if user_is_nil?(user, user_type)
     if user.authenticate(params[:session][:password]) && user.active
       login_successful user
+      redirect_to login_success_path, notice: welcome_user
     else
       password_invalid
+      redirect_to login_failure_path
     end
   end
 
-  def user_is_nil?(user)
+  def user_is_nil?(user, user_type)
     return if user
-    flash["errors"] = ["Email or Password not valid."]
-    redirect_to login_path
+    flash["errors"] = [invalid_login]
+    if user_type
+      redirect_to shop_login_path
+    else
+      redirect_to login_path
+    end
 
     true
   end
@@ -44,12 +65,10 @@ class SessionsController < ApplicationController
   def login_successful(user)
     session[:user_id] = user.id
     return redirect_to_user_intended unless session[:user_intended].nil?
-    redirect_to root_path, notice: "Welcome back, #{current_user.first_name}"
   end
 
   def password_invalid
-    flash["errors"] = ["Email or Password not valid."]
-    redirect_to login_path
+    flash["errors"] = [invalid_login]
   end
 
   def redirect_to_user_intended

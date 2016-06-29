@@ -34,6 +34,10 @@ Rails.application.routes.draw do
     get "/faq"      => :frequently_asked_questions
   end
 
+  get "/shop_login", to: "sessions#shop_login", as: :shop_login
+  post "/shop_login", to: "sessions#shop_login_create", as: :shop_login_create
+  get "/dashboard", to: "shops#dashboard", as: :dashboard
+
   get "/login", to: "sessions#new", as: :login
   post "/login", to: "sessions#create"
   get "/logout", to: "sessions#destroy", as: :logout

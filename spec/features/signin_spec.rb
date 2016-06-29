@@ -13,6 +13,14 @@ RSpec.describe "Signin process", type: :feature do
     end
   end
 
+  context "when done with correct inputs for shop owner" do
+    it "should sign shop owner in" do
+      shop_signin_helper(user.email, "password")
+
+      expect(page).to have_content "Welcome"
+    end
+  end
+
   context "when inputs are incorrect" do
     it "would not sign user in" do
       signin_helper(user.email, "wrong_password")

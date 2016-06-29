@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
   end
 
   def shop_login_create
-    login_user(dashboard_path, shop_login_path)
+    login_user(dashboard_path, shop_login_path, "ShopOwner")
   end
 
   def create
@@ -38,9 +38,9 @@ class SessionsController < ApplicationController
     login_user(root_path, login_path)
   end
 
-  def login_user(login_success_path, login_failure_path)
+  def login_user(login_success_path, login_failure_path, user_type=nil)
     user = RegularUser.find_by email: params[:session][:email]
-    return if user_is_nil?(user)
+    return if user_is_nil?(user, user_type)
     if user.authenticate(params[:session][:password]) && user.active
       login_successful user
       redirect_to login_success_path, notice: welcome_user
@@ -50,10 +50,14 @@ class SessionsController < ApplicationController
     end
   end
 
-  def user_is_nil?(user)
+  def user_is_nil?(user, user_type)
     return if user
     flash["errors"] = [invalid_login]
-    redirect_to login_path
+    if user_type
+      redirect_to shop_login_path
+    else
+      redirect_to login_path
+    end
 
     true
   end

@@ -1,0 +1,34 @@
+// Place all the styles related to the shop controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#shop-creation-container {
+	font-family: Assistant;
+	font-size: 14px;
+	.valign-wrapper {
+		height: 105vh;
+		padding-bottom: 20px;
+	}
+}
+
+a > h3#shop-signup-header {
+	color: rgba(255,255,255,0.6);
+	text-shadow: 2px 2px 2px grey;
+}
+
+#shop-signup-container {
+	padding: 10px;
+	border-radius:7px;
+	box-shadow: 2px 2px 5px grey;
+	div > h5 {
+		opacity: 0.4;
+	}
+}
+
+form[id="shop-signup-form"] {
+	padding: 20px;
+	border-radius: 5px;
+}
+
+.collapsible-header {
+	text-transform: uppercase;
+}

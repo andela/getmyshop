@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ShopController, type: :controller do
+RSpec.describe ShopsController, type: :controller do
 	describe 'signup page' do
 	  context 'when user requests signup url' do
 	  	it 'returns a 200 status code' do

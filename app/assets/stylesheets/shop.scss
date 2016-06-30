@@ -4,23 +4,40 @@
 #shop-creation-container {
 	font-family: Assistant;
 	font-size: 14px;
+	background-image: image-url("shop_bg.jpg");
+	background-size: 100%;
+	position: relative;
 	.valign-wrapper {
-		height: 105vh;
+		height: 100vh;
 		padding-bottom: 20px;
 	}
 }
 
+#shop-creation-container::before {
+	content: "";
+	z-index: 1;
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background-color: rgba(0,0,0,0.6);
+}
+
 a > h3#shop-signup-header {
-	color: rgba(255,255,255,0.6);
-	text-shadow: 2px 2px 2px grey;
+	color: rgba(0,0,0,0.5);
 }
 
 #shop-signup-container {
+	z-index: 9999;
+	position: relative;
 	padding: 10px;
 	border-radius:7px;
-	box-shadow: 2px 2px 5px grey;
+	box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+	background-color: rgba(255,255,255,0.95);
 	div > h5 {
-		opacity: 0.4;
+		opacity: 0.7;
 	}
 }
 
@@ -31,4 +48,45 @@ form[id="shop-signup-form"] {
 
 .collapsible-header {
 	text-transform: uppercase;
+}
+
+#shop_url_prefix[disabled] {
+	border-bottom: unset;
+}
+
+.orange {
+	background-color: rgba(211,109,24,1) !important;
+}
+
+input:not([type]):focus:not([readonly]),
+input[type=text]:focus:not([readonly]),
+input[type=password]:focus:not([readonly]),
+input[type=email]:focus:not([readonly]),
+input[type=url]:focus:not([readonly]),
+input[type=time]:focus:not([readonly]),
+input[type=date]:focus:not([readonly]),
+input[type=datetime]:focus:not([readonly]),
+input[type=datetime-local]:focus:not([readonly]),
+input[type=tel]:focus:not([readonly]),
+input[type=number]:focus:not([readonly]),
+input[type=search]:focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]) {
+    border-bottom: rgba(211,109,24,1);
+    box-shadow: 0 1px 0 0 rgba(211,109,24,1);
+}
+
+input:not([type]):focus:not([readonly]) + label,
+input[type=text]:focus:not([readonly]) + label,
+input[type=password]:focus:not([readonly]) + label,
+input[type=email]:focus:not([readonly]) + label,
+input[type=url]:focus:not([readonly]) + label,
+input[type=time]:focus:not([readonly]) + label,
+input[type=date]:focus:not([readonly]) + label,
+input[type=datetime]:focus:not([readonly]) + label,
+input[type=datetime-local]:focus:not([readonly]) + label,
+input[type=tel]:focus:not([readonly]) + label,
+input[type=number]:focus:not([readonly]) + label,
+input[type=search]:focus:not([readonly]) + label,
+textarea.materialize-textarea:focus:not([readonly]) + label {
+  color: rgba(211,109,24,1);
 }

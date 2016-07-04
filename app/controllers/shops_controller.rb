@@ -1,6 +1,4 @@
 class ShopsController < ApplicationController
-  
-
   def show
     @shop_owner = ShopOwner.find(params[:shop_owner_id])
     @shop = @shop_owner.shop
@@ -36,7 +34,6 @@ class ShopsController < ApplicationController
     end
   end
 
-
   def destroy
     @shop.destroy
     respond_to do |format|
@@ -46,9 +43,8 @@ class ShopsController < ApplicationController
   end
 
   private
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def shop_params
-      params.require(:shop).permit(:name, :url, :description, :address, :city, :state, :country, :phone)
-    end
+  
+  def shop_params
+    params.require(:shop).permit(:name, :url, :description, :address, :city, :state, :country, :phone)
+  end
 end

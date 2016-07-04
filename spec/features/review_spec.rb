@@ -18,6 +18,8 @@ RSpec.describe "Making a review", type: :feature do
       expect(page).to have_content "Details"
       click_link "details"
       click_link("Review")
+      sleep 3
+      
       fill_in("title", with: "Nice product")
       fill_in("comment", with: "Love the sleek design")
       find("#star3").click

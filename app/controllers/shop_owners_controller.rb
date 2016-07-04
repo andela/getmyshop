@@ -1,5 +1,4 @@
 class ShopOwnersController < ApplicationController
-  
   def new
     @shop_owner = ShopOwner.new
   end
@@ -21,10 +20,10 @@ class ShopOwnersController < ApplicationController
   end
 
   def create
-   @shop_owner = ShopOwner.new(shop_owner_params)
+    @shop_owner = ShopOwner.new(shop_owner_params)
     if @shop_owner.save
-      UserMailer.welcome_shop_owner(@shop_owner.id, "Welcome To GetMyShop")
-        .deliver_now
+      UserMailer.welcome_shop_owner(@shop_owner.id, "Welcome To GetMyShop").
+        deliver_now
       redirect_to login_path, notice: "An activation link has been sent to your email, click on it to activate your account"
     else
       flash["errors"] = @shop_owner.errors.full_messages
@@ -33,8 +32,8 @@ class ShopOwnersController < ApplicationController
   end
 
   private
-      
-    def shop_owner_params
-      params.require(:shop_owner).permit(:first_name, :last_name, :phone, :email, :password, :password_confirmation)
-    end
+
+  def shop_owner_params
+    params.require(:shop_owner).permit(:first_name, :last_name, :phone, :email, :password, :password_confirmation)
+  end
 end

@@ -32,10 +32,10 @@ RSpec.describe OrdersController::OrderStatus do
       it "sets the order status to delivered" do
         new_order = create(:order)
         time = (12...24).to_a.sample
-        new_order.created_at = Time.now - time.hour
-        new_order.save
+        time_difference = Time.now - time.hour
+        new_order.update(created_at: time_difference)
         result = OrdersController::OrderStatus.new(new_order.user).save
-        expect(result[0].status).to eql("Delivered")
+        expect(result[0].status).not_to eql("Pending")
       end
     end
   end

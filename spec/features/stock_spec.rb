@@ -6,7 +6,8 @@ RSpec.describe "Stock", type: :feature, js: true do
       order = create(:order_with_items)
       visit product_path order.order_items.first.product.id
       expect(page).to have_content(
-        "#{order.order_items.first.product.quantity} left in stock")
+        "#{order.order_items.first.product.quantity} left in stock"
+      )
     end
   end
 

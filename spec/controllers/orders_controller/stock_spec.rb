@@ -8,7 +8,8 @@ RSpec.describe OrdersController::Stock do
   describe "#new" do
     it "should create a new instance of stock" do
       expect(OrdersController::Stock.new(@order)).to be_an_instance_of(
-        OrdersController::Stock)
+        OrdersController::Stock
+      )
     end
   end
 
@@ -18,7 +19,8 @@ RSpec.describe OrdersController::Stock do
         expect do
           OrdersController::Stock.new(@order).update
         end.to change { @order.order_items.first.product.quantity }.by(
-          -@order.order_items.first.quantity)
+          -@order.order_items.first.quantity
+        )
       end
     end
 

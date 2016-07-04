@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe ShopOwner, type: :model do
   subject { create :shop_owner }

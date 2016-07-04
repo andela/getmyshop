@@ -1,0 +1,5 @@
+<div>
+  <p>Your ShopOwner account has been created.</p>
+  <p>Click on the following link to activate your account</p>
+  <p><%= link_to activate_shop_owners_url(shop_owner_id: @shop_owner.id, activation_token: @shop_owner.activation_token), activate_shop_owners_url(shop_owner_id: @shop_owner.id, activation_token: @shop_owner.activation_token) %></p>
+</div>

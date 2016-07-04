@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+ 
   get "orders/create"
 
   # Example resource route
@@ -34,6 +35,26 @@ Rails.application.routes.draw do
     get "/faq"      => :frequently_asked_questions
   end
 
+  scope "/shopowners", controller: :shops do
+
+    get "/:shop_owner_id/shop/new" => :new,
+          as: :shop_new
+    get "/:shop_owner_id/admin/dashboard" => :show,
+            as: :dashboard
+    post "/shops" => :create
+    get "/shops/:id/edit" => :edit, as: :edit_shop
+
+  end
+
+  scope "shopowners", controller: :shop_owners do
+
+    get "/activate/:shop_owner_id/:activation_token" => :shop_owner_activate,
+        as: :activate_shop_owners
+    get "new" => :new, as: :signup
+    post "/shop_owners" => :create
+
+  end
+
   get "/login", to: "sessions#new", as: :login
   post "/login", to: "sessions#create"
   get "/logout", to: "sessions#destroy", as: :logout
@@ -60,6 +81,8 @@ Rails.application.routes.draw do
       )
     end
   end
+
+
 
   resources :orders, only: [] do
     collection do

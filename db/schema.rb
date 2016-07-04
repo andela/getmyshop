@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160427144943) do
+ActiveRecord::Schema.define(version: 20160701182455) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id"
@@ -99,8 +99,10 @@ ActiveRecord::Schema.define(version: 20160427144943) do
     t.string   "size"
     t.integer  "subcategory_id"
     t.integer  "price"
+    t.integer  "shop_id"
   end
 
+  add_index "products", ["shop_id"], name: "index_products_on_shop_id"
   add_index "products", ["subcategory_id"], name: "index_products_on_subcategory_id"
 
   create_table "reviews", force: :cascade do |t|
@@ -115,6 +117,36 @@ ActiveRecord::Schema.define(version: 20160427144943) do
 
   add_index "reviews", ["product_id"], name: "index_reviews_on_product_id"
   add_index "reviews", ["user_id"], name: "index_reviews_on_user_id"
+
+  create_table "shop_owners", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "password_digest"
+    t.string   "activation_token"
+    t.boolean  "active_status"
+    t.string   "reset_code"
+    t.boolean  "active"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  create_table "shops", force: :cascade do |t|
+    t.string   "name"
+    t.string   "url"
+    t.string   "description"
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "country"
+    t.string   "phone"
+    t.integer  "shop_owner_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "shops", ["shop_owner_id"], name: "index_shops_on_shop_owner_id"
 
   create_table "specifications", force: :cascade do |t|
     t.string   "key"

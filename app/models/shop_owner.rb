@@ -1,5 +1,4 @@
 class ShopOwner < ActiveRecord::Base
-  before_create :assign_token
   has_one :shop
   has_secure_password
 
@@ -9,15 +8,16 @@ class ShopOwner < ActiveRecord::Base
     with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/
   }
 
-  scope(
-    :token_match,
-    lambda do |id, token|
-      where(id: id, activation_token: token)
-    end
-  )
+  def generate_token
+    AESCrypt.encrypt(id, "get-my-shop-pass-phrase")
+  end
 
-  def assign_token
-    self.active_status = false
-    self.activation_token = [*"0".."9", *"a".."z", *"A".."Z"].sample(50).join
+  def self.token_match(token)
+    id = AESCrypt.decrypt(token, "get-my-shop-pass-phrase")
+    ShopOwner.where(id: id).first
+  end
+
+  def activate
+    self.active_status = true
   end
 end

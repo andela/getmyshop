@@ -5,7 +5,6 @@ FactoryGirl.define do
     phone Faker::PhoneNumber.phone_number
     email Faker::Internet.email
     password_digest "password"
-    activation_token SecureRandom
     active_status false
     reset_code "MyString"
     active false

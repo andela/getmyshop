@@ -7,27 +7,21 @@ class ShopOwnersController < ApplicationController
   end
 
   def shop_owner_activate
-    shop_owner = ShopOwner.token_match(
-      params[:shop_owner_id], params[:activation_token]
-    ).first
-
-    if shop_owner && shop_owner.update(active_status: true)
+    shop_owner = ShopOwner.token_match(params[:token])
+    if shop_owner && shop_owner.activate
       session[:shop_owner_id] = shop_owner.id
-      shop_path = shop_new_path(shop_owner)
-      redirect_to shop_path, notice: "Account activated successfully."
+      redirect_to shop_new_path(shop_owner), notice: account_activated
     else
-      redirect_to root_path, notice: "Unable to activate account. "\
-      "If you copied the link, make sure you copied it correctly."
+      redirect_to root_path, notice: activation_failed
     end
   end
 
   def create
     @shop_owner = ShopOwner.new(shop_owner_params)
     if @shop_owner.save
-      UserMailer.welcome_shop_owner(@shop_owner.id, "Welcome To GetMyShop").
+      UserMailer.welcome_shop_owner(@shop_owner, welcome_user).
         deliver_now
-      redirect_to login_path, notice: "An activation link has been sent to"\
-      "your email, click on it to activate account"
+      redirect_to login_path, notice: account_created
     else
       flash["errors"] = @shop_owner.errors.full_messages
       render :new
@@ -37,8 +31,10 @@ class ShopOwnersController < ApplicationController
   private
 
   def shop_owner_params
-    allowed_attributes = [:first_name, :last_name,
-                          :phone, :email, :password, :password_confirmation]
     params.require(:shop_owner).permit(allowed_attributes)
+  end
+
+  def allowed_attributes
+    [:first_name, :last_name, :phone, :email, :password, :password_confirmation]
   end
 end

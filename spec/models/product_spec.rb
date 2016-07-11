@@ -60,11 +60,13 @@ describe Product, type: :model do
     end
 
     it "can filter by subcategory" do
-      expect(Product.with_subcategory(last_product.subcategory.name).first).to eq(last_product)
+      expect(Product.with_subcategory(last_product.subcategory.name).first).
+        to eq(last_product)
     end
 
     it "can filter by category" do
-      expect(Product.with_category(last_product.category.name).first).to eq(last_product)
+      expect(Product.with_category(last_product.category.name).first).
+        to eq(last_product)
     end
 
     it "filters with search" do

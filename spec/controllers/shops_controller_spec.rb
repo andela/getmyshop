@@ -37,20 +37,11 @@ RSpec.describe ShopsController, type: :controller do
         expect do
           post :create, shop: valid_attributes
         end.to change(Shop, :count).by(1)
-      end
-
-      it "assigns a newly created shop as @shop" do
-        post :create, shop: valid_attributes
         expect(assigns(:shop)).to be_a(Shop)
       end
     end
 
     context "with invalid params" do
-      it "assigns a newly created but unsaved shop as @shop" do
-        post :create, shop: invalid_attributes
-        expect(assigns(:shop)).to be_a_new(Shop)
-      end
-
       it "re-renders the 'new' template" do
         post :create, shop: invalid_attributes
         expect(response).to render_template("new")

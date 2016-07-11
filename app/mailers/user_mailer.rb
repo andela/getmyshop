@@ -4,8 +4,8 @@ class UserMailer < ApplicationMailer
     mail(to: @user.email, subject: subject)
   end
 
-  def welcome_shop_owner(shop_owner_id, subject)
-    @shop_owner = ShopOwner.find(shop_owner_id)
+  def welcome_shop_owner(shop_owner, subject)
+    @shop_owner = shop_owner
     mail(to: @shop_owner.email, subject: subject)
   end
 

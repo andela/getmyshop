@@ -7,7 +7,8 @@ class ShopOwnersController < ApplicationController
   end
 
   def shop_owner_activate
-    shop_owner = ShopOwner.token_match(params[:shop_owner_id], params[:activation_token]).first
+    shop_owner = ShopOwner.token_match(
+      params[:shop_owner_id], params[:activation_token]).first
 
     if shop_owner && shop_owner.update(active_status: true)
       session[:shop_owner_id] = shop_owner.id
@@ -24,7 +25,8 @@ class ShopOwnersController < ApplicationController
     if @shop_owner.save
       UserMailer.welcome_shop_owner(@shop_owner.id, "Welcome To GetMyShop").
         deliver_now
-      redirect_to login_path, notice: "An activation link has been sent to your email, click on it to activate your account"
+      redirect_to login_path, notice: "An activation link has been sent to"\
+      "your email, click on it to activate account"
     else
       flash["errors"] = @shop_owner.errors.full_messages
       render :new
@@ -34,6 +36,9 @@ class ShopOwnersController < ApplicationController
   private
 
   def shop_owner_params
-    params.require(:shop_owner).permit(:first_name, :last_name, :phone, :email, :password, :password_confirmation)
+    params.require(:shop_owner)
+    .permit(
+      :first_name, :last_name, :phone, :email, :password, :password_confirmation
+      )
   end
 end

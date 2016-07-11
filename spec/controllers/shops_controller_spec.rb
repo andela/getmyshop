@@ -43,11 +43,6 @@ RSpec.describe ShopsController, type: :controller do
         post :create, shop: valid_attributes
         expect(assigns(:shop)).to be_a(Shop)
       end
-
-      xit "redirects to the created shop" do
-        post :create, shop: valid_attributes
-        expect(response).to redirect_to(Shop.last)
-      end
     end
 
     context "with invalid params" do
@@ -60,62 +55,6 @@ RSpec.describe ShopsController, type: :controller do
         post :create, shop: invalid_attributes
         expect(response).to render_template("new")
       end
-    end
-  end
-
-  describe "PUT #update" do
-    context "with valid params" do
-      let(:new_attributes) do
-        skip("Add a hash of attributes valid for your model")
-      end
-
-      xit "updates the requested shop" do
-        shop = Shop.create! valid_attributes
-        put :update, { id: shop.to_param, shop: new_attributes }, valid_session
-        shop.reload
-        skip("Add assertions for updated state")
-      end
-
-      xit "assigns the requested shop as @shop" do
-        shop = Shop.create! valid_attributes
-        put :update, { id: shop.to_param, shop: valid_attributes }, valid_session
-        expect(assigns(:shop)).to eq(shop)
-      end
-
-      xit "redirects to the shop" do
-        shop = Shop.create! valid_attributes
-        put :update, { id: shop.to_param, shop: valid_attributes }, valid_session
-        expect(response).to redirect_to(shop)
-      end
-    end
-
-    context "with invalid params" do
-      xit "assigns the shop as @shop" do
-        shop = Shop.create! valid_attributes
-        put :update, { id: shop.to_param, shop: invalid_attributes }, valid_session
-        expect(assigns(:shop)).to eq(shop)
-      end
-
-      xit "re-renders the 'edit' template" do
-        shop = Shop.create! valid_attributes
-        put :update, { id: shop.to_param, shop: invalid_attributes }, valid_session
-        expect(response).to render_template("edit")
-      end
-    end
-  end
-
-  describe "DELETE #destroy" do
-    xit "destroys the requested shop" do
-      shop = Shop.create! valid_attributes
-      expect do
-        delete :destroy, { id: shop.to_param }, valid_session
-      end.to change(Shop, :count).by(-1)
-    end
-
-    xit "redirects to the shops list" do
-      shop = Shop.create! valid_attributes
-      delete :destroy, { id: shop.to_param }, valid_session
-      expect(response).to redirect_to(shops_url)
     end
   end
 end

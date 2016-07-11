@@ -20,21 +20,12 @@ RSpec.describe ShopOwnersController, type: :controller do
         expect do
           post :create, shop_owner: valid_attributes
         end.to change(ShopOwner, :count).by(1)
-      end
-
-      it "assigns a newly created shop_owner as @shop_owner" do
-        post :create, shop_owner: valid_attributes
         expect(assigns(:shop_owner)).to be_a(ShopOwner)
       end
     end
 
     context "with invalid params" do
-      it "assigns a newly created but unsaved shop_owner as @shop_owner" do
-        post :create, shop_owner: invalid_attributes
-        expect(assigns(:shop_owner)).to be_a_new(ShopOwner)
-      end
-
-      it "re-renders the 'new' template" do
+      it "re-renders the new template with errors" do
         post :create, shop_owner: invalid_attributes
         expect(response).to render_template("new")
       end

@@ -8,7 +8,8 @@ class ShopOwnersController < ApplicationController
 
   def shop_owner_activate
     shop_owner = ShopOwner.token_match(
-      params[:shop_owner_id], params[:activation_token]).first
+      params[:shop_owner_id], params[:activation_token]
+    ).first
 
     if shop_owner && shop_owner.update(active_status: true)
       session[:shop_owner_id] = shop_owner.id
@@ -36,9 +37,8 @@ class ShopOwnersController < ApplicationController
   private
 
   def shop_owner_params
-    params.require(:shop_owner)
-    .permit(
-      :first_name, :last_name, :phone, :email, :password, :password_confirmation
-      )
+    allowed_attributes = [:first_name, :last_name,
+                          :phone, :email, :password, :password_confirmation]
+    params.require(:shop_owner).permit(allowed_attributes)
   end
 end

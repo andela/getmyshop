@@ -45,7 +45,7 @@ Rails.application.routes.draw do
 
   scope "shopowners", controller: :shop_owners do
     get "/activate/:shop_owner_id/:activation_token" => :shop_owner_activate,
-      as: :activate_shop_owners
+        as: :activate_shop_owners
     get "new" => :new, as: :signup
     post "/shop_owners" => :create
   end

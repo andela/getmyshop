@@ -9,11 +9,11 @@ class ShopOwner < ActiveRecord::Base
   }
 
   def generate_token
-    AESCrypt.encrypt(id, "get-my-shop-pass-phrase")
+    AESCrypt.encrypt(id, ENV["GETMYSHOP_SALT"])
   end
 
   def self.token_match(token)
-    id = AESCrypt.decrypt(token, "get-my-shop-pass-phrase")
+    id = AESCrypt.decrypt(token, ENV["GETMYSHOP_SALT"])
     ShopOwner.where(id: id).first
   end
 

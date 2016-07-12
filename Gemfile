@@ -26,6 +26,8 @@ gem "coveralls", require: false
 gem "filterrific"
 gem "draper"
 gem "metamagic"
+gem "aescrypt"
+gem "figaro"
 
 group :development, :test do
   gem "pry"

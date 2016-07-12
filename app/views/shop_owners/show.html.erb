@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @shop_owner.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @shop_owner.last_name %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @shop_owner.phone %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @shop_owner.email %>
+</p>
+
+<p>
+  <strong>Password digest:</strong>
+  <%= @shop_owner.password_digest %>
+</p>
+
+<p>
+  <strong>Activation token:</strong>
+  <%= @shop_owner.activation_token %>
+</p>
+
+<p>
+  <strong>Active status:</strong>
+  <%= @shop_owner.active_status %>
+</p>
+
+<p>
+  <strong>Reset code:</strong>
+  <%= @shop_owner.reset_code %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @shop_owner.active %>
+</p>
+
+<%= link_to 'Edit', edit_shop_owner_path(@shop_owner) %> |
+<%= link_to 'Back', shop_owners_path %>

@@ -10,7 +10,8 @@ RSpec.describe Category, type: :model do
     it "returns correct menu categories" do
       create_list(:category_with_products, 2)
       expect(Category.menu_categories.first.name).to eql(
-        Category.first.name)
+        Category.first.name
+      )
     end
 
     it "can return related products" do

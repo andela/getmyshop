@@ -1,4 +1,6 @@
+require_relative "../helpers/message_helper"
 class ApplicationController < ActionController::Base
+  include MessageHelper
   protect_from_forgery with: :exception
 
   helper_method :current_user, :logged_in

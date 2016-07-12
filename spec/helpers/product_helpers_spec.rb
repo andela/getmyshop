@@ -9,6 +9,7 @@ RSpec.describe SearchHelper, type: :helper do
 
   it "should return all subcategories" do
     expect(helper.filter_subcategories(Subcategory.get_unique)).to include(
-      [Product.first.subcategory.name])
+      [Product.first.subcategory.name]
+    )
   end
 end

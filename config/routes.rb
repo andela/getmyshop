@@ -43,11 +43,11 @@ Rails.application.routes.draw do
     get "/shops/:id/edit" => :edit, as: :edit_shop
   end
 
-  scope "shopowners", controller: :shop_owners do
+  scope "/shopowners", controller: :shop_owners do
     get "/activate/:token" => :shop_owner_activate,
         as: :activate_shop_owners
-    get "new" => :new, as: :signup
-    post "/shop_owners" => :create
+    get "/new" => :new, as: :signup
+    post "/create" => :create, as: :shopowner_create
   end
 
   get "/login", to: "sessions#new", as: :login

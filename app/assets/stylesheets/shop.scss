@@ -1,10 +1,12 @@
+@import "variables";
+
 #shop-creation-container {
   background-image: image-url("shop_bg.jpg");
   background-size: 100%;
-  font-family: Assistant;
+  font-family: $shop-signup-font;
   font-size: 14px;
   position: relative;
-  
+
   .valign-wrapper {
     min-height: 100vh;
     padding-bottom: 20px;
@@ -13,7 +15,7 @@
 }
 
 #shop-creation-container::before {
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: $shop-overlay-color;
   content: "";
   display: block;
   height: 100%;
@@ -24,23 +26,22 @@
   z-index: 1;
 }
 
-a > h3#shop-signup-header {
-  color: rgba(0, 0, 0, 0.5);
+a > h3 {
+  color: $shop-border-shadow;
 }
 
 #shop-signup-container {
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: $shop-container-color;
   background-repeat: round;
   border-radius: 7px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 5px $shop-border-shadow;
   padding: 10px;
   position: relative;
   z-index: 9999;
-}
 
-
-#shop-signup-container div > h5 {
-  opacity: 0.7;
+  h5 {
+    opacity: 0.7;
+  }
 }
 
 #shop-signup-form {
@@ -57,5 +58,5 @@ a > h3#shop-signup-header {
 }
 
 .orange {
-  background-color: rgba(211, 109, 24, 1) !important;
+  background-color: $shop-orange-color !important;
 }

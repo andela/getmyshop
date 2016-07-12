@@ -13,7 +13,7 @@ module MessageHelper
   end
 
   def account_created
-    "An activation link has been sent to"\
+    "An activation link has been sent to "\
     "your email, click on it to activate account"
   end
 

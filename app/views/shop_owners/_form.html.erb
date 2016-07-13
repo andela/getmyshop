@@ -1,41 +1,53 @@
-<%= form_for @shop_owner, url: { action: "create" } do |f| %>
-  <% if @shop_owner.errors.any? %>
-    <div id="error_explanation">
-      <ul>
-      <% @shop_owner.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %>
+<%= form_for @shop_owner, :url=>shopowner_create_url, html:{:class => "col s12 white",:id=>"shop-signup-form"} do |f| %>
+<%= f.hidden_field :shop_owner_id, { value: @shop_owner.id } %>
+<% if @shop_owner.errors.any? %>
+<div id="error_explanation" class="white">
+  <ul>
+    <% @shop_owner.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+<div class="row">
+  <div class="input-field col s8 offset-s2">
+    <%= f.text_field :first_name,{:class => "validate", :required => true } %>
+    <%= f.label :first_name %>
   </div>
-  <div class="field">
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %>
+</div>
+<div class="row">
+  <div class="input-field col s8 offset-s2">
+    <%= f.text_field :last_name, {:class => "validate"} %>
+    <%= f.label :last_name %>
   </div>
-  <div class="field">
-    <%= f.label :phone %><br>
-    <%= f.text_field :phone %>
+</div>
+<div class="row">
+  <div class="input-field col s8 offset-s2">
+    <%= f.text_field :phone, {:class=>"validate"} %>
+    <%= f.label :phone %>
   </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
+</div>
+<div class="row">
+  <div class="input-field col s8 offset-s2">
+    <%= f.text_field :email, {:class => "validate"} %>
+    <%= f.label :email %>
   </div>
-  <div class="field">
-    <%= f.label :password %><br>
-    <%= f.password_field :password %>
+</div>
+<div class="row">
+  <div class="input-field col s8 offset-s2">
+    <%= f.password_field :password, {:class => "validate"} %>
+    <%= f.label :password %>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br>
-    <%= f.password_field :password_confirmation %>
+</div>
+<div class="row">
+  <div class="input-field col s8 offset-s2">
+    <%= f.password_field :confirm_password, {:class => "validate"} %>
+    <%= f.label :confirm_password %>
   </div>
- 
-  <div class="actions">
-    <%= f.submit %>
+</div>
+<div class="row">
+  <div class="input-field col s12 center-align">
+    <button id="submit" type="submit" name="submit" class="waves-effect waves-light btn-flat teal white-text">Submit</button>
   </div>
+</div>
 <% end %>

@@ -51,10 +51,6 @@ Rails.application.routes.draw do
     get "/new" => :new, as: :signup
     post "/create" => :create, as: :shopowner_create
   end
-  
-  scope "shop", controller: :shops do
-    get "/signup", action: :new, as: :new_shop
-  end
 
   scope "/shopowners", controller: :products do
     get "/products/new" => :new

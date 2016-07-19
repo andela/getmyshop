@@ -1,0 +1,15 @@
+header, main, footer {
+  padding-left: 240px;
+}
+
+footer{
+  bottom: 0px;
+  position: absolute;
+  width: 100%;
+  background: #338574 !important;
+  height: 60px;
+}
+
+.container.vspacer{
+  margin-top: 20px;
+}

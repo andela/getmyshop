@@ -2,6 +2,7 @@ class ShopsController < ApplicationController
   def show
     @shop_owner = ShopOwner.find(params[:shop_owner_id])
     @shop = @shop_owner.shop
+    @product = Product.new
   end
 
   def new

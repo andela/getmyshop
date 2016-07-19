@@ -1,0 +1,56 @@
+<div class="top-contain">
+  <div id="top-fixed">
+    <div class="top-bar valign-wrapper">
+      <div class="container-trim">
+        <div class="left">
+          <span class="white-text small-text">PRODUCT UPDATES ARE AVAILABLE TO USERS</span>
+        </div>
+        <div class="right">
+          <%= link_to "About us", about_path, class: 'white-text small-text' %>
+          <span class="white-text small-text">&nbsp;|&nbsp;</span>
+          <%= link_to "Blog", blog_path, class: 'white-text small-text' %>
+          <span class="white-text small-text">&nbsp;|&nbsp;</span>
+          <%= link_to "Contact Us", "/contact", class: 'white-text small-text' %>
+          <span class="white-text small-text">&nbsp;|&nbsp;</span>
+          <%= link_to "FAQ", faq_path, class: 'white-text small-text' %>
+          <span class="white-text small-text">&nbsp;|&nbsp;</span>
+          <span  class="white-text small-text">Currency - NGN</span>
+            <span class="white-text small-text">&nbsp;|&nbsp;</span>
+            <span class="small-text">
+
+              <%= auth_link %>
+            </span>
+        </div>
+      </div>
+    </div>
+    <nav class="white valign-wrapper">
+      <div class="row white-header">
+        <div class="col s2">
+          <div class="left">
+            <a class="brand-logo black-text" href="<%= root_path %>">
+              <div class="left">
+                <span>Shopify</span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col s4 offset-s3 search-container">
+          <div class="search-bar">
+            <div class="input-field my-input" id="search-input">
+             <%= form_tag({controller: "search", action: "result"}, method: "get") do %>
+             <%= text_field_tag :term, "", required: "required", placeholder: "Search by product name or category", class: "black-text browser-default", id: "my-input-field" %>
+             <% end %>
+            </div>
+          </div>
+          <div class="">
+          &nbsp;
+          </div>
+        </div>
+        ​
+        </div>
+      </nav>
+    </div>
+  </div>
+</div>
+
+

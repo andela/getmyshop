@@ -50,6 +50,11 @@ Rails.application.routes.draw do
     post "/create" => :create, as: :shopowner_create
   end
 
+  scope "/shopowners", controller: :products do
+    get "/:id/products/new" => :new
+    post "/:id/products" => :create
+  end
+
   get "/login", to: "sessions#new", as: :login
   post "/login", to: "sessions#create"
   get "/logout", to: "sessions#destroy", as: :logout

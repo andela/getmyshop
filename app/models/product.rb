@@ -1,4 +1,5 @@
 class Product < ActiveRecord::Base
+  mount_uploader :image, ImageUploader
   filterrific(
     available_filters: [
       :with_size,
@@ -24,8 +25,10 @@ class Product < ActiveRecord::Base
     greater_than: 0
   }
   validates :description, presence: true
-  validates :quantity, presence: true
+  # validates :quantity, presence: true
   validates :brand, presence: true
+  validates_processing_of :image
+  validate :image_size_validation
 
   scope :with_low_price, lambda { |low_price|
     where("price >= ?", low_price)
@@ -69,4 +72,9 @@ class Product < ActiveRecord::Base
   def size_values
     size.split(",").map(&:strip)
   end
+
+  private
+    def image_size_validation
+      errors[:image] << "should be less than 500KB" if image.size > 0.5.megabytes
+    end
 end

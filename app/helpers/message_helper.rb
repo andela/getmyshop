@@ -20,4 +20,8 @@ module MessageHelper
   def shop_created
     "Shop Creation Succesful"
   end
+
+  def product_created
+    "Product has been created"
+  end
 end

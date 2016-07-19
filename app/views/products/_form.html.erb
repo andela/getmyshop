@@ -1,0 +1,62 @@
+<div id="modal1" class="modal modal-fixed-footer">
+  <div class="modal-content">
+    <h4>Add Product</h4>
+    <%= form_for( @product, html: { multipart: true } ) do |f| %>
+    <% if @product.errors.any? %>
+      <div id="error_explanation">
+        <ul>
+        <% @product.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :name %><br>
+      <%= f.text_field :name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :description %><br>
+      <%= f.text_field :description  %>
+    </div>
+
+    <div class="field">
+      <%= f.label :brand %><br>
+      <%= f.text_field :brand %>
+    </div>
+
+    <div class="field">
+      <%= f.label :size %><br>
+      <%= f.text_field :size %>
+    </div>
+
+    <div class="field">
+      <%= f.label :price %><br>
+      <%= f.text_field :price %>
+    </div>
+
+    <div class="field">
+      <%= f.label :image %><br>
+      <%= f.file_field :image %>
+      <% if f.object.image? %>
+        <%= image_tag f.object.image.thumb.url %>
+        <%= f.label :remove_image %>
+        <%= f.check_box :remove_image %> 
+      <% end %>
+    </div>
+
+    <%= f.hidden_field :shop_owner_id, { value: 9 } %>
+ 
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+
+  <% end %>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Add</a>
+  </div>
+</div>

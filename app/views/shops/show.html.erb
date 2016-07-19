@@ -1,49 +1,38 @@
-<p id="notice"><%= notice %></p>
+    <header>
+      <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only"><i class="material-icons">menu</i></a></div>
+      <ul id="nav-mobile" class="side-nav fixed">
+        <li class="bold"><a href="about.html" class="waves-effect waves-teal"><i class="material-icons">dashboard</i>
+        <span class="title">Dashboard</span></a></li>
+        <li class="bold active"><a href="getting-started.html" class="waves-effect waves-teal"><i class="material-icons">folder</i>
+        <span class="title">Products</span></a></li>
+        <li class="bold"><a href="getting-started.html" class="waves-effect waves-teal"><i class="material-icons">insert_chart</i><span class="title">Orders</span></a></li>
+        <li class="bold"><a href="http://materializecss.com/mobile.html" class="waves-effect waves-teal"><i class="material-icons">play_arrow</i><span class="title">Coupons</span></a></li>
+        <li class="bold"><a href="http://materializecss.com/mobile.html" class="waves-effect waves-teal"><i class="material-icons">payment</i><span class="title">Transactions</span></a></li>
+        <li class="bold"><a href="showcase.html" class="waves-effect waves-teal"><i class="material-icons">supervisor_account</i><span class="title">Customers</span></a></li>
+      </ul>
+    </header>
+  
+    <main>
+  <%= render partial: 'shop_owners_header' %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @shop.name %>
-</p>
+    <div class="container vspacer">
+      <div class="col s9">
+        <div class="profile">
+          <div class="result-header">
+            NO PRODUCTS IN STORE
+          </div>
+          <div class="row profile-fields">
+            <div class="no-order-msg center">
+              <p>You currently have no products</p>
+              <a class="modal-trigger waves-effect waves-teal btn-flat" href="#modal1">Add Products</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <%= render partial: 'shop_owners_footer' %>
+    <%= render partial: 'products/form' %>  
+</main>
 
-<p>
-  <strong>Url:</strong>
-  <%= @shop.url %>
-</p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @shop.description %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @shop.address %>
-</p>
-
-<p>
-  <strong>City:</strong>
-  <%= @shop.city %>
-</p>
-
-<p>
-  <strong>State:</strong>
-  <%= @shop.state %>
-</p>
-
-<p>
-  <strong>Country:</strong>
-  <%= @shop.country %>
-</p>
-
-<p>
-  <strong>Phone:</strong>
-  <%= @shop.phone %>
-</p>
-
-<p>
-  <strong>Shop owner:</strong>
-  <%= @shop.shop_owner %>
-</p>
-
-<%= link_to 'Edit', edit_shop_path(@shop) %> |
-<%= link_to 'Back', shops_path %>

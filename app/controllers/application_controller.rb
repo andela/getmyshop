@@ -17,4 +17,12 @@ class ApplicationController < ActionController::Base
   def logged_in
     current_user.present?
   end
+
+  def current_shop_owner
+    @current_shop_owner ||= ShopOwner.find_by_id(session[:shop_owner_id])
+  end
+
+  def shop_owner_logged_in
+    current_shop_owner.present?
+  end
 end

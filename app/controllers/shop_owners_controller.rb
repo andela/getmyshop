@@ -8,7 +8,8 @@ class ShopOwnersController < ApplicationController
 
   def shop_owner_activate
     shop_owner = ShopOwner.token_match(params[:token])
-    if shop_owner && shop_owner.activate
+    
+    if shop_owner && shop_owner.update(active_status: true)
       session[:shop_owner_id] = shop_owner.id
       redirect_to shop_new_path(shop_owner), notice: account_activated
     else
@@ -19,9 +20,9 @@ class ShopOwnersController < ApplicationController
   def create
     @shop_owner = ShopOwner.new(shop_owner_params)
     if @shop_owner.save
-      UserMailer.welcome_shop_owner(@shop_owner, welcome_user).
+      UserMailer.welcome_shop_owner(@shop_owner, welcome).
         deliver_now
-      redirect_to login_path, notice: account_created
+      redirect_to shop_owner_login_path, notice: account_created
     else
       flash["errors"] = @shop_owner.errors.full_messages
       render :new

@@ -16,8 +16,4 @@ class ShopOwner < ActiveRecord::Base
     id = AESCrypt.decrypt(token, ENV["GETMYSHOP_SALT"])
     ShopOwner.where(id: id).first
   end
-
-  def activate
-    self.active_status = true
-  end
 end

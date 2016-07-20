@@ -5,16 +5,14 @@ RSpec.describe UsersController do
     create(:regular_user)
   end
 
-  after(:all) { DatabaseCleaner.clean_with(:truncation) }
-
   let(:user) { RegularUser.first }
 
   describe "GET activate" do
-    it "turns the user's active_status to true" do
+    it "turns the user's verified to true" do
       get :activate, user_id: user.id, activation_token: user.activation_token
 
       user.reload
-      expect(user.active_status).to be_truthy
+      expect(user.verified).to be_truthy
       expect(session[:user_id]).to eq user.id
       expect(response).to redirect_to root_path
     end

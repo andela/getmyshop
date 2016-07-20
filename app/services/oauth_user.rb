@@ -61,7 +61,7 @@ class OauthUser
       first_name: policy.first_name,
       last_name: policy.last_name,
       email: policy.email,
-      active_status: true
+      verified: true
     }
   end
 end

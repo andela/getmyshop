@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   )
 
   def assign_token
-    self.active_status = false
+    self.verified = false
     self.activation_token = [*"0".."9", *"a".."z", *"A".."Z"].sample(50).join
   end
 end

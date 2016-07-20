@@ -7,7 +7,7 @@ class CreateShopOwners < ActiveRecord::Migration
       t.string :email
       t.string :password_digest
       t.string :activation_token
-      t.boolean :active_status
+      t.boolean :active_status, default: false
       t.string :reset_code
       t.boolean :active
 

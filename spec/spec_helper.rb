@@ -7,6 +7,7 @@ require "support/form_helpers"
 require "support/login_helper"
 require "capybara"
 require "omniauth"
+require "support/database_cleaner"
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|

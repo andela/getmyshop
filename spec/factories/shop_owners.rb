@@ -4,9 +4,9 @@ FactoryGirl.define do
     last_name Faker::Name.name
     phone Faker::PhoneNumber.phone_number
     email Faker::Internet.email
-    password_digest "password"
-    active_status false
+    password "password"
+    verified true
     reset_code "MyString"
-    active false
+    active true
   end
 end

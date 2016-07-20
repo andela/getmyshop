@@ -11,7 +11,6 @@ module FormHelpers
   end
 
   def signin_helper(email, password)
-    visit login_path
     within("#signin-user-form") do
       fill_in "Email", with: email
       fill_in "Password", with: password

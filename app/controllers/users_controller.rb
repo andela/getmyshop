@@ -6,13 +6,12 @@ class UsersController < ApplicationController
   def process_email
     user = RegularUser.find_by_email(params[:email])
     if user
-      flash[:success] = "An Email has been sent with instructions to"\
-      " change your password"
+      flash[:success] = change_password
       reset_code = [*"0".."9", *"a".."z", *"A".."Z"].sample(50).join
       RegularUser.update(user.id, reset_code: reset_code)
-      UserMailer.reset_password(user.id, "Reset Your Password").deliver_now
+      UserMailer.reset_password(user.id, password_reset).deliver_now
     else
-      flash[:error] = "No user found with this email"
+      flash[:error] = user_not_found
     end
 
     redirect_to forgot_users_path
@@ -26,11 +25,10 @@ class UsersController < ApplicationController
 
     if user.reset_code == params[:reset_code]
       user.update_attributes password: params[:password], reset_code: nil
-      flash[:notice] = "Password Successfully Changed."\
-      " Sign in with new password"
+      flash[:notice] = password_changed
       redirect_to login_path
     else
-      flash[:notice] = "some error occured"
+      flash[:notice] = error_occured
       render "forgot_password"
     end
   end
@@ -49,9 +47,9 @@ class UsersController < ApplicationController
     @user = RegularUser.new(users_params)
 
     if @user.save
-      UserMailer.welcome(@user.id, "Welcome To GetMyShop").deliver_now
+      UserMailer.welcome(@user.id, welcome).deliver_now
       session[:user_id] = @user.id
-      redirect_to root_path, notice: "Welcome, #{current_user.first_name}"
+      redirect_to root_path, notice: welcome_user
     else
       flash["errors"] = @user.errors.full_messages
       flash["user"] = @user
@@ -62,12 +60,11 @@ class UsersController < ApplicationController
   def activate
     user = User.token_match(params[:user_id], params[:activation_token]).first
 
-    if user && user.update(active_status: true)
+    if user && user.update(verified: true)
       session[:user_id] = user.id
-      redirect_to root_path, notice: "Account activated successfully."
+      redirect_to root_path, notice: account_activated
     else
-      redirect_to root_path, notice: "Unable to activate account. "\
-      "If you copied the link, make sure you copied it correctly."
+      redirect_to root_path, notice: activation_failed
     end
   end
 
@@ -85,7 +82,7 @@ class UsersController < ApplicationController
   def update
     user = User.find_by(id: params[:id])
     user.update(users_params)
-    redirect_to account_users_path, notice: "Account Updated"
+    redirect_to account_users_path, notice: account_updated
   end
 
   def destroy
@@ -95,7 +92,7 @@ class UsersController < ApplicationController
 
   def logout
     session.delete :user_id
-    redirect_to root_path, notice: "Account Deactivated"
+    redirect_to root_path, notice: account_deactivated
   end
 
   def users_params

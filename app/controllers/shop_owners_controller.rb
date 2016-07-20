@@ -1,3 +1,4 @@
+
 class ShopOwnersController < ApplicationController
   def new
     @shop_owner = ShopOwner.new
@@ -8,8 +9,8 @@ class ShopOwnersController < ApplicationController
 
   def shop_owner_activate
     shop_owner = ShopOwner.token_match(params[:token])
-    
-    if shop_owner && shop_owner.update(active_status: true)
+
+    if shop_owner && shop_owner.update(verified: true)
       session[:shop_owner_id] = shop_owner.id
       redirect_to shop_new_path(shop_owner), notice: account_activated
     else

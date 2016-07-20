@@ -14,14 +14,14 @@ RSpec.describe User, type: :model do
       it { expect(user).to respond_to(:email) }
       it { expect(user).to respond_to(:phone) }
       it { expect(user).to respond_to(:activation_token) }
-      it { expect(user).to respond_to(:active_status) }
+      it { expect(user).to respond_to(:verified) }
       it { expect(user).to respond_to(:password_digest) }
     end
 
     context "#assign_token" do
       it "generates and assigns the activation token to user instance" do
         user.assign_token
-        expect(user.active_status).to be_falsey
+        expect(user.verified).to be_falsey
         expect(user.activation_token).to be_a(String)
         expect(user.activation_token.length).to eq(50)
       end
@@ -41,12 +41,5 @@ RSpec.describe User, type: :model do
     it { expect(user).not_to allow_value("@.").for(:email) }
   end
 
-  describe "ActiveModel Association" do
-    # it do
-    #   expect(airport).to have_many(:flights).
-    #     with_foreign_key(:origin_airport_id)
-    # end
-  end
-
-  # it { expect(user).to have_secure_password }
+  it { expect(user).to have_secure_password }
 end

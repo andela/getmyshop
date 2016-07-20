@@ -1,17 +1,7 @@
 Rails.application.routes.draw do
   get "orders/create"
-
-  # Example resource route
-  # (maps HTTP verbs to controller actions automatically):
-
   resources :products
 
-  # The priority is based upon order of creation:
-  # first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
   root "landing#index"
 
   get "/review"             => "products#review"
@@ -37,7 +27,7 @@ Rails.application.routes.draw do
   scope "/shopowners", controller: :shops do
     get "/:shop_owner_id/shop/new" => :new,
         as: :shop_new
-    get "/:shop_owner_id/admin/dashboard" => :show,
+    get "/:shop_owner_id/admin/dashboard" => :dashboard,
         as: :dashboard
     post "/shops"                  => :create
     get "/shops/:id/edit"          => :edit, as: :edit_shop
@@ -51,31 +41,33 @@ Rails.application.routes.draw do
   end
 
   scope controller: :sessions do
-    get "/login"  => :new,     as: :login
+    get "/login"  => :new, as: :login
     post "/login" => :create
     get "/logout" => :destroy, as: :logout
   end
 
-  scope "/shopowners", controller: :shop_owner_sessions do
-    get "/login"  => :new,     as: :shop_owner_login
-    post "/login" => :create
-    delete "/logout" => :destroy, as: :shop_owner_logout
+  scope "/shopowners", controller: :sessions do
+    get "/login"  => :shop_owner_login, as: :shop_owner_login
+    post "/login" => :shop_owner_create
+    delete "/logout" => :shop_owner_destroy, as: :shop_owner_logout
   end
 
   get "/wishlist" => "wishlist#index", as: :wishlist_index
   post "/wishlist" => "wishlist#update"
   match "auth/:provider/callback" => "sessions#create", via: [:get, :post]
   resources :categories, only: [:show, :index]
-  get "/categories/:category_id/subcategory/:id" => "categories#show", as: :subcategory
+  get "/categories/:category_id/subcategory/:id" => "categories#show",
+      as: :subcategory
   resources :addresses, except: [:show, :inde]
   resources :users, except: [:show] do
     collection do
       get "account"             => "users#account"
       get ":id/addresses"       => "users#addresses", as: :addresses
       get "forgot-password"     => "users#forgot", as: :forgot
-      get "password-reset/:id/:reset_code" => "users#reset_password", as: :passwordreset
+      get "password-reset/:id/:reset_code" => "users#reset_password",
+          as: :passwordreset
       post "password-reset/:id/:reset_code" => "users#reset"
-      post "forgot-password"    => "users#process_email"
+      post "forgot-password" => "users#process_email"
       get(
         "/activate/:user_id/:activation_token" => "users#activate",
         as: "activate"
@@ -95,5 +87,5 @@ Rails.application.routes.draw do
       delete "/:id"         => "orders#destroy", as: :order_cancel
     end
   end
-  post "/paypal_hook"       => "orders#paypal_hook", as: :hook
+  post "/paypal_hook" => "orders#paypal_hook", as: :hook
 end

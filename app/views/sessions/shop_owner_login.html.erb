@@ -21,7 +21,7 @@
               </div>
             <% end %>
 
-            <%= form_for :shop_owner_session, url: shop_owner_login_path do |f| %>
+            <%= form_for :session, url: shop_owner_login_path do |f| %>
               <div class="">
                 <%= f.label :email, "Email" %>
                 <span class="field-error" id="email-error"></span>
@@ -35,7 +35,7 @@
               </div>
 
               <div class="submit-div center">
-            <%= f.submit "Sign In", class: "btn signin", id: "submit-signin" %> 
+                <%= f.submit "Sign In", class: "btn signin", id: "submit-signin" %> 
               </div>
             <% end %>
 

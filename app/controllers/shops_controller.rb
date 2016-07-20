@@ -1,5 +1,5 @@
 class ShopsController < ApplicationController
-  def show
+  def dashboard
     @shop_owner = ShopOwner.find(params[:shop_owner_id])
     @shop = @shop_owner.shop
   end

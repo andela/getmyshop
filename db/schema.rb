@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160711163217) do
+ActiveRecord::Schema.define(version: 20160719170825) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id"
@@ -124,11 +124,11 @@ ActiveRecord::Schema.define(version: 20160711163217) do
     t.string   "phone"
     t.string   "email"
     t.string   "password_digest"
-    t.boolean  "active_status"
+    t.boolean  "verified",        default: false
     t.string   "reset_code"
-    t.boolean  "active"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.boolean  "active",          default: true
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   create_table "shops", force: :cascade do |t|
@@ -175,7 +175,7 @@ ActiveRecord::Schema.define(version: 20160711163217) do
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
     t.string   "activation_token"
-    t.boolean  "active_status",    default: false
+    t.boolean  "verified",         default: false
     t.string   "reset_code"
     t.boolean  "active",           default: true
   end

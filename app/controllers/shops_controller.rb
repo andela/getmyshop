@@ -10,6 +10,11 @@ class ShopsController < ApplicationController
     @shop = Shop.new
   end
 
+  def products
+    shop_owner = ShopOwner.find_by(id: params[:shop_owner_id])
+    @products = shop_owner.shop.products
+  end
+
   def create
     @shop_owner = ShopOwner.find(params[:shop][:shop_owner_id])
     @shop = Shop.new(shop_params)

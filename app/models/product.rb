@@ -16,6 +16,7 @@ class Product < ActiveRecord::Base
   has_many :reviews
   belongs_to :subcategory
   has_one :category, through: :subcategory
+  belongs_to :shop
 
   before_create :generate_code
 
@@ -25,7 +26,7 @@ class Product < ActiveRecord::Base
     greater_than: 0
   }
   validates :description, presence: true
-  # validates :quantity, presence: true
+  validates :quantity, presence: true
   validates :brand, presence: true
   validates_processing_of :image
   validate :image_size_validation
@@ -74,7 +75,8 @@ class Product < ActiveRecord::Base
   end
 
   private
-    def image_size_validation
-      errors[:image] << "should be less than 500KB" if image.size > 0.5.megabytes
-    end
+
+  def image_size_validation
+    errors[:image] << "should be less than 500KB" if image.size > 0.5.megabytes
+  end
 end

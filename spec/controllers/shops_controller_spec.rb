@@ -3,8 +3,7 @@ require "rails_helper"
 RSpec.describe ShopsController, type: :controller do
   before(:each) do
     @shop_owner = create(:shop_owner)
-    @shop = create(:shop)
-    @shop_owner.update(shop: @shop)
+    @shop = @shop_owner.shop
   end
 
   let(:valid_attributes) do
@@ -15,21 +14,21 @@ RSpec.describe ShopsController, type: :controller do
     { name: "Shop Name" }.merge(shop_owner_id: @shop_owner.id)
   end
 
-  describe "GET #show" do
+  describe "#show" do
     it "assigns the requested shop as @shop" do
       get :show, shop_owner_id: @shop_owner.id
       expect(assigns(:shop)).to eq(@shop)
     end
   end
 
-  describe "GET #new" do
+  describe "#new" do
     it "assigns a new shop as @shop" do
       get :new, shop_owner_id: @shop_owner.id
       expect(assigns(:shop)).to be_a_new(Shop)
     end
   end
 
-  describe "POST #create" do
+  describe "#create" do
     context "with valid params" do
       it "creates a new Shop" do
         valid_attributes[:name] = "Electronics"
@@ -46,6 +45,14 @@ RSpec.describe ShopsController, type: :controller do
         post :create, shop: invalid_attributes
         expect(response).to render_template("new")
       end
+    end
+  end
+
+  describe "#products" do
+    it "assigns the products instance to the products template" do
+      get :products, shop_owner_id: @shop_owner.id
+      expect(response).to render_template("products")
+      expect(assigns(:products)).to match_array(@shop_owner.shop.products)
     end
   end
 end

@@ -37,6 +37,8 @@ Rails.application.routes.draw do
   scope "/shopowners", controller: :shops do
     get "/:shop_owner_id/shop/new" => :new,
         as: :shop_new
+    get "/:shop_owner_id/admin/shop/products" => :products,
+        as: :shop_products
     get "/:shop_owner_id/admin/dashboard" => :show,
         as: :dashboard
     post "/shops" => :create

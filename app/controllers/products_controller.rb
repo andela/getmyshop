@@ -8,19 +8,20 @@ class ProductsController < ApplicationController
   end
 
   def create
-    shop_owner = ShopOwner.find_by(id: params[:product][:shop_owner_id])
+    @shop_owner = ShopOwner.find_by(id: params[:product][:shop_owner_id])
     @product = Product.new(product_params)
     if @product.save
-      shop_owner.shop.products << @product
-      redirect_to product_path(@product), notice: product_created
+      @shop_owner.shop.products << @product
+      redirect_to shop_products_path(@shop_owner), notice: product_created
     else
-      flash[:errors] = @product.errors
       render :new
     end
   end
 
   def show
-    @product = Product.find_by(id: params[:id])
+    @product = Product.find_by(id: params[:id]).decorate
+    category = @product.category
+    @related_products = category.related_products(@product.id)
   end
 
   def review
@@ -36,8 +37,13 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    allowed_params = [:name, :description, :quantity, :brand, :size, :price, :image]
-    params.require(:product).permit(allowed_params)
+    params.require(:product).permit(:name,
+                                    :description,
+                                    :quantity,
+                                    :brand,
+                                    :size,
+                                    :price,
+                                    :image)
   end
 
   def rate_params

@@ -1,1 +1,1 @@
- require 'carrierwave/orm/activerecord'
+require "carrierwave/orm/activerecord"

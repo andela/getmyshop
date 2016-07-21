@@ -8,11 +8,11 @@ class ShopOwnersController < ApplicationController
 
   def shop_owner_activate
     shop_owner = ShopOwner.token_match(params[:token])
-    if shop_owner && shop_owner.activate
+    if shop_owner && shop_owner.update(verified: true)
       session[:shop_owner_id] = shop_owner.id
-      redirect_to shop_new_path, notice: account_activated
+      redirect_to shop_new_path, notice: MessageService.account_activated
     else
-      redirect_to root_path, notice: activation_failed
+      redirect_to root_path, notice: MessageService.activation_failed
     end
   end
 
@@ -21,7 +21,7 @@ class ShopOwnersController < ApplicationController
     if @shop_owner.save
       UserMailer.welcome_shop_owner(@shop_owner, welcome_user).
         deliver_now
-      redirect_to login_path, notice: account_created
+      redirect_to login_path, notice: MessageService.account_created
     else
       flash["errors"] = @shop_owner.errors.full_messages
       render :new

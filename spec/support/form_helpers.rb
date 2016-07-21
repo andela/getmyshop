@@ -19,6 +19,15 @@ module FormHelpers
     submit_form
   end
 
+  def shop_owner_signin_helper(email, password)
+    visit shop_owner_login_path
+    within("#shop_owner_signin") do
+      fill_in "Email", with: email
+      fill_in "Password", with: password
+    end
+    submit_form
+  end
+
   def submit_form
     find('input[name="commit"]').click
   end

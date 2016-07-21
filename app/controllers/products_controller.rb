@@ -12,7 +12,7 @@ class ProductsController < ApplicationController
     @product = Product.create(product_params)
     @product.update(shop: @shop_owner.shop)
     if @product.errors.empty?
-      redirect_to shop_products_path, notice: product_created
+      redirect_to shop_products_path, notice: MessageService.product_created
     else
       flash[:errors] = @product.errors.full_messages
       render :new

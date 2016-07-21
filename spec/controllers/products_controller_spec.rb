@@ -2,16 +2,19 @@ require "rails_helper"
 
 RSpec.describe ProductsController, type: :controller do
   let(:user) { create(:regular_user) }
-  before do
+  
+  before(:all) do
     @product_one = create(:product, name: "testproduct1")
     @product_two = create(:product, name: "testproduct2")
     @shop_owner = create(:shop_owner)
     session[:shop_owner_id] = @shop_owner.id
   end
+
   after(:all) { DatabaseCleaner.clean_with(:truncation) }
 
   describe "making a review" do
     it "renders show template" do
+      user.update(verified: true)
       login(user)
       post :rate, title: "Nice one",
                   comment: "packaging to nice",

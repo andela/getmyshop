@@ -62,7 +62,7 @@ class UsersController < ApplicationController
   def activate
     user = User.token_match(params[:user_id], params[:activation_token]).first
 
-    if user && user.update(active_status: true)
+    if user && user.update(verified: true)
       session[:user_id] = user.id
       redirect_to root_path, notice: "Account activated successfully."
     else

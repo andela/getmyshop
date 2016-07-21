@@ -1,6 +1,5 @@
-require_relative "../helpers/message_helper"
 class ApplicationController < ActionController::Base
-  include MessageHelper
+  include ApplicationHelper
   protect_from_forgery with: :exception
 
   helper_method :current_user, :logged_in, :current_shop_owner
@@ -11,7 +10,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    @current_user ||= User.find_by_id(session[:user_id])
+    @current_user ||= RegularUser.find_by_id(session[:user_id])
   end
 
   def current_shop_owner
@@ -20,5 +19,13 @@ class ApplicationController < ActionController::Base
 
   def logged_in
     current_user.present?
+  end
+
+  def current_shop_owner
+    @current_shop_owner ||= ShopOwner.find_by_id(session[:user_id])
+  end
+
+  def shop_owner_logged_in
+    current_shop_owner.present?
   end
 end

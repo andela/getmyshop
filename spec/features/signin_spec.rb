@@ -1,23 +1,27 @@
 require "rails_helper"
 
-RSpec.describe "Signin process", type: :feature do
-  before(:all) { create(:regular_user, password: "password") }
+RSpec.describe "Users Signin process", type: :feature do
+  before(:all) do
+    @user = create :regular_user
+    @user.update(verified: true)
+  end
+
   after(:all) { DatabaseCleaner.clean_with(:truncation) }
-  let(:user) { User.last }
 
-  context "when done with correct inputs" do
-    it "should sign user in" do
-      signin_helper(user.email, "password")
+  feature "when user enters correct inputs" do
+    scenario "signs in user" do
+      signin_helper(@user.email, "password")
 
-      expect(page).to have_content "Welcome"
+      expect(page).to have_content "Welcome, #{@user.first_name}"
     end
   end
 
-  context "when inputs are incorrect" do
-    it "would not sign user in" do
-      signin_helper(user.email, "wrong_password")
+  feature "when inputs are incorrect" do
+    scenario "does not sign user in" do
+      signin_helper(@user.email, "wrong_password")
 
       expect(page).to have_no_content "SIGN OUT"
     end
   end
 end
+

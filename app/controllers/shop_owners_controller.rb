@@ -19,7 +19,7 @@ class ShopOwnersController < ApplicationController
   def create
     @shop_owner = ShopOwner.new(shop_owner_params)
     if @shop_owner.save
-      UserMailer.welcome_shop_owner(@shop_owner, welcome_user).
+      UserMailer.welcome_shop_owner(@shop_owner, welcome).
         deliver_now
       redirect_to login_path, notice: MessageService.account_created
     else

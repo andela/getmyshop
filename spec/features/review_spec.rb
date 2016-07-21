@@ -11,6 +11,7 @@ RSpec.describe "Making a review", type: :feature do
     after(:all) { DatabaseCleaner.clean_with(:truncation) }
 
     it "Adds review to a product if user has bought the product", js: true do
+      user.update(verified: true)
       order.update_attributes(user: user, address: address)
       order_item.update_attributes(order: order, product: product)
       signin_helper(user.email, user.password)

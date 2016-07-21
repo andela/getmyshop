@@ -24,4 +24,3 @@ RSpec.describe "Users Signin process", type: :feature do
     end
   end
 end
-

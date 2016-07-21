@@ -1,0 +1,5 @@
+<% if flash[:success] %>
+<script type="text/javascript">
+  Materialize.toast("<%= flash[:success] %>", 4000)
+</script>
+<% end %>

@@ -1,22 +1,32 @@
 <% @user_addresses.each do |address| %>
-  <div class="col l4">
-    <div class="user-address">
-
-      <div class="address-name">
-        <%= address.name %>
-      </div>
-
-      <div class="address-display-account">
-        <%= address.address %>, <%= address.city %>
-      </div>
-
-      <div class="address-display-account">
-          <%= address.phone %>
-      </div>
-
-      <div class="address-display-account">
-        <%= address.state %>, <%= address.country %>
-      </div>
+<div class="col l5">
+  <div class="user-address">
+    
+    <div class="address-name">
+      <%= address.name %>
+      <span class="right">
+        <%= link_to edit_address_path(address.id), remote: true, class: "edit-address-icon" do %>
+        <i class="fa fa-pencil-square-o my-icon" id="updateAddress"></i>
+        <% end %> |
+        <%= link_to address_path(address.id), method: :delete, class: "delete-address-icon", data: { confirm: "Are you sure?" } do %>
+        <i class="fa fa-trash-o"></i>
+      <% end %> </span>
+    </div>
+    <div class="address-display-account">
+      <%= address.address %>, <%= address.city %>
+    </div>
+    <div class="address-display-account">
+      <%= address.phone %>
+    </div>
+    <div class="address-display-account">
+      <%= address.state %>, <%= address.country %>
     </div>
   </div>
+</div>
 <% end %>
+<div id="addressModal" class="modal">
+  <div class="modal-content">
+    <div id="addressForm">
+    </div>
+  </div>
+</div>

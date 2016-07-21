@@ -59,7 +59,7 @@ Rails.application.routes.draw do
   resources :categories, only: [:show, :index]
   get "/categories/:category_id/subcategory/:id",
       to: "categories#show", as: :subcategory
-  resources :addresses, except: [:show, :inde]
+  resources :addresses, except: [:show, :index]
   resources :users, except: [:show] do
     collection do
       get "account", to: "users#account"
@@ -81,6 +81,7 @@ Rails.application.routes.draw do
     collection do
       post "/address", to: "orders#address", as: :address
       post "/summary", to: "orders#summary", as: :summary
+      get "/summary/:address_id", to: "orders#summary", as: :address_summary
       post "/payment/", to: "orders#payment", as: :payment
       post "/payment/:type", to: "orders#post_payment", as: :post_payment
       get "/confirmation", to: "orders#confirmation", as: :confirmation
@@ -90,4 +91,6 @@ Rails.application.routes.draw do
     end
   end
   post "/paypal_hook", to: "orders#paypal_hook", as: :hook
+
+  resources :addresses, only: [:edit, :update, :destroy]
 end

@@ -1,4 +1,9 @@
 <%= render "header" %>
+<% if flash['success'] %>
+  <%= javascript_tag do %>
+      Materialize.toast("<%= flash['success'] %>", 4000)
+  <% end %>
+<% end %>
 <div class="signin-box">
   <div class="container account-container">
     <div class="row">

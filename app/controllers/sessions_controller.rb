@@ -14,15 +14,16 @@ class SessionsController < ApplicationController
       return redirect_to_user_intended unless session[:user_intended].nil?
       redirect_to root_path, notice: welcome_user
     else
-      process_form_login("RegularUser")
+      process_form_login "RegularUser"
     end
   end
 
   def shop_owner_create
-    process_form_login("ShopOwner")
+    process_form_login "ShopOwner"
   end
 
   def destroy
+<<<<<<< 76e77891dee8ac755dd8705715812757f37fa18c
     @current_user = nil
     session.delete :user_id
     redirect_to login_path, notice: MessageService.logout
@@ -32,9 +33,22 @@ class SessionsController < ApplicationController
     @current_shop_owner = nil
     session.delete :shop_owner_id
     redirect_to shop_owner_login_path, notice: MessageService.logout
+=======
+    logout_user current_user
+  end
+
+  def shop_owner_destroy
+    logout_user current_shop_owner
+>>>>>>> refactor: shop authentication according to bukola's comment
   end
 
   private
+
+  def logout_user(user)
+    user = nil
+    session.delete :user_id
+    redirect_to root_path, notice: logout
+  end
 
   def process_form_login(model)
     user = model.constantize.find_by(email: params[:session][:email])

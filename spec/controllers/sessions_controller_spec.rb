@@ -101,11 +101,12 @@ RSpec.describe SessionsController do
     context "when user logs out" do
       it "logs the user out successfully and redirects to the login path" do
         user = create(:shop_owner)
+        session[:user_id] = user.id
         delete :shop_owner_destroy, session: {
           email: user.email, password: user.password
         }
         expect(session[:user_id]).to eql nil
-        expect(response).to redirect_to shop_owner_login_path
+        expect(response).to redirect_to root_path
       end
     end
   end

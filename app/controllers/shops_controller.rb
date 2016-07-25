@@ -1,22 +1,19 @@
 class ShopsController < ApplicationController
+  before_action :assign_shop_owner
   def show
-    @shop_owner = ShopOwner.find(params[:shop_owner_id])
     @shop = @shop_owner.shop
     @product = Product.new
   end
 
   def new
-    @shop_owner = ShopOwner.find(params[:shop_owner_id])
     @shop = Shop.new
   end
 
   def products
-    shop_owner = ShopOwner.find_by(id: params[:shop_owner_id])
-    @products = shop_owner.shop.products
+    @products = @shop_owner.shop.products
   end
 
   def create
-    @shop_owner = ShopOwner.find(params[:shop][:shop_owner_id])
     @shop = Shop.new(shop_params)
     if @shop.save
       @shop_owner.update(shop: @shop)
@@ -28,6 +25,10 @@ class ShopsController < ApplicationController
   end
 
   private
+
+  def assign_shop_owner
+    @shop_owner = current_shop_owner
+  end 
 
   def shop_params
     params.require(:shop).permit(

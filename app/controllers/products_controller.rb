@@ -1,14 +1,14 @@
 class ProductsController < ApplicationController
+  before_action :assign_shop_owner, only: [:new, :create]
+  
   def index
   end
 
   def new
     @product = Product.new
-    @shop_owner = ShopOwner.find(params[:shop_owner_id])
   end
 
   def create
-    @shop_owner = ShopOwner.find_by(id: params[:product][:shop_owner_id])
     @product = Product.new(product_params)
     if @product.save
       @shop_owner.shop.products << @product
@@ -37,13 +37,19 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name,
+    params.require(:product).permit(
+                                    :name,
                                     :description,
                                     :quantity,
                                     :brand,
                                     :size,
                                     :price,
-                                    :image)
+                                    :image
+                                    )
+  end
+
+  def assign_shop_owner
+    @shop_owner = current_shop_owner
   end
 
   def rate_params

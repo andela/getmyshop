@@ -4,14 +4,15 @@ RSpec.describe ShopsController, type: :controller do
   before(:each) do
     @shop_owner = create(:shop_owner)
     @shop = @shop_owner.shop
+    session[:shop_owner_id] = @shop_owner.id
   end
 
   let(:valid_attributes) do
-    @shop.attributes.merge(shop_owner_id: @shop_owner.id)
+    @shop.attributes
   end
 
   let(:invalid_attributes) do
-    { name: "Shop Name" }.merge(shop_owner_id: @shop_owner.id)
+    { name: "Shop Name" }
   end
 
   describe "#show" do

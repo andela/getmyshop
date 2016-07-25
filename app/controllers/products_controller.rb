@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :assign_shop_owner, only: [:new, :create]
-  
+
   def index
   end
 
@@ -45,7 +45,7 @@ class ProductsController < ApplicationController
                                     :size,
                                     :price,
                                     :image
-                                    )
+                                  )
   end
 
   def assign_shop_owner

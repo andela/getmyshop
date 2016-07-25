@@ -28,7 +28,7 @@ class ShopsController < ApplicationController
 
   def assign_shop_owner
     @shop_owner = current_shop_owner
-  end 
+  end
 
   def shop_params
     params.require(:shop).permit(

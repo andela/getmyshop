@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "Making a review", type: :feature do
-  context "When a user has bought a product" do
+  feature "When a user has bought a product" do
     let(:user) { create :regular_user }
     let(:order) { create :order }
     let(:address) { build :address }
@@ -10,7 +10,8 @@ RSpec.describe "Making a review", type: :feature do
 
     after(:all) { DatabaseCleaner.clean_with(:truncation) }
 
-    it "Adds review to a product if user has bought the product", js: true do
+    scenario "Adds review to a product if user has bought the product",
+             js: true do
       user.update(verified: true)
       order.update_attributes(user: user, address: address)
       order_item.update_attributes(order: order, product: product)

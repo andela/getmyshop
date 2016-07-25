@@ -23,38 +23,26 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-<<<<<<< 76e77891dee8ac755dd8705715812757f37fa18c
-    @current_user = nil
-    session.delete :user_id
-    redirect_to login_path, notice: MessageService.logout
-  end
-
-  def shop_owner_destroy
-    @current_shop_owner = nil
-    session.delete :shop_owner_id
-    redirect_to shop_owner_login_path, notice: MessageService.logout
-=======
     logout_user current_user
   end
 
   def shop_owner_destroy
     logout_user current_shop_owner
->>>>>>> refactor: shop authentication according to bukola's comment
   end
 
   private
 
-  def logout_user(user)
-    user = nil
+  def logout_user(_user)
+    _user = nil
     session.delete :user_id
-    redirect_to root_path, notice: logout
+    redirect_to root_path, notice: MessageService.logout
   end
 
   def process_form_login(model)
     user = model.constantize.find_by(email: params[:session][:email])
     return if user_is_nil?(user, model)
 
-    authenticated = user.authenticate(params[:session][:password]) &&
+    authenticated = user.authenticate(params[:session][:password])
     if authenticated && user.verified && user.active
       login_successful(user, model)
     else
@@ -64,9 +52,9 @@ class SessionsController < ApplicationController
 
   def user_is_nil?(user, model)
     return if user
-    flash["errors"] = [login_failure]
+    flash["errors"] = [MessageService.login_failure]
 
-   redirect_to_path(model)
+   redirect_to_path model
   end
 
   def redirect_to_path(model)
@@ -91,7 +79,15 @@ class SessionsController < ApplicationController
   def password_invalid(model)
     flash["errors"] = [MessageService.login_failure]
 
-    redirect_to_path(model)
+    redirect_to_path model
+  end
+
+  def redirect_to_path(model)
+    if model == "RegularUser"
+      redirect_to login_path
+    else
+      redirect_to shop_owner_login_path
+    end
   end
 
   def redirect_to_user_intended

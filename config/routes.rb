@@ -86,7 +86,7 @@ Rails.application.routes.draw do
     end
   end
 
-  scope controller: :orders do 
+  scope controller: :orders do
     resources :orders, only: [] do
       collection do
         post "/address"       => :address, as: :address

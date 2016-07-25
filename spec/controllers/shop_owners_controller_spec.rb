@@ -1,8 +1,10 @@
 require "rails_helper"
 
 RSpec.describe ShopOwnersController, type: :controller do
+  let (:shop_owner) { create(:shop_owner) }
+
   let(:valid_attributes) do
-    create(:shop_owner).attributes
+    shop_owner.attributes
   end
 
   let(:invalid_attributes) { { first_name: "John", email: "Invalid" } }
@@ -11,6 +13,17 @@ RSpec.describe ShopOwnersController, type: :controller do
     it "assigns a new shop_owner as @shop_owner" do
       get :new
       expect(assigns(:shop_owner)).to be_a_new(ShopOwner)
+    end
+  end
+
+  describe "#shop_owner_activate" do
+    it "turns the shop owner's active_status to true" do
+      get :shop_owner_activate, token: shop_owner.generate_token
+
+      shop_owner.reload
+      expect(shop_owner.verified).to be_truthy
+      expect(session[:shop_owner_id]).to eq shop_owner.id
+      expect(response).to redirect_to shop_new_path(shop_owner)
     end
   end
 

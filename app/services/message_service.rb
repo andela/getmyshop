@@ -1,4 +1,4 @@
-module MessageService
+class MessageService
   def self.account_activated
     "Account activated successfully."
   end

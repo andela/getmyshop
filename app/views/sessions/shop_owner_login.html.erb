@@ -11,15 +11,7 @@
       <div class="col m8 s12">
         <div class="signin-user-form" id="shop_owner_signin">
           <%= form_tag %>
-            <% unless flash['errors'].blank? %>
-              <div class="error-messages">
-                <ul>
-                  <% flash['errors'].each do |error| %>
-                    <li><%= error %></li>
-                  <% end %>
-                </ul>
-              </div>
-            <% end %>
+            <%= shop_owner_errors %>
 
             <%= form_for :session, url: shop_owner_login_path do |f| %>
               <div class="">

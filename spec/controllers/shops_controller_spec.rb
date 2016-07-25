@@ -34,10 +34,9 @@ RSpec.describe ShopsController, type: :controller do
       it "creates a new Shop" do
         valid_attributes[:name] = "Electronics"
         valid_attributes[:url] = "valid.com"
-        expect do
-          post :create, shop: valid_attributes
-        end.to change(Shop, :count).by(1)
-        expect(assigns(:shop)).to be_a(Shop)
+        post :create, shop: valid_attributes
+        expect(Shop.count).to eq(1)
+        expect(response).to redirect_to(dashboard_path)
       end
     end
 

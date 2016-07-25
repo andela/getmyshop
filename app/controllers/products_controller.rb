@@ -9,11 +9,12 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(product_params)
-    if @product.save
-      @shop_owner.shop.products << @product
-      redirect_to shop_products_path(@shop_owner), notice: product_created
+    @product = Product.create(product_params)
+    @product.update(shop: @shop_owner.shop)
+    if @product.errors.empty?
+      redirect_to shop_products_path, notice: product_created
     else
+      flash[:errors] = @product.errors.full_messages
       render :new
     end
   end

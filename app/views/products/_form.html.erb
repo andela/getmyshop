@@ -1,12 +1,12 @@
-<div id="modal1" class="modal modal-fixed-footer">
+ <div id="modal1" class="modal modal-fixed-footer">
   <%= form_for( @product, html: { multipart: true } ) do |f| %>
     <div class="modal-content">
       <h4>Add Product</h4>
       
-      <% if @product.errors.any? %>
+      <% if flash[:errors].any? %>
         <div id="error_explanation">
           <ul>
-          <% @product.errors.full_messages.each do |message| %>
+          <% flash[:errors].each do |message| %>
             <li><%= message %></li>
           <% end %>
           </ul>
@@ -46,14 +46,8 @@
       <div class="field">
         <%= f.label :image %><br>
         <%= f.file_field :image %>
-        <% if f.object.image? %>
-          <%= image_tag f.object.image.thumb.url %>
-          <%= f.label :remove_image %>
-          <%= f.check_box :remove_image %> 
-        <% end %>
       </div>
 
-      <%= f.hidden_field :shop_owner_id, { value: shop_owner.id } %>
     </div>
     <div class="modal-footer">
       <%= f.submit class: "waves-effect waves-green btn-flat " %>

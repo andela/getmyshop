@@ -34,9 +34,8 @@ RSpec.describe ProductsController, type: :controller do
     context "when all required product details are filled" do
       it "redirects to the shop_products path" do
         product = build(:product)
-        params = { product: product.attributes }
-        post :create, params
-        expect(response).to redirect_to(shop_products_path(@shop_owner))
+        post :create, { product: product.attributes }
+        expect(response).to redirect_to(shop_products_path)
       end
     end
 
@@ -44,8 +43,7 @@ RSpec.describe ProductsController, type: :controller do
       it "renders the new template with form errors" do
         product = build(:product, quantity: nil)
         invalid_product_attributes = product.attributes
-        params = { product: invalid_product_attributes }
-        post :create, params
+        post :create, { product: invalid_product_attributes }
         expect(response).to render_template(:new)
       end
     end

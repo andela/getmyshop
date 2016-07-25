@@ -3,7 +3,7 @@
     <div class="modal-content">
       <h4>Add Product</h4>
       
-      <% if flash[:errors].any? %>
+      <% if flash[:errors] %>
         <div id="error_explanation">
           <ul>
           <% flash[:errors].each do |message| %>

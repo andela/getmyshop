@@ -1,7 +1,7 @@
 @import "variables";
 
 #shop-creation-container {
-  background-image: image-url("shop_bg.jpg");
+  background-color: $primary-color-dark;
   background-size: 100%;
   font-family: $shop-signup-font;
   font-size: 14px;
@@ -12,6 +12,14 @@
     padding-bottom: 20px;
     padding-top: 50px;
   }
+}
+
+.bg-accent {
+  background-color: $accent-color !important;
+}
+
+.text-accent {
+  color: $accent-color;
 }
 
 #shop-creation-container::before {

@@ -4,7 +4,7 @@ RSpec.describe ShopsController, type: :controller do
   before(:each) do
     @shop_owner = create(:shop_owner)
     @shop = @shop_owner.shop
-    session[:shop_owner_id] = @shop_owner.id
+    session[:user_id] = @shop_owner.id
   end
 
   let(:valid_attributes) do
@@ -36,7 +36,7 @@ RSpec.describe ShopsController, type: :controller do
         valid_attributes[:url] = "valid.com"
         post :create, shop: valid_attributes
         expect(Shop.count).to eq(1)
-        expect(response).to redirect_to(dashboard_path)
+        expect(response).to redirect_to dashboard_path
       end
     end
 

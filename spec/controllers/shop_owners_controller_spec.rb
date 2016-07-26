@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe ShopOwnersController, type: :controller do
-  let (:shop_owner) { create(:shop_owner) }
+  let(:shop_owner) { create(:shop_owner) }
 
   let(:valid_attributes) do
     shop_owner.attributes

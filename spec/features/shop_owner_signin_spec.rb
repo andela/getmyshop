@@ -8,7 +8,6 @@ RSpec.describe "Shop Owner Signin process", type: :feature do
 
   feature "when user enters correct inputs" do
     scenario "signs in shop owner" do
-      @shop = create(:shop, shop_owner: @shop_owner)
       shop_owner_signin_helper(@shop_owner.email, "password")
 
       expect(page).to have_content "Welcome"

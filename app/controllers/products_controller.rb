@@ -39,14 +39,14 @@ class ProductsController < ApplicationController
 
   def product_params
     params.require(:product).permit(
-                                    :name,
-                                    :description,
-                                    :quantity,
-                                    :brand,
-                                    :size,
-                                    :price,
-                                    :image
-                                  )
+      :name,
+      :description,
+      :quantity,
+      :brand,
+      :size,
+      :price,
+      :image
+    )
   end
 
   def assign_shop_owner

@@ -8,5 +8,6 @@ FactoryGirl.define do
     verified false
     reset_code "MyString"
     active true
+    shop
   end
 end

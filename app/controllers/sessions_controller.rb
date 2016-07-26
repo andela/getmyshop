@@ -54,15 +54,7 @@ class SessionsController < ApplicationController
     return if user
     flash["errors"] = [MessageService.login_failure]
 
-   redirect_to_path model
-  end
-
-  def redirect_to_path(model)
-    if model == "RegularUser"
-      redirect_to login_path
-    else
-      redirect_to shop_owner_login_path
-    end
+    redirect_to_path model
   end
 
   def login_successful(user, model)

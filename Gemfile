@@ -28,6 +28,9 @@ gem "draper"
 gem "metamagic"
 gem "aescrypt"
 gem "figaro"
+gem "carrierwave", "~> 0.10.0"
+gem "mini_magick", "~> 4.3"
+gem "jquery-fileupload-rails"
 
 group :development, :test do
   gem "pry"
@@ -42,13 +45,13 @@ group :development, :test do
   gem "factory_girl_rails"
   gem "letter_opener"
   gem "shoulda-matchers", "~> 3.1"
-  gem "figaro"
   gem "transactional_capybara"
   gem "chromedriver-helper"
 end
 
 group :production do
   gem "pg"
+  gem "rails_12factor"
 end
 
 group :development do

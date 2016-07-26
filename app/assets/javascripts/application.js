@@ -16,7 +16,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require materialize
-//= require_tree .
 //= require materialize-sprockets
 //= require filterrific/filterrific-jquery
 //= require jquery.elevatezoom.min.js
+//= require jquery-fileupload
+//= require_tree .

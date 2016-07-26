@@ -35,9 +35,11 @@ Rails.application.routes.draw do
   end
 
   scope "/shopowners", controller: :shops do
-    get "/:shop_owner_id/shop/new" => :new,
+    get "/shop/new" => :new,
         as: :shop_new
-    get "/:shop_owner_id/admin/dashboard" => :show,
+    get "/admin/shop/products" => :products,
+        as: :shop_products
+    get "/admin/dashboard" => :show,
         as: :dashboard
     post "/shops" => :create
     get "/shops/:id/edit" => :edit, as: :edit_shop
@@ -48,6 +50,11 @@ Rails.application.routes.draw do
         as: :activate_shop_owners
     get "/new" => :new, as: :signup
     post "/create" => :create, as: :shopowner_create
+  end
+
+  scope "/shopowners", controller: :products do
+    get "/products/new" => :new
+    post "/:id/products" => :create
   end
 
   get "/login", to: "sessions#new", as: :login

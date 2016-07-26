@@ -1,5 +1,5 @@
 class ShopOwner < ActiveRecord::Base
-  has_one :shop
+  has_one :shop, dependent: :destroy
   has_secure_password
 
   validates :first_name, presence: true

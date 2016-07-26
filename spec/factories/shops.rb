@@ -8,6 +8,9 @@ FactoryGirl.define do
     state Faker::Address.state
     country Faker::Address.country
     phone Faker::PhoneNumber.phone_number
-    shop_owner nil
+
+    after(:create) do |shop|
+      FactoryGirl.create_list(:product, 2, shop: shop)
+    end
   end
 end

@@ -2,19 +2,20 @@ require "rails_helper"
 
 RSpec.describe ProductsController, type: :controller do
   let(:user) { create(:regular_user) }
+  let(:product) { create(:product) }
 
   before do
     @product_one = create(:product, name: "testproduct1")
     @product_two = create(:product, name: "testproduct2")
     @shop_owner = create(:shop_owner)
     session[:user_id] = @shop_owner.id
+    user.update(verified: true)
   end
 
   after(:all) { DatabaseCleaner.clean_with(:truncation) }
 
   describe "making a review" do
     it "renders show template" do
-      user.update(verified: true)
       login(user)
       post :rate, title: "Nice one",
                   comment: "packaging to nice",
@@ -49,6 +50,13 @@ RSpec.describe ProductsController, type: :controller do
         post :create, product: invalid_product_attributes
         expect(response).to render_template(:new)
       end
+    end
+  end
+
+  describe "#edit" do
+    it "renders the :edit view" do
+      get :edit, id: product.id
+      expect(response).to render_template :edit
     end
   end
 end

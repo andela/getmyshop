@@ -59,4 +59,28 @@ RSpec.describe ProductsController, type: :controller do
       expect(response).to render_template :edit
     end
   end
+
+  describe "#update" do
+    context "with valid details" do
+      it "updates the product" do
+        put :update, id: product, product: {
+          name: "Television set",
+          brand: "Samsung"
+        }
+        product.reload
+        expect(product.name).to eq("Television set")
+        expect(product.brand).to eq("Samsung")
+        expect(response).to redirect_to details_path
+      end
+    end
+
+    context "with invalid details" do
+      it "re-renders the :edit view" do
+        put :update, id: product, product: {
+          name: nil
+        }
+        expect(response).to render_template :edit
+      end
+    end
+  end
 end

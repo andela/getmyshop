@@ -4,6 +4,7 @@
   background-color: $primary-color-dark;
   background-size: 100%;
   font-size: 14px;
+  margin-bottom: 0;
   position: relative;
 
   .valign-wrapper {
@@ -19,6 +20,13 @@
 
 .text-accent {
   color: $accent-color;
+}
+
+.terms-link {
+  border-bottom: 1px solid;
+  color: $primary-color-light;
+  line-height: 50px;
+  padding-bottom: 3px;
 }
 
 #shop-creation-container::before {

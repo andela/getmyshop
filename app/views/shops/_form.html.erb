@@ -1,13 +1,10 @@
 <%= form_for @shop, class: "col s12", id: "shop-signup-form" do |f| %>
- <%= f.hidden_field :shop_owner_id, { value: @shop_owner.id } %>
+  <%= f.hidden_field :shop_owner_id, { value: @shop_owner.id } %>
   <% if @shop.errors.any? %>
-    <div id="error_explanation">
-      <ul>
-      <% @shop.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+    <script>
+      var msg = $("<ol><%= shop_form_errors(@shop.errors.full_messages).html_safe %></ol>");
+      Materialize.toast(msg)
+    </script>
   <% end %>
   <ul class="collapsible popout" data-collapsible="expandable">
     <li class="white">

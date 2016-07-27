@@ -1,53 +1,50 @@
 <%= form_for @shop_owner, url: shopowner_create_url, html: { class: "col s12 white",id: "shop-signup-form"} do |f| %>
-<%= f.hidden_field :shop_owner_id, value: @shop_owner.id %>
-<% if @shop_owner.errors.any? %>
-<div id="error_explanation" class="white">
-  <ul>
-    <% @shop_owner.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-    <% end %>
-  </ul>
-</div>
-<% end %>
-<div class="row">
-  <div class="input-field col s8 offset-s2">
-    <%= f.text_field :first_name, { class: "validate", required: true } %>
-    <%= f.label :first_name %>
+  <%= f.hidden_field :shop_owner_id, value: @shop_owner.id %>
+  <% if @shop_owner.errors.any? %>
+    <script>
+      var msg = $("<ol><%= shop_form_errors(@shop_owner.errors.full_messages).html_safe %></ol>");
+      Materialize.toast(msg)
+    </script>
+  <% end %>
+  <div class="row">
+    <div class="input-field col s8 offset-s2">
+      <%= f.text_field :first_name, { class: "validate", required: true } %>
+      <%= f.label :first_name %>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="input-field col s8 offset-s2">
-    <%= f.text_field :last_name, { class: "validate" } %>
-    <%= f.label :last_name %>
+  <div class="row">
+    <div class="input-field col s8 offset-s2">
+      <%= f.text_field :last_name, { class: "validate" } %>
+      <%= f.label :last_name %>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="input-field col s8 offset-s2">
-    <%= f.text_field :phone, { class: "validate" } %>
-    <%= f.label :phone %>
+  <div class="row">
+    <div class="input-field col s8 offset-s2">
+      <%= f.text_field :phone, { class: "validate" } %>
+      <%= f.label :phone %>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="input-field col s8 offset-s2">
-    <%= f.text_field :email, { class: "validate" } %>
-    <%= f.label :email %>
+  <div class="row">
+    <div class="input-field col s8 offset-s2">
+      <%= f.text_field :email, { class: "validate" } %>
+      <%= f.label :email %>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="input-field col s8 offset-s2">
-    <%= f.password_field :password, { class: "validate"} %>
-    <%= f.label :password %>
+  <div class="row">
+    <div class="input-field col s8 offset-s2">
+      <%= f.password_field :password, { class: "validate"} %>
+      <%= f.label :password %>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="input-field col s8 offset-s2">
-    <%= f.password_field :confirm_password, { class: "validate"} %>
-    <%= f.label :confirm_password %>
+  <div class="row">
+    <div class="input-field col s8 offset-s2">
+      <%= f.password_field :confirm_password, { class: "validate"} %>
+      <%= f.label :confirm_password %>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="input-field col s12 center-align">
-    <button id="submit" type="submit" name="submit" class="waves-effect waves-light btn-flat bg-accent black-text">Submit</button>
+  <div class="row">
+    <div class="input-field col s12 center-align">
+      <button id="submit" type="submit" name="submit" class="waves-effect waves-light btn-flat bg-accent black-text">Submit</button>
+    </div>
   </div>
-</div>
 <% end %>

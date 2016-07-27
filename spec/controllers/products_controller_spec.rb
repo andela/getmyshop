@@ -39,7 +39,7 @@ RSpec.describe ProductsController, type: :controller do
       it "redirects to the shop_products path" do
         product = build(:product)
         post :create, product: product.attributes
-        expect(response).to redirect_to(shop_products_path)
+        expect(response).to redirect_to shop_products_path
       end
     end
 
@@ -63,14 +63,14 @@ RSpec.describe ProductsController, type: :controller do
   describe "#update" do
     context "with valid details" do
       it "updates the product" do
-        put :update, id: product, product: {
+        post :update, id: product, product: {
           name: "Television set",
           brand: "Samsung"
         }
         product.reload
         expect(product.name).to eq("Television set")
         expect(product.brand).to eq("Samsung")
-        expect(response).to redirect_to details_path
+        expect(response).to redirect_to shop_products_path
       end
     end
 

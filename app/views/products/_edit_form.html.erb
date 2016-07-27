@@ -1,0 +1,55 @@
+  <%= form_for( @product, html: { multipart: true } ) do |f| %>
+    <div class="modal-content">
+      <h4>Add Product</h4>
+      
+      <% if flash[:errors] %>
+        <div id="error_explanation">
+          <ul>
+          <% flash[:errors].each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="field">
+        <%= f.label :name %><br>
+        <%= f.text_field :name, { required: true } %>
+      </div>
+
+      <div class="field">
+        <%= f.label :description %><br>
+        <%= f.text_field :description, { required: true }  %>
+      </div>
+
+      <div class="field">
+        <%= f.label :quantity %><br>
+        <%= f.text_field :quantity, { required: true }  %>
+      </div>
+
+      <div class="field">
+        <%= f.label :brand %><br>
+        <%= f.text_field :brand, { required: true } %>
+      </div>
+
+      <div class="field">
+        <%= f.label :size %><br>
+        <%= f.text_field :size, { required: true } %>
+      </div>
+
+      <div class="field">
+        <%= f.label :price %><br>
+        <%= f.text_field :price, { required: true } %>
+      </div>
+
+      <div class="field">
+        <%= f.label :image %><br>
+        <%= f.file_field :image %>
+      </div>
+
+      <div>
+        <%= f.submit %>
+      </div>
+    </div>
+  <% end %>
+</div>

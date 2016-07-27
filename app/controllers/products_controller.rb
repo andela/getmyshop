@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
-  before_action :assign_shop_owner, only: [:new, :create]
+  before_action :assign_shop_owner, only: [:new, :create, :edit, :update]
+  before_action :set_product, only: [:show, :edit, :update]
 
   def index
   end
@@ -20,9 +21,19 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find_by(id: params[:id]).decorate
     category = @product.category
     @related_products = category.related_products(@product.id)
+  end
+
+  def edit
+  end
+
+  def update
+    if @product.update(product_params)
+      redirect_to shop_products_path, notice: MessageService.update_success
+    else
+      render :edit
+    end
   end
 
   def review
@@ -51,6 +62,10 @@ class ProductsController < ApplicationController
 
   def assign_shop_owner
     @shop_owner = current_shop_owner
+  end
+
+  def set_product
+    @product ||= Product.find_by(id: params[:id]).decorate
   end
 
   def rate_params

@@ -1,50 +1,84 @@
-<%= form_for(@shop) do |f| %>
-  <% if @shop.errors.any? %>
-    <div id="error_explanation">
-      <ul>
-      <% @shop.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :url %><br>
-    <%= f.text_field :url %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
-  </div>
-  <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_field :address %>
-  </div>
-  <div class="field">
-    <%= f.label :city %><br>
-    <%= f.text_field :city %>
-  </div>
-  <div class="field">
-    <%= f.label :state %><br>
-    <%= f.text_field :state %>
-  </div>
-  <div class="field">
-    <%= f.label :country %><br>
-    <%= f.text_field :country %>
-  </div>
-  <div class="field">
-    <%= f.label :phone %><br>
-    <%= f.text_field :phone %>
-  </div>
-
+<%= form_for @shop, class: "col s12", id: "shop-signup-form" do |f| %>
   <%= f.hidden_field :shop_owner_id, { value: @shop_owner.id } %>
-
-  <div class="actions">
-    <%= f.submit %>
+  <% if @shop.errors.any? %>
+    <script>
+      var msg = $("<ol><%= shop_form_errors(@shop.errors.full_messages).html_safe %></ol>");
+      Materialize.toast(msg)
+    </script>
+  <% end %>
+  <ul class="collapsible popout" data-collapsible="expandable">
+    <li class="white">
+      <div class="collapsible-header teal active white-text"><i class="material-icons">filter_drama</i>Shop Information</div>
+      <div class="collapsible-body">
+        <div class="row">
+          <div class="input-field col s10 offset-s1">
+            <%= f.text_field :name,{ class: "validate", required: true } %>
+            <%= f.label :name %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s10 offset-s1">
+            <div class="input-field col s5">
+              <input id="shop-url-prefix" name="shop-url-prefix" value="www.getmyshop.com/" type="text" class="valdate" disabled>
+            </div>
+            <div class="input-field col s7" id="shop-url-wrapper">
+              <%= f.text_field :url, { class: "validate" } %>
+              <%= f.label :url %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s10 offset-s1">
+            <%= f.text_area :description, { class: "materialize-textarea" } %>
+            <%= f.label :description %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12">
+            <button type="button" onclick="openLocationTab()" class="waves-effect waves-light btn-flat bg-accent right">Next</button>
+          </div>
+        </div>
+      </div>
+    </li>
+    <li class="white">
+      <div class="collapsible-header teal white-text location-tab"><i class="material-icons">place</i>Shop Location</div>
+      <div class="collapsible-body">
+        <div class="row">
+          <div class="input-field col s10 offset-s1">
+            <%= f.text_field :address, { class: "validate" } %>
+            <%= f.label :address %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s10 offset-s1">
+            <div class="input-field col s6">
+              <%= f.text_field :city, { class: "validate"} %>
+              <%= f.label :city %>
+            </div>
+            <div class="input-field col s6">
+              <%= f.text_field :state, { class: "validate" } %>
+              <%= f.label :state %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s10 offset-s1">
+            <div class="input-field col s6">
+              <%= f.text_field :country, { class: "validate" } %>
+              <%= f.label :country %>
+            </div>
+            <div class="input-field col s6">
+              <%= f.text_field :phone, { class: "validate" } %>
+              <%= f.label :phone %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <div class="row">
+    <div class="input-field col s12 center-align">
+      <button id="submit" type="submit" name="submit" class="waves-effect waves-light btn-flat bg-accent">Create Shop</button>
+    </div>
   </div>
 <% end %>

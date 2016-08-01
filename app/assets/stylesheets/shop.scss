@@ -1,0 +1,80 @@
+@import "variables";
+
+#shop-creation-container {
+  background-color: $primary-color-dark;
+  background-size: 100%;
+  font-size: 14px;
+  margin-bottom: 0;
+  position: relative;
+
+  .valign-wrapper {
+    min-height: 100vh;
+    padding-bottom: 20px;
+    padding-top: 50px;
+  }
+}
+
+.bg-accent {
+  background-color: $accent-color !important;
+}
+
+.text-accent {
+  color: $accent-color;
+}
+
+.terms-link {
+  border-bottom: 1px solid;
+  color: $primary-color-light;
+  line-height: 50px;
+  padding-bottom: 3px;
+}
+
+#shop-creation-container::before {
+  background-color: $shop-overlay-color;
+  content: "";
+  display: block;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+a > h3 {
+  color: $shop-border-shadow;
+}
+
+#shop-signup-container {
+  background-color: transparent;
+  background-repeat: round;
+  border-radius: 7px;
+  padding: 10px;
+  position: relative;
+  z-index: 9999;
+
+  h5 {
+    opacity: 0.7;
+  }
+}
+
+#shop-signup-form {
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.collapsible-header {
+  text-transform: uppercase;
+}
+
+#shop-url-prefix[disabled] {
+  border-bottom: unset;
+}
+
+.orange {
+  background-color: $shop-orange-color !important;
+}
+
+.shop-error {
+  font-size: 12px;
+}

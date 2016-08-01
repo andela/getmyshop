@@ -47,3 +47,4 @@ function postData(){
   data['price'] = $('#product_price').val();
   return data;
 }
+

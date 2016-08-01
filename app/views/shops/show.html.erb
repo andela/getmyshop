@@ -61,7 +61,17 @@
 </header>
 <main>
   <%= render partial: 'shop_owners_header' %>
-  <%= render partial: 'product', locals: { products: @shop.products } %>
+
+    <div class="row">
+       <%= render partial: 'product', collection: @shop.products, as: :product %>
+    </div>
+
   <%= render partial: 'products/form' %>
+  <%= render partial: 'shop_owners_footer' %>
+
+  <div class="fixed-action-btn" style="bottom: 65px; right: 24px; ">
+    <a class="btn-floating btn-large yellow tooltipped" data-position="top" data-delay="50" data-tooltip="Add Product" href="#modal1">
+      <i class="large material-icons">add</i>
+    </a>
+  </div>
 </main>
-<%= render partial: 'shop_owners_footer' %>

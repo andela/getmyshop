@@ -1,7 +1,8 @@
  <div id="modal1" class="modal modal-fixed-footer">
   <%= form_for( @product, html: { multipart: true } ) do |f| %>
     <div class="modal-content">
-      <h4>Add Product</h4>
+      <a class="btn btn-floating red" style="margin-left: 630px; position: fixed" data-position="top" data-delay="50" data-tooltip="Close"><i class="material-icons">not_interested</i></a>
+      <h4 class="center-align">Enter Product Information</h4>
       
       <% if flash[:errors] %>
         <div id="error_explanation">

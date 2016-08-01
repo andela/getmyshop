@@ -250,13 +250,49 @@ hr {
   font-size: 1.4em !important;
 }
 
-.card {
+.card-title{
+  color: black !important;
+}
+
+.card{
   width: 300px;
-  height: 200px;
-  .card-image {
-    display: inline-block;
-    height: 130px;
-    width: 100%;
+  height: auto;
+  margin: 10px;
+  .card-image{
+    height: 200px;
+    width: 300px;
   }
 }
 
+.card-image img{
+  height: 100%;
+}
+
+a.btn-floating.btn-large.yellow {
+  background-color: #FFC107 !important;
+}
+
+.hspace{
+  margin: 70px;
+}
+
+div#modal1 {
+  border-radius: 20px;
+  background-color: rgba(60,60,60,0.5);
+}
+
+input{
+  color: white;
+}
+input[type=submit]{
+  color: black;
+}
+
+h4 {
+  font-size: 1.6rem;
+  color: whitesmoke;
+}
+
+.modal .modal-footer {
+  background-color: #B6B6B6;
+}

@@ -1,15 +1,22 @@
-<div class="col s4 m3">
-  <div class="card">
-    <div class="card-image waves-effect waves-block waves-light">
-      <%= image_tag product.image.preview.url, class: "activator" %>
+<div class="col s4 m3 l3 hspace">
+  <div class="card hoverable">
+    <div class="card-image">
+      <%= image_tag product.image.preview.url%>
+      <span class="card-title"><%= product.name %></span>
     </div>
     <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4"><%= product.name %><i class="material-icons right">more_vert</i></span>
+      <p><%= product.description %></p>
     </div>
+    <div class="card-action">
+      <div style="margin-left: 130px">
+        <a class="btn-floating yellow tooltipped" data-position="top" data-delay="50" data-tooltip="Edit Product"><i class="material-icons"  href="<%= edit_shop_product_path(product) %>" >mode_edit</i></a>
+        <a class="btn-floating red tooltipped" data-position="top" data-delay="50" data-tooltip="Delete Product"><i class="material-icons">delete</i></a>
+      </div>
+    </div>
+
     <div class="card-reveal">
       <span class="card-title grey-text text-darken-4"><%= product.name %><i class="material-icons right">close</i></span>
-      <p><%= product.description %></p>
-      <%= link_to "Edit", edit_shop_product_path(product) %>
+      <p> <%= product.description %> </p>
     </div>
-  </div>    
+  </div>
 </div>

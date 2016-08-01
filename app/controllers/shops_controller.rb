@@ -15,10 +15,11 @@ class ShopsController < ApplicationController
 
   def create
     @shop = Shop.new(shop_params)
-    
+
     if @shop.save
       @shop_owner.update(shop: @shop)
-      redirect_to dashboard_path, notice: shop_created
+      redirect_to dashboard_path,
+                  notice: MessageService.shop_created
     else
       flash["errors"] = @shop.errors.full_messages
       render :new

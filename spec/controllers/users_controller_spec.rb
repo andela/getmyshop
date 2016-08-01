@@ -14,7 +14,7 @@ RSpec.describe UsersController do
       get :activate, user_id: user.id, activation_token: user.activation_token
 
       user.reload
-      expect(user.active_status).to be_truthy
+      expect(user.verified).to be_truthy
       expect(session[:user_id]).to eq user.id
       expect(response).to redirect_to root_path
     end

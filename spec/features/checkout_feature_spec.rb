@@ -9,6 +9,7 @@ RSpec.describe "Checkout Feature", type: :feature do
   before(:all) do
     create_list(:product, 5)
     @user = create(:regular_user)
+    @user.update(verified: true)
   end
 
   after(:all) { DatabaseCleaner.clean_with(:truncation) }

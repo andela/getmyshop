@@ -3,45 +3,43 @@ require "rails_helper"
 RSpec.describe "Ordering page", type: :feature, js: true do
   after(:all) { DatabaseCleaner.clean_with(:truncation) }
 
-  context "when order is made" do
-    let(:user) { create :regular_user }
-    let(:order) { create :order }
-    let(:address) { build :address }
+  before(:all) do
+    @user = create :regular_user
+    @user.update(verified: true)
+  end
+  let(:order) { create :order }
+  let(:address) { build :address }
 
-    it "shows order details" do
-      signin_helper(user.email, user.password)
-      order.update_attributes(user: user, address: address)
+  feature "when order is made" do
+    scenario "shows order details" do
+      signin_helper(@user.email, @user.password)
+      order.update_attributes(user: @user, address: address)
       visit past_orders_path
       expect(page).to have_content "Details"
     end
   end
 
-  context "when no order is made" do
-    let(:user) { create :regular_user }
-    it "should sign user in" do
-      signin_helper(user.email, user.password)
+  feature "when no order is made" do
+    scenario "signs in user" do
+      signin_helper(@user.email, @user.password)
       visit past_orders_path
       expect(page).to have_content "You currently have no Orders"
     end
   end
 
   describe "#order_page" do
-    context "when no orders" do
-      let(:user) { create :regular_user }
-      it "inform user of having no orders" do
-        signin_helper(user.email, user.password)
+    feature "when no orders in the order page" do
+      scenario "informs user of having no orders" do
+        signin_helper(@user.email, @user.password)
         visit past_orders_path
         expect(page).to have_content "You currently have no Orders"
       end
     end
 
-    context "when there is at least an order" do
-      let(:user) { create :regular_user }
-      let(:order) { create :order }
-      let(:address) { build :address }
-      it "inform user of having no orders" do
-        signin_helper(user.email, user.password)
-        order.update_attributes(user: user, address: address)
+    feature "when there is at least an order in the order page" do
+      scenario "informs user of having the number of orders" do
+        signin_helper(@user.email, @user.password)
+        order.update_attributes(user: @user, address: address)
         visit past_orders_path
         expect(page).to have_content "Order Number"
       end
@@ -49,18 +47,19 @@ RSpec.describe "Ordering page", type: :feature, js: true do
   end
 
   describe "order tracking" do
-    let(:order) { create :order }
-    context "when an order is made" do
-      it "should have an order status of pending" do
-        signin_helper(order.user.email, order.user.password)
+    before(:each) { order.user.update(verified: true) }
+
+    feature "when an order is made" do
+      scenario "should have an order status of pending" do
+        signin_helper(order.user.email, "password")
         visit past_orders_path
         expect(page).to have_content("Pending")
       end
     end
 
-    context "user can cancel order if status not delivered" do
-      it "user can cancel order" do
-        signin_helper(order.user.email, order.user.password)
+    feature "user can cancel order if status not delivered" do
+      scenario "user can cancel order" do
+        signin_helper(order.user.email, "password")
         visit past_orders_path
         click_link("details")
         click_link("Cancel Order")

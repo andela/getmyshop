@@ -1,5 +1,4 @@
 <%= form_for @shop, class: "col s12", id: "shop-signup-form" do |f| %>
-  <%= f.hidden_field :shop_owner_id, { value: @shop_owner.id } %>
   <% if @shop.errors.any? %>
     <script>
       var msg = $("<ol><%= shop_form_errors(@shop.errors.full_messages).html_safe %></ol>");

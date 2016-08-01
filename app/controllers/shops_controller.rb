@@ -1,5 +1,6 @@
 class ShopsController < ApplicationController
   before_action :assign_shop_owner
+  
   def show
     @shop = @shop_owner.shop
     @product = Product.new

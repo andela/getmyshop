@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_shop_owner
-    @current_shop_owner ||= ShopOwner.find_by(id: session[:user_id])
+    @current_shop_owner ||= ShopOwner.find_by(id: session[:shop_owner_id])
   end
 
   def logged_in

@@ -48,3 +48,27 @@ function postData(){
   return data;
 }
 
+
+function confirmDeleteProduct(productIndex){
+  document.productIndex = productIndex
+  $('#confirm-modal').openModal();
+}
+
+function deleteProduct(){
+  var deletePath = "/shopowners/shop/products/" + document.productIndex
+  $.ajax({
+    url: deletePath,
+    beforeSend: function(xhr) {
+     xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+    },
+    type: "DELETE",
+    success: function(data){
+      var product_id = "#product"+document.productIndex
+      $(product_id).remove();
+      Materialize.toast('Deleted Succesfully!', 4000)
+    },
+    error: function(data){
+      Materialize.toast("Error deleting product", 4000)
+    }
+  })
+}

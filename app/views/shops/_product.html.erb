@@ -1,12 +1,11 @@
 <% if products.any? %>
-
   <div class="strike">
     <span><%= pluralize(products.count, "Product")%> Available in Store</span>
   </div>
 
   <div class="row">
     <% products.each do |product| %>
-      <div class="col s4 m3 l3 hspace" id="card-holder">
+      <div class="col s4 m3 l3 hspace" id='<%= "product#{product.id}" %>'>
         <div class="card hoverable" id="products-card">
           <div class="card-image">
             <%= image_tag product.image.preview.url, class: "activator"%>
@@ -18,7 +17,7 @@
           <div class="card-action">
             <div class ="action-right">
               <a class="btn-floating green tooltipped" data-position="top" data-delay="50" data-tooltip="Edit Product"  href="<%= edit_shop_product_path(product) %>" ><i class="material-icons">mode_edit</i></a>
-              <a class="btn-floating red tooltipped" data-position="top" data-delay="50" data-tooltip="Delete Product"><i class="material-icons">delete</i></a>
+              <a class="btn-floating red tooltipped" data-position="top" data-delay="50" data-tooltip="Delete Product" onclick="confirmDeleteProduct('<%= product.id %>')" id="delete_product"><i class="material-icons">delete</i></a>
             </div>
           </div>
           <div class="card-reveal">
@@ -30,11 +29,6 @@
         </div>
       </div>
     <% end %>
-  </div>
-  <div class="fixed-action-btn" style="bottom: 65px; right: 24px; ">
-    <a class="btn-floating btn-large tooltipped" data-position="top" data-delay="50" data-tooltip="Add Product" href="#modal1" id="add-product-btn">
-      <i class="large material-icons">add</i>
-    </a>
   </div>
 <% else %>
   <div class="container vspacer">

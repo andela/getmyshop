@@ -260,7 +260,6 @@ hr {
   }
 
   .card-image {
-    height: 200px;
     width: 300px;
 
     img {
@@ -268,7 +267,6 @@ hr {
     }
   }
 }
-
 
 #add-product-btn {
   background-color: #B0B5BC;
@@ -282,15 +280,13 @@ hr {
   margin: 70px;
 }
 
-
-div#modal1 {
+#modal1 {
+  background-color: white;
   border-radius: 20px;
-  background-color: #fafafa;
   min-height: 700px !important;
+  overflow: hidden;
   top: 50% !important;
   transform: translateY(-50%) !important;
-  background-color: white;
-  overflow: hidden;
   z-index: 2001 !important;
 
   .modal-footer {
@@ -298,8 +294,8 @@ div#modal1 {
   }
 
   label {
-    font-size: 1.0rem;
     color: #212121;
+    font-size: 1.0rem;
   }
 }
 
@@ -308,8 +304,8 @@ div#modal1 {
 }
 
 h4 {
-  font-size: 1.6rem;
   color: black;
+  font-size: 1.6rem;
 }
 
 .ui.horizontal.divider {
@@ -321,8 +317,8 @@ h4 {
 
 .action-right {
   display: block;
-  position: relative;
   left: calc(100% - 70px);
+  position: relative;
 }
 
 #card-holder {
@@ -336,26 +332,26 @@ h4 {
 
 .strike {
   display: block;
-  text-align: center;
-  overflow: hidden;
-  white-space: nowrap; 
   font-size: 30px;
   margin-bottom: 20px;
+  overflow: hidden;
+  text-align: center;
+  white-space: nowrap; 
 }
 
 span {
-  position: relative;
   display: inline-block;
+  position: relative;
 }
 
 .strike > span:before,
 .strike > span:after {
+  background: black;
   content: "";
+  height: 1px;
   position: absolute;
   top: 50%;
   width: 9999px;
-  height: 1px;
-  background: black;
 }
 
 .strike > span:before {
@@ -366,4 +362,9 @@ span {
 .strike > span:after {
   left: 100%;
   margin-left: 15px;
+}
+
+.fixed-action-btn.product {
+  bottom: 65px;
+  right: 24px;
 }

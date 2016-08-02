@@ -10,6 +10,7 @@ FactoryGirl.define do
     transient do
       image_link_count 2
       review_count 2
+      shop nil
     end
 
     after(:create) do |product, evaluator|
@@ -19,6 +20,7 @@ FactoryGirl.define do
         product: product
       )
       create_list(:review, evaluator.review_count, product: product)
+      product.update(shop: evaluator.shop)
     end
   end
 end

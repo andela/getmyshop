@@ -56,11 +56,12 @@ Rails.application.routes.draw do
   end
 
   scope "/shopowners", controller: :products do
-    get "/products/new"  => :new
-    post "/:id/products" => :create
-    get "/:id/edit"      => :edit, as: :edit_shop_product
+    get "/products/new" => :new
+    post "/shop/products" => :create
+    get "/:id/edit" => :edit, as: :edit_shop_product
     put "/:id/update" => :update, as: :update_shop_product
     post "/shop/product/validate" => :validate_product
+    delete "/shop/products/:id" => :destroy
   end
 
   get "/wishlist" => "wishlist#index", as: :wishlist_index

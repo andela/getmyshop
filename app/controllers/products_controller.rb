@@ -55,6 +55,16 @@ class ProductsController < ApplicationController
     end
   end
 
+  def destroy
+    @product = Product.find_by(id: params[:id])
+
+    if @product && @product.destroy
+      render json: { notice: "Product Deleted" }, status: 200
+    else
+      render json: { error: "Unable to delete product" }, status: 404
+    end
+  end
+
   private
 
   def product_params

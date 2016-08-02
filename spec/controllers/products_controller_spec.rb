@@ -38,8 +38,9 @@ RSpec.describe ProductsController, type: :controller do
     context "when all required product details are filled" do
       it "redirects to the shop_products path" do
         product = build(:product)
-        post :create, product: product.attributes
 
+        expect { post :create, product: product.attributes }.
+          to change(Product, :count).by(1)
         expect(response).to redirect_to(dashboard_path)
       end
     end
@@ -48,7 +49,8 @@ RSpec.describe ProductsController, type: :controller do
       it "renders the new template with form errors" do
         product = build(:product, quantity: nil)
         invalid_product_attributes = product.attributes
-        post :create, product: invalid_product_attributes
+        expect { post :create, product: invalid_product_attributes }.
+          to_not change(Product, :count)
         expect(response).to render_template(:new)
       end
     end
@@ -81,6 +83,24 @@ RSpec.describe ProductsController, type: :controller do
           name: nil
         }
         expect(response).to render_template :edit
+      end
+    end
+  end
+
+  describe "#destroy" do
+    context "when product id is valid" do
+      it "removes the product" do
+        expect { delete :destroy, id: @product_one.id }.
+          to change(Product, :count).by(-1)
+        expect(response.status).to eq(200)
+      end
+    end
+
+    context "when product id is invalid" do
+      it "returns status 404" do
+        expect { delete :destroy, id: "invalid" }.
+          to_not change(Product, :count)
+        expect(response.status).to eq(404)
       end
     end
   end

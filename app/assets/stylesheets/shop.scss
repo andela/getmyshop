@@ -78,3 +78,113 @@ a > h3 {
 .shop-error {
   font-size: 12px;
 }
+
+.dashboard-header {
+  box-shadow: 0 0 5px $primary-text-color;
+  font-family: $shop-signup-font;
+  height: 64px;
+  margin-bottom: 0;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+
+  .col {
+    padding: unset;
+  }
+
+  #view-headline-cont {
+    width: 5%;
+  }
+
+  .col.s11.header-nav-cont {
+    width: 95%;
+  }
+}
+
+.nav-wrapper-cont {
+  background-color: $primary-text-color;
+  border-radius: unset;
+  height: 64px;
+}
+
+#hdline {
+  color: $primary-color-text;
+}
+
+.header-nav {
+  background-color: $primary-text-color;
+  border-radius: unset;
+  height: unset;
+
+  .nav-wrapper {
+    color: $primary-color-text;
+    padding: 0 10px;
+  }
+}
+
+.content-container {
+  min-height: 100%;
+  padding: unset;
+
+  .col.s1 {
+    padding: unset;
+    width: 5%;
+  }
+}
+
+.content-area {
+  height: 100%;
+  margin-top: 70px;
+}
+
+.side-bar-cont {
+  position: fixed;
+}
+
+.side-bar-nav {
+  border-radius: unset;
+  height: unset;
+}
+
+.side-bar-menu-cont {
+  background-color: $primary-text-color;
+  box-shadow: 0 2px 5px $gray-180;
+  min-height: 100vh;
+}
+
+.side-bar-menu {
+  padding: 10px 5px;
+}
+
+.side-bar-link {
+  color: $secondary-text-color;
+  font-size: 11px;
+  font-weight: 100;
+  text-transform: uppercase;
+
+  .side-bar-menu-text {
+    display: none;
+  }
+}
+
+.edit-form-container {
+  background-color: $primary-color-text;
+  padding: 10px 0;
+}
+
+#shop-edit-form {
+  box-shadow: 0 0 5px $gray-180;
+  padding: 60px 10px;
+}
+
+.edit-form-heading {
+  color: $primary-color;
+  font-weight: 200;
+  text-transform: uppercase;
+}
+
+.dashboard-page-title {
+  color: $primary-color-text;
+  font-weight: 200;
+  text-transform: uppercase;
+}

@@ -6,13 +6,13 @@ $ ->
     $(".side-bar-menu-text").fadeIn 100
 
     $(".side-bar-menu a"). animate {
-      color: "#ffc107",
+      color: "#ffffff",
       duration: 600,
       easing: "linear"
     }
 
     $("#hdline").animate {
-      color: "#ffc107",
+      color: "#fffff",
       duration: 600,
       easing: "linear"
     }
@@ -26,13 +26,13 @@ $ ->
     $(".side-bar-menu-text").fadeOut 100
 
     $(".side-bar-menu a"). animate {
-      color: "#727272",
+      color: "#757575",
       duration: 600,
       easing: "linear"
     }
 
     $('#hdline').animate {
-      color: "rgba(255,255,255,0.5)",
+      color: "#ffffff",
       duration: 600,
       easing: "linear"
     }

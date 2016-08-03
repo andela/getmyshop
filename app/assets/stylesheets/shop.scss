@@ -102,7 +102,7 @@ a > h3 {
 }
 
 .nav-wrapper-cont {
-  background-color: $primary-text-color;
+  background-color: $primary-color;
   border-radius: unset;
   height: 64px;
 }
@@ -112,7 +112,7 @@ a > h3 {
 }
 
 .header-nav {
-  background-color: $primary-text-color;
+  background-color: $primary-color;
   border-radius: unset;
   height: unset;
 
@@ -147,7 +147,7 @@ a > h3 {
 }
 
 .side-bar-menu-cont {
-  background-color: $primary-text-color;
+  background-color: $primary-color;
   box-shadow: 0 2px 5px $gray-180;
   min-height: 100vh;
 }
@@ -187,4 +187,12 @@ a > h3 {
   color: $primary-color-text;
   font-weight: 200;
   text-transform: uppercase;
+}
+
+.live-help-cont {
+  background: $primary-color-text;
+  bottom: 0;
+  padding: 10px 5px;
+  position: fixed;
+  width: 64px;
 }

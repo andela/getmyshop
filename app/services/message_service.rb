@@ -60,4 +60,8 @@ class MessageService
   def self.account_deactivated
     "Account Deactivated"
   end
+
+  def self.update_success
+    "Product was successfully updated."
+  end
 end

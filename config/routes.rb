@@ -49,14 +49,16 @@ Rails.application.routes.draw do
   end
 
   scope "/shopowners", controller: :sessions do
-    get "/login"  => :shop_owner_login, as: :shop_owner_login
-    post "/login" => :shop_owner_create
+    get "/login"     => :shop_owner_login, as: :shop_owner_login
+    post "/login"    => :shop_owner_create
     delete "/logout" => :shop_owner_destroy, as: :shop_owner_logout
   end
 
   scope "/shopowners", controller: :products do
-    get "/products/new" => :new
+    get "/products/new"  => :new
     post "/:id/products" => :create
+    get "/:id/edit"      => :edit, as: :edit_shop_product
+    put "/:id/update" => :update, as: :update_shop_product
   end
 
   get "/wishlist" => "wishlist#index", as: :wishlist_index

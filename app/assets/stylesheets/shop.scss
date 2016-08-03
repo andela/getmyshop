@@ -197,11 +197,10 @@ a > h3 {
   width: 64px;
 }
 
-<<<<<<< 0ec0234f35c580d142d9f97cae20679739972b73
 .products-column{
   width: 50em !important;
 }
-=======
+
 .getting-started-cont {
   padding: 10px 5px;
 
@@ -238,10 +237,21 @@ a > h3 {
   border-bottom: 1px solid $divider-color;
 }
 
-.dashboard-body {
+.steps-title {
   a {
     color: $primary-text-color;
+    font-weight: bold;
+  }
+  a:hover { 
+    text-decoration: underline;
   }
 }
 
->>>>>>> feat(shop dashboard UI): Adds the dashboard UI for new shops that haven't fully setup i.e have not added products. [finishes #126486649]
+.steps-detail {
+  a {
+    color: $secondary-text-color;
+  }
+  a:hover { 
+    text-decoration: underline;
+  }
+}

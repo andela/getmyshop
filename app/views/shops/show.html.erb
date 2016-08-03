@@ -1,65 +1,85 @@
-<% if flash[:notice] %>
-  <script type="text/javascript">
-    Materialize.toast("<%= flash[:notice] %>", 3000);
-  </script>
-<% end %>
-<header>
-  <div class="container">
-    <a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only">
-      <i class="material-icons">menu</i>
-    </a>
+<div class="dashboard-body">
+  <div class="row">
+    <div class="welcome-note-cont center">
+      <h4>Welcome to GetMyShop, <%= current_shop_owner.first_name %></h4> 
+      <p>
+        <a href=<%= "#{root_url}#{current_shop_owner.shop.url}"%>>
+          <%= "#{root_url}#{current_shop_owner.shop.url}" %>
+        </a>
+      </p>
+    </div>
   </div>
-  <ul id="nav-mobile" class="side-nav fixed">
-    <li class="bold">
-      <a href="about.html" class="waves-effect waves-teal">
-        <i class="material-icons">dashboard</i>
-      <span class="title">Dashboard</span>
-      </a>
-    </li>
 
-    <li class="bold active">
-      <a href="getting-started.html" class="waves-effect waves-teal">
-        <i class="material-icons">folder</i>
-        <span class="title">Products</span>
-      </a>
-    </li>
+  <div class="row main-content-body">
+    <div class="row btm-divider">
+      <div class="getting-started-cont">
+        <div class="started">
+          <i class="left material-icons">info_outline</i>
+          <h5 class="left">Getting Started</h5>
+        </div>
+        <p class="right"> Follow these 5 simple steps to launch your store </p>
+      </div>
+    </div>
 
-    <li class="bold">
-      <a href="getting-started.html" class="waves-effect waves-teal">
-        <i class="material-icons">insert_chart</i>
-        <span class="title">Orders</span>
-      </a>
-    </li>
+    <div class="row btm-divider">     
+      <div class="steps">
+        <p class="left">1</p>
+        <div class="left steps-description">
+          <div class="steps-title">
+            <a href="#">Add your products</a>
+          </div>
+          <div class="steps-detail">Add product and upload their pictures from the <a href="#">Products section.</a>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <li class="bold">
-      <a href="http://materializecss.com/mobile.html" class="waves-effect waves-teal">
-        <i class="material-icons">play_arrow</i>
-        <span class="title">Coupons</span>
-      </a>
-    </li>
+    <div class="row btm-divider">      
+      <div class="steps">
+        <p class="left">2</p>
+        <div class="left steps-description">
+          <div class="steps-title">
+            <a href="#">Set up delivery rates</a>
+          </div>
+          <div class="steps-detail">You can setup your delivery charges from the <a href="#">Orders</a> section.</div>
+        </div>
+      </div>
+    </div>
 
-    <li class="bold">
-      <a href="http://materializecss.com/mobile.html" class="waves-effect waves-teal">
-        <i class="material-icons">payment</i>
-        <span class="title">Transactions</span>
-      </a>
-    </li>
+    <div class="row btm-divider">      
+      <div class="steps">
+        <p class="left">3</p>
+        <div class="left steps-description">
+          <div class="steps-title">
+            <a href="#">Set up payment methods</a>
+          </div>
+          <div class="steps-detail"><a href="#">Activate</a> the payment options you want to accept on your store.</div>
+        </div>
+      </div>
+    </div>
 
-    <li class="bold">
-      <a href="showcase.html" class="waves-effect waves-teal">
-        <i class="material-icons">supervisor_account</i>
-        <span class="title">Customers</span>
-      </a>
-    </li>
-    <li class="bold">
-      <a href="<%= edit_shop_path(session[:user_id]) %>" class="waves-effect waves-teal">
-        <i class="material-icons">mode_edit</i>
-        <span class="title">Edit Shop Profile</span>
-      </a>
-    </li>
-  </ul>
-</header>
-<main>
-  <%= render partial: 'shop_owners_header' %>
-  <%= render partial: 'shop_owners_footer' %>
-</main>
+    <div class="row btm-divider">    
+      <div class="steps">
+        <p class="left">4</p>
+        <div class="left steps-description">
+          <div class="steps-title">
+            <a href="#">Add Coupons</a>
+          </div>
+          <div class="steps-detail">Add <a href="#">coupons</a> to drive sales and attract customers.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row btm-divider">    
+      <div class="steps">
+        <p class="left">5</p>
+        <div class="left steps-description">
+          <div class="steps-title">
+            <a href="#">Go live and start accepting orders</a>
+          </div>
+          <div class="steps-detail"><a href="#">View your shop.</a> You can start accepting orders immediately.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

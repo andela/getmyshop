@@ -1,6 +1,9 @@
+<<<<<<< 0ec0234f35c580d142d9f97cae20679739972b73
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
+=======
+>>>>>>> feat(shop dashboard UI): Adds the dashboard UI for new shops that haven't fully setup i.e have not added products. [finishes #126486649]
 $ ->
   $(".side-bar-cont").mouseenter ->
     $(".side-bar-menu-text").fadeIn 100
@@ -42,6 +45,7 @@ $ ->
       duration: 600,
       easing: "linear"
     }
+<<<<<<< 0ec0234f35c580d142d9f97cae20679739972b73
 
   $('.modal-trigger').leanModal()
   $('#add-product-btn').leanModal()
@@ -103,3 +107,5 @@ window.deleteProduct = ->
       Materialize.toast "Deleted Succesfully!", 4000
     error: (data) ->
       Materialize.toast "Error deleting product", 4000
+=======
+>>>>>>> feat(shop dashboard UI): Adds the dashboard UI for new shops that haven't fully setup i.e have not added products. [finishes #126486649]

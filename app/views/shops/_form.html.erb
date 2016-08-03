@@ -22,14 +22,14 @@
               <input id="shop-url-prefix" name="shop-url-prefix" value="www.getmyshop.com/" type="text" class="valdate" disabled>
             </div>
             <div class="input-field col s7" id="shop-url-wrapper">
-              <%= f.text_field :url, { class: "validate" } %>
+              <%= f.text_field :url, { class: "validate", required: true } %>
               <%= f.label :url %>
             </div>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s10 offset-s1">
-            <%= f.text_area :description, { class: "materialize-textarea" } %>
+            <%= f.text_area :description, { class: "materialize-textarea", required: true } %>
             <%= f.label :description %>
           </div>
         </div>
@@ -45,18 +45,18 @@
       <div class="collapsible-body">
         <div class="row">
           <div class="input-field col s10 offset-s1">
-            <%= f.text_field :address, { class: "validate" } %>
+            <%= f.text_field :address, { class: "validate", required: true } %>
             <%= f.label :address %>
           </div>
         </div>
         <div class="row">
           <div class="col s10 offset-s1">
             <div class="input-field col s6">
-              <%= f.text_field :city, { class: "validate"} %>
+              <%= f.text_field :city, { class: "validate", required: true } %>
               <%= f.label :city %>
             </div>
             <div class="input-field col s6">
-              <%= f.text_field :state, { class: "validate" } %>
+              <%= f.text_field :state, { class: "validate", required: true } %>
               <%= f.label :state %>
             </div>
           </div>
@@ -64,11 +64,11 @@
         <div class="row">
           <div class="col s10 offset-s1">
             <div class="input-field col s6">
-              <%= f.text_field :country, { class: "validate" } %>
+              <%= f.text_field :country, { class: "validate", required: true } %>
               <%= f.label :country %>
             </div>
             <div class="input-field col s6">
-              <%= f.text_field :phone, { class: "validate" } %>
+              <%= f.text_field :phone, { class: "validate", required: true } %>
               <%= f.label :phone %>
             </div>
           </div>

@@ -15,8 +15,14 @@ class ShopsController < ApplicationController
   end
 
   def update
+    if current_shop_owner.shop.update shop_params
+      redirect_to dashboard_path,
+                  notice: MessageService.account_updated and
+                  return
+    end
+    redirect_to :back
   end
-
+ 
   def products
     @products = @shop_owner.shop.products
   end

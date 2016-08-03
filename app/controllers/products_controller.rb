@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
-  before_action :assign_shop_owner, only: [:new, :create, :edit, :update]
   before_action :set_product, only: [:show, :edit, :update]
+  before_action :assign_shop_owner, only: [:new, :create]
 
   def index
   end
@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
     @product = Product.create(product_params)
     @product.update(shop: @shop_owner.shop)
     if @product.errors.empty?
-      redirect_to shop_products_path, notice: MessageService.product_created
+      redirect_to dashboard_path, notice: MessageService.product_created
     else
       flash[:errors] = @product.errors.full_messages
       render :new
@@ -30,7 +30,7 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
-      redirect_to shop_products_path, notice: MessageService.update_success
+      redirect_to dashboard_path, notice: MessageService.update_success
     else
       render :edit
     end
@@ -46,6 +46,15 @@ class ProductsController < ApplicationController
     product_review.save
   end
 
+  def validate_product
+    @product = Product.new(validate_product_params)
+    if @product.valid?
+      render json: { notice: "valid" }, status: 200
+    else
+      render json: @product.errors.full_messages, status: 422
+    end
+  end
+
   private
 
   def product_params
@@ -58,6 +67,10 @@ class ProductsController < ApplicationController
       :price,
       :image
     )
+  end
+
+  def validate_product_params
+    params.permit(:name, :description, :quantity, :brand, :size, :price, :image)
   end
 
   def assign_shop_owner

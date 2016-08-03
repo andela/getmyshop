@@ -15,7 +15,6 @@ class ShopsController < ApplicationController
   end
 
   def update
-    binding.pry
   end
 
   def products

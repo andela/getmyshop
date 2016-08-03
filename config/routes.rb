@@ -33,7 +33,7 @@ Rails.application.routes.draw do
     get "/admin/dashboard"     => :show, as: :dashboard
     post "/shops"              => :create
     get "/shops/:id/edit"      => :edit, as: :edit_shop
-    post "shops/profile/update"=> :update, as: :profile_update
+    post "shop/profile/update" => :update, as: :profile_update
   end
 
   scope "/shopowners", controller: :shop_owners do

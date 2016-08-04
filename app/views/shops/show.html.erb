@@ -1,5 +1,9 @@
 <header>
-  <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only"><i class="material-icons">menu</i></a></div>
+  <div class="container">
+    <a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only">
+      <i class="material-icons">menu</i>
+    </a>
+  </div>
   <ul id="nav-mobile" class="side-nav fixed">
     <li class="bold">
       <a href="about.html" class="waves-effect waves-teal">
@@ -46,24 +50,7 @@
 </header>
 <main>
   <%= render partial: 'shop_owners_header' %>
-
-  <div class="container vspacer">
-    <div class="col s9">
-      <div class="profile">
-        <div class="result-header">
-          NO PRODUCTS IN STORE
-        </div>
-        <div class="row profile-fields">
-          <div class="no-order-msg center">
-            <p>You currently have no products</p>
-            <a class="modal-trigger waves-effect waves-teal btn-flat" href="#modal1">Add Products</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <%= render partial: 'product', locals: { products: @shop.products } %>
   <%= render partial: 'products/form' %>
-  <%= render partial: 'shop_owners_footer' %>
 </main>
-
-
+<%= render partial: 'shop_owners_footer' %>

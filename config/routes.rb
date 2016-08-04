@@ -59,6 +59,7 @@ Rails.application.routes.draw do
     post "/:id/products" => :create
     get "/:id/edit"      => :edit, as: :edit_shop_product
     put "/:id/update" => :update, as: :update_shop_product
+    post "/shop/product/validate" => :validate_product
   end
 
   get "/wishlist" => "wishlist#index", as: :wishlist_index

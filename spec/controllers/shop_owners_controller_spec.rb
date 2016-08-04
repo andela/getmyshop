@@ -23,7 +23,7 @@ RSpec.describe ShopOwnersController, type: :controller do
       shop_owner.reload
       expect(shop_owner.verified).to be_truthy
       expect(session[:user_id]).to eq shop_owner.id
-      expect(response).to redirect_to shop_new_path(shop_owner)
+      expect(response).to redirect_to shop_new_path
     end
   end
 

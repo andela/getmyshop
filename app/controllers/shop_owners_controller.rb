@@ -10,7 +10,7 @@ class ShopOwnersController < ApplicationController
     shop_owner = ShopOwner.token_match(params[:token])
     if shop_owner && shop_owner.update(verified: true)
       session[:user_id] = shop_owner.id
-      redirect_to shop_new_path(shop_owner),
+      redirect_to shop_new_path,
                   notice: MessageService.account_activated
     else
       redirect_to root_path, notice: MessageService.activation_failed

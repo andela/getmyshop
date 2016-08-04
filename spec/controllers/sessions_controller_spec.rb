@@ -92,7 +92,7 @@ RSpec.describe SessionsController do
           email: @user.email, password: "password"
         }
         expect(session[:user_id]).to eql @user.id
-        expect(response).to redirect_to dashboard_path(@user)
+        expect(response).to redirect_to dashboard_path
       end
     end
   end

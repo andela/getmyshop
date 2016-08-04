@@ -250,13 +250,120 @@ hr {
   font-size: 1.4em !important;
 }
 
-.card {
+#products-card {
   width: 300px;
-  height: 200px;
+  height: auto;
+  margin: 10px;
+
+  .card-title {
+    color: white;
+  }
+
   .card-image {
-    display: inline-block;
-    height: 130px;
-    width: 100%;
+    height: 200px;
+    width: 300px;
+
+    img {
+      height: 100%;
+    }
   }
 }
 
+
+#add-product-btn {
+  background-color: #B0B5BC;
+}
+
+#add-product-btn:hover {
+  background-color: #FFC107;
+}
+
+.hspace {
+  margin: 70px;
+}
+
+
+div#modal1 {
+  border-radius: 20px;
+  background-color: #fafafa;
+  min-height: 700px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  background-color: white;
+  overflow: hidden;
+  z-index: 2001 !important;
+
+  .modal-footer {
+    background-color: #B6B6B6;
+  }
+
+  label {
+    font-size: 1.0rem;
+    color: #212121;
+  }
+}
+
+#create_product {
+  color: black;
+}
+
+h4 {
+  font-size: 1.6rem;
+  color: black;
+}
+
+.ui.horizontal.divider {
+  background: transparent;
+  font-size: 30px;
+  position: relative;
+  top: -20px;
+}
+
+.action-right {
+  display: block;
+  position: relative;
+  left: calc(100% - 70px);
+}
+
+#card-holder {
+  margin-top: 10px;
+}
+
+.page-footer {
+  position: fixed;
+  z-index: 2000;
+}
+
+.strike {
+  display: block;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap; 
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+span {
+  position: relative;
+  display: inline-block;
+}
+
+.strike > span:before,
+.strike > span:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 9999px;
+  height: 1px;
+  background: black;
+}
+
+.strike > span:before {
+  right: 100%;
+  margin-right: 15px;
+}
+
+.strike > span:after {
+  left: 100%;
+  margin-left: 15px;
+}

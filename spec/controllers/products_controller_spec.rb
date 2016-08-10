@@ -92,14 +92,18 @@ RSpec.describe ProductsController, type: :controller do
       it "removes the product" do
         expect { delete :destroy, id: @product_one.id }.
           to change(Product, :count).by(-1)
+      end
+
+      it "responds with a 200 http status code" do
+        delete :destroy, id: @product_one.id
+
         expect(response.status).to eq(200)
       end
     end
 
     context "when product id is invalid" do
       it "returns status 404" do
-        expect { delete :destroy, id: "invalid" }.
-          to_not change(Product, :count)
+        delete :destroy, id: "invalid"
         expect(response.status).to eq(404)
       end
     end

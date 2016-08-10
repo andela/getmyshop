@@ -14,7 +14,8 @@ RSpec.describe "Removing Products", type: :feature do
       page.execute_script("$('#delete_product').click()")
       sleep 3
       click_on("Continue")
-      expect(page).to have_content("Deleted Succesfully!")
+      
+      expect(page).to have_content("You currently have no products")
     end
   end
 end

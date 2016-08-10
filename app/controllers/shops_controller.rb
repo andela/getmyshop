@@ -10,6 +10,13 @@ class ShopsController < ApplicationController
     @shop = Shop.new
   end
 
+  def edit
+    @shop = current_shop_owner.shop
+  end
+
+  def update
+  end
+
   def products
     @products = @shop_owner.shop.products
   end

@@ -1,3 +1,8 @@
+<% if flash[:notice] %>
+  <script type="text/javascript">
+    Materialize.toast("<%= flash[:notice] %>", 3000);
+  </script>
+<% end %>
 <header>
   <div class="container">
     <a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only">
@@ -44,6 +49,12 @@
       <a href="showcase.html" class="waves-effect waves-teal">
         <i class="material-icons">supervisor_account</i>
         <span class="title">Customers</span>
+      </a>
+    </li>
+    <li class="bold">
+      <a href="<%= edit_shop_path(session[:user_id]) %>" class="waves-effect waves-teal">
+        <i class="material-icons">mode_edit</i>
+        <span class="title">Edit Shop Profile</span>
       </a>
     </li>
   </ul>

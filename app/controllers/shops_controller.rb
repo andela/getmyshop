@@ -1,5 +1,6 @@
 class ShopsController < ApplicationController
   before_action :assign_shop_owner
+  before_action :set_shop, only: [:update, :edit]
 
   def show
     @shop = @shop_owner.shop
@@ -11,10 +12,16 @@ class ShopsController < ApplicationController
   end
 
   def edit
-    @shop = current_shop_owner.shop
   end
 
   def update
+    if @shop.update shop_params
+      redirect_to dashboard_path,
+                  notice: MessageService.account_updated
+      return
+    end
+    flash[:errors] = @shop.errors.full_messages
+    redirect_to :back
   end
 
   def products
@@ -38,6 +45,10 @@ class ShopsController < ApplicationController
 
   def assign_shop_owner
     @shop_owner = current_shop_owner
+  end
+
+  def set_shop
+    @shop = current_shop_owner.shop
   end
 
   def shop_params

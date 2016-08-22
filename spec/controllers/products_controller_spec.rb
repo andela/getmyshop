@@ -36,18 +36,29 @@ RSpec.describe ProductsController, type: :controller do
 
   describe "#create" do
     context "when all required product details are filled" do
-      it "redirects to the shop_products path" do
-        product = build(:product)
-        post :create, product: product.attributes
+      before(:all) { @product = build(:product) }
 
-        expect(response).to redirect_to(dashboard_path)
+      it "creates the product" do
+        expect { post :create, product: @product.attributes }.
+          to change(Product, :count).by(1)
+      end
+
+      it "redirects to the shop_products path" do
+        post :create, product: @product.attributes
+        expect(response).to redirect_to(shop_products_path)
       end
     end
 
     context "when all required product details are not filled" do
+      before(:all) { @product = build(:product, quantity: nil) }
+      let(:invalid_product_attributes) { @product.attributes }
+
+      it "does not create the product" do
+        expect { post :create, product: invalid_product_attributes }.
+          to_not change(Product, :count)
+      end
+
       it "renders the new template with form errors" do
-        product = build(:product, quantity: nil)
-        invalid_product_attributes = product.attributes
         post :create, product: invalid_product_attributes
         expect(response).to render_template(:new)
       end
@@ -71,7 +82,7 @@ RSpec.describe ProductsController, type: :controller do
         product.reload
         expect(product.name).to eq("Television set")
         expect(product.brand).to eq("Samsung")
-        expect(response).to redirect_to dashboard_path
+        expect(response).to redirect_to shop_products_path
       end
     end
 
@@ -81,6 +92,28 @@ RSpec.describe ProductsController, type: :controller do
           name: nil
         }
         expect(response).to render_template :edit
+      end
+    end
+  end
+
+  describe "#destroy" do
+    context "when product id is valid" do
+      it "removes the product" do
+        expect { delete :destroy, id: @product_one.id }.
+          to change(Product, :count).by(-1)
+      end
+
+      it "responds with a 200 http status code" do
+        delete :destroy, id: @product_one.id
+
+        expect(response.status).to eq(200)
+      end
+    end
+
+    context "when product id is invalid" do
+      it "returns status 404" do
+        delete :destroy, id: "invalid"
+        expect(response.status).to eq(404)
       end
     end
   end

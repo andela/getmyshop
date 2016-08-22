@@ -10,7 +10,7 @@ RSpec.describe "Shop Owner Signin process", type: :feature do
     scenario "signs in shop owner" do
       shop_owner_signin_helper(@shop_owner.email, "password")
 
-      expect(page).to have_content "Welcome"
+      expect(page).to have_content "Dashboard"
     end
   end
 

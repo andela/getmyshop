@@ -1,4 +1,13 @@
 <p id="notice"><%= notice %></p>
 <div class="row">
-  <%= render partial: 'product', collection: @products, as: :product %>
+  <%= render partial: 'product', locals: { products: @products } %>
+
+  <%= render partial: 'products/form' %>
+  <%= render partial: 'products/modals/delete_confirmation_dialog' %>
+
+  <div class="fixed-action-btn product">
+    <a class="btn-floating btn-large tooltipped modal-trigger" data-position="top" data-delay="50" data-tooltip="Add Product" href="#modal1" id="add-product-btn">
+      <i class="large material-icons">add</i>
+    </a>
+  </div>
 </div>

@@ -9,8 +9,12 @@ FactoryGirl.define do
     country Faker::Address.country
     phone Faker::PhoneNumber.phone_number
 
-    after(:create) do |shop|
-      FactoryGirl.create_list(:product, 2, shop: shop)
+    transient do
+      product_count 0
+    end
+
+    after(:create) do |shop, evaluator|
+      FactoryGirl.create_list(:product, evaluator.product_count, shop: shop)
     end
   end
 end

@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
     @product = Product.create(product_params)
     @product.update(shop: @shop_owner.shop)
     if @product.errors.empty?
-      redirect_to dashboard_path, notice: MessageService.product_created
+      redirect_to shop_products_path
     else
       flash[:errors] = @product.errors.full_messages
       render :new
@@ -30,7 +30,7 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
-      redirect_to dashboard_path, notice: MessageService.update_success
+      redirect_to shop_products_path, notice: MessageService.update_success
     else
       render :edit
     end
@@ -52,6 +52,16 @@ class ProductsController < ApplicationController
       render json: { notice: "valid" }, status: 200
     else
       render json: @product.errors.full_messages, status: 422
+    end
+  end
+
+  def destroy
+    @product = Product.find_by(id: params[:id])
+
+    if @product && @product.destroy
+      render json: { notice: "Product Deleted" }, status: 200
+    else
+      render json: { error: "Unable to delete product" }, status: 404
     end
   end
 

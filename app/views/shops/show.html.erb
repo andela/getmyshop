@@ -61,15 +61,5 @@
 </header>
 <main>
   <%= render partial: 'shop_owners_header' %>
-  <%= render partial: 'product', locals: { products: @shop.products } %>
-
-  <%= render partial: 'products/form' %>
   <%= render partial: 'shop_owners_footer' %>
-  <%= render partial: 'products/modals/delete_confirmation_dialog' %>
-
-  <div class="fixed-action-btn product">
-    <a class="btn-floating btn-large tooltipped modal-trigger" data-position="top" data-delay="50" data-tooltip="Add Product" href="#modal1" id="add-product-btn">
-      <i class="large material-icons">add</i>
-    </a>
-  </div>
 </main>

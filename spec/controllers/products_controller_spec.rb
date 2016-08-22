@@ -36,21 +36,30 @@ RSpec.describe ProductsController, type: :controller do
 
   describe "#create" do
     context "when all required product details are filled" do
-      it "redirects to the shop_products path" do
-        product = build(:product)
+      before(:all) { @product = build(:product) }
 
-        expect { post :create, product: product.attributes }.
+      it "creates the product" do
+        expect { post :create, product: @product.attributes }.
           to change(Product, :count).by(1)
-        expect(response).to redirect_to(dashboard_path)
+      end
+
+      it "redirects to the shop_products path" do
+        post :create, product: @product.attributes
+        expect(response).to redirect_to(shop_products_path)
       end
     end
 
     context "when all required product details are not filled" do
-      it "renders the new template with form errors" do
-        product = build(:product, quantity: nil)
-        invalid_product_attributes = product.attributes
+      before(:all) { @product = build(:product, quantity: nil) }
+      let(:invalid_product_attributes) { @product.attributes }
+
+      it "does not create the product" do
         expect { post :create, product: invalid_product_attributes }.
           to_not change(Product, :count)
+      end
+
+      it "renders the new template with form errors" do
+        post :create, product: invalid_product_attributes
         expect(response).to render_template(:new)
       end
     end
@@ -73,7 +82,7 @@ RSpec.describe ProductsController, type: :controller do
         product.reload
         expect(product.name).to eq("Television set")
         expect(product.brand).to eq("Samsung")
-        expect(response).to redirect_to dashboard_path
+        expect(response).to redirect_to shop_products_path
       end
     end
 

@@ -33,9 +33,9 @@
               </a>
             </li>
             <li>
-              <a href="#">
+              <%= link_to shop_owner_logout_path, method: :delete do %>
                 <i class="material-icons">lock_outline</i>
-              </a>
+              <% end %>
             </li>
           </ul>
         </div>
@@ -111,7 +111,7 @@
           </div>
         </div>
       </div>
-      
+
       <div class="content-area col s10 offset-s1" style="">
         <%= yield %>
       </div>
@@ -120,4 +120,3 @@
 
 </body>
 </html>
-

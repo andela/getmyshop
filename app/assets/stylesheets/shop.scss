@@ -139,6 +139,7 @@ a > h3 {
 
 .side-bar-cont {
   position: fixed;
+  z-index: 8000;
 }
 
 .side-bar-nav {
@@ -155,12 +156,11 @@ a > h3 {
 }
 
 .side-bar-menu {
-  padding: 10px 5px;
   color: $primary-color-text;
-
   a {
     color: $primary-color-text;
   }
+  padding: 10px 5px;
 }
 
 .side-bar-link {
@@ -168,8 +168,8 @@ a > h3 {
   display: flex;
   font-size: 11px;
   font-weight: 100;
-  text-transform: uppercase;
   padding-left: 15px;
+  text-transform: uppercase;
 
   .side-bar-menu-icon {
     padding-right: 20px;
@@ -289,7 +289,7 @@ a > h3 {
     color: $primary-color-dark;
     font-weight: bold;
   }
-  
+
   a:hover {
     text-decoration: underline;
   }
@@ -305,13 +305,15 @@ a > h3 {
   }
 }
 
-.select-wrapper input.select-dropdown {
-  border-bottom: 0px;
+.select-wrapper input {
+  &.select-dropdown {
+    border-bottom: none;
+  }
 }
 
-.pagination li a.active {
-  background-color: #26a69a;
-  color: white;
+.pagination li .active {
+  background-color: $my-teal;
+  color: $my-white;
 }
 
 .table-pagination {
@@ -321,48 +323,49 @@ a > h3 {
 }
 
 .orders-header {
-  color: #26a69a;
+  color: $my-teal;
   font-weight: 300;
 }
 
 .pagination-holder {
-  border: 2px solid #26a69a;
+  border: 2px solid $my-teal;
   box-sizing: border-box;
   max-height: 80px;
   max-width: 420px;
-  padding: 0px !important;
+  padding: 0 !important;
 }
 
-ul.tabs.no-border-bottom li {
-  border: 1px solid #26a69a;
+.tabs.no-border-bottom li {
+  border: 1px solid $my-teal;
 
   a {
-    color: black !important;
+    color: $my-black !important;
     font-weight: 12px !important;
+
+    &.active {
+      background-color: $my-teal;
+      color: $my-white !important;
+    }
   }
 
-  a.active {
-    background-color: #26a69a;
-    color: white !important;
-  }
 }
 
 .indicator {
   display: none;
 }
 
-.btn-flat {
+.update-btn {
+  border: 1px solid $my-teal;
+  border-radius: 3px;
   position: relative;
   top: 13px;
-  border: 1px solid #26a69a;
-  border-radius: 3px;
 }
 
 .action-container {
-  margin: 0px;
+  border-bottom: 1px solid $my-black;
+  border-top: 1px solid $my-black;
+  margin: 0;
   margin-bottom: 10px;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
   padding: 10px;
 
   a {
@@ -381,13 +384,13 @@ ul.tabs.no-border-bottom li {
 
 
 .btn-flat.btn-red {
-  border: 1px solid red;
+  border: 1px solid $my-red;
 }
 
 
 .inactive {
-  background-color: white;
-  color: black;
+  background-color: $my-white;
+  color: $my-black;
 }
 
 .order-search {
@@ -395,9 +398,9 @@ ul.tabs.no-border-bottom li {
     position: relative;
     right: 10px;
     top: 10px;
-  } 
+  }
 
-  input#icon_prefix {
+  #icon_prefix {
     box-sizing: border-box;
     padding-right: 43px;
   }
@@ -409,10 +412,6 @@ ul.tabs.no-border-bottom li {
 
 .row.dashboard-header {
   z-index: 8001;
-}
-
-.side-bar-cont {
-  z-index: 8000;
 }
 
 .select-dropdown {

@@ -13,13 +13,13 @@
 <div class="row">
   <div class="col s5 pagination-holder">
     <ul class="tabs no-border-bottom">
-      <li class="tab col s3"><a href="" >All (<%= Order.all.count %>)</a></li>
-      <li class="tab col s3"><a  href="?filter=completed">Completed (<%= Order.pending(@shop).count %>)</a></li>
-      <li class="tab col s3"><a href="?filter=pending" >Pending (<%= Order.completed(@shop).count %>)</a></li>
+      <li class="tab col s3"><a href="" >All (<%= all_orders_count %>)</a></li>
+      <li class="tab col s3"><a  href="?status=completed">Completed (<%= Order.pending(@shop).count %>)</a></li>
+      <li class="tab col s3"><a href="?status=pending" >Pending (<%= Order.completed(@shop).count %>)</a></li>
     </ul>
   </div>
   <div class="col s2 offset-s5">
-    <a class="btn-flat tooltipped" data-delay="5" data-tooltip="Update Orders Status" data-position="top">Update</a>
+    <a class="btn-flat tooltipped update-btn" data-delay="5" data-tooltip="Update Orders Status" data-position="top">Update</a>
   </div>
 </div>
 

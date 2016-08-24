@@ -2,6 +2,7 @@ class Order < ActiveRecord::Base
   has_many :order_items, dependent: :destroy
   belongs_to :address
   belongs_to :user
+  belongs_to :shop
   before_create :build_order_number
 
   accepts_nested_attributes_for :order_items
@@ -23,5 +24,19 @@ class Order < ActiveRecord::Base
 
   def build_order_number
     self.order_number = SecureRandom.hex(6).upcase
+  end
+
+  def self.pending(shop)
+    where(shop_id: shop.id, status: "Pending")
+  end
+
+  def self.completed(shop)
+    where(shop_id: shop.id, status: "Completed")
+  end
+
+  def self.filter(tag = nil)
+    return all if tag.nil? || tag.empty?
+    tag = tag.capitalize
+    where(status: tag)
   end
 end

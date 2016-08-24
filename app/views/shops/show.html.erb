@@ -1,7 +1,7 @@
 <div class="dashboard-body">
   <div class="row">
     <div class="welcome-note-cont center">
-      <h4>Welcome to GetMyShop, <%= current_shop_owner.first_name %></h4> 
+      <h4><%= current_shop_owner.shop.name %></h4> 
       <p>
         <a href=<%= "#{root_url}#{current_shop_owner.shop.url}"%>>
           <%= "#{root_url}#{current_shop_owner.shop.url}" %>
@@ -13,11 +13,7 @@
   <div class="row main-content-body">
     <div class="row btm-divider">
       <div class="getting-started-cont">
-        <div class="started">
-          <i class="left material-icons">info_outline</i>
-          <h5 class="left">Getting Started</h5>
-        </div>
-        <p class="right"> Follow these 5 simple steps to launch your store </p>
+        <h5 class="left">Follow these 5 simple steps to launch your store.</h5>
       </div>
     </div>
 
@@ -26,9 +22,9 @@
         <p class="left">1</p>
         <div class="left steps-description">
           <div class="steps-title">
-            <a href="#">Add your products</a>
+            <a href="<%= shop_products_path %>">Add your products</a>
           </div>
-          <div class="steps-detail">Add product and upload their pictures from the <a href="#">Products section.</a>
+          <div class="steps-detail">Add product and upload their pictures from the <a href="<%= shop_products_path %>">Products section.</a>
           </div>
         </div>
       </div>
@@ -75,9 +71,9 @@
         <p class="left">5</p>
         <div class="left steps-description">
           <div class="steps-title">
-            <a href="#">Go live and start accepting orders</a>
+            <a href="<%= current_shop_owner.shop.url %>">Go live and start accepting orders</a>
           </div>
-          <div class="steps-detail"><a href="#">View your shop.</a> You can start accepting orders immediately.</div>
+          <div class="steps-detail"><a href="<%= current_shop_owner.shop.url %>">View your shop.</a> You can start accepting orders immediately.</div>
         </div>
       </div>
     </div>

@@ -150,20 +150,35 @@ a > h3 {
   background-color: $primary-color;
   box-shadow: 0 2px 5px $gray-180;
   min-height: 100vh;
+  overflow: hidden;
+  transition-delay: 0.6s;
 }
 
 .side-bar-menu {
   padding: 10px 5px;
+  color: white;
+
+  a {
+    color: $primary-color-text;
+  }
 }
 
 .side-bar-link {
   color: $secondary-text-color;
+  display: flex;
   font-size: 11px;
   font-weight: 100;
   text-transform: uppercase;
+  padding-left: 15px;
+
+  .side-bar-menu-icon {
+    padding-right: 20px;
+  }
 
   .side-bar-menu-text {
-    display: none;
+    display: inline-block;
+    padding-top: 5px;
+    font-size: 12px;
   }
 }
 
@@ -184,13 +199,18 @@ a > h3 {
 }
 
 .dashboard-page-title {
+  font-size: 17px;
   color: $primary-color-text;
   font-weight: 200;
   text-transform: uppercase;
 }
 
-.live-help-cont {
-  background: $primary-color-text;
+.dashboard-welcome-user {
+  font-size: 18px;
+  padding-right: 10px;
+}
+
+.live-help {
   bottom: 0;
   padding: 10px 5px;
   position: fixed;
@@ -205,24 +225,36 @@ a > h3 {
   padding: 10px 5px;
 
   i {
-    font-size: 2rem;
-    padding-top: 10px;
+    padding-top: 13px;
+    margin-right: 5px;
   }
 
-  p {
-    margin-left: 10px;
-    font-size: 21px;
-  }
-
-  started {
-    margin: 10px;
+  h5 {
+    margin-bottom: 30px;
   }
 }
 
 .welcome-note-cont {
+  background-image: url("dashboard_image.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+  width: 1232px;
+  margin-left: -5%;
+  height: 235px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: -1%;
   font-size: 20px;
   font-weight: 300;
   padding: 10px;
+
+  h4 {
+    font-size: 2.6rem;
+  }
 
   a {
     color: $primary-text-color;

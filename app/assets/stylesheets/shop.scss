@@ -347,7 +347,6 @@ a > h3 {
       color: $my-white !important;
     }
   }
-
 }
 
 .indicator {
@@ -412,6 +411,10 @@ a > h3 {
 
 .row.dashboard-header {
   z-index: 8001;
+}
+
+.side-bar-cont {
+  z-index: 8000;
 }
 
 .select-dropdown {

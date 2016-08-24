@@ -65,6 +65,7 @@ $ ->
         outputErrors(data.responseJSON)
 
   $('#session_password').trigger('focus')
+    
 
 
 outputErrors = (data) ->

@@ -3,6 +3,8 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
+  initializeOrderPage()
+
   $(".side-bar-cont").mouseenter ->
     $(".side-bar-menu a"). animate {
       duration: 600,
@@ -64,6 +66,7 @@ $ ->
 
   $('#session_password').trigger('focus')
 
+
 outputErrors = (data) ->
   html_string = "<ol>"
   html_string += "<li>#{item}</li>" for item in data
@@ -97,3 +100,25 @@ window.deleteProduct = ->
       Materialize.toast "Deleted Succesfully!", 4000
     error: (data) ->
       Materialize.toast "Error deleting product", 4000
+
+initializeOrderPage = ->
+  $('.pagination-holder ul li a').each ->
+      if $(this).attr('href') is window.location.search
+        $('.pagination-holder ul li a').removeClass("active")
+        $(this).addClass("active")
+
+  $('select.status').each ->
+    optionValue = $(this).attr("value")
+    $(this).find("option[value='#{optionValue}']").attr("selected", true)
+    $(this).material_select()
+
+  $('input[type="checkbox"]').change ->
+    if $('input[type="checkbox"]').is(':checked')
+      $(".action-container").show("slow")
+    else
+      $(".action-container").hide("slow")
+
+  $('.pagination-holder ul li').click ->
+    window.location = $(this).find('a').attr('href')
+    if $(this).find('a').attr('href') is ""
+      window.location = "/shopowners/admin/shop/orders"

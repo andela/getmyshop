@@ -1,3 +1,6 @@
-<h1> Edit Product </h1>
-
-<%= render partial: 'edit_form', locals: { shop_owner: @shop_owner } %>
+<%= render layout: "shops/dashboard_layout" do %>
+  <div class="row edit-form-container">
+    <h3 class="center-align edit-form-heading">Edit Product </h3>
+    <%= render "edit_form", locals: { shop_owner: @shop_owner } %>
+  </div>
+<% end %>

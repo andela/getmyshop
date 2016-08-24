@@ -99,4 +99,40 @@ RSpec.describe ShopsController, type: :controller do
       end
     end
   end
+  
+  describe "#orders" do
+    before { @shop.update(orders: create_list(:order, 30)) }
+
+    context "when filter and page params are given" do
+      it "returns orders matching given status starting at the given page" do
+        get :orders, filter: "Pending", page: 1
+        expect(assigns(:orders)).
+          to match_array(Order.pending(@shop).paginate(page: 1, per_page: 15))
+      end
+    end
+
+    context "when filter params is present and page params absent" do
+      it "returns orders matching the given status starting at page 1" do
+        get :orders, filter: "Pending"
+        expect(assigns(:orders)).
+          to match_array(Order.pending(@shop).paginate(page: 1, per_page: 15))
+      end
+    end
+
+    context "when filter params is absent and page params is present" do
+      it "returns all orders starting at the specified page" do
+        get :orders, page: 2
+        expect(assigns(:orders)).
+          to match_array(@shop.orders.paginate(page: 2, per_page: 15))
+      end
+    end
+
+    context "when both filter and page params are absent" do
+      it "returns all orders starting at page 1" do
+        get :orders
+        expect(assigns(:orders)).
+          to match_array(@shop.orders.paginate(page: 1, per_page: 15))
+      end
+    end
+  end
 end

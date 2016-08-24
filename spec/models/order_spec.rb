@@ -2,6 +2,11 @@ require "rails_helper"
 
 RSpec.describe Order, type: :model do
   subject { build(:order) }
+  let(:shop) { create(:shop) }
+  let(:pending_orders) { create_list(:order, 5, status: "Pending", shop: shop) }
+  let(:completed_orders) do
+    create_list(:order, 30, status: "Completed", shop: shop)
+  end
 
   describe "has a valid factory" do
     it { is_expected.to be_valid }
@@ -60,6 +65,38 @@ RSpec.describe Order, type: :model do
   describe "#build_order_number" do
     it "returns a random order number" do
       expect(subject.build_order_number).to eql subject.order_number
+    end
+  end
+
+  describe ".pending" do
+    it "returns all orders with a pending status" do
+      expect(Order.pending(shop)).to match_array(pending_orders)
+    end
+  end
+
+  describe ".completed" do
+    it "returns all orders with a completed status" do
+      expect(Order.completed(shop)).to match_array(completed_orders)
+    end
+  end
+
+  describe ".filter" do
+    context "when filter tag is 'completed'" do
+      it "returns all Completed orders" do
+        expect(Order.filter("completed")).to match_array(completed_orders)
+      end
+    end
+
+    context "when filter tag is 'pending'" do
+      it "returns all Pending Orders" do
+        expect(Order.filter("pending")).to match_array(pending_orders)
+      end
+    end
+
+    context "when no filter tag is given" do
+      it "returns all Orders" do
+        expect(Order.filter).to match_array(shop.orders)
+      end
     end
   end
 end

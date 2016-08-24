@@ -23,9 +23,17 @@ RSpec.describe ShopsController, type: :controller do
   end
 
   describe "#new" do
-    it "assigns a new shop as @shop" do
-      get :new, shop_owner_id: @shop_owner.id
-      expect(assigns(:shop)).to be_a_new(Shop)
+    context "when user requests signup url" do
+      it "returns a 200 status code" do
+        get :new
+        expect(response.status).to eql(200)
+        expect(response).to render_template(:new)
+      end
+
+      it "assigns a new shop as @shop" do
+        get :new, shop_owner_id: @shop_owner.id
+        expect(assigns(:shop)).to be_a_new(Shop)
+      end
     end
   end
 
@@ -53,6 +61,41 @@ RSpec.describe ShopsController, type: :controller do
       get :products, shop_owner_id: @shop_owner.id
       expect(response).to render_template("products")
       expect(assigns(:products)).to match_array(@shop_owner.shop.products)
+    end
+  end
+
+  describe "#edit" do
+    it "renders the edit shop profile page" do
+      shop = create(:shop, name: "New Shop", url: "myshop")
+
+      get :edit, id: shop
+
+      expect(response.status).to eql(200)
+      expect(response).to render_template(:edit)
+    end
+  end
+
+  describe "#update" do
+    context "with valid attributes" do
+      it "updates the shop profile page" do
+        put :update, id: @shop, shop: { 
+          name: "Andela Enterprises"
+        }
+
+        expect(Shop.last.name).to eq "Andela Enterprises"
+        expect(response).to redirect_to edit_shop_path(@shop)
+      end
+    end
+
+    context "with invalid attributes" do
+      it "updates the shop profile page" do
+        put :update, id: @shop, shop: { 
+          name: "Andela Enterprises"
+        }
+
+        expect(Shop.last.name).to eq "Andela Enterprises"
+        expect(response).to redirect_to edit_shop_path(@shop)
+      end
     end
   end
 end

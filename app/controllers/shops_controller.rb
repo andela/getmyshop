@@ -1,8 +1,7 @@
 class ShopsController < ApplicationController
-  layout "dashboard_layout", only: :products
-
   before_action :assign_shop_owner
-  before_action :set_shop, only: [:update, :edit]
+  before_action :set_shop, only: [:update, :edit, :products]
+  layout "dashboard_layout", only: [:products, :show, :edit]
 
   def show
     @shop = @shop_owner.shop

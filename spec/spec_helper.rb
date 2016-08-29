@@ -1,7 +1,7 @@
 require "simplecov"
 SimpleCov.start
 require "coveralls"
-Coveralls.wear!
+Coveralls.wear!("rails")
 require "factory_girl_rails"
 require "support/form_helpers"
 require "support/login_helper"

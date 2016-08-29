@@ -1,4 +1,9 @@
 <%= form_for @shop, url: { action: :update }, html: { class: "col s8 offset-s2", id: "shop-edit-form" } do |f| %>
+<% if flash['notice'] %>
+  <%= javascript_tag do %>
+      Materialize.toast("<%= flash['notice'] %>", 4000)
+  <% end %>
+<% end %>
 <% if @shop.errors.any? %>
 <script>
 var msg = $("<ol><%= shop_form_errors(@shop.errors.full_messages).html_safe %></ol>");

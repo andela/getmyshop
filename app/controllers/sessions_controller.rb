@@ -64,7 +64,7 @@ class SessionsController < ApplicationController
     if model == "RegularUser"
       redirect_to root_path, notice: welcome_user
     else
-      redirect_to dashboard_path, notice: welcome_shop_owner
+      redirect_to dashboard_path
     end
   end
 

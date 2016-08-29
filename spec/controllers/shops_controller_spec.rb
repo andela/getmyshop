@@ -81,8 +81,9 @@ RSpec.describe ShopsController, type: :controller do
         put :update, id: @shop, shop: { 
           name: "Andela Enterprises"
         }
-
-        expect(Shop.last.name).to eq "Andela Enterprises"
+        @shop.reload
+        expect(@shop.name).to eq "Andela Enterprises"
+        expect(flash["notice"]).to eq "Account Updated"
         expect(response).to redirect_to edit_shop_path(@shop)
       end
     end
@@ -90,10 +91,10 @@ RSpec.describe ShopsController, type: :controller do
     context "with invalid attributes" do
       it "updates the shop profile page" do
         put :update, id: @shop, shop: { 
-          name: "Andela Enterprises"
+          name: ""
         }
-
-        expect(Shop.last.name).to eq "Andela Enterprises"
+        @shop.reload
+        expect(flash["errors"]).to eq ["Name can't be blank"]
         expect(response).to redirect_to edit_shop_path(@shop)
       end
     end

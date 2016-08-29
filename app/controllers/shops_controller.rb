@@ -22,7 +22,7 @@ class ShopsController < ApplicationController
       return
     end
     flash[:errors] = @shop.errors.full_messages
-    redirect_to :back
+    redirect_to edit_shop_path(@shop)
   end
 
   def products

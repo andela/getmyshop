@@ -1,7 +1,7 @@
-<%= form_for :session, url: shop_owner_login_url, html: { class: "col s12 white", id: "shop-signup-form"} do |f| %> 
+<%= form_for :session, url: shop_owner_login_url, html: { class: "col s12 white", id: "shop_owner_signin"} do |f| %> 
   <% if flash["errors"] %>
     <%= javascript_tag do %>
-      Materialize.toast("<%= flash["errors"] %>")
+      Materialize.toast("<%= flash["errors"][0] %>")
     <% end %>
   <% end %>
   <div class="row">

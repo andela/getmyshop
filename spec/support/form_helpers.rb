@@ -25,7 +25,7 @@ module FormHelpers
       fill_in "Email", with: email
       fill_in "Password", with: password
     end
-    submit_form
+    click_button("Sign In")
   end
 
   def submit_form

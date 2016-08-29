@@ -24,7 +24,7 @@ RSpec.describe SessionsController do
         post :create, session: {
           email: ("invalid" + @user.email), password: @user.password
         }
-        expect(flash["errors"]).to include "Email or Password not valid."
+        expect(flash["errors"]).to eq [MessageService.login_failure]
         expect(response).to redirect_to login_path
       end
 
@@ -32,7 +32,7 @@ RSpec.describe SessionsController do
         post :create, session: {
           email: @user.email, password: ("invalid" + @user.password)
         }
-        expect(flash["errors"]).to include "Email or Password not valid."
+        expect(flash["errors"]).to eq [MessageService.login_failure]
         expect(response).to redirect_to login_path
       end
     end
@@ -71,7 +71,7 @@ RSpec.describe SessionsController do
           email: "invalid" + @user.email, password: @user.password
         }
 
-        expect(flash["errors"]).to include "Email or Password not valid."
+        expect(flash["errors"]).to eq [MessageService.login_failure]
         expect(response).to redirect_to shop_owner_login_path
       end
 
@@ -79,7 +79,7 @@ RSpec.describe SessionsController do
         post :shop_owner_create, session: {
           email: @user.email, password: "invalid password"
         }
-        expect(flash["errors"]).to include "Email or Password not valid."
+        expect(flash["errors"]).to eq [MessageService.login_failure]
         expect(response).to redirect_to shop_owner_login_path
       end
     end

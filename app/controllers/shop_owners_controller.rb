@@ -22,7 +22,7 @@ class ShopOwnersController < ApplicationController
     if @shop_owner.save
       UserMailer.welcome_shop_owner(@shop_owner, MessageService.welcome).
         deliver_now
-      redirect_to login_path, notice: MessageService.account_created
+      redirect_to shop_owner_login_path, notice: MessageService.account_created
     else
       flash["errors"] = @shop_owner.errors.full_messages
       render :new

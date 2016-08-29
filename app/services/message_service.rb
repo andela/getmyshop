@@ -26,7 +26,7 @@ class MessageService
   end
 
   def self.login_failure
-    "Email or Password not valid."
+    "Email or Password not valid"
   end
 
   def self.logout

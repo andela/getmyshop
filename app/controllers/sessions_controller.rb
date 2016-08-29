@@ -52,7 +52,7 @@ class SessionsController < ApplicationController
 
   def user_is_nil?(user, model)
     return if user
-    flash["errors"] = [MessageService.login_failure]
+    flash["errors"] = MessageService.login_failure
 
     redirect_to_path model
   end
@@ -69,7 +69,7 @@ class SessionsController < ApplicationController
   end
 
   def password_invalid(model)
-    flash["errors"] = [MessageService.login_failure]
+    flash["errors"] = MessageService.login_failure
 
     redirect_to_path model
   end

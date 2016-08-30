@@ -4,6 +4,11 @@
       Materialize.toast("<%= flash["errors"][0] %>")
     <% end %>
   <% end %>
+  <% if flash["notice"] %>
+    <%= javascript_tag do %>
+      Materialize.toast("<%= flash["notice"] %>")
+    <% end %>
+  <% end %>
   <div class="row">
     <div class="input-field col s8 offset-s2">
       <%= f.text_field :email, { class: "validate" } %>

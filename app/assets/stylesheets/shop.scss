@@ -236,9 +236,7 @@ a > h3 {
 
 .welcome-note-cont {
   align-items: center;
-  background-image: url("http://i.imgur.com/YSbeBPt.png");
-  background-position: center;
-  background-repeat: no-repeat;
+  background: url("http://i.imgur.com/YSbeBPt.png") no-repeat center;
   background-size: cover;
   display: flex;
   flex-direction: column;

@@ -17,12 +17,12 @@ class ShopsController < ApplicationController
 
   def update
     if @shop.update shop_params
-      redirect_to dashboard_path,
+      redirect_to edit_shop_path(@shop),
                   notice: MessageService.account_updated
       return
     end
     flash[:errors] = @shop.errors.full_messages
-    redirect_to :back
+    redirect_to edit_shop_path(@shop)
   end
 
   def products

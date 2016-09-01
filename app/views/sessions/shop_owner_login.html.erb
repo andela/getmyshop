@@ -1,47 +1,16 @@
-<%= render "header" %>
-<div class="signin-box">
-  <div class="container">
-    <div class="center">
-      <h5>Sign In</h5>
-      <% unless flash['notice'].blank?  %>
-        <div class= "pword-message">  <%= flash['notice'] %> </div>
-      <% end %>
-    </div>
-    <div class="row">
-      <div class="col m8 s12">
-        <div class="signin-user-form" id="shop_owner_signin">
-          <%= form_tag %>
-            <%= shop_owner_errors %>
-
-            <%= form_for :session, url: shop_owner_login_path do |f| %>
-              <div class="">
-                <%= f.label :email, "Email" %>
-                <span class="field-error" id="email-error"></span>
-                <%= f.email_field :email, required: "required", minlength: 5 %>
-              </div>
-
-              <div class="">
-                <%= f.label :password, "Password" %>
-                <span class="field-error" id="password-error"></span>
-                <%= f.password_field :password, required: "required", class: "pword" %>
-              </div>
-
-              <div class="submit-div center">
-                <%= f.submit "Sign In", class: "btn signin", id: "submit-signin" %> 
-              </div>
-            <% end %>
-
+<div class="row" id="shop-creation-container">
+  <div class="valign-wrapper">
+    <div class="valign col s12 m10 l8 pull-l2 pull-m1">
+      <div class="row">
+        <div class="col s8 offset-s2" id="shop-signup-container">
+          <a href="/"><h3 class="center-align white-text" id="shop-signup-header">Get-My-Shop</h3></a>
+          <div class="center-align">
+            <h5 class="white-text">SIGN IN</h5>
+          </div>
+          <%= render partial: "login_form" %>
+          <div class="divider teal darken-3"></div>
         </div>
-
-        <div class="signin-para">
-          <p class="forgot"><%= link_to "Forgot your password?", forgot_users_path %></p>
-          <p class="comments">If you do not have an account, please
-        <%= link_to "Sign Up", signup_path %>
-          </p>
-        </div>
-
       </div>
     </div>
   </div>
 </div>
-<%= render "footer" %>

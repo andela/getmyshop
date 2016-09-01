@@ -48,7 +48,7 @@ class WishlistController < ApplicationController
   end
 
   def direct_to_login_page
-    flash[:errors] = (flash[:errors] || []) << "Login required."
+    flash[:errors] = ["Login required."]
     redirect_to login_path
   end
 end

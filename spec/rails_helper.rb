@@ -19,6 +19,7 @@ RSpec.configure do |config|
 
   config.filter_rails_from_backtrace!
   config.include FactoryGirl::Syntax::Methods
+  config.include TransactionalCapybara::AjaxHelpers
 
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
@@ -29,10 +30,6 @@ RSpec.configure do |config|
     rescue
       DatabaseCleaner.clean_with(:truncation)
     end
-  end
-
-  config.after(:each, js: true) do
-    TransactionalCapybara::AjaxHelpers.wait_for_ajax(page)
   end
 
   config.before(:each) do

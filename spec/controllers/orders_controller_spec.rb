@@ -41,4 +41,17 @@ RSpec.describe OrdersController, type: :controller do
       end
     end
   end
+
+  describe "PUT #update" do
+    before(:all){ @order = create(:order, status: "Pending") }
+    
+    it "updates the order status" do
+      order_status = {}
+      order_status["#{@order.id}"] = { status: "Completed" }
+      put :update, { orders: order_status }
+      @order.reload
+
+      expect(@order.status).to eq("Completed")
+    end
+  end
 end

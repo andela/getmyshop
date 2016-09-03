@@ -146,4 +146,20 @@ RSpec.describe ShopsController, type: :controller do
       end
     end
   end
+
+  describe "PUT #update_orders" do
+    before do
+      @orders = create_list(:order, 3)
+      @shop.update(orders: @orders)
+    end
+
+    it "updates the order status" do
+      orders = [{ id: @orders.first.id, status: "Completed" }]
+      shop_attributes = { orders_attributes:  orders }
+      put :update_orders, shop: shop_attributes
+      @orders.each(&:reload)
+
+      expect(@orders.first.status).to eq("Completed")
+    end
+  end
 end

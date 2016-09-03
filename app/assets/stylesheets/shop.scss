@@ -363,8 +363,10 @@ a > h3 {
 .action-container {
   border-bottom: 1px solid $my-black;
   border-top: 1px solid $my-black;
+  display: none;
   margin: 0;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
+  margin-top: 30px;
   padding: 10px;
 
   a {
@@ -374,16 +376,29 @@ a > h3 {
 
   h4 {
     display: inline;
-    font-size: 20px;
+    font-size: 23px;
     font-style: italic;
     font-weight: 50px;
     margin-right: 20px;
   }
+
+  .row {
+    margin-bottom: 2px;
+  }
 }
 
+.btn-flat {
+  &.btn-red {
+    border: 1px solid $my-red;
+  }
 
-.btn-flat.btn-red {
-  border: 1px solid $my-red;
+  &.btn-teal {
+    border: 1px solid $my-teal;
+  }
+
+  &.btn-yellow{
+    border: 1px solid $accent-color;
+  }
 }
 
 

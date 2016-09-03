@@ -22,8 +22,6 @@ RSpec.configure do |config|
   config.include TransactionalCapybara::AjaxHelpers
 
   config.before(:suite) do
-    DatabaseCleaner.clean_with(:truncation)
-    DatabaseCleaner.strategy = :transaction
     begin
       FactoryGirl.lint
       DatabaseCleaner.clean_with(:truncation)

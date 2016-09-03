@@ -77,11 +77,11 @@ outputErrors = (data) ->
   Materialize.toast toastContent
 
 
-window.confirmDeleteProduct = (productIndex) ->
+@confirmDeleteProduct = (productIndex) ->
   document.productIndex = productIndex
   $('#confirm-modal').openModal()
 
-window.deleteProduct = ->
+@deleteProduct = ->
   deletePath = "/shopowners/shop/products/#{document.productIndex}"
   $.ajax
     url: deletePath

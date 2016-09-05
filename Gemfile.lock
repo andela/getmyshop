@@ -185,10 +185,12 @@ GEM
     pg (0.18.4)
     pkg-config (1.1.7)
     powerpack (0.1.1)
-    pry (0.10.3)
+    pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-rails (0.3.4)
+      pry (>= 0.9.10)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -345,7 +347,7 @@ DEPENDENCIES
   omniauth-google-oauth2
   omniauth-twitter
   pg
-  pry
+  pry-rails
   rails (= 4.2.4)
   rails_12factor
   rspec

@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     get "/shop/new"            => :new, as: :shop_new
     get "/admin/shop/products" => :products, as: :shop_products
     get "/admin/dashboard"     => :show, as: :dashboard
+    get "/admin/shop/orders" => :orders
     post "/shops"              => :create
     get "/shops/:id/edit"      => :edit, as: :edit_shop
     patch "shop/profile/update" => :update, as: :profile_update

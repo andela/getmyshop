@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160721005436) do
+ActiveRecord::Schema.define(version: 20160823003413) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id"
@@ -74,10 +74,12 @@ ActiveRecord::Schema.define(version: 20160721005436) do
     t.string   "status",              default: "Pending"
     t.string   "transaction_id"
     t.datetime "purchased_at"
+    t.integer  "shop_id"
   end
 
   add_index "orders", ["address_id"], name: "index_orders_on_address_id"
   add_index "orders", ["order_number"], name: "index_orders_on_order_number"
+  add_index "orders", ["shop_id"], name: "index_orders_on_shop_id"
   add_index "orders", ["user_id"], name: "index_orders_on_user_id"
 
   create_table "passwords", force: :cascade do |t|

@@ -90,12 +90,59 @@ RSpec.describe ShopsController, type: :controller do
 
     context "with invalid attributes" do
       it "updates the shop profile page" do
-        put :update, id: @shop, shop: { 
+        put :update, id: @shop, shop: {
           name: ""
         }
         @shop.reload
         expect(flash["errors"]).to eq ["Name can't be blank"]
         expect(response).to redirect_to edit_shop_path(@shop)
+      end
+    end
+  end
+
+  describe "#orders" do
+    before { @shop.update(orders: create_list(:order, 30)) }
+
+    context "when status and page params are given" do
+      context "and status param is Pending" do
+        it "returns orders having Pending status starting at the given page" do
+          get :orders, status: "Pending", page: 1
+          expect(assigns(:orders)).
+            to match_array(Order.pending(@shop).paginate(page: 1, per_page: 15))
+        end
+      end
+
+      context "and status param is Completed" do
+        it "returns orders having completed status starting at given page" do
+          get :orders, status: "Completed", page: 1
+          expect(assigns(:orders)).
+            to match_array(Order.completed(@shop).
+              paginate(page: 1, per_page: 15))
+        end
+      end
+    end
+
+    context "when status param is present and page param absent" do
+      it "returns orders matching the given status starting at page 1" do
+        get :orders, status: "Pending"
+        expect(assigns(:orders)).
+          to match_array(Order.pending(@shop).paginate(page: 1, per_page: 15))
+      end
+    end
+
+    context "when status param is absent and page param is present" do
+      it "returns all orders starting at the specified page" do
+        get :orders, page: 2
+        expect(assigns(:orders)).
+          to match_array(@shop.orders.paginate(page: 2, per_page: 15))
+      end
+    end
+
+    context "when both status and page param are absent" do
+      it "returns all orders starting at page 1" do
+        get :orders
+        expect(assigns(:orders)).
+          to match_array(@shop.orders.paginate(page: 1, per_page: 15))
       end
     end
   end

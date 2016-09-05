@@ -1,7 +1,8 @@
 class ShopsController < ApplicationController
+  layout "dashboard_layout", only: [:products, :orders, :show, :edit]
+
   before_action :assign_shop_owner
-  before_action :set_shop, only: [:update, :edit, :products]
-  layout "dashboard_layout", only: [:products, :show, :edit]
+  before_action :set_shop, only: [:update, :edit, :orders, :products, :show]
 
   def show
     @shop = @shop_owner.shop
@@ -40,6 +41,11 @@ class ShopsController < ApplicationController
       flash["errors"] = @shop.errors.full_messages
       render :new
     end
+  end
+
+  def orders
+    filtered_orders = @shop.orders.filter(params[:status])
+    @orders = filtered_orders.paginate(page: params[:page], per_page: 15)
   end
 
   private

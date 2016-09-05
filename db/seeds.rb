@@ -6,6 +6,9 @@ Specification.destroy_all
 Product.destroy_all
 Subcategory.destroy_all
 Category.destroy_all
+ShopOwner.destroy_all
+Shop.destroy_all
+RegularUser.destroy_all
 
 categories = %w(
   Fashion
@@ -79,5 +82,65 @@ categories.each do |category|
       new_specification.product_id = new_product.id
       new_specification.save
     end
+  end
+
+  shop_owner = ShopOwner.create(
+    first_name: Faker::Name.name,
+    last_name: Faker::Name.name,
+    phone: Faker::PhoneNumber.phone_number,
+    email: "defaultshopowner@getmyshop.com",
+    password: "password",
+    password_confirmation: "password",
+    verified: true,
+    active: true
+  )
+
+  shop = Shop.create(
+    name: Faker::Company.name,
+    url: Faker::Internet,
+    description: "Sells Products",
+    address: "Yaba, Lagos",
+    city: "Yaba",
+    state: "Lagos",
+    country: "Nigeria",
+    phone: Faker::PhoneNumber.phone_number,
+    shop_owner: shop_owner
+  )
+
+  2.times do
+    RegularUser.create(
+      first_name: Faker::Name.name,
+      last_name: Faker::Name.name,
+      email: "defaultuser@getmyshop.com",
+      phone: Faker::PhoneNumber.phone_number,
+      password: "password",
+      password_confirmation: "password",
+      verified: true,
+      active: true
+    )
+  end
+
+  2.times do
+    Order.create(
+      order_number: Faker::Code.nric,
+      payment_method: "paypal",
+      total_amount: rand(100..2000),
+      user: [User.first, User.last].sample,
+      status: "Pending",
+      purchased_at: Time.now,
+      shop: shop
+    )
+  end
+
+  2.times do
+    Order.create(
+      order_number: Faker::Code.nric,
+      payment_method: "paypal",
+      total_amount: rand(100..2000),
+      user: [User.first, User.last].sample,
+      status: "Completed",
+      purchased_at: Time.now,
+      shop: shop
+    )
   end
 end

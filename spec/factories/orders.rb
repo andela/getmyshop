@@ -5,6 +5,7 @@ FactoryGirl.define do
     total_amount Faker::Commerce.price
     user factory: :regular_user
     address factory: :address
+    status "Pending"
 
     factory :order_with_items do
       transient do

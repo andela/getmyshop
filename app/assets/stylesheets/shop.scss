@@ -139,6 +139,7 @@ a > h3 {
 
 .side-bar-cont {
   position: fixed;
+  z-index: 8000;
 }
 
 .side-bar-nav {
@@ -155,12 +156,11 @@ a > h3 {
 }
 
 .side-bar-menu {
-  padding: 10px 5px;
   color: $primary-color-text;
-
   a {
     color: $primary-color-text;
   }
+  padding: 10px 5px;
 }
 
 .side-bar-link {
@@ -168,8 +168,8 @@ a > h3 {
   display: flex;
   font-size: 11px;
   font-weight: 100;
-  text-transform: uppercase;
   padding-left: 15px;
+  text-transform: uppercase;
 
   .side-bar-menu-icon {
     padding-right: 20px;
@@ -289,7 +289,7 @@ a > h3 {
     color: $primary-color-dark;
     font-weight: bold;
   }
-  
+
   a:hover {
     text-decoration: underline;
   }
@@ -303,4 +303,117 @@ a > h3 {
   a:hover {
     text-decoration: underline;
   }
+}
+
+.select-wrapper input {
+  &.select-dropdown {
+    border-bottom: none;
+  }
+}
+
+.pagination li .active {
+  background-color: $my-teal;
+  color: $my-white;
+}
+
+.table-pagination {
+  margin-top: 30px;
+  position: absolute;
+  right: 50px;
+}
+
+.orders-header {
+  color: $my-teal;
+  font-weight: 300;
+}
+
+.pagination-holder {
+  border: 2px solid $my-teal;
+  box-sizing: border-box;
+  max-height: 80px;
+  max-width: 420px;
+  padding: 0 !important;
+}
+
+.tabs.no-border-bottom li {
+  border: 1px solid $my-teal;
+
+  a {
+    color: $my-black !important;
+    font-weight: 12px !important;
+
+    &.active {
+      background-color: $my-teal;
+      color: $my-white !important;
+    }
+  }
+
+}
+
+.indicator {
+  display: none;
+}
+
+.update-btn {
+  border: 1px solid $my-teal;
+  border-radius: 3px;
+  position: relative;
+  top: 13px;
+}
+
+.action-container {
+  border-bottom: 1px solid $my-black;
+  border-top: 1px solid $my-black;
+  margin: 0;
+  margin-bottom: 10px;
+  padding: 10px;
+
+  a {
+    position: relative;
+    top: -1px;
+  }
+
+  h4 {
+    display: inline;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 50px;
+    margin-right: 20px;
+  }
+}
+
+
+.btn-flat.btn-red {
+  border: 1px solid $my-red;
+}
+
+
+.inactive {
+  background-color: $my-white;
+  color: $my-black;
+}
+
+.order-search {
+  i {
+    position: relative;
+    right: 10px;
+    top: 10px;
+  }
+
+  #icon_prefix {
+    box-sizing: border-box;
+    padding-right: 43px;
+  }
+}
+
+.hidden {
+  display: none !important;
+}
+
+.row.dashboard-header {
+  z-index: 8001;
+}
+
+.select-dropdown {
+  text-align: center;
 }

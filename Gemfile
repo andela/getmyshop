@@ -32,9 +32,9 @@ gem "carrierwave", "~> 0.10.0"
 gem "mini_magick", "~> 4.3"
 gem "jquery-fileupload-rails"
 gem "font-awesome-sass"
+gem "pry-rails"
 
 group :development, :test do
-  gem "pry"
   gem "byebug"
   gem "capybara"
   gem "simplecov"

@@ -12,11 +12,40 @@ nav {
 }
 
 .medium {
-  background: url("http://i.imgur.com/CShEgXJ.jpg") no-repeat;
+  background: url("http://i.imgur.com/BqiaXIj.jpg" ) no-repeat;
   background-size: cover;
   display: block;
   height: 45em;
   width: 100%;
+  margin-top: -24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  position: relative;
+
+  * {
+     z-index: 999;
+  }
+
+  &::before {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.5);
+    top: 0;
+    content: '';
+  }
+
+  h1 {
+    margin: 2px;
+    text-transform: uppercase;
+  }
+
+  p {
+    font-size: 20px;
+  }
 }
 
 .row-break {
@@ -170,7 +199,12 @@ nav {
 }
 
 .footer {
-  background: $black;
+  background: #1D1D1D;
+  padding: 20px;
+
+  .white-text span:first-child {
+    margin-bottom: 5px;
+  }
 }
 
 .footer-container {
@@ -339,4 +373,28 @@ nav {
   margin-left: 5em;
   margin-top: auto;
   width: 91%;
+}
+
+.brand-logo {
+  padding-left: 16px;
+  padding-top: 6px;
+  font-family: 'Oleo Script', fantasy;
+
+  .fa-shopping-bag, a {
+    color: #26A69A;
+  }
+}
+
+.landing-header {
+  background-color: #fff;
+
+  ul {
+    line-height: 75px;
+    height: 75px;
+
+    a {
+      color: black;
+      border-left: 1px solid #dce0e0;
+    }
+  }
 }

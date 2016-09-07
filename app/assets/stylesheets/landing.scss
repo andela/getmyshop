@@ -46,6 +46,10 @@ nav {
   p {
     font-size: 20px;
   }
+
+  .btn-large {
+    border-radius: 3px;
+  }
 }
 
 .row-break {
@@ -209,7 +213,7 @@ nav {
 
 .footer-container {
   margin: auto;
-  width: 60%;
+  width: 100%;
 }
 
 .category-span {
@@ -394,7 +398,28 @@ nav {
 
     a {
       color: black;
-      border-left: 1px solid #dce0e0;
+      /*border-left: 1px solid #dce0e0;*/
+      text-transform: uppercase;
+    }
+
+    .sign-in, .sign-up { 
+      border: 1px solid teal;
+      height: 34px;
+      display: inline;
+      padding: 7px 16px;
+      border-radius: 3px;
+      margin: 5px;
+    }
+
+    .sign-up {
+      background-color: orange;
+      border: unset;
+      color: #fff;
     }
   }
+}
+
+.footer-links {
+  display: flex;
+  justify-content: space-around;
 }

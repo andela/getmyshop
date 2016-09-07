@@ -14,8 +14,8 @@
   <div class="col s5 pagination-holder">
     <ul class="tabs no-border-bottom">
       <li class="tab col s3"><a href="" >All (<%= all_orders_count %>)</a></li>
-      <li class="tab col s3"><a  href="?status=completed">Completed (<%= Order.completed(@shop).count %>)</a></li>
-      <li class="tab col s3"><a href="?status=pending" >Pending (<%= Order.pending(@shop).count %>)</a></li>
+      <li class="tab col s3"><a  href="?status=completed">Completed (<%= @shop.completed_orders.count %>)</a></li>
+      <li class="tab col s3"><a href="?status=pending" >Pending (<%= @shop.pending_orders.count %>)</a></li>
     </ul>
   </div>
   <div class="col s2 offset-s5">

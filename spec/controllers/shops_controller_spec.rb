@@ -187,7 +187,7 @@ RSpec.describe ShopsController, type: :controller do
         shop_attributes = { orders_attributes:  orders }
 
         expect { put :update_orders, shop: shop_attributes }.
-          to change { @shop.orders.count }.by(-1)
+          to change { @shop.valid_orders.count }.by(-1)
       end
     end
   end

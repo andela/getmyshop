@@ -65,8 +65,6 @@ $ ->
         outputErrors(data.responseJSON)
 
   $('#session_password').trigger('focus')
-    
-
 
 outputErrors = (data) ->
   html_string = "<ol>"

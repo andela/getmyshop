@@ -6,12 +6,11 @@ $ ->
       json_object = {}
       json_object["id"] = id
       json_object["status"] = $(this).find('select').val()
-      json_array.push(json_object) if id?
+      if id? then json_array.push(json_object) 
 
     orders_status = { orders_attributes: json_array }
     updateOrderStatus({ shop: orders_status })
     
-
 @setOrderStatus = (status, element) ->
   json_array = []
   $('tr').each ->
@@ -24,7 +23,6 @@ $ ->
 
   orders_status = { orders_attributes: json_array }
   updateOrderStatus({ shop: orders_status })
-
 
 updateOrderStatus = (status) ->
   $.ajax

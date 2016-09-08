@@ -5,6 +5,11 @@ $black: #000000;
 $light-gray: #e0e0e0;
 $pale-orange: #fff4e1;
 $search-box: #f5f5f5;
+$white: #fff;
+$orange: #FFA500;
+$light-teal: #009688;
+$accent-color: #FFC107;
+
 
 nav {
   border-radius: 3%;
@@ -317,10 +322,6 @@ nav {
   }
 }
 
-.brand-logo {
-  position: relative !important;
-}
-
 .search-bar {
   border-bottom: 2px solid $dark-cyan;
   display: none;
@@ -380,30 +381,34 @@ nav {
 }
 
 .brand-logo {
+  font-family: 'Oleo Script', fantasy;
   padding-left: 16px;
   padding-top: 6px;
-  font-family: 'Oleo Script', fantasy;
+  position: relative !important;
 
   .fa-shopping-bag, a {
-    color: #26A69A;
+    color: $light-teal;
   }
 }
 
 .landing-header {
-  background-color: #fff;
+  background-color: $white;
 
   ul {
-    line-height: 75px;
     height: 75px;
+    line-height: 75px;
 
     a {
-      color: black;
-      /*border-left: 1px solid #dce0e0;*/
+      color: $black;
       text-transform: uppercase;
+
+      &:hover {
+        background-color: unset;
+      }
     }
 
     .sign-in, .sign-up { 
-      border: 1px solid teal;
+      border: 1px solid $light-teal;
       height: 34px;
       display: inline;
       padding: 7px 16px;
@@ -412,9 +417,13 @@ nav {
     }
 
     .sign-up {
-      background-color: orange;
+      background-color: $accent-color;
       border: unset;
-      color: #fff;
+      color: $light-teal; 
+
+      &:hover {
+        background-color: $accent-color;
+      }
     }
   }
 }

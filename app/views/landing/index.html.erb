@@ -1,23 +1,4 @@
-<nav>
-  <div class="nav-wrapper row landing-header">
-  	<div class="brand-logo col s2">
-  		<i class="fa fa-shopping-bag" aria-hidden="true"></i> 
-    	<a href="#">GetMyShop</a>
-  	</div>
-
-  	<div class="col s10">
-	    <ul id="nav-mobile" class="right">
-	    	<li><a class="pricing" href="#">Pricing</a></li>
-	    	<li><a class="about-us" href="#">About Us</a></li>
-	    	<li><a class="blog" href="#">Blog</a></li>
-	      <li><a class="sign-in" href="#">Sign In</a></li>
-	      <li><a class="sign-up" href="#">Sign Up</a></li>
-	    </ul>
-  	</div>
-  </div>
-</nav>
-
-      
+<%= render partial: 'new_header' %>     
 
 <% if flash['notice'] %>
   <%= javascript_tag do %>
@@ -27,8 +8,8 @@
 
 <div class="medium">
 	<h1>Sell Online With Ease.</h1>
-	<p>All you need to sell online, none of the headache.</p>
-	<button class="btn-large">Get Started</button>
+	<p>All you need to sell online, none of the headache.</p>	
+  <button class="btn-large"><%= link_to "Get Started", signup_path, class: 'white-text sign-in' %></button>
 </div>
 
 <%= render partial: 'footer' %>

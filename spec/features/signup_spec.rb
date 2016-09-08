@@ -12,7 +12,7 @@ RSpec.describe "Signup process", type: :feature do
         user.password
       )
 
-      expect(page).to have_content "Welcome, #{user.first_name}"
+      expect(page).to have_content "Get Started"
     end
   end
 

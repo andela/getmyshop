@@ -12,7 +12,7 @@ RSpec.describe "Users Signin process", type: :feature do
     scenario "signs in user" do
       signin_helper(@user.email, "password")
 
-      expect(page).to have_content "Welcome, #{@user.first_name}"
+      expect(page).to have_content "Get Started"
     end
   end
 

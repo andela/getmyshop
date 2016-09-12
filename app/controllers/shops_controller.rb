@@ -2,7 +2,7 @@ class ShopsController < ApplicationController
   layout "dashboard_layout", only: [:products, :orders, :show, :edit]
 
   before_action :assign_shop_owner
-  before_action :set_shop, only: [:update, :edit, :orders, :products, :show]
+  before_action :set_shop, except: [:new, :create]
 
   def show
     @shop = @shop_owner.shop
@@ -27,7 +27,7 @@ class ShopsController < ApplicationController
   end
 
   def products
-    @products = @shop_owner.shop.products
+    @products = @shop.products
   end
 
   def create
@@ -48,6 +48,11 @@ class ShopsController < ApplicationController
     @orders = filtered_orders.paginate(page: params[:page], per_page: 15)
   end
 
+  def update_orders
+    @shop.update(order_params)
+    render json: { notice: "Updated" }, status: :ok
+  end
+
   private
 
   def assign_shop_owner
@@ -56,6 +61,10 @@ class ShopsController < ApplicationController
 
   def set_shop
     @shop = current_shop_owner.shop
+  end
+
+  def order_params
+    params.require(:shop).permit(orders_attributes: [:id, :status])
   end
 
   def shop_params

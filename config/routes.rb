@@ -34,6 +34,7 @@ Rails.application.routes.draw do
     get "/admin/shop/orders" => :orders
     post "/shops"              => :create
     get "/shops/:id/edit"      => :edit, as: :edit_shop
+    put "/shop/orders"         => :update_orders
     patch "shop/profile/update" => :update, as: :profile_update
   end
 

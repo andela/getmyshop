@@ -90,7 +90,7 @@ RSpec.describe ShopsController, type: :controller do
 
     context "with invalid attributes" do
       it "updates the shop profile page" do
-        put :update, id: @shop, shop: { 
+        put :update, id: @shop, shop: {
           name: ""
         }
         @shop.reload

@@ -5,11 +5,13 @@ $black: #000000;
 $light-gray: #e0e0e0;
 $pale-orange: #fff4e1;
 $search-box: #f5f5f5;
-$white: #fff;
-$orange: #FFA500;
+$white: #ffffff;
+$orange: #ffa500;
 $light-teal: #009688;
-$accent-color: #FFC107;
-
+$accent-color: #ffc107;
+$deep-gray: #1d1d1d;
+$logo-font: 'Oleo Script', fantasy;
+$background-color-mix: rgba(0, 0, 0, 0.5);
 
 nav {
   border-radius: 3%;
@@ -17,30 +19,29 @@ nav {
 }
 
 .medium {
-  background: url("http://i.imgur.com/BqiaXIj.jpg" ) no-repeat;
+  align-items: center;
+  background: url("http://i.imgur.com/BqiaXIj.jpg") no-repeat;
   background-size: cover;
-  display: block;
-  height: 45em;
-  width: 100%;
-  margin-top: -24px;
+  color: $white;
   display: flex;
   flex-direction: column;
+  height: 45em;
   justify-content: center;
-  align-items: center;
-  color: #fff;
+  margin-top: -24px;
   position: relative;
+  width: 100%;
 
   * {
-     z-index: 999;
+    z-index: 999;
   }
 
   &::before {
-    position: absolute;
-    width: 100%;
+    background-color: $background-color-mix;
+    content: "";
     height: 100%;
-    background-color: rgba(0,0,0,.5);
+    position: absolute;
     top: 0;
-    content: '';
+    width: 100%;
   }
 
   h1 {
@@ -208,7 +209,7 @@ nav {
 }
 
 .footer {
-  background: #1D1D1D;
+  background: $deep-gray;
   padding: 20px;
 
   .white-text span:first-child {
@@ -381,12 +382,13 @@ nav {
 }
 
 .brand-logo {
-  font-family: 'Oleo Script', fantasy;
+  font-family: $logo-font;
   padding-left: 16px;
   padding-top: 6px;
   position: relative !important;
 
-  .fa-shopping-bag, a {
+  .fa-shopping-bag,
+  a {
     color: $light-teal;
   }
 }
@@ -419,7 +421,7 @@ nav {
     .sign-up {
       background-color: $accent-color;
       border: unset;
-      color: $light-teal; 
+      color: $black; 
 
       &:hover {
         background-color: $accent-color;

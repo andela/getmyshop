@@ -41,7 +41,7 @@
 
         <div>
           <br>
-          <%= button_to "Complete Order", post_payment_orders_path(type: "pay-on-delivery"), class: "btn right" %>
+          <%= button_to "Complete Order", post_payment_orders_path(type: "pay-on-delivery"), class: "btn right #{@shop.color} white-text" %>
         </div>
       </div>
       <div id="pay-with-paypal" class="col s12">

@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
   get "orders/create"
-  resources :products
+
+  scope controller: :products do
+    get '/products' => :index
+    post '/products' => :create
+    get '/products/new' => :new
+    get '/products/edit/:id' => :edit
+    get '/products/:id' => :show, as: :product
+    patch '/products/:id' => :update
+    delete '/products/:id' => :destroy
+  end
 
   root "landing#index"
 
@@ -20,11 +29,12 @@ Rails.application.routes.draw do
   end
 
   scope controller: :landing do
-    get "/contact"  => :contact
-    get "/about"    => :about
-    get "/blog"     => :blog
-    get "/blog/:id" => :single_post
-    get "/faq"      => :frequently_asked_questions
+    get "/contact"  => :contact, as: :contact
+    get "/about"    => :about, as: :about
+    get "/blog"     => :blog, as: :blog
+    get "/blog/:id" => :single_post, as: :single_post
+    get "/faq"      => :frequently_asked_questions, as: :faq
+    get "/:url"    => :shop, as: :shop
   end
 
   scope "/shopowners", controller: :shops do
@@ -35,6 +45,8 @@ Rails.application.routes.draw do
     post "/shops"              => :create
     get "/shops/:id/edit"      => :edit, as: :edit_shop
     patch "shop/profile/update" => :update, as: :profile_update
+    get "shop/customize/:id" => :customize, as: :customize_shop
+    put "shop/customize/:id" => :update_theme, as: :theme_update
   end
 
   scope "/shopowners", controller: :shop_owners do
@@ -45,9 +57,9 @@ Rails.application.routes.draw do
   end
 
   scope controller: :sessions do
-    get "/login"  => :new, as: :login
-    post "/login" => :create
-    get "/logout" => :destroy, as: :logout
+    get "/shop/login"  => :new, as: :login
+    post "/shop/login" => :create
+    get "/shop/logout" => :destroy, as: :logout
   end
 
   scope "/shopowners", controller: :sessions do
@@ -69,7 +81,11 @@ Rails.application.routes.draw do
   post "/wishlist" => "wishlist#update"
   match "auth/:provider/callback" => "sessions#create", via: [:get, :post]
 
-  resources :categories, only: [:show, :index]
+  scope controller: :categories do
+    get "/categories/:id" => :show, as: :category
+    get "/categories" => :index, as: :categories
+  end
+
   get "/categories/:category_id/subcategory/:id" => "categories#show",
       as: :subcategory
   resources :addresses, except: [:show, :index]

@@ -1,8 +1,8 @@
 class ShopsController < ApplicationController
-  layout "dashboard_layout", only: [:products, :orders, :show, :edit]
+  layout "dashboard_layout", only: [:products, :orders, :show, :edit, :customize]
 
   before_action :assign_shop_owner
-  before_action :set_shop, only: [:update, :edit, :orders, :products, :show]
+  before_action :set_shop, only: [:update, :edit, :orders, :products, :show, :customize, :update_theme]
 
   def show
     @shop = @shop_owner.shop
@@ -48,6 +48,19 @@ class ShopsController < ApplicationController
     @orders = filtered_orders.paginate(page: params[:page], per_page: 15)
   end
 
+  def customize
+  end
+
+  def update_theme
+     if @shop.update shop_params
+       redirect_to customize_shop_path(@shop),
+        notice: MessageService.theme_updated
+     else
+       flash[:errors] = MessageService.theme_not_updated
+       redirect_to customize_shop_path(@shop)
+     end
+  end
+
   private
 
   def assign_shop_owner
@@ -60,7 +73,7 @@ class ShopsController < ApplicationController
 
   def shop_params
     params.require(:shop).permit(
-      :name, :url, :description, :address, :city, :state, :country, :phone
+      :name, :url, :description, :address, :city, :state, :country, :phone, :color
     )
   end
 end

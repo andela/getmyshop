@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160823003413) do
+ActiveRecord::Schema.define(version: 20160905233734) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id"
@@ -153,8 +153,9 @@ ActiveRecord::Schema.define(version: 20160823003413) do
     t.string   "country"
     t.string   "phone"
     t.integer  "shop_owner_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.string   "color",         default: "black"
   end
 
   add_index "shops", ["shop_owner_id"], name: "index_shops_on_shop_owner_id"

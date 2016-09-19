@@ -20,7 +20,7 @@
               <% total_amount += product.price.to_i * item["quantity"].to_i %>
               <div class="order_item_list_entry_<%= product.id %>">
                 <div class='col l2' id='cart-image'>
-                  <img src='<%= product.product_image_links.first.link_name %>' height='42' width='42'>
+                  <img src='<%= product.image || "" %>' height='42' width='42'>
                 </div>
                 <div class='col l5' id='cart-name'><%= product.name %></div>
                 <div class='col l1' id='cart-qty'><%= item["quantity"] %></div>
@@ -46,7 +46,7 @@
       <div class="cart-dropdown-footer">
         <div class="row">
           <div class="col l12">
-            <%= link_to "Proceed to Cart", "/cart", class: 'btn right gen-green-background' %>
+            <%= link_to "Proceed to Cart", "/cart", class: "btn-flat right #{@shop.color} white-text" %>
           </div>
         </div>
       </div>

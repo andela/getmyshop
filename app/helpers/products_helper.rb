@@ -15,7 +15,7 @@ module ProductsHelper
 
   def get_rating(product)
     total = product.reviews.inject(0) { |sum, review| sum + review.rating }
-    total / product.reviews.count
+    (total / product.reviews.count if product.reviews.count > 0) || 0
   end
 
   def filter_categories
@@ -46,7 +46,7 @@ module ProductsHelper
 
   def add_to_cart
     if @product.quantity > 0
-      submit_tag "ADD TO CART", class: "waves-effect btn products-input"
+      submit_tag "ADD TO CART", class: "waves-effect btn products-input #{@shop.color}"
     else
       submit_tag "ADD TO CART",
                  class: "btn products-input disabled",

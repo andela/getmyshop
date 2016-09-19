@@ -8,11 +8,11 @@
   <tbody>
     <tr>
       <td>Category</td>
-      <td><%= @product.category.name %></td>
+      <td><%= (@product.category.name if @product.category) || 'Uncategorized' %></td>
     </tr>
     <tr>
       <td>Subcategory</td>
-      <td><%= @product.subcategory.name %></td>
+      <td><%= (@product.subcategory.name if @product.subcategory) || 'Uncategorized' %></td>
     </tr>
     <tr>
       <td>Brand</td>

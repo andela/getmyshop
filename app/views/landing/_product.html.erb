@@ -2,14 +2,12 @@
   <%= link_to product_path(product) do %>
     <div class="card">
       <div class="card-image">
-        <%= image_tag product.product_image_links.first.link_name %>
+        <img src="<%= product.image || 'http://i.imgur.com/QsgYAlQ.png' %>"/>
       </div>
       <div class="card-content center">
-        <span><%= product.name %></span><br>
-        <span class="price">&#x20A6;<%= product.price %></span>
+        <span class="<%= @shop.color %>-text" style="text-transform: uppercase"><%= product.name %></span><br>
+        <span class="price black-text">&#x20A6;<%= product.price %></span>
       </div>
     </div>
   <% end %>
 </div>
-
-

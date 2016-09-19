@@ -1,6 +1,6 @@
 <div class="top-contain">
   <div id="top-fixed">
-    <div class="top-bar valign-wrapper">
+    <div class="top-bar valign-wrapper <%= @shop.color %>">
       <div class="container-trim">
         <div class="left">
           <span class="white-text small-text">FAST &amp; FREE SHIPPING ON ALL ORDERS - CALL US : 08020000000</span>
@@ -10,7 +10,7 @@
           <span class="white-text small-text">&nbsp;|&nbsp;</span>
           <%= link_to "Blog", blog_path, class: 'white-text small-text' %>
           <span class="white-text small-text">&nbsp;|&nbsp;</span>
-          <%= link_to "Contact Us", "/contact", class: 'white-text small-text' %>
+          <%= link_to "Contact Us", contact_path, class: 'white-text small-text' %>
           <span class="white-text small-text">&nbsp;|&nbsp;</span>
           <%= link_to "FAQ", faq_path, class: 'white-text small-text' %>
           <span class="white-text small-text">&nbsp;|&nbsp;</span>
@@ -29,18 +29,18 @@
       <div class="row white-header">
         <div class="col s2">
           <div class="left">
-            <a class="brand-logo black-text" href="<%= root_path %>">
+            <a class="brand-logo black-text" href="<%= shop_path(session[:shop_url]) %>">
               <div class="left">
-                <span>Shopify</span>
+                <span> <%= (@shop.name if @shop) || (@product.shop.name if @product) || "GetMyShop" %> </span>
               </div>
             </a>
           </div>
         </div>
         <div class="col s4 offset-s3 search-container">
-          <div class="search-bar">
-            <div class="input-field my-input" id="search-input">
+          <div class="search-bar" style="border-bottom: 1px solid <%= @shop.color %>">
+            <div class="input-field my-input <%= @shop.color %>-text" id="search-input">
              <%= form_tag({controller: "search", action: "result"}, method: "get") do %>
-             <%= text_field_tag :term, "", required: "required", placeholder: "Search by product name or category", class: "black-text browser-default", id: "my-input-field" %>
+             <%= text_field_tag :term, "", required: "required", placeholder: "Search by product name or category", class: "#{@shop.color}-text browser-default", id: "my-input-field" %>
              <% end %>
             </div>
           </div>
@@ -52,20 +52,20 @@
         <div class="col s3">
           <div class="right">
             <span class="search-icon-span left">
-              <i class="large material-icons search-i" id="search">search</i>
+              <i class="large material-icons search-i <%= @shop.color %>-text" id="search">search</i>
             </span>
 
             <span class="white-text small-text">&nbsp;|&nbsp;</span>
             <span class="category-span">
 
-              <%= link_to "CATEGORIES", categories_path, class: "black-text category-link" %>
+              <%= link_to "CATEGORIES", categories_path, class: "#{@shop.color}-text category-link" %>
 
               <%= render "category_dropdown" %>
 
             </span>
             <span class="white-text small-text">&nbsp;|&nbsp;</span>
             <span class="cart-span" id="cart-span">
-              <a href="#" class="black-text cart-link">CART<span class="total-text"><span id="total-item" class="total-item">
+              <a href="#" class="<%= @shop.color %>-text cart-link">CART<span class="total-text"><span id="total-item" class="total-item">
                 <% if cookies[:cart] && JSON.parse(cookies[:cart]).size > 0 %>
                 <%= JSON.parse(cookies[:cart]).size %>
                 <% end %>
@@ -80,5 +80,3 @@
     </div>
   </div>
 </div>
-
-

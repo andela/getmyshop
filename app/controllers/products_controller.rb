@@ -22,7 +22,7 @@ class ProductsController < ApplicationController
 
   def show
     category = @product.category
-    @related_products = category.related_products(@product.id)
+    @related_products = (category.related_products(@product.id) if category) || []
   end
 
   def edit

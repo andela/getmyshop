@@ -64,4 +64,12 @@ class MessageService
   def self.update_success
     "Product was successfully updated."
   end
+
+  def self.theme_updated
+    "Theme updated"
+  end
+
+  def self.theme_not_updated
+    "Theme not updated"
+  end
 end

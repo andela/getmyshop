@@ -1,4 +1,4 @@
-<% meta og: { image: @product.product_image_links.first.link_name } %>
+<% meta og: { image: @product.image } %>
 <% meta og: { description: @product.description } %>
 <%= render "header" %>
 <div id="fb-root"></div>
@@ -12,11 +12,9 @@
         <div class="col s10">
           <div class="slider">
             <ul class="slides">
-              <% @product.product_image_links.each do |link| %>
               <li class="slide-item">
-                <%= image_tag link.link_name, id: "productImage", data: {zoom_image: link.link_name}%>
+                <%= image_tag @product.image, id: "productImage", data: { zoom_image: @product.image }%>
               </li>
-              <% end %>
             </ul>
           </div>
         </div>
@@ -55,10 +53,10 @@
         <div class="left">
           <a href="#!" class="secondary-content">
             <% get_rating(@product).times  do %>
-            <span class="filled-in-star star-size">&#9734;</span>
+            <span class="filled-in-star star-size <%= @shop.color %>-text">&#9734;</span>
             <% end %>
             <% (5 - get_rating(@product)).times do %>
-            <span class="star-size">&#9734;</span>
+            <span class="star-size <%= @shop.color %>-text">&#9734;</span>
             <% end %>
           </a>
         </div>
@@ -67,7 +65,7 @@
       </div>
       <input  type=hidden>
       <%= form_tag(cart_path, method: "post", id: "cart_form-", remote: true) do %>
-      <%= hidden_field_tag(:image, @product.product_image_links.first.link_name)  %>
+      <%= hidden_field_tag(:image, @product.image)  %>
       <%= hidden_field_tag(:product_id, @product.id) %>
       <%= hidden_field_tag(:price, @product.price) %>
       <%= hidden_field_tag(:name, @product.name) %>

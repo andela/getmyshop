@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
 
       return redirect_to_user_intended unless session[:user_intended].nil?
-      redirect_to root_path, notice: welcome_user
+      redirect_to shop_path(session[:shop_url]), notice: welcome_user
     else
       process_form_login "RegularUser"
     end
@@ -35,7 +35,7 @@ class SessionsController < ApplicationController
   def logout_user(_user)
     _user = nil
     session.delete :user_id
-    redirect_to root_path, notice: MessageService.logout
+    redirect_to shop_path(session[:shop_url]), notice: MessageService.logout
   end
 
   def process_form_login(model)
@@ -58,12 +58,13 @@ class SessionsController < ApplicationController
   end
 
   def login_successful(user, model)
-    session[:user_id] = user.id
-    return redirect_to_user_intended unless session[:user_intended].nil?
-
     if model == "RegularUser"
-      redirect_to root_path, notice: welcome_user
+      session[:user_id] = user.id
+      return redirect_to_user_intended unless session[:user_intended].nil?
+      redirect_to shop_path(session[:shop_url]), notice: welcome_user
     else
+      session[:admin_id] = user.id
+      return redirect_to_user_intended unless session[:user_intended].nil?
       redirect_to dashboard_path, notice: welcome_shop_owner
     end
   end

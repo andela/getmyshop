@@ -1,6 +1,9 @@
 class LandingController < ApplicationController
   def index
-    @categories = Category.all.limit(3)
+  end
+
+  def shop
+    redirect_to root_path unless @shop
   end
 
   def contact

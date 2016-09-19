@@ -1,6 +1,6 @@
 module CartsHelper
   def get_product_details(item_id)
-    Product.find(item_id)
+    Product.find_by id: item_id
   end
 
   def order_items_form_if_exist

@@ -244,11 +244,16 @@ nav {
     line-height: 2.6em;
     margin-bottom: 0;
     padding-bottom: 0;
-    text-align: left;
+    text-align: center;
+    border-bottom: 1px solid #ececec;
+    padding: 5px 0;
+    text-transform: uppercase;
     width: 100%;
+    transition: all .2s;
 
     &:hover {
-      background-color: $light-gray !important;
+      background-color: $black !important;
+      color: white !important;
     }
   }
 
@@ -339,4 +344,8 @@ nav {
   margin-left: 5em;
   margin-top: auto;
   width: 91%;
+}
+
+.upcase {
+  text-transform: uppercase;
 }

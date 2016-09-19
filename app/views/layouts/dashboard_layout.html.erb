@@ -14,7 +14,7 @@
 
   <div class="row dashboard-header">
     <div class="col s1" id="view-headline-cont">
-      <nav class="white-text nav-wrapper-cont">
+      <nav class="white-text nav-wrapper-cont <%= @shop.color %>">
         <div class="nav-wrapper">
           <a href="#" class="center-align" id="hdline">
             <i class="material-icons">view_headline</i>
@@ -23,7 +23,7 @@
       </nav>
     </div>
     <div class="col s11 header-nav-cont">
-      <nav class="white-text header-nav">
+      <nav class="white-text header-nav <%= @shop.color %>">
         <div class="nav-wrapper das">
           <span class="dashboard-page-title">Dashboard</span>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -32,7 +32,7 @@
             </li>
             <li>
               <%= link_to shop_owner_logout_path, method: :delete do %>
-                <i class="fa fa-sign-out fa-2x" aria-hidden="true"></i> 
+                <i class="fa fa-sign-out fa-2x" aria-hidden="true"></i>
               <% end %>
             </li>
           </ul>
@@ -50,7 +50,7 @@
             </a>
           </div>
         </nav>
-        <div class="side-bar-menu-cont">
+        <div class="side-bar-menu-cont <%= @shop.color %>">
           <div class="center-align">
             <div class="side-bar-menu">
               <a href="<%= dashboard_path %>" class="side-bar-link">
@@ -87,7 +87,7 @@
                 <span class="side-bar-menu-text center-align">Orders</span>
               </a>
             </div>
-            
+
             <div class="side-bar-menu">
               <a href="#" class="side-bar-link">
                 <span class="side-bar-menu-icon">
@@ -98,7 +98,7 @@
             </div>
 
             <div class="side-bar-menu">
-              <a href="<%= current_shop_owner.shop.url %>" class="side-bar-link">
+              <a href="/<%= @shop.url %>" class="side-bar-link" target="_blank">
                 <span class="side-bar-menu-icon">
                   <i class="material-icons">visibility</i>
                 </span>
@@ -112,6 +112,15 @@
                   <i class="material-icons">settings</i>
                 </span>
                 <span class="side-bar-menu-text center-align">Settings</span>
+              </a>
+            </div>
+
+            <div class="side-bar-menu">
+              <a href="<%= customize_shop_path(@shop) %>" class="side-bar-link">
+                <span class="side-bar-menu-icon">
+                  <i class="material-icons">view_carousel</i>
+                </span>
+                <span class="side-bar-menu-text center-align">Customize</span>
               </a>
             </div>
 

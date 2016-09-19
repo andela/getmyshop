@@ -1,0 +1,31 @@
+<% if flash['notice'] %>
+<%= javascript_tag do %>
+Materialize.toast("<%= flash['notice'] %>", 4000)
+<% end %>
+<% end %>
+<% if @shop.errors.any? %>
+<script>
+    var msg = $("<ol><%= shop_form_errors(@shop.errors.full_messages).html_safe %></ol>");
+    Materialize.toast(msg)
+</script>
+<% end %>
+<div class="row edit-form-container">
+    <h3 class="center-align edit-form-heading">Customize</h3>
+    <%= form_tag theme_update_path, method: :post, class: "col s8 offset-s2", id: "shop-edit-form" do %>
+    <input type="hidden" name="_method" value="put">
+    <div class="row">
+        <div class="input-field col s8 offset-s2">
+            <select name="shop[color]" class="browser-default">
+                <option value="" disabled>Choose theme</option>
+                <%= theme_options(@shop.color) %>
+            </select>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12 input-field center-align">
+            <button type="submit" name="button" class="waves-effect waves-light btn-flat bg-accent">Update</button>
+        </div>
+    </div>
+    <% end %>
+</div>

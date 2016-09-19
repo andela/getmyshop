@@ -19,6 +19,7 @@ categories = %w(
   Books
   Sports\ and\ Fitness
 )
+
 image_links = %w(
   http://i.imgur.com/QsgYAlQ.png
   http://i.imgur.com/JQOY8u9.jpg
@@ -34,6 +35,30 @@ image_links = %w(
   http://i.imgur.com/16vrQzW.jpg
 )
 
+shop_owner = ShopOwner.create(
+first_name: Faker::Name.name,
+last_name: Faker::Name.name,
+phone: Faker::PhoneNumber.phone_number,
+email: "defaultshopowner@getmyshop.com",
+password: "password",
+password_confirmation: "password",
+verified: true,
+active: true
+)
+
+shop = Shop.create(
+name: Faker::Company.name,
+url: Faker::Internet,
+description: "Sells Products",
+address: "Yaba, Lagos",
+city: "Yaba",
+state: "Lagos",
+country: "Nigeria",
+phone: Faker::PhoneNumber.phone_number,
+shop_owner: shop_owner,
+color: 'black'
+)
+
 categories.each do |category|
   new_category = Category.create(name: category)
 
@@ -44,6 +69,7 @@ categories.each do |category|
     new_product.quantity = Faker::Number.number(2)
     new_product.brand = Faker::Company.name
     new_product.description = Faker::Hipster.paragraph(10)
+    new_product.shop = shop
 
     new_subcategory = Subcategory.new
     new_subcategory.name = Faker::Commerce.department(1)
@@ -52,6 +78,7 @@ categories.each do |category|
     new_product.subcategory_id = new_subcategory.id
 
     new_product.size = Faker::Lorem.words(4).join(",")
+    new_product.image = image_links[rand(image_links.length)]
     new_product.save
 
     new_product_image_link = ProductImageLink.new
@@ -84,28 +111,6 @@ categories.each do |category|
     end
   end
 
-  shop_owner = ShopOwner.create(
-    first_name: Faker::Name.name,
-    last_name: Faker::Name.name,
-    phone: Faker::PhoneNumber.phone_number,
-    email: "defaultshopowner@getmyshop.com",
-    password: "password",
-    password_confirmation: "password",
-    verified: true,
-    active: true
-  )
-
-  shop = Shop.create(
-    name: Faker::Company.name,
-    url: Faker::Internet,
-    description: "Sells Products",
-    address: "Yaba, Lagos",
-    city: "Yaba",
-    state: "Lagos",
-    country: "Nigeria",
-    phone: Faker::PhoneNumber.phone_number,
-    shop_owner: shop_owner
-  )
 
   2.times do
     RegularUser.create(

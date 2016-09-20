@@ -27,7 +27,7 @@ module OrdersHelper
   end
 
   def all_orders_count
-    current_shop_owner.shop.orders.count
+    current_shop_owner.shop.valid_orders.count
   end
 
   def page_links

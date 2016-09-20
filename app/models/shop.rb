@@ -7,4 +7,16 @@ class Shop < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
   validates :url, presence: true, uniqueness: true
   validates :phone, presence: true
+
+  def valid_orders
+    Order.not_cancelled(self)
+  end
+
+  def completed_orders
+    Order.completed(self)
+  end
+
+  def pending_orders
+    Order.pending(self)
+  end
 end

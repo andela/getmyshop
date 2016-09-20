@@ -34,6 +34,14 @@ class Order < ActiveRecord::Base
     where(shop_id: shop.id, status: "Completed")
   end
 
+  def self.not_cancelled(shop)
+    where(shop_id: shop.id).where.not(status: "Cancelled")
+  end
+
+  def self.cancelled(shop)
+    where(shop_id: shop.id, status: "Cancelled")
+  end
+
   def self.filter(tag = nil)
     return all if tag.nil? || tag.empty?
     tag = tag.capitalize

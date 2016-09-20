@@ -4,6 +4,8 @@ RSpec.describe ShopsController, type: :controller do
   before(:each) do
     @shop_owner = create(:shop_owner)
     @shop = @shop_owner.shop
+    @pending_orders = create_list(:order, 3, status: "Pending", shop: @shop)
+    @completed_orders = create_list(:order, 3, status: "Completed", shop: @shop)
     session[:user_id] = @shop_owner.id
   end
 
@@ -148,18 +150,45 @@ RSpec.describe ShopsController, type: :controller do
   end
 
   describe "PUT #update_orders" do
-    before do
-      @orders = create_list(:order, 3)
-      @shop.update(orders: @orders)
+    context "when the status param is Completed" do
+      it "updates the order status to Completed" do
+        orders = [{ id: @pending_orders.first.id, status: "Completed" }]
+        shop_attributes = { orders_attributes:  orders }
+        put :update_orders, shop: shop_attributes
+        @pending_orders.each(&:reload)
+
+        expect(@pending_orders.first.status).to eq("Completed")
+      end
     end
 
-    it "updates the order status" do
-      orders = [{ id: @orders.first.id, status: "Completed" }]
-      shop_attributes = { orders_attributes:  orders }
-      put :update_orders, shop: shop_attributes
-      @orders.each(&:reload)
+    context "when the status param is Pending" do
+      it "updates the order status to Pending" do
+        orders = [{ id: @completed_orders.first.id, status: "Pending" }]
+        shop_attributes = { orders_attributes:  orders }
+        put :update_orders, shop: shop_attributes
+        @completed_orders.each(&:reload)
 
-      expect(@orders.first.status).to eq("Completed")
+        expect(@completed_orders.first.status).to eq("Pending")
+      end
+    end
+
+    context "when the status param is Cancelled" do
+      it "updates the order status to Cancelled" do
+        orders = [{ id: @pending_orders.first.id, status: "Cancelled" }]
+        shop_attributes = { orders_attributes:  orders }
+        put :update_orders, shop: shop_attributes
+        @pending_orders.each(&:reload)
+
+        expect(@pending_orders.first.status).to eq("Cancelled")
+      end
+
+      it "reduces the number of shop orders" do
+        orders = [{ id: @pending_orders.first.id, status: "Cancelled" }]
+        shop_attributes = { orders_attributes:  orders }
+
+        expect { put :update_orders, shop: shop_attributes }.
+          to change { @shop.valid_orders.count }.by(-1)
+      end
     end
   end
 end

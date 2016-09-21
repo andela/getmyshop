@@ -17,15 +17,6 @@ RSpec.describe "Category Page Test", type: :feature do
       end
       expect(page).to have_content(product.name)
     end
-
-    scenario "navigates user to category page when clicked in the footer" do
-      visit root_path
-      within("div.footer.valign-wrapper") do
-        click_link(product.category.name)
-      end
-
-      expect(page).to have_content(product.name)
-    end
   end
 
   describe "Filtering Widget" do

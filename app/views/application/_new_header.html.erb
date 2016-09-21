@@ -1,0 +1,18 @@
+<nav>
+  <div class="nav-wrapper row landing-header">
+    <div class="brand-logo col s2">
+      <i class="fa fa-shopping-bag" aria-hidden="true"></i> 
+      <a href="<%= root_path %>">GetMyShop</a>
+    </div>
+
+    <div class="col s10">
+      <ul id="nav-mobile" class="right">
+        <li><%= link_to "FAQ", faq_path, class: 'faq' %></li>
+        <li><%= link_to "About us", about_path, class: 'about-us' %></li>
+        <li><%= link_to "Blog", blog_path, class: 'blog' %></li>
+        <li><%= link_to "Sign In", shop_owner_login_path, class: 'sign-in' %></li>
+        <li><%= link_to "Sign Up", signup_path, class: 'sign-up' %></li>
+      </ul>
+    </div>
+  </div>
+</nav> 

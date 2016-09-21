@@ -11,7 +11,7 @@
 
       <div class="field">
         <%= f.label :description, "Product Description" %><br>
-        <%= f.text_field :description, { required: true, length: 50, maxlength: 50, placeholder: "E.g. Entertains Viewers" }  %>
+        <%= f.text_area :description, { required: true, length: 100, maxlength: 200, placeholder: "E.g. Entertains Viewers", class: "materialize-textarea" }  %>
       </div>
 
       <div class="field">
@@ -19,14 +19,31 @@
         <%= f.text_field :quantity, { required: true, placeholder: "E.g. 10" }  %>
       </div>
 
+
       <div class="field">
         <%= f.label :brand, "Product Brand" %><br>
         <%= f.text_field :brand, { required: true, placeholder: "E.g. Toshiba" } %>
       </div>
 
-      <div class="field">
-        <%= f.label :size, "Product Size" %><br>
-        <%= f.text_field :size, { required: true, placeholder: "E.g. 10 inches" } %>
+      <div class="row">
+        <div class="field col s6">
+          <%= f.label :size, "Product Size" %><br>
+          <%= f.text_field :size, { required: true, placeholder: "E.g. 10 inches" } %>
+        </div>
+
+
+        <div class="input-field col s6 units">
+          <select>
+            <option value="" disabled selected>Choose Unit</option>
+            <option value="1">Centimetres (cm)</option>
+            <option value="2">Metres (m)</option>
+            <option value="3">Inches (in)</option>
+            <option value="3">Yards (yd)</option>
+            <option value="3">Feet (ft)</option>
+          </select>
+          
+        </div>
+
       </div>
 
       <div class="field">

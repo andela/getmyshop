@@ -52,6 +52,7 @@ $ ->
 
   $('#create_product').click ->
     event.preventDefault()
+    
     createPath = "/shopowners/shop/product/validate"
     $.ajax
       url: createPath
@@ -87,15 +88,11 @@ outputErrors = (data) ->
       xhr.setRequestHeader 'X-CSRF-Token', $('meta[name="csrf-token"]').attr 'content'
     type: 'DELETE'
     success: (data) ->
-      productString = $('.strike span').text().substr(0, 1)
-      products_count = parseInt(productString) - 1
-      window.location.reload(true) if products_count < 1
-
-      pluralized_products = if products_count > 1 then "Products" else "Product"
-      $('.strike span').html("#{products_count} #{pluralized_products} available in store")
-      
+      products_count = $('.products-card').length
       product_id = "#product#{document.productIndex}"
       $(product_id).remove()
+      if (products_count - 1) < 1 then window.location.reload(true)
+      $('.edit-form-heading').html("SHOP PRODUCTS(#{products_count - 1})")
       Materialize.toast "Deleted Succesfully!", 4000
     error: (data) ->
       Materialize.toast "Error deleting product", 4000

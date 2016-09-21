@@ -47,7 +47,7 @@ class ProductsController < ApplicationController
   end
 
   def validate_product
-    @product = Product.new(validate_product_params)
+    @product = Product.new(valid_product_params)
     if @product.valid?
       render json: { notice: "valid" }, status: 200
     else
@@ -79,7 +79,7 @@ class ProductsController < ApplicationController
     )
   end
 
-  def validate_product_params
+  def valid_product_params
     params.permit(:name, :description, :quantity, :brand, :size, :price, :image)
   end
 

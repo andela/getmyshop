@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  layout "dashboard_layout", only: :edit
   before_action :set_product, only: [:show, :edit, :update]
   before_action :assign_shop_owner, only: [:new, :create]
 
@@ -26,6 +27,7 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    @shop = @product.shop
   end
 
   def update

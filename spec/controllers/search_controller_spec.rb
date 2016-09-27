@@ -1,5 +1,6 @@
 require "rails_helper"
 RSpec.describe SearchController, type: :controller do
+  include_examples "create shop"
   before(:all) do
     create(:product, name: "testproduct1")
     create(:product, name: "testproduct2")

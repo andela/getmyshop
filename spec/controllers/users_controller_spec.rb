@@ -1,6 +1,8 @@
 require "rails_helper"
 
 RSpec.describe UsersController do
+  include_examples "create shop"
+  
   before(:all) do
     create(:regular_user)
   end

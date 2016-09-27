@@ -1,14 +1,14 @@
 require "rails_helper"
 
 RSpec.describe ProductsController, type: :controller do
+  include_examples "create shop"
   let(:user) { create(:regular_user) }
   let(:product) { create(:product) }
 
   before do
     @product_one = create(:product, name: "testproduct1")
     @product_two = create(:product, name: "testproduct2")
-    @shop_owner = create(:shop_owner)
-    session[:user_id] = @shop_owner.id
+    session[:admin_id] = shopowner.id
     user.update(verified: true)
   end
 

@@ -1,10 +1,12 @@
 require "rails_helper"
 
 RSpec.describe CategoriesController, type: :controller do
+  include_examples "create shop"
   let(:category) { create(:category_with_products) }
+
   describe "GET index" do
     it "renders index template" do
-      get :index
+      get :index, url: shop.url
       expect(response).to render_template(:index)
     end
   end

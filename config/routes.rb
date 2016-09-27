@@ -34,7 +34,7 @@ Rails.application.routes.draw do
     get "/blog"     => :blog, as: :blog
     get "/blog/:id" => :single_post, as: :single_post
     get "/faq"      => :frequently_asked_questions, as: :faq
-    get "/:url"    => :shop, as: :shop
+    get "/s/:url"    => :shop, as: :shop
   end
 
   scope "/shopowners", controller: :shops do

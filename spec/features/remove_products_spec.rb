@@ -1,18 +1,19 @@
 require "rails_helper"
 
 RSpec.describe "Removing Products", type: :feature do
+  include_examples "features create shop"
+
   before(:all) do
-    @shop_owner = create(:shop_owner, verified: true)
-    create(:product, shop: @shop_owner.shop)
+    create(:product)
+    sleep 3
   end
 
   feature "when delete button is clicked on a product", js: true do
     scenario "removes the product" do
-      shop_owner_signin_helper(@shop_owner.email, "password")
+      shop_owner_signin_helper(shopowner.email, "password")
 
       visit shop_products_path
       page.execute_script("$('#delete_product').click()")
-      sleep 3
       click_on("Continue")
 
       expect(page).to have_content("You currently have no products")

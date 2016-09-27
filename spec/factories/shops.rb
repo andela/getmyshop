@@ -1,7 +1,8 @@
 FactoryGirl.define do
+  name = Faker::Company.name
   factory :shop do
-    name Faker::Company.name
-    url Faker::Internet.url
+    name name
+    url name.downcase.gsub /[\s,-]/, ""
     description Faker::Company.catch_phrase
     address Faker::Address.street_address
     city Faker::Address.city

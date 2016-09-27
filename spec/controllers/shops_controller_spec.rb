@@ -1,10 +1,12 @@
 require "rails_helper"
 
 RSpec.describe ShopsController, type: :controller do
+  include_examples "create shop"
+
   before(:each) do
-    @shop_owner = create(:shop_owner)
-    @shop = @shop_owner.shop
-    session[:user_id] = @shop_owner.id
+    @shop_owner = shopowner
+    @shop = shopowner.shop
+    session[:admin_id] = @shop_owner.id
   end
 
   let(:valid_attributes) do

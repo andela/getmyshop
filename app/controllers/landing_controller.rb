@@ -3,7 +3,7 @@ class LandingController < ApplicationController
   end
 
   def shop
-    redirect_to root_path unless @shop
+    redirect_to root_path if @shop.nil?
   end
 
   def contact

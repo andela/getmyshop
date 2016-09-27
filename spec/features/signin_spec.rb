@@ -1,6 +1,8 @@
 require "rails_helper"
 
 RSpec.describe "Users Signin process", type: :feature do
+  include_examples "features create shop"
+
   before(:all) do
     @user = create :regular_user
     @user.update(verified: true)

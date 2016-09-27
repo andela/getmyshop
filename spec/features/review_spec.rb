@@ -1,6 +1,8 @@
 require "rails_helper"
 
 RSpec.describe "Making a review", type: :feature do
+  include_examples "features create shop"
+
   feature "When a user has bought a product" do
     let(:user) { create :regular_user }
     let(:order) { create :order }
@@ -20,13 +22,13 @@ RSpec.describe "Making a review", type: :feature do
       expect(page).to have_content "Details"
       click_link "details"
       click_link("Review")
-      sleep 3
+      sleep 2
 
       fill_in("title", with: "Nice product")
       fill_in("comment", with: "Love the sleek design")
       find("#star3").click
       click_button("Submit")
-      sleep 3
+      sleep 2
 
       expect(product.reviews.last.title).to eq "Nice product"
       expect(product.reviews.last.rating).to eq 3

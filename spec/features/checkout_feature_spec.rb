@@ -6,6 +6,8 @@ include AddressHelpers
 include CheckoutHelpers
 
 RSpec.describe "Checkout Feature", type: :feature do
+  include_examples "features create shop"
+
   before(:all) do
     create_list(:product, 5)
     @user = create(:regular_user)
@@ -14,20 +16,21 @@ RSpec.describe "Checkout Feature", type: :feature do
 
   after(:all) { DatabaseCleaner.clean_with(:truncation) }
 
-  context "when not logged in" do
-    it "redirects to login page", js: true do
+  feature "when not logged in" do
+    scenario "redirects to login page", js: true do
       add_products_and_checkout
-      expect(current_url).to have_content "login"
+      visit shop_path(shop.url)
+      expect(page).to have_content "SIGN IN"
     end
   end
 
-  context "when logged in" do
+  feature "when logged in" do
     before(:each) do
       allow_any_instance_of(ApplicationController).
         to receive(:current_user).and_return(@user)
     end
 
-    context "using an old address" do
+    feature "using an old address" do
       before(:all) do
         create(:address, user: @user)
       end
@@ -40,7 +43,7 @@ RSpec.describe "Checkout Feature", type: :feature do
         )
       end
 
-      it "checks out with paypal successfully", js: true do
+      scenario "checks out with paypal successfully", js: true do
         page.driver.browser.manage.window.resize_to(1280, 600)
         add_products_and_checkout
 
@@ -52,8 +55,8 @@ RSpec.describe "Checkout Feature", type: :feature do
       end
     end
 
-    context "using a new address" do
-      it "adds products successfully", js: true do
+    feature "using a new address" do
+      scenario "adds products successfully", js: true do
         add_products_and_checkout
         click_button "Create a New Address"
         expect(page).to have_content "Fill in the delivery information"

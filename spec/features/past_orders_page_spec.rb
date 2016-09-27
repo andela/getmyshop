@@ -1,6 +1,8 @@
 require "rails_helper"
 
 RSpec.describe "Ordering page", type: :feature, js: true do
+  include_examples "features create shop"
+
   after(:all) { DatabaseCleaner.clean_with(:truncation) }
 
   before(:all) do
@@ -12,6 +14,7 @@ RSpec.describe "Ordering page", type: :feature, js: true do
 
   feature "when order is made" do
     scenario "shows order details" do
+      visit shop_path(shop.url)
       signin_helper(@user.email, @user.password)
       order.update_attributes(user: @user, address: address)
       visit past_orders_path

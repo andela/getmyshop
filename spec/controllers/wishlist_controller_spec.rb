@@ -6,6 +6,7 @@ include ProductHelpers
 include WishlistHelpers
 
 RSpec.describe WishlistController do
+  include_examples "create shop"
   before(:all) do
     @test_user = create(:regular_user)
     @test_product = create(:product)

@@ -1,6 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "Shop Owner Signin process", type: :feature do
+  
   before(:all) do
     @shop_owner = create :shop_owner
     @shop_owner.update(verified: true)

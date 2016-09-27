@@ -6,6 +6,7 @@ include ProductHelpers
 include WishlistHelpers
 
 RSpec.describe "Wishlist Feature", type: :feature do
+  include_examples "features create shop"
   before(:all) do
     create_list(:category_with_products, 2)
     create(:regular_user)
@@ -17,13 +18,14 @@ RSpec.describe "Wishlist Feature", type: :feature do
   let(:test_product) { Product.first }
 
   describe "Visiting the Wishlist index page" do
+    before(:each) do
+      visit wishlist_index_path
+    end
     context "when a user is not signed in" do
-      before(:each) { visit wishlist_index_path }
-
       it_behaves_like "an authorization error that directs to login page"
     end
 
-    context "when user is signed-in" do
+    feature "when user is signed-in" do
       before(:each) do
         allow_any_instance_of(ApplicationController).
           to receive(:current_user) { test_user }
@@ -31,11 +33,11 @@ RSpec.describe "Wishlist Feature", type: :feature do
         visit wishlist_index_path
       end
 
-      it "renders the wishlist index page" do
+      scenario "renders the wishlist index page" do
         expect(current_path).to eql wishlist_index_path
       end
 
-      it "wishlist page is empty" do
+      scenario "wishlist page is empty" do
         expect(page).to have_content "No items in Wishlist yet."
       end
     end

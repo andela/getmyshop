@@ -2,6 +2,7 @@ require "rails_helper"
 require "support/oauth_example"
 
 RSpec.describe SessionsController do
+  include_examples "create shop"
   describe "#new" do
     it "renders the right view when user attempts to sign in" do
       get :new
@@ -45,7 +46,7 @@ RSpec.describe SessionsController do
           email: @user.email, password: "password"
         }
         expect(session[:user_id]).to eql @user.id
-        expect(response).to redirect_to root_path
+        expect(response).to redirect_to shop_path(session[:shop_url])
       end
     end
 
@@ -63,7 +64,7 @@ RSpec.describe SessionsController do
   end
 
   describe "#shop_owner_create" do
-    before(:each) { @user = create(:shop_owner) }
+    before(:each) { @user = shopowner }
 
     context "while authenticating shop owners with invalid details" do
       it "raises the right error when email is not valid" do
@@ -91,7 +92,7 @@ RSpec.describe SessionsController do
         post :shop_owner_create, session: {
           email: @user.email, password: "password"
         }
-        expect(session[:user_id]).to eql @user.id
+        expect(session[:admin_id]).to eql @user.id
         expect(response).to redirect_to dashboard_path
       end
     end
@@ -100,13 +101,13 @@ RSpec.describe SessionsController do
   describe"#shop_owner_destroy" do
     context "when user logs out" do
       it "logs the user out successfully and redirects to the login path" do
-        user = create(:shop_owner)
-        session[:user_id] = user.id
+        user = shopowner
+        session[:admin_id] = user.id
         delete :shop_owner_destroy, session: {
           email: user.email, password: user.password
         }
         expect(session[:user_id]).to eql nil
-        expect(response).to redirect_to root_path
+        expect(response).to redirect_to shop_path(shop.url)
       end
     end
   end

@@ -22,8 +22,8 @@ class ApplicationController < ActionController::Base
     @categories = Category.all.limit(3)
     @shop = Shop.find_by url: (params[:url] || session[:shop_url])
     @products = (@shop.products if @shop) || []
-    session[:shop_url] = @shop.url
-    @shop.color = (@shop.color if @shop) || 'teal'
+    session[:shop_url] = @shop.url if @shop
+    (@shop.color = (@shop.color if @shop) || 'teal') if @shop
   end
 
   def logged_in

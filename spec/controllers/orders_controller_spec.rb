@@ -1,6 +1,7 @@
 require "rails_helper"
 
 RSpec.describe OrdersController, type: :controller do
+  include_examples "create shop"
   describe "GET #create" do
     it "returns http success" do
     end

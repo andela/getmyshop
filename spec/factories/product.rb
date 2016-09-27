@@ -5,12 +5,12 @@ FactoryGirl.define do
     description { Faker::Hipster.paragraph(3, true) }
     quantity Faker::Number.number(2)
     brand { Faker::Company.name }
-    subcategory factory: :subcategory
+    subcategory
+    shop_id 1
 
     transient do
       image_link_count 2
       review_count 2
-      shop nil
     end
 
     after(:create) do |product, evaluator|
@@ -20,7 +20,6 @@ FactoryGirl.define do
         product: product
       )
       create_list(:review, evaluator.review_count, product: product)
-      product.update(shop: evaluator.shop)
     end
   end
 end

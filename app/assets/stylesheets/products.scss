@@ -375,10 +375,10 @@ hr {
   }
 
   &.input-field {
-    left: -250px !important;
+    left: -230px !important;
     position: fixed !important;
     top: -6px;
-    width: 30% !important;
+    width: 26% !important;
     z-index: 8001;
 
     label {
@@ -392,7 +392,9 @@ hr {
 
   #icon-prefix {
     border-color: $my-white;
+    box-sizing: border-box;
     color: $my-white;
+    padding-right: 70px;
 
     &:focus {
       border-color: $my-white !important;

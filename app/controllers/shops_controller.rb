@@ -44,7 +44,7 @@ class ShopsController < ApplicationController
   end
 
   def orders
-    filtered_orders = @shop.orders.filter(params[:status])
+    filtered_orders = @shop.valid_orders.filter(params[:status])
     @orders = filtered_orders.paginate(page: params[:page], per_page: 15)
   end
 

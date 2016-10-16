@@ -12,8 +12,6 @@ RSpec.describe "Wishlist Feature", type: :feature do
     create(:regular_user)
   end
 
-  after(:all) { DatabaseCleaner.clean_with(:truncation) }
-
   let(:test_user) { RegularUser.first }
   let(:test_product) { Product.first }
 

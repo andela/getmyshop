@@ -7,5 +7,6 @@ RSpec.shared_examples "social share example" do |medium|
       text = medium + ".com"
       expect(current_url).to include(text)
     end
+    windows.last.close
   end
 end

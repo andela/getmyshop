@@ -3,7 +3,6 @@ require "rails_helper"
 RSpec.describe "Ordering page", type: :feature, js: true do
   include_examples "features create shop"
 
-  after(:all) { DatabaseCleaner.clean_with(:truncation) }
 
   before(:all) do
     @user = create :regular_user

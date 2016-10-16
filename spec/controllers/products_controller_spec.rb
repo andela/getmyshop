@@ -88,7 +88,7 @@ RSpec.describe ProductsController, type: :controller do
 
     context "with invalid details" do
       it "re-renders the :edit view" do
-        put :update, id: product, product: {
+        put :update, id: product.id, product: {
           name: nil
         }
         expect(response).to render_template :edit

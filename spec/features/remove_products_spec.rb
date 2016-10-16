@@ -11,10 +11,9 @@ RSpec.describe "Removing Products", type: :feature do
   feature "when delete button is clicked on a product", js: true do
     scenario "removes the product" do
       shop_owner_signin_helper(shopowner.email, "password")
-
       visit shop_products_path
-      page.execute_script("$('#delete_product').click()")
-      click_on("Continue")
+      find("#delete_product").click
+      find("#confirm-modal").all("a").first.click
 
       expect(page).to have_content("You currently have no products")
     end

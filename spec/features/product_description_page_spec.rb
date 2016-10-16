@@ -3,13 +3,12 @@ require "support/social_share_example"
 
 RSpec.describe "Product Show page", type: :feature do
   include_examples "features create shop"
-  
+
   context "when in the product show page" do
     before(:all) do
       create_list(:subcategory_with_products, 2)
     end
 
-    after(:all) { DatabaseCleaner.clean_with(:truncation) }
 
     let(:product) { Product.first }
 

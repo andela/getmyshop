@@ -10,8 +10,6 @@ RSpec.describe "Making a review", type: :feature do
     let(:product) { create :product }
     let(:order_item) { create :order_item }
 
-    after(:all) { DatabaseCleaner.clean_with(:truncation) }
-
     scenario "Adds review to a product if user has bought the product",
              js: true do
       user.update(verified: true)
@@ -22,8 +20,6 @@ RSpec.describe "Making a review", type: :feature do
       expect(page).to have_content "Details"
       click_link "details"
       click_link("Review")
-      sleep 2
-
       fill_in("title", with: "Nice product")
       fill_in("comment", with: "Love the sleek design")
       find("#star3").click

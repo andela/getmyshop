@@ -8,8 +8,6 @@ RSpec.describe "Users Signin process", type: :feature do
     @user.update(verified: true)
   end
 
-  after(:all) { DatabaseCleaner.clean_with(:truncation) }
-
   feature "when user enters correct inputs" do
     scenario "signs in user" do
       signin_helper(@user.email, "password")

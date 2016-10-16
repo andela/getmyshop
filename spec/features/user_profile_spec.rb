@@ -15,7 +15,6 @@ RSpec.describe "User profile", type: :feature do
       password_digest: Faker::Internet.password
     )
   end
-  after(:all) { DatabaseCleaner.clean_with(:truncation) }
 
   describe "when on the profile page" do
     before(:each) do

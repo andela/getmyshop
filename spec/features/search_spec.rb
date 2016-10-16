@@ -13,8 +13,6 @@ RSpec.describe "Search Process", type: :feature do
       sleep 3
     end
 
-    after(:all) { DatabaseCleaner.clean_with(:truncation) }
-
     scenario "displays matching products with full match term", js: true do
       fill_and_search(Product.last.name)
       expect(page).to have_content Product.last.name
@@ -22,8 +20,8 @@ RSpec.describe "Search Process", type: :feature do
 
     scenario "displays matching products with partial match term", js: true do
       fill_and_search("test")
-      expect(page).to have_content "testproduct1"
-      expect(page).to have_content "testproduct2"
+      expect(page).to have_content "testproduct1".upcase
+      expect(page).to have_content "testproduct2".upcase
     end
   end
 

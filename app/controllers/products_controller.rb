@@ -88,7 +88,7 @@ class ProductsController < ApplicationController
   end
 
   def set_product
-    @product ||= Product.find_by(id: params[:id]).decorate
+    @product = Product.find_by(id: params[:id]).decorate
   end
 
   def rate_params
